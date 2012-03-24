@@ -1,0 +1,188 @@
+package nl.astraeus.prevayler;
+
+import java.io.Serializable;
+import java.util.*;
+
+/**
+ * PrevaylerList
+ * <p/>
+ * User: rnentjes
+ * Date: 7/27/11
+ * Time: 2:52 PM
+ */
+public class PrevaylerList<M extends PrevaylerModel> implements List<M>, Serializable {
+    public static final long serialVersionUID = 1L;
+
+    private Class<? extends PrevaylerModel> cls;
+    private List<Long> list = new LinkedList<Long>();
+
+    public PrevaylerList(Class<? extends PrevaylerModel> cls) {
+        this.cls = cls;
+    }
+
+    public int size() {
+        return list.size();
+    }
+
+    public boolean isEmpty() {
+        return list.isEmpty();
+    }
+
+    public boolean contains(Object o) {
+        return list.contains(o);
+    }
+
+    public Iterator<M> iterator() {
+        return new Iterator<M>() {
+            Iterator<Long> it = list.iterator();
+            M next = null;
+
+            public boolean hasNext() {
+                while (next == null && it.hasNext()) {
+                    next = (M) PrevaylerStore.get().find(cls, it.next());
+                }
+
+                return (next != null);
+            }
+
+            public M next() {
+                M result = next;
+                
+                next = null;
+
+                while (it.hasNext() && next == null) {
+                    next = (M) PrevaylerStore.get().find(cls, it.next());
+                }
+
+                return result;
+            }
+
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
+    }
+
+    public Object[] toArray() {
+        throw new IllegalStateException("Not implemented yet!");
+    }
+
+    public <T> T[] toArray(T[] a) {
+        throw new IllegalStateException("Not implemented yet!");
+    }
+
+    public boolean add(M m) {
+        PrevaylerStore.get().assertIsStored(m);
+        return list.add(m.getPrimaryKey());
+    }
+
+    public boolean remove(Object o) {
+        return list.remove(((M)o).getPrimaryKey());
+    }
+
+    public boolean containsAll(Collection<?> c) {
+        throw new IllegalStateException("Not implemented yet!");
+    }
+
+    public boolean addAll(Collection<? extends M> c) {
+        boolean result = true;
+
+        for (M m : c) {
+            result = result && add(m);
+        }
+
+        return result;
+    }
+
+    public boolean addAll(int index, Collection<? extends M> c) {
+        for (M m : c) {
+            add(index, m);
+        }
+
+        return true;
+    }
+
+    public boolean removeAll(Collection<?> c) {
+        for (Object m : c) {
+            remove(m);
+        }
+
+        return true;
+    }
+
+    private List<Long> getLongList(Collection<? extends M> c) {
+        List<Long> result = new LinkedList<Long>();
+
+        for (M m : c) {
+            result.add(m.getPrimaryKey());
+        }
+
+        return result;
+    }
+
+    public boolean retainAll(Collection<?> c) {
+        return list.retainAll(getLongList((Collection<? extends M>) c));
+    }
+
+    public void clear() {
+        list.clear();
+    }
+
+    public M get(int index) {
+        return (M) PrevaylerStore.get().find(cls, list.get(index));
+    }
+
+    public M set(int index, M element) {
+        PrevaylerStore.get().assertIsStored(element);
+
+        return (M) PrevaylerStore.get().find(cls, list.set(index, element.getPrimaryKey()));
+    }
+
+    public void add(int index, M element) {
+        PrevaylerStore.get().assertIsStored(element);
+
+        list.add(index, element.getPrimaryKey());
+    }
+
+    public M remove(int index) {
+        return (M) PrevaylerStore.get().find(cls, list.remove(index));
+    }
+
+    public int indexOf(Object o) {
+        return list.indexOf(((M)o).getPrimaryKey());
+    }
+
+    public int lastIndexOf(Object o) {
+        return list.lastIndexOf(((M) o).getPrimaryKey());
+    }
+
+    public ListIterator<M> listIterator() {
+        throw new IllegalStateException("Not implemented yet!");
+    }
+
+    public ListIterator<M> listIterator(int index) {
+        throw new IllegalStateException("Not implemented yet!");
+    }
+
+    public List<M> subList(int fromIndex, int toIndex) {
+        throw new IllegalStateException("Not implemented yet!");
+    }
+    
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        
+        if (list.isEmpty()) {
+            result.append("empty");
+        } else {
+            int i=0;
+            
+            while(++i < 10 && this.list.size() > i) {
+                if (i > 1) {
+                    result.append(", ");
+                }
+                result.append(this.list.get(i));
+            }
+        }
+        return result.toString();
+    }
+}
