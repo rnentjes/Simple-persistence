@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="prevayler">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/prevayler" />
+      <root url="file://$PROJECT_DIR$/lib/prevayler" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/prevayler" recursive="false" />
+  </library>
+</component>
