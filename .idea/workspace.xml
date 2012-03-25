@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="672fb554-ea6e-4c7c-a7b9-f2a1844f5605" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Prevayler-Reference/.idea/.name" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Prevayler-Reference/.idea/ant.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Prevayler-Reference/.idea/compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Prevayler-Reference/.idea/copyright/profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Prevayler-Reference/.idea/encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Prevayler-Reference/.idea/libraries/compile.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Prevayler-Reference/.idea/libraries/jetty.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Prevayler-Reference/.idea/libraries/prevayler.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Prevayler-Reference/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Prevayler-Reference/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Prevayler-Reference/.idea/scopes/scope_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Prevayler-Reference/.idea/uiDesigner.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Prevayler-Reference/.idea/vcs.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Prevayler-Reference.iws" />
     <ignored path=".idea/workspace.xml" />
