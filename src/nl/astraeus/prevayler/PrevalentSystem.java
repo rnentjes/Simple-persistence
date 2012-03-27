@@ -6,6 +6,7 @@ import javax.annotation.Nonnull;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,6 +19,10 @@ public class PrevalentSystem implements Serializable {
     public static final long serialVersionUID = 1468478256843309473L;
 
     private Map<Class<? extends PrevaylerModel>, Map<Long, PrevaylerModel>> dataStore = new HashMap<Class<? extends PrevaylerModel>, Map<Long, PrevaylerModel>>(250);
+
+    //private Map<Class<? extends PrevaylerModel>, List<PrevaylerListener<?>>> listeners;
+
+    //private Map<Class<? extends PrevaylerModel>, List<PrevaylerIndex<?>>> listeners;
 
     private Map<String, Map<String, Long>> references = new HashMap<String, Map<String, Long>>();
 
@@ -45,11 +50,11 @@ public class PrevalentSystem implements Serializable {
     }
 
     protected <M extends PrevaylerModel> void store(M objectToStore) {
-        getModelMap(objectToStore.getClass()).put(objectToStore.getPrimaryKey(), objectToStore);
+        getModelMap(objectToStore.getClass()).put(objectToStore.getId(), objectToStore);
     }
 
     protected void remove(PrevaylerModel objectToRemove) {
-        getModelMap(objectToRemove.getClass()).remove(objectToRemove.getPrimaryKey());
+        getModelMap(objectToRemove.getClass()).remove(objectToRemove.getId());
     }
 
     protected void addReferences(PrevaylerModel model) {
@@ -60,7 +65,7 @@ public class PrevalentSystem implements Serializable {
                     PrevaylerReference ref = (PrevaylerReference) field.get(model);
 
                     if (!ref.isNull()) {
-                        setReference(ref.get(), model.getClass(), model.getPrimaryKey());
+                        setReference(ref.get(), model.getClass(), model.getId());
                     }
                 } else if (field.getType().equals(PrevaylerList.class)) {
 
@@ -85,7 +90,7 @@ public class PrevalentSystem implements Serializable {
     }
 
     protected String getReference(PrevaylerModel model) {
-        return ReflectHelper.get().getClassName(model.getClass()) + ":" + model.getPrimaryKeyAsString();
+        return ReflectHelper.get().getClassName(model.getClass()) + ":" + model.getIdAsString();
     }
 
     protected Map<String, Long> getReferenceMap(PrevaylerModel model) {

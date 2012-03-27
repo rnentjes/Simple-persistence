@@ -40,7 +40,7 @@ public class PrevaylerReference<M extends PrevaylerModel> implements Serializabl
 
     public void set(M model) {
         this.cls = model.getClass();
-        this.id = model.getPrimaryKey();
+        this.id = model.getId();
 
         //PrevaylerStore.get().assertIsStored(model);
     }

@@ -23,8 +23,8 @@ public abstract class PrevaylerModel implements Serializable, Cloneable {
 
     private long id;
 
-    private boolean _eos_saved;
-    private long    _eos_last_update;
+    private boolean _prevayler_saved;
+    private long    _prevayler_last_update;
 
     public Long getNextId() {
         synchronized (PrevaylerModel.class) {
@@ -36,20 +36,20 @@ public abstract class PrevaylerModel implements Serializable, Cloneable {
         this.id = getNextId();
     }
 
-    public String getPrimaryKeyAsString() {
+    public String getIdAsString() {
         return Long.toString(id);
     }
 
     public String getKey() {
-        return getPrimaryKeyAsString();
+        return getIdAsString();
     }
 
-    public Long getPrimaryKey() {
+    public Long getId() {
         return id;
     }
 
     public String getGUID() {
-        return this.getClass()+"-"+this.getPrimaryKeyAsString();
+        return this.getClass()+"-"+this.getIdAsString();
     }
 
     public String getDescription() {
@@ -66,7 +66,7 @@ public abstract class PrevaylerModel implements Serializable, Cloneable {
 
         if (obj == null || obj.getClass() != this.getClass()) {
             result = false;
-        } else if (!((PrevaylerModel)obj).getPrimaryKey().equals(this.getPrimaryKey())) {
+        } else if (!((PrevaylerModel)obj).getId().equals(this.getId())) {
             result = false;
         }
 

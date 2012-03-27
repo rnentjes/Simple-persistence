@@ -4,6 +4,7 @@ import nl.astraeus.prevayler.model.Company;
 import nl.astraeus.prevayler.model.CompanyDao;
 import nl.astraeus.prevayler.model.Employee;
 import nl.astraeus.prevayler.model.EmployeeDao;
+import nl.astraeus.util.Singleton;
 
 /**
  * User: rnentjes
@@ -22,14 +23,43 @@ public class TestPrevayler {
             for (Employee employee : company.getEmployees()) {
                 System.out.println("\tEmployee: "+ employee);
             }
-        }        
+        }
+        
+        PrevaylerStore.get().begin();
 
         Company company = new Company("Company "+Integer.toString(companyDao.size()+1));
-        Employee employee1 = new Employee("Employee "+company.getEmployees().size()+1, company);
-        Employee employee2 = new Employee("Employee "+company.getEmployees().size()+1, company);
-        Employee employee3 = new Employee("Employee "+company.getEmployees().size()+1, company);
+        Employee employee1 = new Employee("Employee "+(company.getEmployees().size()+1), company);
+        Employee employee2 = new Employee("Employee "+(company.getEmployees().size()+1), company);
+        Employee employee3 = new Employee("Employee "+(company.getEmployees().size()+1), company);
 
         companyDao.store(company, employee1, employee2, employee3);
+        
+        Company c = companyDao.find(company.getId());
+        
+        System.out.println("Found company: "+c);
+
+        PrevaylerStore.get().commit();
+    }
+    
+    public void testTransaction() {
+        PrevaylerStore.get().begin();
+
+        try {
+            Company c = new Company("test company");
+            companyDao.store(c);
+            Employee e = new Employee("employee", c);
+
+            employeeDao.store(e);
+
+            employeeDao.find(e.getId());
+
+            PrevaylerStore.get().commit();
+        } catch (Exception e) {
+             PrevaylerStore.get().rollback();
+
+             throw new IllegalStateException(e);
+        }
+        
     }
 
 

@@ -73,11 +73,11 @@ public class PrevaylerList<M extends PrevaylerModel> implements List<M>, Seriali
 
     public boolean add(M m) {
         PrevaylerStore.get().assertIsStored(m);
-        return list.add(m.getPrimaryKey());
+        return list.add(m.getId());
     }
 
     public boolean remove(Object o) {
-        return list.remove(((M)o).getPrimaryKey());
+        return list.remove(((M)o).getId());
     }
 
     public boolean containsAll(Collection<?> c) {
@@ -114,7 +114,7 @@ public class PrevaylerList<M extends PrevaylerModel> implements List<M>, Seriali
         List<Long> result = new LinkedList<Long>();
 
         for (M m : c) {
-            result.add(m.getPrimaryKey());
+            result.add(m.getId());
         }
 
         return result;
@@ -135,13 +135,13 @@ public class PrevaylerList<M extends PrevaylerModel> implements List<M>, Seriali
     public M set(int index, M element) {
         PrevaylerStore.get().assertIsStored(element);
 
-        return (M) PrevaylerStore.get().find(cls, list.set(index, element.getPrimaryKey()));
+        return (M) PrevaylerStore.get().find(cls, list.set(index, element.getId()));
     }
 
     public void add(int index, M element) {
         PrevaylerStore.get().assertIsStored(element);
 
-        list.add(index, element.getPrimaryKey());
+        list.add(index, element.getId());
     }
 
     public M remove(int index) {
@@ -149,11 +149,11 @@ public class PrevaylerList<M extends PrevaylerModel> implements List<M>, Seriali
     }
 
     public int indexOf(Object o) {
-        return list.indexOf(((M)o).getPrimaryKey());
+        return list.indexOf(((M)o).getId());
     }
 
     public int lastIndexOf(Object o) {
-        return list.lastIndexOf(((M) o).getPrimaryKey());
+        return list.lastIndexOf(((M) o).getId());
     }
 
     public ListIterator<M> listIterator() {

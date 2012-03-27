@@ -16,11 +16,6 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
 
     private Map<Long, M> objectMap = null;
 
-    public void remove(Long key) {
-        M model = find(key);
-        remove(model);
-    }
-
     public M getNewModelInstance() {
         M instance = null;
 
@@ -73,25 +68,9 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
     public Collection<M> find(int from, int to) {
         return find(new Comparator<M>() {
             public int compare(M o1, M o2) {
-                return o1.getPrimaryKey().compareTo(o2.getPrimaryKey());
+                return o1.getId().compareTo(o2.getId());
             }
         }, from, to);
-    }
-
-    public Collection<M> filter(Filter<M> filter) {
-        List<M> result = new LinkedList<M>();
-
-        for (M m : findAll()) {
-            if (filter.include(m)) {
-                result.add(m);
-            }
-        }
-
-        return result;
-    }
-
-    protected Collection<? extends M> getValues() {
-        return (Collection<? extends M>) PrevaylerStore.get().getModelMap(getModelClass()).values();
     }
 
     public Collection<M> find(Comparator<M> comp, int from, int to) {
@@ -111,16 +90,49 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
         return result;
     }
 
+    public Collection<M> filter(Filter<M> filter) {
+        List<M> result = new LinkedList<M>();
+
+        for (M m : findAll()) {
+            if (filter.include(m)) {
+                result.add(m);
+            }
+        }
+
+        return result;
+    }
+
+    protected Collection<? extends M> getValues() {
+        return (Collection<? extends M>) PrevaylerStore.get().getModelMap(getModelClass()).values();
+    }
+
     public void store(M model) {
-        PrevaylerStore.get().store(model);
+        if (PrevaylerStore.get().getTransaction() != null) {
+            PrevaylerStore.get().getTransaction().store(model);
+        } else {
+            PrevaylerStore.get().store(model);
+        }
     }
 
     public <A extends PrevaylerModel> void store(A ... model) {
-        PrevaylerStore.get().store(model);
+        if (PrevaylerStore.get().getTransaction() != null) {
+            PrevaylerStore.get().getTransaction().store(model);
+        } else {
+            PrevaylerStore.get().store(model);
+        }
+    }
+
+    public void remove(Long key) {
+        M model = find(key);
+        remove(model);
     }
 
     public void remove(M model) {
-        PrevaylerStore.get().remove(model);
+        if (PrevaylerStore.get().getTransaction() != null) {
+            PrevaylerStore.get().getTransaction().remove(model);
+        } else {
+            PrevaylerStore.get().remove(model);
+        }
     }
 
     public int size() {
