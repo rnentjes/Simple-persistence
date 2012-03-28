@@ -2,20 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="672fb554-ea6e-4c7c-a7b9-f2a1844f5605" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/ant.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerIndex.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerTransaction.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/util/Singleton.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/nl/astraeus/prevayler/web/HttpServer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/Transaction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/util/Util.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/nl/astraeus/prevayler/CreateALotOfCompaniesAndEmployees.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/nl/astraeus/prevayler/CreateCompaniesAndEmployees.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowCompaniesAndEmployeesSafe.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowCompaniesAndEmployeesUnsafe.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowMemoryUsage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/nl/astraeus/prevayler/Snapshot.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/TestPrevayler.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevalentSystem.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevalentSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerDao.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerList.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerList.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerModel.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerModel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerReference.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerReference.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/TestPrevayler.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/prevayler/TestPrevayler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/reflect/ReflectHelper.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/reflect/ReflectHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/model/Company.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/prevayler/model/Company.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/model/Employee.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/prevayler/model/Employee.java" />
     </list>
     <ignored path="Prevayler-Reference.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,105 +78,94 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="Util.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/util/Util.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="0" selection-start="850" selection-end="850" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="PrevaylerStore.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="21" selection-start="1708" selection-end="1717" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#554#576#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrevaylerModel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="21" selection-start="550" selection-end="550" vertical-scroll-proportion="0.0">
+            <state line="26" column="22" selection-start="643" selection-end="643" vertical-scroll-proportion="-6.2">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrevalentSystem.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevalentSystem.java">
+      <file leaf-file-name="CreateCompaniesAndEmployees.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/CreateCompaniesAndEmployees.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="6" selection-start="611" selection-end="611" vertical-scroll-proportion="0.0">
+            <state line="77" column="56" selection-start="2855" selection-end="2855" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrevaylerIndex.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerIndex.java">
+      <file leaf-file-name="CreateALotOfCompaniesAndEmployees.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/CreateALotOfCompaniesAndEmployees.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="0" selection-start="811" selection-end="811" vertical-scroll-proportion="0.8293839">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#341#355#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrevaylerListener.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="304" selection-end="304" vertical-scroll-proportion="0.0">
+            <state line="28" column="39" selection-start="873" selection-end="873" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestPrevayler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/TestPrevayler.java">
+      <file leaf-file-name="Employee.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/model/Employee.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="52" selection-start="451" selection-end="451" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Singleton.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/util/Singleton.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="9" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#220#235#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RemoveModelTransaction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/RemoveModelTransaction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="4" selection-start="421" selection-end="421" vertical-scroll-proportion="0.0">
+            <state line="24" column="5" selection-start="682" selection-end="859" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrevaylerDao.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerDao.java">
+      <file leaf-file-name="Company.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/model/Company.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="16" selection-start="2806" selection-end="2806" vertical-scroll-proportion="0.0">
+            <state line="13" column="24" selection-start="319" selection-end="319" vertical-scroll-proportion="0.33519554">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrevaylerTransaction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerTransaction.java">
+      <file leaf-file-name="Snapshot.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/Snapshot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="0" selection-start="1099" selection-end="1099" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#449#465#0" expanded="true" />
-                <element signature="e#525#541#0" expanded="true" />
-              </folding>
+            <state line="17" column="5" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShowCompaniesAndEmployeesSafe.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowCompaniesAndEmployeesSafe.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="0" selection-start="1054" selection-end="1054" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShowCompaniesAndEmployeesUnsafe.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowCompaniesAndEmployeesUnsafe.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="40" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShowMemoryUsage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowMemoryUsage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="1" selection-start="944" selection-end="944" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -191,16 +185,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/web/HttpServer.java" />
-        <option value="$PROJECT_DIR$/src/nl/astraeus/util/Singleton.java" />
-        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerTransaction.java" />
-        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerModel.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerDao.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerReference.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/reflect/ReflectHelper.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerList.java" />
         <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/TestPrevayler.java" />
-        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerListener.java" />
-        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevalentSystem.java" />
-        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerIndex.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/util/Util.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java" />
+        <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowCompaniesAndEmployeesSafe.java" />
+        <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowCompaniesAndEmployeesUnsafe.java" />
+        <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/CreateCompaniesAndEmployees.java" />
+        <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/Snapshot.java" />
+        <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowMemoryUsage.java" />
+        <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/CreateALotOfCompaniesAndEmployees.java" />
+        <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/model/Employee.java" />
+        <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/model/Company.java" />
       </list>
     </option>
   </component>
@@ -221,7 +221,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="0" />
+    <option name="STATE" value="2" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -236,6 +236,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -290,110 +291,47 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="prevayler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="astraeus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="astraeus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="prevayler" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Libraries" />
     <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="project.structure.side.proportion" value="0.2" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="nl.astraeus.prevayler" />
     </key>
+    <key name="MoveMembersDialog.RECENTS_KEY">
+      <recent name="nl.astraeus.util.Util" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.TestPrevayler">
-    <configuration default="false" name="TestPrevayler" type="Application" factoryName="Application" temporary="true">
+  <component name="RunManager" selected="Application.Snapshot">
+    <configuration default="false" name="ShowMemoryUsage" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="nl.astraeus.prevayler.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="nl.astraeus.prevayler.TestPrevayler" />
+      <option name="MAIN_CLASS_NAME" value="nl.astraeus.prevayler.ShowMemoryUsage" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -404,13 +342,95 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Prevayler-Reference" />
       <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="CreateALotOfCompaniesAndEmployees" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="nl.astraeus.prevayler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="nl.astraeus.prevayler.CreateALotOfCompaniesAndEmployees" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Prevayler-Reference" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ShowCompaniesAndEmployeesUnsafe" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="nl.astraeus.prevayler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="nl.astraeus.prevayler.ShowCompaniesAndEmployeesUnsafe" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Prevayler-Reference" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ShowCompaniesAndEmployeesSafe" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="nl.astraeus.prevayler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="nl.astraeus.prevayler.ShowCompaniesAndEmployeesSafe" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Prevayler-Reference" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Snapshot" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="nl.astraeus.prevayler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="nl.astraeus.prevayler.Snapshot" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Prevayler-Reference" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -534,8 +554,12 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Application.TestPrevayler" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Application.ShowMemoryUsage" />
+      <item index="1" class="java.lang.String" itemvalue="Application.CreateALotOfCompaniesAndEmployees" />
+      <item index="2" class="java.lang.String" itemvalue="Application.ShowCompaniesAndEmployeesUnsafe" />
+      <item index="3" class="java.lang.String" itemvalue="Application.ShowCompaniesAndEmployeesSafe" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Snapshot" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -578,7 +602,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21749137" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3647871" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -586,11 +610,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25557324" sideWeight="0.24510932" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26910827" sideWeight="0.24971232" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25557324" sideWeight="0.5293441" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26910827" sideWeight="0.438435" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30379745" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -631,7 +655,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed old files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added transactions" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -646,6 +670,7 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Moved files" />
     <MESSAGE value="Removed old files" />
+    <MESSAGE value="Added transactions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -655,120 +680,116 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README">
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerReference.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/web/HttpServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="182" selection-end="182" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/model/CompanyDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="40" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/model/Company.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="754" selection-end="754" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/StoreBatchTransaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="886" selection-end="886" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/ModelTransaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="102" selection-start="278" selection-end="315" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/RemoveModelTransaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="4" selection-start="421" selection-end="421" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerTransaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="0" selection-start="1099" selection-end="1099" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#449#465#0" expanded="true" />
-            <element signature="e#525#541#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="16" selection-start="2806" selection-end="2806" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/TestPrevayler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="52" selection-start="451" selection-end="451" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/util/Singleton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="9" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#220#235#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="304" selection-end="304" vertical-scroll-proportion="0.0">
+        <state line="28" column="10" selection-start="576" selection-end="576" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="21" selection-start="550" selection-end="550" vertical-scroll-proportion="0.0">
+        <state line="69" column="0" selection-start="1580" selection-end="1580" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="124" column="0" selection-start="3362" selection-end="3362" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/reflect/ReflectHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="572" column="27" selection-start="18067" selection-end="18067" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#806#823#0" expanded="true" />
+            <element signature="e#883#899#0" expanded="true" />
+            <element signature="e#1164#1187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="0" selection-start="1149" selection-end="1149" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/util/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="850" selection-end="850" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowCompaniesAndEmployeesSafe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="0" selection-start="1054" selection-end="1054" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowCompaniesAndEmployeesUnsafe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="40" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="21" selection-start="1708" selection-end="1717" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#554#576#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevalentSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="6" selection-start="611" selection-end="611" vertical-scroll-proportion="0.0">
+        <state line="26" column="22" selection-start="643" selection-end="643" vertical-scroll-proportion="-6.2">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerIndex.java">
+    <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/Snapshot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="811" selection-end="811" vertical-scroll-proportion="0.8293839">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#341#355#0" expanded="true" />
-          </folding>
+        <state line="17" column="5" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/CreateCompaniesAndEmployees.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="56" selection-start="2855" selection-end="2855" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowMemoryUsage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="1" selection-start="944" selection-end="944" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/CreateALotOfCompaniesAndEmployees.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="39" selection-start="873" selection-end="873" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/model/Employee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="5" selection-start="682" selection-end="859" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/model/Company.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="24" selection-start="319" selection-end="319" vertical-scroll-proportion="0.33519554">
+          <folding />
         </state>
       </provider>
     </entry>

@@ -31,6 +31,14 @@ public class PrevaylerList<M extends PrevaylerModel> implements List<M>, Seriali
     public boolean contains(Object o) {
         return list.contains(o);
     }
+    
+    public List<Long> getIdList() {
+        return list;
+    }
+
+    public Class<? extends PrevaylerModel> getType() {
+        return cls;
+    }
 
     public Iterator<M> iterator() {
         return new Iterator<M>() {
@@ -39,7 +47,9 @@ public class PrevaylerList<M extends PrevaylerModel> implements List<M>, Seriali
 
             public boolean hasNext() {
                 while (next == null && it.hasNext()) {
-                    next = (M) PrevaylerStore.get().find(cls, it.next());
+                    long id = it.next();
+
+                    next = (M) PrevaylerStore.get().getModelMap(cls).get(it.next());
                 }
 
                 return (next != null);
@@ -72,8 +82,13 @@ public class PrevaylerList<M extends PrevaylerModel> implements List<M>, Seriali
     }
 
     public boolean add(M m) {
-        PrevaylerStore.get().assertIsStored(m);
+        //PrevaylerStore.get().assertIsStored(m);
         return list.add(m.getId());
+    }
+
+    public boolean add(long id) {
+        //PrevaylerStore.get().assertIsStored(m);
+        return list.add(id);
     }
 
     public boolean remove(Object o) {
@@ -174,13 +189,14 @@ public class PrevaylerList<M extends PrevaylerModel> implements List<M>, Seriali
         if (list.isEmpty()) {
             result.append("empty");
         } else {
-            int i=0;
-            
-            while(++i < 10 && this.list.size() > i) {
-                if (i > 1) {
+            for (int i = 0; i < 10 && this.list.size() > i; i++) {
+                if (i > 0) {
                     result.append(", ");
                 }
                 result.append(this.list.get(i));
+            }
+            if (this.list.size() > 10) {
+                result.append(", <" + (this.list.size() - 10) + " more>");
             }
         }
         return result.toString();

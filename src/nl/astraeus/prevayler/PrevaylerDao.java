@@ -14,13 +14,12 @@ import java.util.*;
  */
 public abstract class PrevaylerDao<M extends PrevaylerModel> {
 
-    private Map<Long, M> objectMap = null;
-
     public M getNewModelInstance() {
         M instance = null;
 
         try {
             Type type = getModelClass();
+            
             instance = (M) ((Class) type).newInstance();
         } catch (InstantiationException ex) {
             throw new IllegalStateException(ex);
@@ -44,23 +43,19 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
         return result;
     }
 
-    public Map<Long, M> getStore() {
-        return (Map<Long, M>)PrevaylerStore.get().getModelMap(getModelClass());
-    }
-
     @CheckForNull
     public M find(Long pk) {
-        if (objectMap == null) {
-            objectMap = (Map<Long, M>)PrevaylerStore.get().getModelMap(getModelClass());
-        }
-
-        return objectMap.get(pk);
+        return PrevaylerStore.get().find(getModelClass(), pk);
     }
 
     public Collection<M> findAll() {
         List<M> result = new LinkedList<M>();
 
-        result.addAll(getValues());
+        if (PrevaylerStore.isSafemode()) {
+            result.addAll(getValues());
+        } else {
+            result.addAll(getModelValues());
+        }
 
         return result;
     }
@@ -74,36 +69,71 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
     }
 
     public Collection<M> find(Comparator<M> comp, int from, int to) {
+        Class<M> cls = getModelClass();
         List<M> result = new LinkedList<M>();
 
         List<M> values = new LinkedList<M>();
 
-        values.addAll(getValues());
+        values.addAll(getModelValues());
         Collections.sort(values, comp);
 
-        for (int i = from; i < to; i++) {
-            if (values.size() > i) {
-                result.add(values.get(i));
+        try {
+            for (int i = from; i < to; i++) {
+                if (values.size() > i) {
+                    if (PrevaylerStore.isSafemode()) {
+                        result.add(cls.cast(values.get(i).clone()));
+                    } else {
+                        result.add(values.get(i));
+                    }
+                }
             }
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalStateException(e);
         }
 
         return result;
     }
 
     public Collection<M> filter(Filter<M> filter) {
+        Class<M> cls = getModelClass();
         List<M> result = new LinkedList<M>();
 
-        for (M m : findAll()) {
-            if (filter.include(m)) {
-                result.add(m);
+        try {
+            for (M m : getModelValues()) {
+                if (filter.include(m)) {
+                    if (PrevaylerStore.isSafemode()) {
+                        result.add(cls.cast(m.clone()));
+                    } else {
+                        result.add(m);
+                    }
+                }
             }
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalStateException(e);
         }
 
         return result;
     }
 
-    protected Collection<? extends M> getValues() {
-        return (Collection<? extends M>) PrevaylerStore.get().getModelMap(getModelClass()).values();
+    /** returnes a cloned set of all values */
+    private Collection<? extends M> getValues() {
+        Collection<M> result = new LinkedList<M>();
+        Class<M> cls = getModelClass();
+        
+        try {
+            for (PrevaylerModel m : PrevaylerStore.get().getModelMap(getModelClass()).values()) {
+                result.add(cls.cast(m.clone()));
+            }
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalStateException(e);
+        }
+        
+        return result;
+    }
+
+    /** The returned model values are not cloned yet! (safemode) */
+    private Collection<? extends M> getModelValues() {
+        return (Collection<? extends M>)PrevaylerStore.get().getModelMap(getModelClass()).values();
     }
 
     public void store(M model) {
@@ -116,6 +146,7 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
 
     public <A extends PrevaylerModel> void store(A ... model) {
         if (PrevaylerStore.get().getTransaction() != null) {
+            // todo: warn, no need to use this function in a transaction
             PrevaylerStore.get().getTransaction().store(model);
         } else {
             PrevaylerStore.get().store(model);

@@ -2,9 +2,11 @@ package nl.astraeus.prevayler.reflect;
 
 import nl.astraeus.prevayler.PrevaylerDao;
 import nl.astraeus.prevayler.PrevaylerList;
+import nl.astraeus.prevayler.PrevaylerModel;
 import nl.astraeus.prevayler.PrevaylerReference;
 
 import javax.annotation.CheckForNull;
+import javax.annotation.Nonnull;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -29,6 +31,8 @@ public class ReflectHelper {
     private Map<Integer, Method> methodCache = new HashMap<Integer, Method>();
     private Map<Integer, Field> fieldCache = new HashMap<Integer, Field>();
     private Map<Class<?>, List<Field>> classFieldCache = new HashMap<Class<?>, List<Field>>();
+    private Map<Class<?>, List<Field>> referenceFieldCache = new HashMap<Class<?>, List<Field>>();
+    private Map<Class<?>, List<Field>> listFieldCache = new HashMap<Class<?>, List<Field>>();
     private Map<Class<?>, String> classNameMap = new HashMap<Class<?>, String>();
 
     public String getClassName(Class cls) {
@@ -445,6 +449,58 @@ public class ReflectHelper {
         return result;
     }
 
+    public List<Field> getReferenceFieldsFromClass(Class<?> typeClass) {
+        List<Field> result = referenceFieldCache.get(typeClass);
+
+        if (result == null) {
+            result = new LinkedList<Field>();
+
+            do {
+                Field[] fields = typeClass.getDeclaredFields();
+
+                for (Field field : fields) {
+                    if (field.getType().equals(PrevaylerReference.class)) {
+                        field.setAccessible(true);
+
+                        result.add(0, field);
+                    }
+                }
+
+                typeClass = (Class<?>) typeClass.getSuperclass();
+            } while (!typeClass.equals(Object.class));
+
+            referenceFieldCache.put(typeClass, result);
+        }
+
+        return result;
+    }
+
+    public List<Field> getListFieldsFromClass(Class<?> typeClass) {
+        List<Field> result = listFieldCache.get(typeClass);
+
+        if (result == null) {
+            result = new LinkedList<Field>();
+
+            do {
+                Field[] fields = typeClass.getDeclaredFields();
+
+                for (Field field : fields) {
+                    if (field.getType().equals(PrevaylerList.class)) {
+                        field.setAccessible(true);
+
+                        result.add(0, field);
+                    }
+                }
+
+                typeClass = (Class<?>) typeClass.getSuperclass();
+            } while (!typeClass.equals(Object.class));
+
+            listFieldCache.put(typeClass, result);
+        }
+
+        return result;
+    }
+
     public String toString() {
         StringBuilder result = new StringBuilder();
 
@@ -500,4 +556,32 @@ public class ReflectHelper {
             throw new IllegalStateException(e);
         }
     }*/
+
+    public void copyPrevaylerReferenceAndListProperties(@Nonnull PrevaylerModel source, @Nonnull PrevaylerModel target) {
+        assert source.getClass().equals(target.getClass());
+
+        try {
+            for (Field field : getReferenceFieldsFromClass(target.getClass())) {
+                PrevaylerReference ref = (PrevaylerReference) field.get(source);
+                PrevaylerModel m = ref.get();
+                
+                PrevaylerReference newRef = new PrevaylerReference(ref.getType(), ref.getId());
+                field.set(target, newRef);
+            }
+
+            for (Field field : getListFieldsFromClass(target.getClass())) {
+                PrevaylerList list = (PrevaylerList) field.get(source);
+                PrevaylerList newList =  new PrevaylerList(list.getType());
+                
+                for (Object id : list.getIdList()) {
+                    newList.add((Long)id);
+                }
+
+                field.set(target, newList);
+            }
+        } catch (IllegalAccessException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
 }

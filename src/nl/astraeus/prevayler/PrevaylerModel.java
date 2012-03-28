@@ -1,5 +1,7 @@
 package nl.astraeus.prevayler;
 
+import nl.astraeus.prevayler.reflect.ReflectHelper;
+
 import java.io.Serializable;
 
 /**
@@ -23,8 +25,9 @@ public abstract class PrevaylerModel implements Serializable, Cloneable {
 
     private long id;
 
-    private boolean _prevayler_saved;
-    private long    _prevayler_last_update;
+    private boolean _prevayler_saved                = false;
+    private long    _prevayler_last_update          = System.currentTimeMillis();
+    private boolean _prevayler_selected_for_update  = false;
 
     public Long getNextId() {
         synchronized (PrevaylerModel.class) {
@@ -57,7 +60,12 @@ public abstract class PrevaylerModel implements Serializable, Cloneable {
     }
 
     public PrevaylerModel clone() throws CloneNotSupportedException {
-        return (PrevaylerModel)super.clone();
+        PrevaylerModel result = (PrevaylerModel)super.clone();
+
+        // clone refs and lists
+        ReflectHelper.get().copyPrevaylerReferenceAndListProperties(this, result);
+
+        return result;
     }
 
     @Override

@@ -26,8 +26,17 @@ public class PrevaylerReference<M extends PrevaylerModel> implements Serializabl
         }
     }
 
+    public PrevaylerReference(Class cls, long id) {
+        this.cls = cls;
+        this.id = id;
+    }
+
     public Class getType() {
         return cls;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public M get() {

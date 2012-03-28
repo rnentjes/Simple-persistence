@@ -12,10 +12,21 @@ public class Company extends PrevaylerModel {
     public final static long serialVersionUID = 1L;
     
     private String name;
+    private long [] randomData;
     private PrevaylerList<Employee> employees = new PrevaylerList<Employee>(Employee.class);
 
     public Company(String name) {
         this.name = name;
+
+        createRandomData();
+    }
+
+    private void createRandomData() {
+        randomData = new long[100];
+
+        for (int i=0; i<randomData.length; i++) {
+            randomData[i] = i;
+        }
     }
 
     public PrevaylerList<Employee> getEmployees() {
