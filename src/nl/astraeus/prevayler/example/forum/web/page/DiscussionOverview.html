@@ -1,0 +1,39 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>
+            Discussions
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    $discussions:{discussion|
+    <tr>
+        <td>
+            $discussion.date$
+        </td>
+        <td>
+            <a href="#" onclick="submit('edit', '$discussion.id$')">$discussion.shortTitle$</a>
+        </td>
+        <td>
+            $discussion.shortDescription$</a>
+        </td>
+        <td>
+            <a href="#" onclick="submit('edit', '$discussion.id$')">edit</a></a>
+        </td>
+        <td>
+            <a href="#" onclick="submit('remove', '$discussion.id$')">remove</a></a>
+        </td>
+    </tr>
+    }$
+    </tbody>
+</table>
+<hr/>
+
+<a href="#" class="btn" onclick="submit('new')">New Discussion</a>

@@ -1,0 +1,22 @@
+<fieldset>
+    <legend>Discussion</legend>
+    <div class="control-group">
+        <label class="control-label" for="input01">Title</label>
+
+        <div class="controls">
+            <input type="text" name="title" class="input-xlarge" id="input01" value="$discussion.title$">
+            <!-- <p class="help-block">Supporting help text</p> -->
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="input02">Description</label>
+
+        <div class="controls">
+            <textarea id="input02" rows="10" cols="40" name="description">$discussion.description$</textarea>
+            <!-- <p class="help-block">Supporting help text</p> -->
+        </div>
+    </div>
+</fieldset>
+
+<a class="btn  btn-primary" href="#" onclick="submit('save')">Save</a>
+<a class="btn" href="#" onclick="submit('cancel')">Cancel</a>

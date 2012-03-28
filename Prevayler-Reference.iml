@@ -11,6 +11,7 @@
     <orderEntry type="library" name="compile" level="project" />
     <orderEntry type="library" name="jetty" level="project" />
     <orderEntry type="library" name="prevayler" level="project" />
+    <orderEntry type="library" name="examples" level="project" />
   </component>
 </module>
 
