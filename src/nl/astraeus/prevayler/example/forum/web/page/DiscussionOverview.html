@@ -1,0 +1,11 @@
+<h1>Discussions</h1>
+
+$discussions:{discussion|
+<div>
+    <h2>$discussion.title$</h2>
+    <button type="submit" name="selectDiscussion" value="$discussion.id$" >Edit '$discussion.title$'</button>
+</div>
+}$
+
+        <hr/>
+<button type="submit" name="action" value="new" >New</button>
