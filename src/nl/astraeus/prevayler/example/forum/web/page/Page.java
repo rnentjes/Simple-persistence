@@ -30,7 +30,7 @@ public abstract class Page {
 
         return template.render();
     }
-
+    
     public static ST getTemplate(Class cls, String file) {
         InputStream in = null;
 

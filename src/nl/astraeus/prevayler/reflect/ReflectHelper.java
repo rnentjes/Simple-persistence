@@ -563,21 +563,24 @@ public class ReflectHelper {
         try {
             for (Field field : getReferenceFieldsFromClass(target.getClass())) {
                 PrevaylerReference ref = (PrevaylerReference) field.get(source);
-                PrevaylerModel m = ref.get();
                 
-                PrevaylerReference newRef = new PrevaylerReference(ref.getType(), ref.getId());
-                field.set(target, newRef);
+                if (ref != null) {
+                    PrevaylerReference newRef = new PrevaylerReference(ref.getType(), ref.getId());
+                    field.set(target, newRef);
+                }
             }
 
             for (Field field : getListFieldsFromClass(target.getClass())) {
                 PrevaylerList list = (PrevaylerList) field.get(source);
-                PrevaylerList newList =  new PrevaylerList(list.getType());
-                
-                for (Object id : list.getIdList()) {
-                    newList.add((Long)id);
-                }
+                if (list != null) {
+                    PrevaylerList newList =  new PrevaylerList(list.getType());
 
-                field.set(target, newList);
+                    for (Object id : list.getIdList()) {
+                        newList.add((Long)id);
+                    }
+
+                    field.set(target, newList);
+                }
             }
         } catch (IllegalAccessException e) {
             throw new IllegalStateException(e);

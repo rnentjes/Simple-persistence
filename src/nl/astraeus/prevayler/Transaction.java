@@ -25,7 +25,7 @@ public abstract class Transaction<T> {
         }
     }
     
-    private void setResult(T t) {
+    protected void setResult(T t) {
         result = t;
     }
 

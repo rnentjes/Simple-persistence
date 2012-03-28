@@ -1,11 +1,9 @@
 package nl.astraeus.prevayler.example.forum.web;
 
 import nl.astraeus.prevayler.PrevaylerStore;
-import nl.astraeus.prevayler.example.forum.web.page.DiscussionOverview;
-import nl.astraeus.prevayler.example.forum.web.page.ForumStartPage;
-import nl.astraeus.prevayler.example.forum.web.page.Page;
+import nl.astraeus.prevayler.Transaction;
+import nl.astraeus.prevayler.example.forum.web.page.*;
 import org.apache.commons.io.IOUtils;
-import org.stringtemplate.v4.ST;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,15 +20,19 @@ import java.io.InputStream;
  */
 public class ForumServlet extends HttpServlet {
 
-    ST head;
-    ST bottom;
+    private String head;
+    private String bottom;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        
-        head = Page.getTemplate(this.getClass(), "head.html");
-        bottom = Page.getTemplate(this.getClass(), "bottom.html");
+
+        try {
+            head = IOUtils.toString(getClass().getResourceAsStream("head.html"));
+            bottom = IOUtils.toString(getClass().getResourceAsStream("bottom.html"));
+        } catch (IOException e) {
+            throw new ServletException(e);
+        }
 
         PrevaylerStore.setAutocommit(false);
         PrevaylerStore.setSafemode(true);
@@ -60,7 +62,7 @@ public class ForumServlet extends HttpServlet {
             }
 
             IOUtils.copy(in, resp.getOutputStream());
-        } else if (uri.equals("/")) {
+        } else if (uri.equals("/") || uri.equals("/#")) {
             doPost(req, resp);
         } else {
             resp.setStatus(404);
@@ -68,28 +70,54 @@ public class ForumServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(final HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session =  req.getSession();
+        boolean ajax = "true".equals(req.getParameter("ajax"));
 
-        Page page = (Page)req.getSession().getAttribute("page");
+        Page page = (Page)session.getAttribute("page");
+        Page menu = (Page)session.getAttribute("menu");
+        
+        System.out.println("Request start, page="+page);
+        
+        if (menu == null) {
+            menu = new Menu();
 
-        if (page == null || "main".equals(req.getParameter("action"))) {
-            page = new DiscussionOverview();
+            session.setAttribute("menu", menu);
         }
 
-        PrevaylerStore.begin();
+        if (page == null || "menumain".equals(req.getParameter("action"))) {
+            page = new ForumOverview();
+        } else if ("menulogin".equals(req.getParameter("action"))) {
+            page = new Login(page);
+        } else {
+            final Page myPage = page;
 
-        page = page.processRequest(req);
+            Transaction<Page> t = new Transaction<Page>() {
+                @Override
+                public void execute() {
+                    setResult(myPage.processRequest(req));
+                }
+            };
+            
+            page = t.getResult();
+        }
+
+        menu.processRequest(req);
 
         session.setAttribute("page", page);
 
-        PrevaylerStore.commit();
+        if (!ajax) {
+            resp.getWriter().print(head);
+        }
 
-        resp.getWriter().print(head.render());
-
+        resp.getWriter().print(menu.render());
         resp.getWriter().print(page.render());
 
-        resp.getWriter().print(bottom.render());
+        if (!ajax) {
+            resp.getWriter().print(bottom);
+        }
+
+        System.out.println("Request ends, page="+page);
     }
 
 }

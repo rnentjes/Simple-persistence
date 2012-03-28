@@ -1,8 +1,7 @@
 package nl.astraeus.prevayler.example.forum.web.page;
 
-import nl.astraeus.prevayler.Transaction;
-import nl.astraeus.prevayler.example.forum.model.Discussion;
-import nl.astraeus.prevayler.example.forum.model.DiscussionDao;
+import nl.astraeus.prevayler.example.forum.model.Topic;
+import nl.astraeus.prevayler.example.forum.model.TopicDao;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -13,14 +12,15 @@ import java.util.Map;
  * Date: 3/28/12
  * Time: 3:23 PM
  */
-public class DiscussionEdit extends Page {
+public class TopicEdit extends Page {
 
     private Page previous;
-    private Discussion discussion;
+    private Topic topic;
+    private String description = "";
 
-    public DiscussionEdit(Page previous, Discussion discussion) {
+    public TopicEdit(Page previous, Topic topic) {
         this.previous = previous;
-        this.discussion = discussion;
+        this.topic = topic;
     }
 
     @Override
@@ -28,12 +28,14 @@ public class DiscussionEdit extends Page {
         Page result = this;
 
         if ("save".equals(request.getParameter("action"))) {
-            discussion.setTitle(request.getParameter("title"));
-            discussion.setDescription(request.getParameter("description"));
+            topic.setTitle(request.getParameter("title"));
+            description = request.getParameter("description");
 
-            DiscussionDao dao = new DiscussionDao();
+            // todo validation
+            TopicDao dao = new TopicDao();
 
-            dao.store(discussion);
+            topic.addComment(description);
+            dao.store(topic);
 
             result = previous;
         } else if ("cancel".equals(request.getParameter("action"))) {
@@ -47,7 +49,8 @@ public class DiscussionEdit extends Page {
     public Map<String, Object> defineModel() {
         Map<String, Object> result = new HashMap<String, Object>();
 
-        result.put("discussion", discussion);
+        result.put("topic", topic);
+        result.put("description", description);
         
         return result;
     }

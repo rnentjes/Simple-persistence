@@ -49,7 +49,7 @@ public class PrevaylerList<M extends PrevaylerModel> implements List<M>, Seriali
                 while (next == null && it.hasNext()) {
                     long id = it.next();
 
-                    next = (M) PrevaylerStore.get().getModelMap(cls).get(it.next());
+                    next = (M) PrevaylerStore.get().getModelMap(cls).get(id);
                 }
 
                 return (next != null);

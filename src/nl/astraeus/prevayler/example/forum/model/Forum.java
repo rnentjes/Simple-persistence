@@ -12,7 +12,7 @@ public class Forum extends PrevaylerModel {
     public static long serialVersionUID = 1L;
 
     private String name;
-    private PrevaylerList<Discussion> discussion = new PrevaylerList<Discussion>(Discussion.class);
+    private PrevaylerList<Topic> topic = new PrevaylerList<Topic>(Topic.class);
     private PrevaylerList<Member> member = new PrevaylerList<Member>(Member.class);
     
     public Forum() {}

@@ -1,42 +1,31 @@
 package nl.astraeus.prevayler.example.forum.model;
 
-import com.sun.org.apache.xerces.internal.impl.dv.DatatypeException;
+import nl.astraeus.prevayler.PrevaylerList;
 import nl.astraeus.prevayler.PrevaylerModel;
+import nl.astraeus.prevayler.PrevaylerReference;
 import org.apache.commons.lang.StringEscapeUtils;
 
-import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  * User: rnentjes
  * Date: 3/28/12
  * Time: 3:14 PM
  */
-public class Discussion extends PrevaylerModel {
+public class Comment extends PrevaylerModel {
     public final static long serialVersionUID = -9038882251579382910L;
 
     private long date = System.currentTimeMillis();
-    private String title = "";
     private String description = "";
+    private PrevaylerReference<Member> creator = new PrevaylerReference<Member>(Member.class);
 
-    public String getTitle() {
-        String title = this.title;
+    public Comment() {}
 
-        return StringEscapeUtils.escapeHtml(title);
+    public Comment(Member creator) {
+        this.creator.set(creator);
     }
-
-    public String getShortTitle() {
-        String title = this.title;
-
-        if (title.length() > 25) {
-            title = title.substring(0, 23)+"...";
-        }
-        return StringEscapeUtils.escapeHtml(title);
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
+    
     public String getDescription() {
         return StringEscapeUtils.escapeHtml(description);
     }
@@ -52,10 +41,17 @@ public class Discussion extends PrevaylerModel {
     }
     
     public String getDate() {
-        return String.valueOf(new Date(date));
+        DateFormat format = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
+        
+        return format.format(date);
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public Member getCreator() {
+        return creator.get();
+    }
+    
 }

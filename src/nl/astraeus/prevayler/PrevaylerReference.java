@@ -48,10 +48,13 @@ public class PrevaylerReference<M extends PrevaylerModel> implements Serializabl
     }
 
     public void set(M model) {
+        if (model != null) {
         this.cls = model.getClass();
         this.id = model.getId();
-
-        //PrevaylerStore.get().assertIsStored(model);
+        } else {
+            this.cls = null;
+            this.id = -1;
+        }
     }
 
     public boolean isNull() {

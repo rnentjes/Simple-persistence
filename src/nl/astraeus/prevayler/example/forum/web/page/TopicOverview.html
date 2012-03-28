@@ -1,0 +1,21 @@
+<h3>$topic.shortTitle$</h3>
+
+<div class="container-fluid">
+    $topic.comments:{comment|
+    <div class="row-fluid">
+        <div class="span2">
+            $if(comment.creator)$
+              $comment.creator.escapedNickName$
+            $else$
+              anonymous
+            $endif$
+            <!--Sidebar content-->
+        </div>
+        <div class="span10">
+            $comment.description$
+        </div>
+    </div>
+    }$
+</div>
+
+<a class="btn btn-primary" onclick="submit('comment')">Comment</a>
