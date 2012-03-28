@@ -206,7 +206,7 @@ public class PrevaylerStore {
     }
 
     /**
-     * Functions below are called from within Transaction objects
+     * Store functions
      *
      * @param model
      * @param <M>

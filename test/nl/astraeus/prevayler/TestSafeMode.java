@@ -17,13 +17,28 @@ public class TestSafeMode {
     private CompanyDao companyDao = new CompanyDao();
 
     public TestSafeMode() {
-        PrevaylerStore.setSafemode(false);
+        PrevaylerStore.setSafemode(true);
 
         System.out.println(companyDao.size()+" companies.");
 
         for (Company company : companyDao.find(0,5)) {
+            System.out.println(company);
             company.setName("CHANGED");
         }
+
+        System.out.println("-------------------------");
+
+        new Transaction() {
+            @Override
+            public void execute() {
+                for (Company company : companyDao.find(3,4)) {
+                    company.setName("CHANGED");
+                    companyDao.store(company);
+                }
+            }
+        };
+
+        System.out.println("-------------------------");
 
         for (Company company : companyDao.find(0,5)) {
             System.out.println(company);
