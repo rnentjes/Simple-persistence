@@ -21,6 +21,10 @@ public class Company extends PrevaylerModel {
         createRandomData();
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     private void createRandomData() {
         randomData = new long[100];
 
