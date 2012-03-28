@@ -11,7 +11,7 @@ import java.io.Serializable;
  * Date: 7/16/11
  * Time: 1:56 PM
  */
-public abstract class PrevaylerModel implements Serializable, Cloneable {
+public abstract class PrevaylerModel implements Serializable, Cloneable, Comparable {
     public final static long serialVersionUID = 1L;
 
     private static volatile long nextId;
@@ -76,6 +76,17 @@ public abstract class PrevaylerModel implements Serializable, Cloneable {
             result = false;
         } else if (!((PrevaylerModel)obj).getId().equals(this.getId())) {
             result = false;
+        }
+
+        return result;
+    }
+
+    public int compareTo(Object o) {
+        int result = -1;
+        PrevaylerModel other = (PrevaylerModel)o;
+
+        if (other != null) {
+            result = (getId() - other.getId()) > 0 ? 1 : -1;
         }
 
         return result;

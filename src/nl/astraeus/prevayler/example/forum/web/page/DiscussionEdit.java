@@ -29,16 +29,14 @@ public class DiscussionEdit extends Page {
 
         if ("save".equals(request.getParameter("action"))) {
             discussion.setTitle(request.getParameter("title"));
+            discussion.setDescription(request.getParameter("description"));
 
-            new Transaction() {
-                @Override
-                public void execute() {
-                    DiscussionDao dao = new DiscussionDao();
+            DiscussionDao dao = new DiscussionDao();
 
-                    dao.store(discussion);
-                }
-            };
+            dao.store(discussion);
 
+            result = previous;
+        } else if ("cancel".equals(request.getParameter("action"))) {
             result = previous;
         }
 

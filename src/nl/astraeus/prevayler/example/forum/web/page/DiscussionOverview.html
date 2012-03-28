@@ -1,11 +1,39 @@
-<h1>Discussions</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>
+            Discussions
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    $discussions:{discussion|
+    <tr>
+        <td>
+            $discussion.date$
+        </td>
+        <td>
+            <a href="#" onclick="submit('edit', '$discussion.id$')">$discussion.shortTitle$</a>
+        </td>
+        <td>
+            $discussion.shortDescription$</a>
+        </td>
+        <td>
+            <a href="#" onclick="submit('edit', '$discussion.id$')">edit</a></a>
+        </td>
+        <td>
+            <a href="#" onclick="submit('remove', '$discussion.id$')">remove</a></a>
+        </td>
+    </tr>
+    }$
+    </tbody>
+</table>
+<hr/>
 
-$discussions:{discussion|
-<div>
-    <h2>$discussion.title$</h2>
-    <button type="submit" name="selectDiscussion" value="$discussion.id$" >Edit '$discussion.title$'</button>
-</div>
-}$
-
-        <hr/>
-<button type="submit" name="action" value="new" >New</button>
+<a href="#" class="btn" onclick="submit('new')">New Discussion</a>

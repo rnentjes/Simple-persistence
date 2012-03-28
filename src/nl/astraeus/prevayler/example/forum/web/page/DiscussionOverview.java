@@ -22,10 +22,14 @@ public class DiscussionOverview extends Page {
 
         if ("new".equals(request.getParameter("action"))) {
             result = new DiscussionEdit(this, new Discussion());
-        } else if (request.getParameter("selectDiscussion") != null) {
-            long id = Long.parseLong(request.getParameter("selectDiscussion"));
+        } else if ("edit".equals(request.getParameter("action"))) {
+            long id = Long.parseLong(request.getParameter("actionValue"));
 
             result = new DiscussionEdit(this, dao.find(id));
+        } else if ("remove".equals(request.getParameter("action"))) {
+            long id = Long.parseLong(request.getParameter("actionValue"));
+
+            dao.remove(id);
         }
 
         return result;
@@ -34,7 +38,6 @@ public class DiscussionOverview extends Page {
     @Override
     public Map<String, Object> defineModel() {
         Map<String, Object> result = new HashMap<String, Object>();
-        DiscussionDao dao = new DiscussionDao();
 
         result.put("discussions", dao.findAll());
         

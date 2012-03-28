@@ -117,7 +117,7 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
 
     /** returnes a cloned set of all values */
     private Collection<? extends M> getValues() {
-        Collection<M> result = new LinkedList<M>();
+        Collection<M> result = new TreeSet<M>();
         Class<M> cls = getModelClass();
         
         try {
