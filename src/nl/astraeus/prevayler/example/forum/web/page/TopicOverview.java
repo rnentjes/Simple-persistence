@@ -1,5 +1,6 @@
 package nl.astraeus.prevayler.example.forum.web.page;
 
+import nl.astraeus.prevayler.example.forum.model.Comment;
 import nl.astraeus.prevayler.example.forum.model.Topic;
 import nl.astraeus.prevayler.example.forum.model.TopicDao;
 
@@ -16,6 +17,9 @@ public class TopicOverview extends Page {
 
     private Page previous;
     private Topic topic;
+    private Boolean editing = null;
+    private String description = null;
+    private boolean first = true;
 
     private TopicDao dao = new TopicDao();
 
@@ -32,8 +36,17 @@ public class TopicOverview extends Page {
             result = new TopicEdit(this, new Topic());
         } else if ("comment".equals(request.getParameter("action"))) {
             long id = Long.parseLong(request.getParameter("actionValue"));
+            
+            editing = true;
+            description = "";
+        } else if ("save".equals(request.getParameter("action"))) {
+            editing = null;
+            
+            topic.addComment(request.getParameter("description"));
 
-//            result = new TopicComment(this, dao.find(id));
+            dao.store(topic);
+        } else if ("cancel".equals(request.getParameter("action"))) {
+            editing = null;
         } else if ("edit".equals(request.getParameter("action"))) {
             long id = Long.parseLong(request.getParameter("actionValue"));
 
@@ -42,7 +55,11 @@ public class TopicOverview extends Page {
             long id = Long.parseLong(request.getParameter("actionValue"));
 
             dao.remove(id);
+        } else if ("back".equals(request.getParameter("action"))) {
+            result = previous;
         }
+        
+        first = true;
 
         return result;
     }
@@ -52,9 +69,23 @@ public class TopicOverview extends Page {
         Map<String, Object> result = new HashMap<String, Object>();
 
         result.put("topic", topic);
+        result.put("editing", editing);
+        result.put("description", description);
+        result.put("controller", this);
         
         return result;
     }
+    
+    public String getBackground() {
+        String result = "#edfffc";
 
+        if (!first) {
+            result = "#e9fdf7";
+        }
+        
+        first = !first;
+
+        return result;
+    }
 
 }

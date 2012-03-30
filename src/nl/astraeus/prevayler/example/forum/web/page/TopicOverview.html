@@ -3,19 +3,47 @@
 <div class="container-fluid">
     $topic.comments:{comment|
     <div class="row-fluid">
-        <div class="span2">
+        <div class="span2 alert alert-info">
             $if(comment.creator)$
-              $comment.creator.escapedNickName$
+              <h4>$comment.creator.escapedNickName$</h4>
             $else$
               anonymous
             $endif$
             <!--Sidebar content-->
         </div>
-        <div class="span10">
-            $comment.description$
+        <div class="span8 offset2 alert alert-success" style="background-color: #fff;" >
+            $comment.descriptionHtml$
         </div>
     </div>
+    <br/>
     }$
 </div>
+        
+<br/>
 
-<a class="btn btn-primary" onclick="submit('comment')">Comment</a>
+$if(editing)$
+<div class="container-fluid">
+  <div class="row-fluid">
+    <label class="control-label span2" for="input02">Message</label>
+
+    <div class="controls span8 offset2">
+        <textarea id="input02" name="description" style="width: 90%; height: 200px;">$description$</textarea>
+        <!-- <p class="help-block">Supporting help text</p> -->
+    </div>
+  </div>
+</div>
+    <br/>
+<div class="span2">
+  <a class="btn btn-primary" onclick="submit('save')">Save</a>
+  <a class="btn" onclick="submit('cancel')">Cancel</a>
+</div>
+$else$
+<div class="span2">
+  <a class="btn " onclick="submit('back')">Back</a>
+  <a class="btn btn-primary" onclick="submit('comment', '$topic.id$')">Comment</a>
+</div>
+$endif$
+
+<br/>
+<br/>
+

@@ -30,6 +30,10 @@ public class Comment extends PrevaylerModel {
         return StringEscapeUtils.escapeHtml(description);
     }
 
+    public String getDescriptionHtml() {
+        return StringEscapeUtils.escapeHtml(description).replaceAll("(\r\n|\n)", "<br/>");
+    }
+
     public String getShortDescription() {
         String description = this.description;
 

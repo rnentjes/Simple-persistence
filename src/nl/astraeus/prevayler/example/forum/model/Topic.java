@@ -63,7 +63,7 @@ public class Topic extends PrevaylerModel {
         comment.setDescription(description);
         dao.store(comment);
 
-        comments.add(comment);
+        getComments().add(comment);
     }
 
     public Member getCreator() {
@@ -71,6 +71,10 @@ public class Topic extends PrevaylerModel {
     }
 
     public PrevaylerList<Comment> getComments() {
+        if (comments == null) {
+            comments = new PrevaylerList<Comment>(Comment.class);
+        }
+
         return comments;
     }
 }
