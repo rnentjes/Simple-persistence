@@ -50,6 +50,7 @@ public class Registration extends Page {
                 member.setPassword(request.getParameter("password"));
                 
                 dao.store(member);
+                request.getSession().setAttribute("user", member);
 
                 result = donePage;
             } else {

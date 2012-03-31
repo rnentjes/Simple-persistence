@@ -1,0 +1,24 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>Nickname</th>
+        <th>Email</th>
+        <th>Topics</th>
+        <th>Comments</th>
+        <th>Last post</th>
+        <th>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    $members:{member|
+    <tr>
+        <td>$member.escapedNickName$</td>
+        <td>$member.escapedEmail$</td>
+        <td>$member.numberOfTopics$</td>
+        <td>$member.numberOfComments$</td>
+        <td>$member.lastPost$</td>
+    </tr>
+    }$
+    </tbody>
+</table>

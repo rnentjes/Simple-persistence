@@ -1,11 +1,11 @@
 package nl.astraeus.prevayler.example.forum.web;
 
+import nl.astraeus.prevayler.Filter;
 import nl.astraeus.prevayler.PrevaylerStore;
 import nl.astraeus.prevayler.Transaction;
-import nl.astraeus.prevayler.example.forum.web.page.ForumOverview;
-import nl.astraeus.prevayler.example.forum.web.page.Login;
-import nl.astraeus.prevayler.example.forum.web.page.Menu;
-import nl.astraeus.prevayler.example.forum.web.page.Page;
+import nl.astraeus.prevayler.example.forum.model.Member;
+import nl.astraeus.prevayler.example.forum.model.MemberDao;
+import nl.astraeus.prevayler.example.forum.web.page.*;
 import org.apache.commons.io.IOUtils;
 
 import javax.servlet.ServletException;
@@ -29,6 +29,39 @@ public class ForumServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
+
+        new Transaction() {
+            @Override
+            public void execute() {
+                MemberDao dao = new MemberDao();
+
+                Member rien = dao.findByNickName("rien");
+
+                if (rien == null) {
+                    rien = new Member("rien", "rien", "rien@nentjes.com");
+                }
+
+                rien.setSuperuser(true);
+                dao.store(rien);
+
+                Member jeroen = dao.findByNickName("jeroen");
+
+                if (jeroen == null) {
+                    jeroen = new Member("jeroen", "jeroen", "jeroen@rakhorst.nl");
+                }
+
+                jeroen.setSuperuser(true);
+                dao.store(jeroen);
+
+                Member jan = dao.findByNickName("jan");
+
+                if (jeroen == null) {
+                    jan = new Member("jan", "jan", "jan@jan.nl");
+                }
+
+                dao.store(jan);
+            }
+        };
 
         try {
             head = IOUtils.toString(getClass().getResourceAsStream("head.html"));
@@ -93,6 +126,10 @@ public class ForumServlet extends HttpServlet {
             page = new ForumOverview();
         } else if ("menulogin".equals(req.getParameter("action"))) {
             page = new Login(page);
+        } else if ("menulogout".equals(req.getParameter("action"))) {
+            session.setAttribute("user", null);
+        } else if ("showmembers".equals(req.getParameter("action"))) {
+            page = new MemberOverview();
         } else {
             final Page myPage = page;
 

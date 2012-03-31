@@ -1,7 +1,6 @@
 package nl.astraeus.prevayler.example.forum.web.page;
 
-import nl.astraeus.prevayler.example.forum.model.Topic;
-import nl.astraeus.prevayler.example.forum.model.TopicDao;
+import nl.astraeus.prevayler.example.forum.model.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -34,7 +33,23 @@ public class TopicEdit extends Page {
             // todo validation
             TopicDao dao = new TopicDao();
 
-            topic.addComment(description);
+            Member member = (Member)request.getSession().getAttribute("user");
+            Comment comment = new Comment(member, description);
+            
+            topic.addComment(comment);
+            
+            CommentDao commentDao = new CommentDao();
+            
+            commentDao.store(comment);
+
+            if (member != null) {
+                MemberDao memberDao = new MemberDao();
+
+                member.addTopic(topic);
+
+                memberDao.store(member);
+            }
+            
             dao.store(topic);
 
             result = previous;

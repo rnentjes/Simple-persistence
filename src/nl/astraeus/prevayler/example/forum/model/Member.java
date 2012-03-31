@@ -1,7 +1,12 @@
 package nl.astraeus.prevayler.example.forum.model;
 
+import nl.astraeus.prevayler.PrevaylerList;
 import nl.astraeus.prevayler.PrevaylerModel;
 import org.apache.commons.lang.StringEscapeUtils;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * User: rnentjes
@@ -11,9 +16,23 @@ import org.apache.commons.lang.StringEscapeUtils;
 public class Member extends PrevaylerModel {
     public final static long serialVersionUID = 1L;
 
-    private String nickName = "";
-    private String email = "";
-    private String password = "";
+    private String nickName;
+    private String email;
+    private String password;
+    private boolean superuser;
+    private Date lastPost;
+    private PrevaylerList<Comment> comments;
+    private PrevaylerList<Topic> topics;
+
+    public Member() {
+        this("","","");
+    }
+
+    public Member(String nickName, String password, String email) {
+        this.nickName = nickName;
+        this.password = password;
+        this.email = email;
+    }
 
     public String getNickName() {
         return nickName;
@@ -41,5 +60,63 @@ public class Member extends PrevaylerModel {
 
     public boolean checkPassword(String password) {
         return password.equals(this.password);
+    }
+
+    public boolean isSuperuser() {
+        return superuser;
+    }
+
+    public void setSuperuser(boolean superuser) {
+        this.superuser = superuser;
+    }
+
+    public String toString() {
+        return getEscapedNickName();
+    }
+
+    public PrevaylerList<Comment> getComments() {
+        if (comments == null) {
+            comments = new PrevaylerList<Comment>(Comment.class);
+        }
+        
+        return comments;
+    }
+
+    public PrevaylerList<Topic> getTopics() {
+        if (topics == null) {
+            topics = new PrevaylerList<Topic>(Topic.class);
+        }
+
+        return topics;
+    }
+
+    public void addTopic(Topic topic) {
+        getTopics().add(topic);
+        
+        lastPost = new Date();
+    }
+
+    public void addComment(Comment comment) {
+        getComments().add(comment);
+        
+        lastPost = new Date();
+    }
+
+    public String getLastPost() {
+        if (lastPost == null) {
+            lastPost = new Date();
+        }
+
+        DateFormat format = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
+
+        return format.format(lastPost);
+    }
+    
+    public int getNumberOfTopics() {
+        return getTopics().size();
+    }
+    
+    public int getNumberOfComments() {
+        return getComments().size();
     }
 }

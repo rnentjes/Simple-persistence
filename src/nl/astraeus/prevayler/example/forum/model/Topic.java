@@ -4,11 +4,13 @@ import nl.astraeus.prevayler.PrevaylerList;
 import nl.astraeus.prevayler.PrevaylerModel;
 import nl.astraeus.prevayler.PrevaylerReference;
 import org.apache.commons.lang.StringEscapeUtils;
+import org.omg.CORBA.PUBLIC_MEMBER;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 
 /**
  * User: rnentjes
@@ -22,6 +24,8 @@ public class Topic extends PrevaylerModel {
     private String title = "";
     private PrevaylerReference<Member> creator = new PrevaylerReference<Member>(Member.class);
     private PrevaylerList<Comment> comments = new PrevaylerList<Comment>(Comment.class);
+    private int views;
+    private Date lastPost;
 
     public Topic() {}
     
@@ -54,14 +58,10 @@ public class Topic extends PrevaylerModel {
         return format.format(date);
     }
     
-    public void addComment(String description) {
-        CommentDao dao = new CommentDao();
-        Comment comment = new Comment(null);
-        
-        comment.setDescription(description);
-        dao.store(comment);
-
+    public void addComment(Comment comment) {
         getComments().add(comment);
+
+        lastPost = new Date();
     }
 
     public Member getCreator() {
@@ -74,5 +74,27 @@ public class Topic extends PrevaylerModel {
         }
 
         return comments;
+    }
+
+    public void addView() {
+        views++;
+    }
+    
+    public int getNumberOfReplies() {
+        return (getComments().size()-1);
+    }
+    
+    public int getNumberOfViews() {
+        return views;
+    }
+    
+    public String getLastPost() {
+        if (lastPost == null) {
+            lastPost = new Date();
+        }
+
+        DateFormat format = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
+
+        return format.format(lastPost);
     }
 }

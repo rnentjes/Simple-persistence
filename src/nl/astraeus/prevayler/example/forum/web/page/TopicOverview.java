@@ -1,7 +1,6 @@
 package nl.astraeus.prevayler.example.forum.web.page;
 
-import nl.astraeus.prevayler.example.forum.model.Topic;
-import nl.astraeus.prevayler.example.forum.model.TopicDao;
+import nl.astraeus.prevayler.example.forum.model.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -45,7 +44,22 @@ public class TopicOverview extends Page {
             if (description != null && description.length() != 0) {
                 Topic topic = dao.find(topicId);
 
-                topic.addComment(request.getParameter("description"));
+                Member member = (Member)request.getSession().getAttribute("user");
+                Comment comment = new Comment(member, request.getParameter("description"));
+
+                CommentDao dao = new CommentDao();
+
+                dao.store(comment);
+
+                topic.addComment(comment);
+
+                if (member != null) {
+                    MemberDao memberDao = new MemberDao();
+
+                    member.addComment(comment);
+
+                    memberDao.store(member);
+                }
 
                 dao.store(topic);
             }

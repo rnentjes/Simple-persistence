@@ -1,5 +1,6 @@
 package nl.astraeus.prevayler.example.forum.web.page;
 
+import nl.astraeus.prevayler.example.forum.model.Member;
 import nl.astraeus.prevayler.example.forum.model.Topic;
 import nl.astraeus.prevayler.example.forum.model.TopicDao;
 
@@ -22,11 +23,19 @@ public class ForumOverview extends Page {
         Page result = this;
 
         if ("new".equals(request.getParameter("action"))) {
-            result = new TopicEdit(this, new Topic());
+            Member member = (Member)request.getSession().getAttribute("user");
+
+            result = new TopicEdit(this, new Topic(member));
         } else if ("comment".equals(request.getParameter("action"))) {
             long id = Long.parseLong(request.getParameter("actionValue"));
 
-            result = new TopicOverview(this, dao.find(id));
+            Topic topic = dao.find(id);
+            
+            topic.addView();
+            
+            dao.store(topic);
+
+            result = new TopicOverview(this, topic);
         } else if ("edit".equals(request.getParameter("action"))) {
             long id = Long.parseLong(request.getParameter("actionValue"));
 

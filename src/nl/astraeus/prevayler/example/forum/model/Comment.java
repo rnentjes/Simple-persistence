@@ -22,9 +22,14 @@ public class Comment extends PrevaylerModel {
     public Comment() {}
 
     public Comment(Member creator) {
-        this.creator.set(creator);
+        this(creator, "");
     }
-    
+
+    public Comment(Member creator, String description) {
+        this.creator.set(creator);
+        this.description = description;
+    }
+
     public String getDescription() {
         return StringEscapeUtils.escapeHtml(description);
     }

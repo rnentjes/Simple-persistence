@@ -1,5 +1,7 @@
 package nl.astraeus.prevayler.example.forum.web.page;
 
+import nl.astraeus.prevayler.example.forum.model.Member;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,8 +24,11 @@ public class Menu extends Page {
     @Override
     public Map<String, Object> defineModel() {
         Map<String, Object> result = new HashMap<String, Object>();
+        
+        Member member = (Member)request.getSession().getAttribute("user");
 
-        result.put("user", request.getSession().getAttribute("user"));
+        System.out.println("Member: "+member);
+        result.put("user", member);
         
         return result;
     }
