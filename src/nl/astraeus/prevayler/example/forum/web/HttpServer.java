@@ -14,7 +14,7 @@ public class HttpServer {
     public static void main(String [] args) throws Exception {
         HttpServer server = new HttpServer();
 
-        server.startServer(8081);
+        server.startServer(8080);
     }
 
     public void startServer(int port) throws Exception {
