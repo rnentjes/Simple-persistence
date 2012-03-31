@@ -116,7 +116,7 @@ public class ForumServlet extends HttpServlet {
         Page page = (Page)session.getAttribute("page");
         Page menu = (Page)session.getAttribute("menu");
 
-        session.setMaxInactiveInterval(30);
+        session.setMaxInactiveInterval(1800);
 
         if (menu == null) {
             menu = new Menu();

@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="672fb554-ea6e-4c7c-a7b9-f2a1844f5605" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Diagnostics.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Diagnostics.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Menu.html" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Menu.html" />
     </list>
     <ignored path="Prevayler-Reference.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,10 +70,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ForumServlet.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ForumServlet.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="130" column="68" selection-start="4324" selection-end="4324" vertical-scroll-proportion="0.0">
+            <state line="118" column="43" selection-start="3905" selection-end="3909" vertical-scroll-proportion="0.4178082">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HttpServer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/HttpServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="13" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -100,15 +106,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Page.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Page.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="5" selection-start="1869" selection-end="1869" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Menu.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Menu.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -127,10 +124,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Diagnostics.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Diagnostics.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Diagnostics.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="27" selection-start="369" selection-end="369" vertical-scroll-proportion="0.5089286">
+            <state line="19" column="27" selection-start="369" selection-end="369" vertical-scroll-proportion="-11.875">
               <folding />
             </state>
           </provider>
@@ -182,9 +179,9 @@
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Registration.html" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Registration.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Menu.html" />
-        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Diagnostics.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Diagnostics.html" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java" />
       </list>
     </option>
   </component>
@@ -310,40 +307,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="astraeus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="prevayler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forum" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -760,7 +723,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added icons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Diagnostics" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -793,6 +756,7 @@
     <MESSAGE value="Lastpost display" />
     <MESSAGE value="Bugfixes" />
     <MESSAGE value="Added icons" />
+    <MESSAGE value="Diagnostics" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -811,11 +775,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/TopicOverview.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="69" selection-start="2674" selection-end="2674" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/head.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="54" column="27" selection-start="1581" selection-end="1581" vertical-scroll-proportion="-6.2083335">
@@ -891,13 +850,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="68" selection-start="4324" selection-end="4324" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Registration.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="46" column="0" selection-start="1515" selection-end="1585" vertical-scroll-proportion="-18.958334">
@@ -914,7 +866,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Diagnostics.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="27" selection-start="369" selection-end="369" vertical-scroll-proportion="0.5089286">
+        <state line="19" column="27" selection-start="369" selection-end="369" vertical-scroll-proportion="-11.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/HttpServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="118" column="43" selection-start="3905" selection-end="3909" vertical-scroll-proportion="0.4178082">
           <folding />
         </state>
       </provider>
