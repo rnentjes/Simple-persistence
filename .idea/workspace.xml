@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="672fb554-ea6e-4c7c-a7b9-f2a1844f5605" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Member.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Member.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Topic.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Topic.java" />
     </list>
     <ignored path="Prevayler-Reference.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,15 +89,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TopicOverview.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/TopicOverview.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="12" selection-start="1261" selection-end="1261" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MemberOverview.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/MemberOverview.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -109,16 +101,37 @@
       <file leaf-file-name="Member.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Member.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0">
+            <state line="106" column="33" selection-start="2478" selection-end="2478" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrevaylerStore.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Topic.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Topic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="92" column="35" selection-start="2313" selection-end="2313" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#841#850#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Comment.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Comment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="0" selection-start="714" selection-end="714" vertical-scroll-proportion="0.7092199">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrevaylerStore.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="17" selection-start="830" selection-end="830" vertical-scroll-proportion="0.63829786">
+            <state line="23" column="67" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -137,15 +150,6 @@
         <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerTransaction.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="53" column="0" selection-start="1280" selection-end="1280" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TopicEdit.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/TopicEdit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="0" selection-start="1189" selection-end="1189" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -173,15 +177,15 @@
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/UserOverview.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/MemberOverview.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/ForumOverview.java" />
-        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Topic.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Comment.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/TopicEdit.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/TopicOverview.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Menu.html" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/MemberOverview.html" />
-        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Member.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Member.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Topic.java" />
       </list>
     </option>
   </component>
@@ -613,7 +617,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="User and counts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugfix" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -642,6 +646,7 @@
     <MESSAGE value="Findbugs warnings" />
     <MESSAGE value="We need bigger posts!" />
     <MESSAGE value="User and counts" />
+    <MESSAGE value="Bugfix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -688,23 +693,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="714" selection-end="714" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Topic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="5" selection-start="2206" selection-end="2441" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#841#850#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/TopicEdit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="43" column="0" selection-start="1189" selection-end="1189" vertical-scroll-proportion="0.0">
@@ -740,13 +728,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Member.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevalentSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="51" column="11" selection-start="1583" selection-end="1583" vertical-scroll-proportion="0.0">
@@ -770,7 +751,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="17" selection-start="830" selection-end="830" vertical-scroll-proportion="0.63829786">
+        <state line="23" column="67" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Member.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="106" column="33" selection-start="2478" selection-end="2478" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Topic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="35" selection-start="2313" selection-end="2313" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#841#850#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="0" selection-start="714" selection-end="714" vertical-scroll-proportion="0.7092199">
           <folding />
         </state>
       </provider>

@@ -90,7 +90,7 @@ public class Topic extends PrevaylerModel {
     
     public String getLastPost() {
         if (lastPost == null) {
-            lastPost = new Date();
+            lastPost = new Date(0);
         }
 
         DateFormat format = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
