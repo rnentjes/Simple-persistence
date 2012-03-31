@@ -19,7 +19,7 @@ public class CreateCompaniesAndEmployees {
     private CompanyDao companyDao = new CompanyDao();
 
     public CreateCompaniesAndEmployees() {
-        PrevaylerStore.setSafemode(true);
+        System.setProperty(PrevaylerStore.SAFEMODE, String.valueOf(true));
 
         long nano = System.nanoTime();
         new Transaction() {

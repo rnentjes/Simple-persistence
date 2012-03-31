@@ -19,7 +19,7 @@ public class TestSafeMode {
     private CompanyDao companyDao = new CompanyDao();
 
     public TestSafeMode() {
-        PrevaylerStore.setSafemode(true);
+        System.setProperty(PrevaylerStore.SAFEMODE, String.valueOf(true));
 
         System.out.println(companyDao.size()+" companies.");
 

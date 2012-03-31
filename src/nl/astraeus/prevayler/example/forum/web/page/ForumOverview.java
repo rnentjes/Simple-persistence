@@ -4,6 +4,7 @@ import nl.astraeus.prevayler.example.forum.model.Topic;
 import nl.astraeus.prevayler.example.forum.model.TopicDao;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,7 +44,15 @@ public class ForumOverview extends Page {
     public Map<String, Object> defineModel() {
         Map<String, Object> result = new HashMap<String, Object>();
 
-        result.put("topics", dao.findAll());
+        result.put("topics", dao.findAll(new Comparator<Topic>() {
+            public int compare(Topic o1, Topic o2) {
+                if (o2.getId() > o1.getId()) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            }
+        }));
         
         return result;
     }

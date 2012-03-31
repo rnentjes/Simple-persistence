@@ -51,7 +51,19 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
     public Collection<M> findAll() {
         List<M> result = new LinkedList<M>();
 
-        if (PrevaylerStore.isSafemode()) {
+        if (PrevaylerStore.get().isSafemode()) {
+            result.addAll(getValues());
+        } else {
+            result.addAll(getModelValues());
+        }
+
+        return result;
+    }
+
+    public Collection<M> findAll(Comparator<M> comp) {
+        Collection<M> result = new TreeSet<M>(comp);
+
+        if (PrevaylerStore.get().isSafemode()) {
             result.addAll(getValues());
         } else {
             result.addAll(getModelValues());
@@ -80,7 +92,7 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
         try {
             for (int i = from; i < to; i++) {
                 if (values.size() > i) {
-                    if (PrevaylerStore.isSafemode()) {
+                    if (PrevaylerStore.get().isSafemode()) {
                         result.add(cls.cast(values.get(i).clone()));
                     } else {
                         result.add(values.get(i));
@@ -101,7 +113,7 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
         try {
             for (M m : getModelValues()) {
                 if (filter.include(m)) {
-                    if (PrevaylerStore.isSafemode()) {
+                    if (PrevaylerStore.get().isSafemode()) {
                         result.add(cls.cast(m.clone()));
                     } else {
                         result.add(m);

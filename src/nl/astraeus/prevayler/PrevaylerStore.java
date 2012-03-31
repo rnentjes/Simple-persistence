@@ -15,6 +15,10 @@ import java.util.concurrent.TimeUnit;
  * Time: 7:24 PM
  */
 public class PrevaylerStore {
+    public final static String SAFEMODE       = "safemode";
+    public final static String AUTOCOMMIT     = "autocommit";
+    public final static String DATA_DIRECTORY = "dataDirectory";
+
     private final static PrevaylerStore instance = new PrevaylerStore();
     
     private ThreadLocal<PrevaylerTransaction> transactions = new ThreadLocal<PrevaylerTransaction>();
@@ -26,22 +30,12 @@ public class PrevaylerStore {
     private Prevayler prevayler;
 
     // properties
-    private static boolean autocommit;
-    private static boolean safemode;
-    private static String dataDirectory;
-    private static long fileAgeThreshold;
-    private static long fileSizeThreshold;
+    private boolean autocommit     = false;
+    private boolean safemode       = true;
+    private String dataDirectory   = "prevayler";
+    private long fileAgeThreshold  = TimeUnit.MINUTES.toMillis(1);
+    private long fileSizeThreshold = 10*1024L*1024L;
 
-    // defaults
-    static {
-        autocommit = false;
-        safemode = false;
-        dataDirectory = "prevayler";
-        fileAgeThreshold = TimeUnit.MINUTES.toMillis(1);
-        fileSizeThreshold = 1024L*1024L;
-    }
-
-    
     private boolean started = false;
 
     // PrevaylerModel private field cache
@@ -55,6 +49,14 @@ public class PrevaylerStore {
         long nano = System.nanoTime();
         
         try {
+            if ("true".equals(System.getProperty(SAFEMODE))) {
+                safemode = true;
+            }
+
+            if ("false".equals(System.getProperty(AUTOCOMMIT))) {
+                autocommit = false;
+            }
+
             PrevaylerFactory factory = new PrevaylerFactory();
 
             factory.configureJournalFileAgeThreshold(fileAgeThreshold);
@@ -70,20 +72,12 @@ public class PrevaylerStore {
         }
     }
 
-    public static boolean isSafemode() {
+    public boolean isSafemode() {
         return safemode;
     }
 
-    public static void setSafemode(boolean safemode) {
-        PrevaylerStore.safemode = safemode;
-    }
-
-    public static boolean isAutocommit() {
+    public boolean isAutocommit() {
         return autocommit;
-    }
-
-    public static void setAutocommit(boolean autocommit) {
-        PrevaylerStore.autocommit = autocommit;
     }
 
     // transactions

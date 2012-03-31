@@ -1,14 +1,17 @@
-<div class="span2">
-    <a class="btn " onclick="submit('back')">Back</a>
-</div>
-
-<div class="span8 offset2"></div>
-
-<br/>
-
-<h3>$topic.shortTitle$</h3>
 
 <div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span2">
+            <a class="btn btn-mini" onclick="submit('back')">Back</a>
+        </div>
+
+        <div class="span8 offset2"><h3>$topic.shortTitle$</h3></div>
+    </div>
+
+    <div class="row-fluid">
+        &nbsp;
+    </div>
+
     $topic.comments:{comment|
     <div class="row-fluid">
         <div class="span2 alert alert-info">

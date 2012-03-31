@@ -19,7 +19,7 @@ public class ShowCompaniesAndEmployeesUnsafe {
     private CompanyDao companyDao = new CompanyDao();
 
     public ShowCompaniesAndEmployeesUnsafe() {
-        PrevaylerStore.setSafemode(false);
+        System.setProperty(PrevaylerStore.SAFEMODE, String.valueOf(false));
 
         long nano = System.nanoTime();
         System.out.println(companyDao.size()+" Companies and "+ employeeDao.size()+" employees.");

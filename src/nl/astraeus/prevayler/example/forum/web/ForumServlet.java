@@ -37,8 +37,8 @@ public class ForumServlet extends HttpServlet {
             throw new ServletException(e);
         }
 
-        PrevaylerStore.setAutocommit(false);
-        PrevaylerStore.setSafemode(true);
+        System.setProperty(PrevaylerStore.AUTOCOMMIT, String.valueOf(false));
+        System.setProperty(PrevaylerStore.SAFEMODE, String.valueOf(true));
     }
 
     @Override
