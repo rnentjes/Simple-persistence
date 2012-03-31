@@ -55,7 +55,7 @@ public class ForumServlet extends HttpServlet {
 
                 Member jan = dao.findByNickName("jan");
 
-                if (jeroen == null) {
+                if (jan == null) {
                     jan = new Member("jan", "jan", "jan@jan.nl");
                 }
 
