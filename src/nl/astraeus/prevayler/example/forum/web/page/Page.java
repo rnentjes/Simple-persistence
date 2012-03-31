@@ -55,11 +55,13 @@ public abstract class Page {
     }
 
     protected void setAttributesOnTemplate(ST template, Map<String, Object> model) {
-        for (Map.Entry<String, Object> entry : model.entrySet()) {
-            if (template.getAttribute(entry.getKey()) != null) {
+        if (template != null && template.getAttributes() != null) {
+            for (Map.Entry<String, Object> entry : template.getAttributes().entrySet()) {
                 template.remove(entry.getKey());
             }
+        }
 
+        for (Map.Entry<String, Object> entry : model.entrySet()) {
             template.add(entry.getKey(), entry.getValue());
         }
     }

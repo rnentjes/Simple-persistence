@@ -130,6 +130,7 @@ public class ForumServlet extends HttpServlet {
             page = new Login(page);
         } else if ("menulogout".equals(req.getParameter("action"))) {
             session.setAttribute("user", null);
+            page = new ForumOverview();
         } else if ("showmembers".equals(req.getParameter("action"))) {
             page = new MemberOverview();
         } else {
