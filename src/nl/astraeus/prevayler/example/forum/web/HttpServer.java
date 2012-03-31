@@ -30,6 +30,7 @@ public class HttpServer {
 
         context.addServlet(sh, "/*");
 
+
         server.start();
         server.join();
     }

@@ -1,0 +1,23 @@
+# Ant build script properties file
+# root dir
+root.dir=${basedir}/..
+# project settings
+project.level=Eos
+project.dir=${root.dir}
+war.level=ROOT
+
+# security
+security.domain=
+
+# java package
+project.package=nl.astraeus
+project.package.dir=nl/astraeus
+
+# distribution package
+project.packaged=true
+
+# META-INF class paths for different deployments
+web.class.path=
+
+# Use ftp?
+#ftp=true

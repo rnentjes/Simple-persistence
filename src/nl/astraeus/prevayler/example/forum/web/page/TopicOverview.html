@@ -1,3 +1,11 @@
+<div class="span2">
+    <a class="btn " onclick="submit('back')">Back</a>
+</div>
+
+<div class="span8 offset2"></div>
+
+<br/>
+
 <h3>$topic.shortTitle$</h3>
 
 <div class="container-fluid">
@@ -5,42 +13,42 @@
     <div class="row-fluid">
         <div class="span2 alert alert-info">
             $if(comment.creator)$
-              <h4>$comment.creator.escapedNickName$</h4>
+            <h4>$comment.creator.escapedNickName$</h4>
             $else$
-              anonymous
+            anonymous
             $endif$
             <!--Sidebar content-->
         </div>
-        <div class="span8 offset2 alert alert-success" style="background-color: #fff;" >
+        <div class="span8 offset2 alert alert-success" style="background-color: #fff;">
             $comment.descriptionHtml$
         </div>
     </div>
     <br/>
     }$
 </div>
-        
+
 <br/>
 
 $if(editing)$
 <div class="container-fluid">
-  <div class="row-fluid">
-    <label class="control-label span2" for="input02">Message</label>
+    <div class="row-fluid">
+        <label class="control-label span2" for="input02">Message</label>
 
-    <div class="controls span8 offset2">
-        <textarea id="input02" name="description" style="width: 90%; height: 200px;">$description$</textarea>
-        <!-- <p class="help-block">Supporting help text</p> -->
+        <div class="controls span8 offset2">
+            <textarea id="input02" name="description" style="width: 90%; height: 200px;">$description$</textarea>
+            <!-- <p class="help-block">Supporting help text</p> -->
+        </div>
     </div>
-  </div>
 </div>
-    <br/>
+<br/>
 <div class="span2">
-  <a class="btn btn-primary" onclick="submit('save')">Save</a>
-  <a class="btn" onclick="submit('cancel')">Cancel</a>
+    <a class="btn btn-primary" onclick="submit('save')">Save</a>
+    <a class="btn" onclick="submit('cancel')">Cancel</a>
 </div>
 $else$
 <div class="span2">
-  <a class="btn " onclick="submit('back')">Back</a>
-  <a class="btn btn-primary" onclick="submit('comment', '$topic.id$')">Comment</a>
+    <a class="btn " onclick="submit('back')">Back</a>
+    <a class="btn btn-primary" onclick="submit('comment', '$topic.id$')">Comment</a>
 </div>
 $endif$
 

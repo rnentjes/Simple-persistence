@@ -1,6 +1,5 @@
 package nl.astraeus.prevayler.example.forum.web.page;
 
-import com.sun.deploy.net.HttpRequest;
 import org.apache.commons.io.IOUtils;
 import org.stringtemplate.v4.ST;
 

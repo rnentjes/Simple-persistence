@@ -16,7 +16,7 @@ import java.util.Map;
 public class TopicOverview extends Page {
 
     private Page previous;
-    private Topic topic;
+    private long topicId;
     private Boolean editing = null;
     private String description = null;
     private boolean first = true;
@@ -25,7 +25,7 @@ public class TopicOverview extends Page {
 
     public TopicOverview(Page previous, Topic topic) {
         this.previous = previous;
-        this.topic = topic;
+        this.topicId = topic.getId();
     }
 
     @Override
@@ -41,10 +41,15 @@ public class TopicOverview extends Page {
             description = "";
         } else if ("save".equals(request.getParameter("action"))) {
             editing = null;
+            String description = request.getParameter("description");
             
-            topic.addComment(request.getParameter("description"));
+            if (description != null && description.length() != 0) {
+                Topic topic = dao.find(topicId);
 
-            dao.store(topic);
+                topic.addComment(request.getParameter("description"));
+
+                dao.store(topic);
+            }
         } else if ("cancel".equals(request.getParameter("action"))) {
             editing = null;
         } else if ("edit".equals(request.getParameter("action"))) {
@@ -68,7 +73,7 @@ public class TopicOverview extends Page {
     public Map<String, Object> defineModel() {
         Map<String, Object> result = new HashMap<String, Object>();
 
-        result.put("topic", topic);
+        result.put("topic", dao.find(topicId));
         result.put("editing", editing);
         result.put("description", description);
         result.put("controller", this);

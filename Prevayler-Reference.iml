@@ -12,6 +12,15 @@
     <orderEntry type="library" name="jetty" level="project" />
     <orderEntry type="library" name="prevayler" level="project" />
     <orderEntry type="library" name="examples" level="project" />
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://$APPLICATION_HOME_DIR$/lib/junit-4.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
 

@@ -2,6 +2,7 @@ package nl.astraeus.prevayler.model;
 
 import nl.astraeus.prevayler.Filter;
 import nl.astraeus.prevayler.PrevaylerDao;
+import org.junit.Ignore;
 
 import java.util.Collection;
 
@@ -10,6 +11,7 @@ import java.util.Collection;
  * Date: 3/24/12
  * Time: 10:03 PM
  */
+@Ignore
 public class CompanyDao extends PrevaylerDao<Company> {
     
     public Collection<Company> findByEmpoyeeName(final String name) {

@@ -5,12 +5,14 @@ import nl.astraeus.prevayler.model.CompanyDao;
 import nl.astraeus.prevayler.model.Employee;
 import nl.astraeus.prevayler.model.EmployeeDao;
 import nl.astraeus.util.Util;
+import org.junit.Ignore;
 
 /**
  * User: rnentjes
  * Date: 3/24/12
  * Time: 9:58 PM
  */
+@Ignore
 public class CreateALotOfCompaniesAndEmployees {
 
     private EmployeeDao employeeDao = new EmployeeDao();

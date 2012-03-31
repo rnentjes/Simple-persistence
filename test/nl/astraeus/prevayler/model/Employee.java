@@ -2,12 +2,14 @@ package nl.astraeus.prevayler.model;
 
 import nl.astraeus.prevayler.PrevaylerModel;
 import nl.astraeus.prevayler.PrevaylerReference;
+import org.junit.Ignore;
 
 /**
  * Employee: rnentjes
  * Date: 3/24/12
  * Time: 9:59 PM
  */
+@Ignore
 public class Employee extends PrevaylerModel {
     public final static long serialVersionUID = 1L;
 
