@@ -221,7 +221,7 @@ public class PrevaylerStore {
             }
         }
 
-        if (safemode) {
+        if (safemode && result != null) {
             try {
                 result = cls.cast(result.clone());
             } catch (CloneNotSupportedException e) {
