@@ -1,0 +1,24 @@
+Used memory: $userMemory$<br/>
+Free memory: $freeMemory$<br/>
+Total memory: $totalMemory$<br/>
+Max memory: $maxMemory$<br/>
+
+
+<br/>
+<a class="btn  btn-primary" onclick="submit('gc')">System.gc();</a>
+<br/>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Classes</th>
+    </tr>
+    </thead>
+    <tbody>
+    $objectTypes:{cls|
+    <tr>
+        <td>$cls.name$</td>
+    </tr>
+    }$
+    </tbody>
+</table>
