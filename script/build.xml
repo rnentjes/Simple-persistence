@@ -203,6 +203,9 @@
             <fileset dir="${src.dir}">
                 <include name="**/*.java"/>
             </fileset>
+            <fileset dir="${example.dir}">
+                <include name="**/*.java"/>
+            </fileset>
         </pmd>
     </target>
 
@@ -213,6 +216,9 @@
         <cpd minimumTokenCount="100" format="xml" outputFile="${build.dir}/cpd.xml" ignoreidentifiers="true"
              ignoreliterals="true">
             <fileset dir="${src.dir}">
+                <include name="**/*.java"/>
+            </fileset>
+            <fileset dir="${example.dir}">
                 <include name="**/*.java"/>
             </fileset>
         </cpd>
@@ -430,7 +436,7 @@
 
     </target>
 
-    <target name="jar" depends="clean, compile-src, copynonjavafiles" description="Create jar distribution dir">
+    <target name="jar" depends="compile-src, copynonjavafiles" description="Create jar distribution dir">
 
         <copy todir="${jar.dir}/lib">
             <fileset dir="${lib.dir}" includes="*.jar"/>
