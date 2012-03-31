@@ -2,7 +2,7 @@ Prevayler is a way to persist your object model without the need for a database.
 
 This project is a little addition on prevayler to simplify working with it. When using prevayler you have to model every change on your model into a "command" object which will be persisted to disk. With Prevayler-Reference you can use a Dao model and stop worrying about command objects.
 
-To get started: 
+To get started:
 
 https://github.com/rnentjes/Prevayler-Reference/wiki/Getting-started
 
