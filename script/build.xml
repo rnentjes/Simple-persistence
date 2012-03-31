@@ -466,22 +466,4 @@
 
     </target>
 
-    <!-- =================================================================== -->
-    <!-- JDepend                                                             -->
-    <!-- =================================================================== -->
-    <target name="jdepend" depends="prepare" description="Creates a package dependency report">
-
-        <jdepend outputfile="${build.dir}/jdepend.xml"
-                 format="xml"
-                 classpathref="build.class.path"
-                >
-            <exclude level="java.*"/>
-            <exclude level="javax.*"/>
-            <classespath>
-                <pathelement location="${build.classes.dir}"/>
-            </classespath>
-        </jdepend>
-
-    </target>
-
 </project>
