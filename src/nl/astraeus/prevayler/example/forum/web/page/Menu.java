@@ -3,6 +3,7 @@ package nl.astraeus.prevayler.example.forum.web.page;
 import nl.astraeus.prevayler.example.forum.model.Member;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,11 +13,11 @@ import java.util.Map;
  * Time: 9:07 PM
  */
 public class Menu extends Page {
-    private HttpServletRequest request;
+    private HttpSession session;
 
     @Override
     public Page processRequest(HttpServletRequest request) {
-        this.request = request;
+        this.session = request.getSession();
 
         return this;
     }
@@ -25,11 +26,10 @@ public class Menu extends Page {
     public Map<String, Object> defineModel() {
         Map<String, Object> result = new HashMap<String, Object>();
         
-        Member member = (Member)request.getSession().getAttribute("user");
+        if (session != null) {
+            result.put("user", session.getAttribute("user"));
+        }
 
-        System.out.println("Member: "+member);
-        result.put("user", member);
-        
         return result;
     }
 }

@@ -7,8 +7,10 @@
         <th>Replies</th>
         <th>Views</th>
         <th>Last post</th>
+        $if(member.superuser)$
         <th>
         </th>
+        $endif$
     </tr>
     </thead>
     <tbody>
@@ -24,13 +26,17 @@
         <td>$topic.numberOfReplies$</td>
         <td>$topic.numberOfViews$</td>
         <td>$topic.lastPost$</td>
+        $if(member.superuser)$
         <td>
             <a class="btn btn-mini btn-primary" onclick="submit('edit', '$topic.id$')">edit</a></a>
             <a class="btn btn-mini btn-primary" onclick="submit('remove', '$topic.id$')">remove</a></a>
         </td>
+        $endif$
     </tr>
     }$
     </tbody>
 </table>
 
+$if(member.escapedNickName)$
 <a class="btn btn-primary" onclick="submit('new')">New topic</a>
+$endif$

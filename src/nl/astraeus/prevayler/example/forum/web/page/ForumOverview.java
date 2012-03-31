@@ -5,6 +5,7 @@ import nl.astraeus.prevayler.example.forum.model.Topic;
 import nl.astraeus.prevayler.example.forum.model.TopicDao;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +18,7 @@ import java.util.Map;
 public class ForumOverview extends Page {
 
     private TopicDao dao = new TopicDao();
+    private HttpSession session;
 
     @Override
     public Page processRequest(HttpServletRequest request) {
@@ -45,6 +47,8 @@ public class ForumOverview extends Page {
 
             dao.remove(id);
         }
+        
+        this.session = request.getSession();
 
         return result;
     }
@@ -62,7 +66,11 @@ public class ForumOverview extends Page {
                 }
             }
         }));
-        
+
+        if (session != null) {
+            result.put("member", session.getAttribute("user"));
+        }
+
         return result;
     }
 

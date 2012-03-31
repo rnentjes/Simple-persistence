@@ -42,20 +42,26 @@ public class Registration extends Page {
         warnings = null;
         
         if ("register".equals(request.getParameter("action"))) {
-            member.setNickName(request.getParameter("nickName"));
-            member.setEmail(request.getParameter("email"));
+            String nickName = request.getParameter("nickName");
 
-            if (request.getParameter("password") != null &&
-                    request.getParameter("password").equals(request.getParameter("password2"))) {
-                member.setPassword(request.getParameter("password"));
-                
-                dao.store(member);
-                request.getSession().setAttribute("user", member);
+            if (dao.findByNickName(nickName) == null && !"anonymous".equals(nickName)) {
+                member.setNickName(nickName);
+                member.setEmail(request.getParameter("email"));
 
-                result = donePage;
+                if (request.getParameter("password") != null &&
+                        request.getParameter("password").equals(request.getParameter("password2"))) {
+                    member.setPassword(request.getParameter("password"));
+
+                    dao.store(member);
+                    request.getSession().setAttribute("user", member);
+
+                    result = donePage;
+                } else {
+                    // warn password...
+                    addWarning("Passwords don't match!");
+                }
             } else {
-                // warn password...
-                addWarning("Passwords don't match!");
+                addWarning("Nickname already taken!");
             }
         } else if ("cancel".equals(request.getParameter("action"))) {
             result = previous;
