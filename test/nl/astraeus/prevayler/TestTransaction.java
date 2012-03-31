@@ -64,7 +64,7 @@ public class TestTransaction {
         }
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test
     public void testReferenceList() {
         CompanyDao companyDao = new CompanyDao();
         EmployeeDao employeeDao= new EmployeeDao();
