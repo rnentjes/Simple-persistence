@@ -44,24 +44,29 @@ public class Registration extends Page {
         if ("register".equals(request.getParameter("action"))) {
             String nickName = request.getParameter("nickName");
 
-            if (dao.findByNickName(nickName) == null && !"anonymous".equals(nickName)) {
-                member.setNickName(nickName);
-                member.setEmail(request.getParameter("email"));
-
-                if (request.getParameter("password") != null &&
-                        request.getParameter("password").equals(request.getParameter("password2"))) {
-                    member.setPassword(request.getParameter("password"));
-
-                    dao.store(member);
-                    request.getSession().setAttribute("user", member);
-
-                    result = donePage;
-                } else {
-                    // warn password...
-                    addWarning("Passwords don't match!");
-                }
+            if (nickName == null || nickName.length() == 0) {
+                addWarning("Please enter a valid nickname!");
             } else {
-                addWarning("Nickname already taken!");
+                if (dao.findByNickName(nickName) == null && !"anonymous".equals(nickName)) {
+                    member.setNickName(nickName);
+                    member.setEmail(request.getParameter("email"));
+
+                    if (request.getParameter("password") != null &&
+                            request.getParameter("password").length() > 0 &&
+                            request.getParameter("password").equals(request.getParameter("password2"))) {
+                        member.setPassword(request.getParameter("password"));
+
+                        dao.store(member);
+                        request.getSession().setAttribute("user", member);
+
+                        result = donePage;
+                    } else {
+                        // warn password...
+                        addWarning("Passwords don't match!");
+                    }
+                } else {
+                    addWarning("Nickname already taken!");
+                }
             }
         } else if ("cancel".equals(request.getParameter("action"))) {
             result = previous;

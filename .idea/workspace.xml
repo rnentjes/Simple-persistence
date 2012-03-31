@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="672fb554-ea6e-4c7c-a7b9-f2a1844f5605" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Menu.html" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Menu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Page.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Page.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Registration.html" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Registration.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Registration.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Registration.java" />
     </list>
     <ignored path="Prevayler-Reference.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,10 +80,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ForumServlet.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ForumServlet.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="132" column="39" selection-start="4409" selection-end="4409" vertical-scroll-proportion="0.3694779">
+            <state line="132" column="39" selection-start="4409" selection-end="4409" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Registration.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Registration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="59" column="50" selection-start="1999" selection-end="1999" vertical-scroll-proportion="0.5890411">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Registration.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Registration.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="55" selection-start="304" selection-end="304" vertical-scroll-proportion="-7.5">
               <folding />
             </state>
           </provider>
@@ -135,24 +152,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TopicEdit.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/TopicEdit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="69" selection-start="1676" selection-end="1676" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TopicOverview.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/TopicOverview.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="69" selection-start="2674" selection-end="2674" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -168,7 +167,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/MemberOverview.html" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Member.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Topic.java" />
@@ -178,12 +176,13 @@
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Login.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/MemberOverview.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Menu.java" />
-        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Registration.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/TopicEdit.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/TopicOverview.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Menu.html" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Page.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Registration.html" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Registration.java" />
       </list>
     </option>
   </component>
@@ -805,16 +804,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Topic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="35" selection-start="2313" selection-end="2313" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="16" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/TopicOverview.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="34" selection-start="603" selection-end="603" vertical-scroll-proportion="-0.625" />
@@ -828,11 +817,6 @@
     <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/MemberOverview.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="69" selection-start="991" selection-end="991" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Registration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="69" selection-start="2274" selection-end="2274" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/TopicEdit.java">
@@ -892,9 +876,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///usr/lib/jvm/jdk1.7.0_02/src.zip!/javax/imageio/spi/RegisterableService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="17" selection-start="542" selection-end="542" vertical-scroll-proportion="0.33268103">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="39" selection-start="4409" selection-end="4409" vertical-scroll-proportion="0.3694779">
+        <state line="132" column="39" selection-start="4409" selection-end="4409" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Registration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="55" selection-start="304" selection-end="304" vertical-scroll-proportion="-7.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Registration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="50" selection-start="1999" selection-end="1999" vertical-scroll-proportion="0.5890411">
           <folding />
         </state>
       </provider>
