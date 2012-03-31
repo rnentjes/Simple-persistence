@@ -88,7 +88,7 @@ public class Topic extends PrevaylerModel {
     public String getLastPost() {
         String result = "never";
 
-        if (lastPost != null || lastPost.getTime() == 0) {
+        if (lastPost != null && lastPost.getTime() != 0) {
             DateFormat format = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
 
             result = format.format(lastPost);
