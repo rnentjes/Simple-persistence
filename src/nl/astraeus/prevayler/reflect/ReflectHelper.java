@@ -1,6 +1,5 @@
 package nl.astraeus.prevayler.reflect;
 
-import nl.astraeus.prevayler.PrevaylerDao;
 import nl.astraeus.prevayler.PrevaylerList;
 import nl.astraeus.prevayler.PrevaylerModel;
 import nl.astraeus.prevayler.PrevaylerReference;

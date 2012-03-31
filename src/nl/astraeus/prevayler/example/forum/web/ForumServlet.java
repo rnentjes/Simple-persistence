@@ -2,7 +2,10 @@ package nl.astraeus.prevayler.example.forum.web;
 
 import nl.astraeus.prevayler.PrevaylerStore;
 import nl.astraeus.prevayler.Transaction;
-import nl.astraeus.prevayler.example.forum.web.page.*;
+import nl.astraeus.prevayler.example.forum.web.page.ForumOverview;
+import nl.astraeus.prevayler.example.forum.web.page.Login;
+import nl.astraeus.prevayler.example.forum.web.page.Menu;
+import nl.astraeus.prevayler.example.forum.web.page.Page;
 import org.apache.commons.io.IOUtils;
 
 import javax.servlet.ServletException;

@@ -1,6 +1,5 @@
 package nl.astraeus.prevayler.example.forum.model;
 
-import com.sun.org.apache.xerces.internal.impl.dv.DatatypeException;
 import nl.astraeus.prevayler.PrevaylerList;
 import nl.astraeus.prevayler.PrevaylerModel;
 import nl.astraeus.prevayler.PrevaylerReference;
@@ -8,9 +7,6 @@ import org.apache.commons.lang.StringEscapeUtils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.logging.SimpleFormatter;
 
 /**
  * User: rnentjes

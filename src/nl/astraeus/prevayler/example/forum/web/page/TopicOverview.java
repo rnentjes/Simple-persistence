@@ -1,6 +1,5 @@
 package nl.astraeus.prevayler.example.forum.web.page;
 
-import nl.astraeus.prevayler.example.forum.model.Comment;
 import nl.astraeus.prevayler.example.forum.model.Topic;
 import nl.astraeus.prevayler.example.forum.model.TopicDao;
 

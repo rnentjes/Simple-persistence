@@ -2,45 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="672fb554-ea6e-4c7c-a7b9-f2a1844f5605" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/cobertura/cobertura.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/cobertura/lib/asm-3.0.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/cobertura/lib/asm-tree-3.0.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/cobertura/lib/jakarta-oro-2.0.8.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/cobertura/lib/log4j-1.2.9.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/ebean/ebean-2.7.3-agent.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/annotations.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/ant.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/asm-3.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/asm-analysis-3.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/asm-commons-3.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/asm-tree-3.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/asm-util-3.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/asm-xml-3.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/bcel.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/commons-lang-2.4.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/dom4j-1.6.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/findbugs-ant.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/findbugs.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/jFormatString.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/jaxen-1.1.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/jdepend-2.9.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/jsr305.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/findbugs-1.3.9/mysql-connector-java-5.1.7-bin.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/junit/junit-4.5.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/junit/junit-dep-4.5.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/ncss/ccl.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/ncss/javacc.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/ncss/javancss.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/ncss/javancssanttask.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/ncss/jhbasic.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/pmd/asm-3.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/pmd/jaxen-1.1.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/pmd/junit-4.4.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/pmd/pmd-4.2.4.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/cobertura/lib/jakarta-oro-license.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/build/cobertura/lib/log4j-license.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/build.xml" afterPath="$PROJECT_DIR$/script/build.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevalentSystem.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevalentSystem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Comment.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Comment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/MemberDao.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/MemberDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Topic.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Topic.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/TopicOverview.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/TopicOverview.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/reflect/ReflectHelper.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/reflect/ReflectHelper.java" />
     </list>
     <ignored path="Prevayler-Reference.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -98,15 +68,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ShowMemoryUsage.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowMemoryUsage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Snapshot.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/Snapshot.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -163,11 +124,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="466" column="13" selection-start="18721" selection-end="18721" vertical-scroll-proportion="0.7096774">
+            <state line="469" column="0" selection-start="18734" selection-end="18734" vertical-scroll-proportion="-26.16">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Topic.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Topic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="0" selection-start="52" selection-end="52" vertical-scroll-proportion="0.058708414">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -205,7 +177,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/ForumServlet.java" />
         <option value="$PROJECT_DIR$/script/default.build.properties" />
         <option value="$PROJECT_DIR$/script/startServer.sh" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page/Page.java" />
@@ -221,6 +192,7 @@
         <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/model/Employee.java" />
         <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/model/EmployeeDao.java" />
         <option value="$PROJECT_DIR$/script/build.xml" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Topic.java" />
       </list>
     </option>
   </component>
@@ -272,192 +244,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="script" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="build" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pmd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="build" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ncss" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="build" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="junit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="build" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="findbugs-1.3.9" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="build" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ebean" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="build" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cobertura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="build" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cobertura" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -792,23 +578,23 @@
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22761194" sideWeight="0.67176473" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3035294" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22761194" sideWeight="0.69647056" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32117647" sideWeight="0.9776536" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3282353" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282353" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25447762" sideWeight="0.16941176" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25447762" sideWeight="0.1764706" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25447762" sideWeight="0.49411765" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25447762" sideWeight="0.5117647" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3003452" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30379745" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -848,7 +634,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added build script for jenkins" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added missing libraries" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -869,6 +655,7 @@
     <MESSAGE value="Bug fixes, example forum" />
     <MESSAGE value="Example forum changes" />
     <MESSAGE value="Added build script for jenkins" />
+    <MESSAGE value="Added missing libraries" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -887,13 +674,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Forum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="33" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="68" column="5" selection-start="1591" selection-end="1591" vertical-scroll-proportion="0.0">
@@ -998,8 +778,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="466" column="13" selection-start="18721" selection-end="18721" vertical-scroll-proportion="0.7096774">
+        <state line="469" column="0" selection-start="18734" selection-end="18734" vertical-scroll-proportion="-26.16">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/model/Topic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="52" selection-end="52" vertical-scroll-proportion="0.058708414">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

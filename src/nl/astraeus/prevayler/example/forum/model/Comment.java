@@ -1,6 +1,5 @@
 package nl.astraeus.prevayler.example.forum.model;
 
-import nl.astraeus.prevayler.PrevaylerList;
 import nl.astraeus.prevayler.PrevaylerModel;
 import nl.astraeus.prevayler.PrevaylerReference;
 import org.apache.commons.lang.StringEscapeUtils;

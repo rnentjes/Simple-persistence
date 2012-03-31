@@ -1,6 +1,5 @@
 package nl.astraeus.prevayler;
 
-import nl.astraeus.util.Util;
 import org.prevayler.Prevayler;
 import org.prevayler.PrevaylerFactory;
 
