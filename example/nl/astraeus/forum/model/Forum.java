@@ -9,7 +9,7 @@ import nl.astraeus.prevayler.PrevaylerModel;
  * Time: 3:07 PM
  */
 public class Forum extends PrevaylerModel {
-    public static long serialVersionUID = 1L;
+    public final static long serialVersionUID = 1L;
 
     private String name;
     private PrevaylerList<Topic> topic = new PrevaylerList<Topic>(Topic.class);

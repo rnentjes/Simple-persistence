@@ -246,7 +246,7 @@ public class ReflectHelper {
                 Field field = getField(model, fields[skip]);
 
                 if (field == null) {
-                    throw new IllegalStateException("Can't find field " + field + " in model " + model);
+                    throw new IllegalStateException("Can't find field " + field + " in model " + model + ".");
                 }
 
                 result = field.get(model);
@@ -297,7 +297,7 @@ public class ReflectHelper {
                 Field field = getField(model, fields[skip]);
 
                 if (field == null) {
-                    throw new IllegalStateException("Can't find field " + field + " in model " + model);
+                    throw new IllegalStateException("Can't find field " + field + " in model " + model + ".");
                 }
 
                 Object tmpResult = field.get(model);
@@ -335,11 +335,11 @@ public class ReflectHelper {
 
     public Object invoke(Object object, String methodName, Object... parameters) {
         if (object == null) {
-            throw new IllegalStateException("Impossible to invoke method "+methodName+" on null object!");
+            throw new IllegalStateException("Impossible to invoke method "+methodName+" on null object.");
         }
 
         if (methodName == null) {
-            throw new IllegalStateException("Impossible to invoke null method on object "+object+"!");
+            throw new IllegalStateException("Impossible to invoke null method on object "+object+".");
         }
 
         try {
@@ -373,7 +373,7 @@ public class ReflectHelper {
 
     public Field getField(Object model, String fieldName) {
         if (model == null) {
-            throw new IllegalStateException("Model is null, can't get field "+fieldName);
+            throw new IllegalStateException("Model is null, can't get field "+fieldName + ".");
         }
 
         return getField(model.getClass(), fieldName);
@@ -402,7 +402,7 @@ public class ReflectHelper {
             } while (field == null && cls != null);
 
             if (field == null) {
-                throw new IllegalStateException("Field " + fieldName + " not include in " + model);
+                throw new IllegalStateException("Field " + fieldName + " not found in " + model + ".");
             } else {
                 field.setAccessible(true);
 
@@ -516,10 +516,6 @@ public class ReflectHelper {
         }
 
         return result.toString();
-    }
-
-    public ReflectHelper() {
-        super();    //To change body of overridden methods use File | Settings | File Templates.
     }
 
     /*

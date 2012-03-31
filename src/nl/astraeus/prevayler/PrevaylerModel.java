@@ -81,6 +81,11 @@ public abstract class PrevaylerModel implements Serializable, Cloneable, Compara
         return result;
     }
 
+    @Override
+    public int hashCode() {
+        return new Long(id).hashCode();
+    }
+
     public int compareTo(Object o) {
         int result = -1;
         PrevaylerModel other = (PrevaylerModel)o;

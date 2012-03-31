@@ -9,7 +9,7 @@ import javax.annotation.CheckForNull;
  */
 public abstract class Transaction<T> {
 
-    T result;
+    private T result;
     
     public Transaction() {
         try {
@@ -18,10 +18,10 @@ public abstract class Transaction<T> {
             execute();
 
             PrevaylerStore.commit();
-        } catch (Exception e) {
-            PrevaylerStore.rollback();
-            
-            throw new IllegalStateException(e);
+        } finally  {
+            if (PrevaylerStore.transactionActive()) {
+                PrevaylerStore.rollback();
+            }
         }
     }
     

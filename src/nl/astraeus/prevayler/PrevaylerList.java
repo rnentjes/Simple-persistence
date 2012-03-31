@@ -74,11 +74,11 @@ public class PrevaylerList<M extends PrevaylerModel> implements List<M>, Seriali
     }
 
     public Object[] toArray() {
-        throw new IllegalStateException("Not implemented yet!");
+        throw new IllegalStateException("Not implemented yet.");
     }
 
     public <T> T[] toArray(T[] a) {
-        throw new IllegalStateException("Not implemented yet!");
+        throw new IllegalStateException("Not implemented yet.");
     }
 
     public boolean add(M m) {
@@ -96,7 +96,7 @@ public class PrevaylerList<M extends PrevaylerModel> implements List<M>, Seriali
     }
 
     public boolean containsAll(Collection<?> c) {
-        throw new IllegalStateException("Not implemented yet!");
+        throw new IllegalStateException("Not implemented yet.");
     }
 
     public boolean addAll(Collection<? extends M> c) {
@@ -168,15 +168,15 @@ public class PrevaylerList<M extends PrevaylerModel> implements List<M>, Seriali
     }
 
     public ListIterator<M> listIterator() {
-        throw new IllegalStateException("Not implemented yet!");
+        throw new IllegalStateException("Not implemented yet.");
     }
 
     public ListIterator<M> listIterator(int index) {
-        throw new IllegalStateException("Not implemented yet!");
+        throw new IllegalStateException("Not implemented yet.");
     }
 
     public List<M> subList(int fromIndex, int toIndex) {
-        throw new IllegalStateException("Not implemented yet!");
+        throw new IllegalStateException("Not implemented yet.");
     }
     
     public String toString() {

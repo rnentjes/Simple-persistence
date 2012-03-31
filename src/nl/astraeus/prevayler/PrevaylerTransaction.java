@@ -3,7 +3,10 @@ package nl.astraeus.prevayler;
 import org.prevayler.Transaction;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * StoreModelTransaction
@@ -16,7 +19,7 @@ public final class PrevaylerTransaction implements Serializable, Transaction {
 
 	private static final long serialVersionUID = 1L;
 
-	private Set<PrevaylerModel> store = new HashSet<PrevaylerModel>();
+	private Set<PrevaylerModel> store  = new HashSet<PrevaylerModel>();
     private Set<PrevaylerModel> remove = new HashSet<PrevaylerModel>();
 
     PrevaylerTransaction() {}

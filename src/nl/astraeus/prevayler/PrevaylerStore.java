@@ -5,7 +5,6 @@ import org.prevayler.PrevaylerFactory;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.nio.channels.ClosedSelectorException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -115,7 +114,7 @@ public class PrevaylerStore {
 
     private void beginTransaction() {
         if (getTransaction() != null) {
-            throw new IllegalStateException("Transaction already in progress!");
+            throw new IllegalStateException("Transaction already in progress.");
         }
 
         setTransaction(new PrevaylerTransaction());
@@ -123,7 +122,7 @@ public class PrevaylerStore {
     
     private void commitCurrentTransaction() {
         if (getTransaction() == null) {
-            throw new IllegalStateException("No transaction to commit!");
+            throw new IllegalStateException("No transaction to commit.");
         }
 
         // todo: add unstored references to the transaction
@@ -156,7 +155,7 @@ public class PrevaylerStore {
     
     private void rollbackCurrentTransaction() {
         if (getTransaction() == null) {
-            throw new IllegalStateException("No transaction to rollback!");
+            throw new IllegalStateException("No transaction to rollback.");
         }
 
         transactions.remove();
@@ -257,7 +256,7 @@ public class PrevaylerStore {
                 result = PrevaylerModel.class.getDeclaredField(name);
                 result.setAccessible(true);
             } catch (NoSuchFieldException e) {
-                throw new IllegalStateException("PrevaylerModel doesn't have field "+name);
+                throw new IllegalStateException("PrevaylerModel doesn't have field "+name+".");
             }
         }
 
@@ -270,7 +269,7 @@ public class PrevaylerStore {
         try {
             field.set(model, value);
         } catch (IllegalAccessException e) {
-            throw new IllegalStateException("Can't set PrevaylerBaseModel._prevayler_saved!");
+            throw new IllegalStateException("Can't set PrevaylerBaseModel._prevayler_saved.");
         }
     }
 
@@ -280,7 +279,7 @@ public class PrevaylerStore {
         try {
             field.set(model, System.currentTimeMillis());
         } catch (IllegalAccessException e) {
-            throw new IllegalStateException("Can't set PrevaylerBaseModel._prevayler_last_update");
+            throw new IllegalStateException("Can't set PrevaylerBaseModel._prevayler_last_update.");
         }
     }
 
@@ -290,7 +289,7 @@ public class PrevaylerStore {
         try {
             field.set(model, value);
         } catch (IllegalAccessException e) {
-            throw new IllegalStateException("Can't set PrevaylerBaseModel._prevayler_selected_for_update!");
+            throw new IllegalStateException("Can't set PrevaylerBaseModel._prevayler_selected_for_update.");
         }
     }
 
@@ -300,7 +299,7 @@ public class PrevaylerStore {
         try {
             return field.getBoolean(model);
         } catch (IllegalAccessException e) {
-            throw new IllegalStateException("Can't get PrevaylerBaseModel._prevayler_saved!");
+            throw new IllegalStateException("Can't get PrevaylerBaseModel._prevayler_saved.");
         }
     }
 
