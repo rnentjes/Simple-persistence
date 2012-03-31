@@ -18,14 +18,14 @@ public abstract class Page {
     private ST template;
 
     public abstract Page processRequest(HttpServletRequest request);
-    public abstract Map<String, Object> defineModel();
+    public abstract Map<String, Object> defineModel(HttpServletRequest request);
 
     protected Page() {
         template = getTemplate(this.getClass(), this.getClass().getSimpleName() + ".html");
     }
     
-    public String render() {
-        setAttributesOnTemplate(template, defineModel());
+    public String render(HttpServletRequest request) {
+        setAttributesOnTemplate(template, defineModel(request));
 
         return template.render();
     }

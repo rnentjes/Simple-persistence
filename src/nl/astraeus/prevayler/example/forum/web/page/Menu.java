@@ -13,22 +13,17 @@ import java.util.Map;
  * Time: 9:07 PM
  */
 public class Menu extends Page {
-    private HttpSession session;
 
     @Override
     public Page processRequest(HttpServletRequest request) {
-        this.session = request.getSession();
-
-        return this;
+         return this;
     }
 
     @Override
-    public Map<String, Object> defineModel() {
+    public Map<String, Object> defineModel(HttpServletRequest request) {
         Map<String, Object> result = new HashMap<String, Object>();
         
-        if (session != null) {
-            result.put("user", session.getAttribute("user"));
-        }
+        result.put("user", request.getSession().getAttribute("user"));
 
         return result;
     }

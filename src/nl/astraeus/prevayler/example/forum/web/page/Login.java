@@ -46,7 +46,7 @@ public class Login extends Page {
     }
 
     @Override
-    public Map<String, Object> defineModel() {
+    public Map<String, Object> defineModel(HttpServletRequest request) {
         Map<String, Object> result = new HashMap<String, Object>();
         
         result.put("member", null);

@@ -6,6 +6,7 @@ import nl.astraeus.prevayler.Transaction;
 import nl.astraeus.prevayler.example.forum.model.Member;
 import nl.astraeus.prevayler.example.forum.model.MemberDao;
 import nl.astraeus.prevayler.example.forum.web.page.*;
+import nl.astraeus.util.Util;
 import org.apache.commons.io.IOUtils;
 
 import javax.servlet.ServletException;
@@ -107,6 +108,8 @@ public class ForumServlet extends HttpServlet {
 
     @Override
     protected void doPost(final HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        long nano = System.nanoTime();
+        
         HttpSession session =  req.getSession();
         boolean ajax = "true".equals(req.getParameter("ajax"));
 
@@ -114,8 +117,7 @@ public class ForumServlet extends HttpServlet {
         Page menu = (Page)session.getAttribute("menu");
 
         session.setMaxInactiveInterval(30);
-        System.out.println("Request start, page="+page+", session timeout: "+session.getMaxInactiveInterval());
-        
+
         if (menu == null) {
             menu = new Menu();
 
@@ -151,14 +153,14 @@ public class ForumServlet extends HttpServlet {
             resp.getWriter().print(head);
         }
 
-        resp.getWriter().print(menu.render());
-        resp.getWriter().print(page.render());
+        resp.getWriter().print(menu.render(req));
+        resp.getWriter().print(page.render(req));
 
         if (!ajax) {
             resp.getWriter().print(bottom);
         }
 
-        System.out.println("Request ends, page="+page);
+        System.out.println("Request ends, time="+ Util.formatNano(nano - System.nanoTime()) +", page="+page.getClass().getSimpleName());
     }
 
 }

@@ -18,7 +18,6 @@ import java.util.Map;
 public class ForumOverview extends Page {
 
     private TopicDao dao = new TopicDao();
-    private HttpSession session;
 
     @Override
     public Page processRequest(HttpServletRequest request) {
@@ -47,14 +46,12 @@ public class ForumOverview extends Page {
 
             dao.remove(id);
         }
-        
-        this.session = request.getSession();
 
         return result;
     }
 
     @Override
-    public Map<String, Object> defineModel() {
+    public Map<String, Object> defineModel(HttpServletRequest request) {
         Map<String, Object> result = new HashMap<String, Object>();
 
         result.put("topics", dao.findAll(new Comparator<Topic>() {
@@ -67,9 +64,7 @@ public class ForumOverview extends Page {
             }
         }));
 
-        if (session != null) {
-            result.put("member", session.getAttribute("user"));
-        }
+        result.put("member", request.getSession().getAttribute("user"));
 
         return result;
     }
