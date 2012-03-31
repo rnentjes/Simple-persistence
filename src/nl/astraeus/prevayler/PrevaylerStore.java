@@ -33,7 +33,7 @@ public class PrevaylerStore {
     private static long fileSizeThreshold;
 
     // defaults
-    {
+    static {
         autocommit = false;
         safemode = false;
         dataDirectory = "prevayler";

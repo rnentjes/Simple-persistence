@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="672fb554-ea6e-4c7c-a7b9-f2a1844f5605" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/nl/astraeus/prevayler/JunitTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/nl/astraeus/prevayler/PrevaylerLoadTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java" />
     </list>
     <ignored path="Prevayler-Reference.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,15 +61,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CompanyDao.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/model/CompanyDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Employee.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/model/Employee.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -127,13 +117,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrevaylerLoadTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PrevaylerLoadTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/PrevaylerLoadTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="233" selection-end="233" vertical-scroll-proportion="0.3853211">
+            <state line="11" column="0" selection-start="197" selection-end="197" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrevaylerStore.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="35" column="11" selection-start="873" selection-end="873" vertical-scroll-proportion="0.7706422">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -171,7 +170,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/CreateALotOfCompaniesAndEmployees.java" />
         <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/CreateCompaniesAndEmployees.java" />
         <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowCompaniesAndEmployeesSafe.java" />
         <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowCompaniesAndEmployeesUnsafe.java" />
@@ -187,6 +185,7 @@
         <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/HttpServer.java" />
         <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/JunitTest.java" />
         <option value="$PROJECT_DIR$/test/nl/astraeus/prevayler/PrevaylerLoadTest.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java" />
       </list>
     </option>
   </component>
@@ -646,7 +645,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed default port to 8080" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a test to satisfy build" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -671,6 +670,7 @@
     <MESSAGE value="Optimized imports" />
     <MESSAGE value="Added missing config files" />
     <MESSAGE value="Changed default port to 8080" />
+    <MESSAGE value="Added a test to satisfy build" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -689,11 +689,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowCompaniesAndEmployeesSafe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowCompaniesAndEmployeesUnsafe.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="0" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0" />
@@ -776,10 +771,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/nl/astraeus/prevayler/PrevaylerLoadTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="233" selection-end="233" vertical-scroll-proportion="0.3853211">
+        <state line="11" column="0" selection-start="197" selection-end="197" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="11" selection-start="873" selection-end="873" vertical-scroll-proportion="0.7706422">
+          <folding />
         </state>
       </provider>
     </entry>
