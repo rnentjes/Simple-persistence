@@ -6,7 +6,7 @@ To get started:
 
 https://github.com/rnentjes/Prevayler-Reference/wiki/Getting-started
 
-https://github.com/rnentjes/Prevayler-Reference/wiki/Overview
+https://github.com/rnentjes/Prevayler-Reference/wiki/Technical-overview
 
 You can find the prevayler project here:
 
