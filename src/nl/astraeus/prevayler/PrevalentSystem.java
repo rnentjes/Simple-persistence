@@ -48,10 +48,12 @@ public class PrevalentSystem implements Serializable {
         return result;
     }
 
+    /** Functions called from within Transaction to update data model */
     protected <M extends PrevaylerModel> void store(M objectToStore) {
         getModelMap(objectToStore.getClass()).put(objectToStore.getId(), objectToStore);
     }
 
+    /** Functions called from within Transaction to update data model */
     protected void remove(PrevaylerModel objectToRemove) {
         getModelMap(objectToRemove.getClass()).remove(objectToRemove.getId());
     }

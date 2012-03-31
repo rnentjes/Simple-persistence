@@ -12,12 +12,14 @@ Max memory: $maxMemory$<br/>
     <thead>
     <tr>
         <th>Classes</th>
+        <th>Objects</th>
     </tr>
     </thead>
     <tbody>
-    $objectTypes:{cls|
+    $objectMap:{entry|
     <tr>
-        <td>$cls.name$</td>
+        <td>$entry.key$</td>
+        <td>$entry.value$</td>
     </tr>
     }$
     </tbody>

@@ -148,14 +148,10 @@ public class PrevaylerList<M extends PrevaylerModel> implements List<M>, Seriali
     }
 
     public M set(int index, M element) {
-        PrevaylerStore.get().assertIsStored(element);
-
         return (M) PrevaylerStore.get().find(cls, list.set(index, element.getId()));
     }
 
     public void add(int index, M element) {
-        PrevaylerStore.get().assertIsStored(element);
-
         list.add(index, element.getId());
     }
 

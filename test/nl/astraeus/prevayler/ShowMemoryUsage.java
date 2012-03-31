@@ -1,10 +1,8 @@
 package nl.astraeus.prevayler;
 
-import nl.astraeus.prevayler.example.forum.model.CommentDao;
-import nl.astraeus.prevayler.example.forum.model.TopicDao;
-import nl.astraeus.prevayler.model.Company;
+import nl.astraeus.forum.model.CommentDao;
+import nl.astraeus.forum.model.TopicDao;
 import nl.astraeus.prevayler.model.CompanyDao;
-import nl.astraeus.prevayler.model.Employee;
 import nl.astraeus.prevayler.model.EmployeeDao;
 import nl.astraeus.util.Util;
 import org.junit.Ignore;

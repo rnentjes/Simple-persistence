@@ -1,7 +1,7 @@
-package nl.astraeus.prevayler.example.forum.web.page;
+package nl.astraeus.forum.web.page;
 
-import nl.astraeus.prevayler.example.forum.model.Member;
-import nl.astraeus.prevayler.example.forum.model.MemberDao;
+import nl.astraeus.forum.model.Member;
+import nl.astraeus.forum.model.MemberDao;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;

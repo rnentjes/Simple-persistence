@@ -1,11 +1,10 @@
-package nl.astraeus.prevayler.example.forum.web;
+package nl.astraeus.forum.web;
 
-import nl.astraeus.prevayler.Filter;
 import nl.astraeus.prevayler.PrevaylerStore;
 import nl.astraeus.prevayler.Transaction;
-import nl.astraeus.prevayler.example.forum.model.Member;
-import nl.astraeus.prevayler.example.forum.model.MemberDao;
-import nl.astraeus.prevayler.example.forum.web.page.*;
+import nl.astraeus.forum.model.Member;
+import nl.astraeus.forum.model.MemberDao;
+import nl.astraeus.forum.web.page.*;
 import nl.astraeus.util.Util;
 import org.apache.commons.io.IOUtils;
 
@@ -80,8 +79,8 @@ public class ForumServlet extends HttpServlet {
         String uri = req.getRequestURI();
 
         if (uri.startsWith("/resources/")) {
-            uri = "nl/astraeus/prevayler/example/forum/web" + uri;
-            //nl.astraeus.prevayler.example.forum.web
+            uri = "nl/astraeus/forum/web" + uri;
+            //nl.astraeus.forum.web
             InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(uri);
 
             if (in == null) {
@@ -144,7 +143,7 @@ public class ForumServlet extends HttpServlet {
                     setResult(myPage.processRequest(req));
                 }
             };
-            
+
             page = t.getResult();
         }
 
@@ -163,7 +162,7 @@ public class ForumServlet extends HttpServlet {
             resp.getWriter().print(bottom);
         }
 
-        System.out.println("Request ends, time="+ Util.formatNano(nano - System.nanoTime()) +", page="+page.getClass().getSimpleName());
+        System.out.println("Request ends, time="+ Util.formatNano(System.nanoTime() - nano) +", page="+page.getClass().getSimpleName());
     }
 
 }

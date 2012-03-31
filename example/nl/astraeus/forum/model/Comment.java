@@ -1,4 +1,4 @@
-package nl.astraeus.prevayler.example.forum.model;
+package nl.astraeus.forum.model;
 
 import nl.astraeus.prevayler.PrevaylerModel;
 import nl.astraeus.prevayler.PrevaylerReference;
@@ -6,6 +6,7 @@ import org.apache.commons.lang.StringEscapeUtils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * User: rnentjes
@@ -23,6 +24,10 @@ public class Comment extends PrevaylerModel {
 
     public Comment(Member creator) {
         this(creator, "");
+    }
+
+    public Comment(String description) {
+        this(null, description);
     }
 
     public Comment(Member creator, String description) {
@@ -49,9 +54,15 @@ public class Comment extends PrevaylerModel {
     }
     
     public String getDate() {
-        DateFormat format = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
-        
-        return format.format(date);
+        String result = "never";
+
+        if (date > 0) {
+            DateFormat format = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
+
+            result = format.format(new Date(date));
+        }
+
+        return result;
     }
 
     public void setDescription(String description) {

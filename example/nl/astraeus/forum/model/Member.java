@@ -1,4 +1,4 @@
-package nl.astraeus.prevayler.example.forum.model;
+package nl.astraeus.forum.model;
 
 import nl.astraeus.prevayler.PrevaylerList;
 import nl.astraeus.prevayler.PrevaylerModel;
@@ -103,13 +103,15 @@ public class Member extends PrevaylerModel {
     }
 
     public String getLastPost() {
-        if (lastPost == null) {
-            lastPost = new Date(0);
+        String result = "never";
+
+        if (lastPost != null && lastPost.getTime() > 0) {
+            DateFormat format = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
+
+            result = format.format(lastPost);
         }
 
-        DateFormat format = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
-
-        return format.format(lastPost);
+        return result;
     }
     
     public int getNumberOfTopics() {

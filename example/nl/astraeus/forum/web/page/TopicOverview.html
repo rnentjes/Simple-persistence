@@ -50,7 +50,9 @@ $else$
     <div class="row-fluid">
         <div class="span2">
             <a class="btn " onclick="submit('back')">Back</a>
+            $if(member.escapedNickName)$
             <a class="btn btn-primary" onclick="submit('comment', '$topic.id$')">Comment</a>
+            $endif$
         </div>
     </div>
 $endif$

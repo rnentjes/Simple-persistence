@@ -1,11 +1,10 @@
-package nl.astraeus.prevayler.example.forum.web.page;
+package nl.astraeus.forum.web.page;
 
-import nl.astraeus.prevayler.example.forum.model.Member;
-import nl.astraeus.prevayler.example.forum.model.Topic;
-import nl.astraeus.prevayler.example.forum.model.TopicDao;
+import nl.astraeus.forum.model.Member;
+import nl.astraeus.forum.model.Topic;
+import nl.astraeus.forum.model.TopicDao;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,7 +55,7 @@ public class ForumOverview extends Page {
 
         result.put("topics", dao.findAll(new Comparator<Topic>() {
             public int compare(Topic o1, Topic o2) {
-                if (o2.getId() > o1.getId()) {
+                if (o2.getLastPostMilli() > o1.getLastPostMilli()) {
                     return 1;
                 } else {
                     return -1;

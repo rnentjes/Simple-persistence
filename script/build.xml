@@ -152,6 +152,7 @@
     <!-- =================================================================== -->
     <target name="prepare" depends="init">
         <mkdir dir="${build.dir}"/>
+        <mkdir dir="${dist.dir}"/>
         <mkdir dir="${build.classes.dir}"/>
         <mkdir dir="${instrumented.classes.dir}"/>
         <mkdir dir="${test.classes.dir}"/>
@@ -253,7 +254,7 @@
     <!-- =================================================================== -->
     <!-- Compile web sources                                                 -->
     <!-- =================================================================== -->
-    <target name="compile" depends="prepare">
+    <target name="compile-src" depends="prepare">
         <!-- generate.jsp, webdoclet,  -->
         <javac encoding="utf-8" destdir="${build.classes.dir}" includes="**"
                classpathref="compile.class.path" debug="true"
@@ -264,13 +265,42 @@
     </target>
 
     <!-- =================================================================== -->
-    <!-- Copy non java files                                                 -->
+    <!-- Compile web sources                                                 -->
     <!-- =================================================================== -->
-    <target name="copynonjavafiles" depends="prepare">
+    <target name="compile-example" depends="prepare, compile-src">
+        <!-- generate.jsp, webdoclet,  -->
+        <javac encoding="utf-8" destdir="${build.classes.dir}" includes="**"
+               classpathref="compile.class.path" debug="true"
+               debuglevel="lines,vars,source" deprecation="on"
+               optimize="on" verbose="false" target="1.5" source="1.5" includeantruntime="false">
+            <src path="${example.dir}"/>
+        </javac>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Compile web sources                                                 -->
+    <!-- =================================================================== -->
+    <target name="compile" depends="compile-example">
+    </target>
+
+    <target name="copynonjavafiles-src" depends="prepare">
         <!-- generate.jsp, webdoclet,  -->
         <!-- copy all non java class file to classes directorty -->
         <copy todir="${build.classes.dir}">
             <fileset dir="${src.dir}">
+                <exclude name="**/*.java"/>
+                <exclude name="**/*.class"/>
+            </fileset>
+        </copy>
+        </target>
+    <!-- =================================================================== -->
+    <!-- Copy non java files                                                 -->
+    <!-- =================================================================== -->
+    <target name="copynonjavafiles" depends="prepare, copynonjavafiles-src">
+        <!-- generate.jsp, webdoclet,  -->
+        <!-- copy all non java class file to classes directorty -->
+        <copy todir="${build.classes.dir}">
+            <fileset dir="${example.dir}">
                 <exclude name="**/*.java"/>
                 <exclude name="**/*.class"/>
             </fileset>
@@ -285,6 +315,10 @@
                 <exclude name="**/*.java"/>
                 <exclude name="**/*.class"/>
             </fileset>
+            <fileset dir="${example.dir}">
+                <exclude name="**/*.java"/>
+                <exclude name="**/*.class"/>
+            </fileset>
             <fileset dir="${test.dir}">
                 <exclude name="**/*.java"/>
                 <exclude name="**/*.class"/>
@@ -293,7 +327,7 @@
     </target>
 
     <target name="run" depends="compile, copynonjavafiles">
-        <java fork="true" classname="nl.astraeus.prevayler.example.forum.web.HttpServer" classpathref="run.class.path"
+        <java fork="true" classname="nl.astraeus.forum.web.HttpServer" classpathref="run.class.path"
               dir=".."
                 >
         </java>
@@ -396,7 +430,7 @@
 
     </target>
 
-    <target name="jar" depends="compile, copynonjavafiles" description="Create jar distribution dir">
+    <target name="jar" depends="clean, compile-src, copynonjavafiles" description="Create jar distribution dir">
 
         <copy todir="${jar.dir}/lib">
             <fileset dir="${lib.dir}" includes="*.jar"/>
@@ -422,7 +456,7 @@
 
         <jar destfile="${jar.dir}/${project.level}.jar" basedir="${build.classes.dir}">
             <manifest>
-                <attribute name="Main-Class" value="nl.astraeus.prevayler.example.forum.web.HttpServer"/>
+                <attribute name="Main-Class" value="nl.astraeus.forum.web.HttpServer"/>
                 <attribute name="Class-Path" value="${manifest.classpath}"/>
             </manifest>
         </jar>
@@ -432,6 +466,20 @@
         <copy todir="/opt/prevaylerreference">
             <fileset dir="${jar.dir}" includes="**/*.jar"/>
         </copy>
+
+    </target>
+
+    <target name="prevayler-reference.jar" depends="clean, compile-src, copynonjavafiles-src" description="Create jar distribution dir">
+
+        <jar destfile="${dist.dir}/prevayler-reference.jar" basedir="${build.classes.dir}">
+        </jar>
+
+    </target>
+
+    <target name="prevayler-example.jar" depends="clean, compile-src, copynonjavafiles-src" description="Create jar distribution dir">
+
+        <jar destfile="${dist.dir}/prevayler-reference.jar" basedir="${build.classes.dir}">
+        </jar>
 
     </target>
 

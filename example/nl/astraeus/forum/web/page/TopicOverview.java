@@ -1,6 +1,6 @@
-package nl.astraeus.prevayler.example.forum.web.page;
+package nl.astraeus.forum.web.page;
 
-import nl.astraeus.prevayler.example.forum.model.*;
+import nl.astraeus.forum.model.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -90,7 +90,8 @@ public class TopicOverview extends Page {
         result.put("editing", editing);
         result.put("description", description);
         result.put("controller", this);
-        
+        result.put("member", request.getSession().getAttribute("user"));
+
         return result;
     }
     

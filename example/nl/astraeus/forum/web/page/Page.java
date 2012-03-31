@@ -1,4 +1,4 @@
-package nl.astraeus.prevayler.example.forum.web.page;
+package nl.astraeus.forum.web.page;
 
 import org.apache.commons.io.IOUtils;
 import org.stringtemplate.v4.ST;

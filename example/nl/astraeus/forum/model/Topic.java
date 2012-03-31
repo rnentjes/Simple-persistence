@@ -1,15 +1,12 @@
-package nl.astraeus.prevayler.example.forum.model;
+package nl.astraeus.forum.model;
 
 import nl.astraeus.prevayler.PrevaylerList;
 import nl.astraeus.prevayler.PrevaylerModel;
 import nl.astraeus.prevayler.PrevaylerReference;
 import org.apache.commons.lang.StringEscapeUtils;
-import org.omg.CORBA.PUBLIC_MEMBER;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -89,12 +86,24 @@ public class Topic extends PrevaylerModel {
     }
     
     public String getLastPost() {
-        if (lastPost == null) {
-            lastPost = new Date(0);
+        String result = "never";
+
+        if (lastPost != null || lastPost.getTime() == 0) {
+            DateFormat format = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
+
+            result = format.format(lastPost);
         }
 
-        DateFormat format = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
+        return result;
+    }
 
-        return format.format(lastPost);
+    public Long getLastPostMilli() {
+        long result = 0;
+
+        if (lastPost != null) {
+            result = lastPost.getTime();
+        }
+
+        return result;
     }
 }

@@ -1,4 +1,4 @@
-package nl.astraeus.prevayler.example.forum.model;
+package nl.astraeus.forum.model;
 
 import nl.astraeus.prevayler.Filter;
 import nl.astraeus.prevayler.PrevaylerDao;

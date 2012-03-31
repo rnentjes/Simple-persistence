@@ -3,9 +3,7 @@ package nl.astraeus.prevayler;
 import org.prevayler.Transaction;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * StoreModelTransaction
@@ -18,13 +16,20 @@ public final class PrevaylerTransaction implements Serializable, Transaction {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<PrevaylerModel> store = new LinkedList<PrevaylerModel>();
-    private List<PrevaylerModel> remove = new LinkedList<PrevaylerModel>();
+	private Set<PrevaylerModel> store = new HashSet<PrevaylerModel>();
+    private Set<PrevaylerModel> remove = new HashSet<PrevaylerModel>();
 
     PrevaylerTransaction() {}
     
     void store(PrevaylerModel ... models) {
         for (PrevaylerModel model : models) {
+            if (remove.contains(model)) {
+                throw new IllegalStateException("Object "+model+" already marked for removal in transaction.");
+            }
+
+            PrevaylerStore.get().setLastUpdateField(model);
+            PrevaylerStore.get().setSavedField(model, true);
+
             store.add(model);
         }
     }
@@ -35,15 +40,17 @@ public final class PrevaylerTransaction implements Serializable, Transaction {
                 store.remove(model);
             }
 
+            PrevaylerStore.get().setSavedField(model, false);
+
             remove.add(model);
         }
     }
     
-    List<PrevaylerModel> getStored() {
+    Collection<PrevaylerModel> getStored() {
         return store;
     }
-    
-    List<PrevaylerModel> getRemoved() {
+
+    Collection<PrevaylerModel> getRemoved() {
         return remove;
     }
 

@@ -1,4 +1,4 @@
-package nl.astraeus.prevayler.example.forum.web;
+package nl.astraeus.forum.web;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;

@@ -5,6 +5,8 @@ import org.prevayler.PrevaylerFactory;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.nio.channels.ClosedSelectorException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -15,9 +17,11 @@ import java.util.concurrent.TimeUnit;
  * Time: 7:24 PM
  */
 public class PrevaylerStore {
-    public final static String SAFEMODE       = "safemode";
-    public final static String AUTOCOMMIT     = "autocommit";
-    public final static String DATA_DIRECTORY = "dataDirectory";
+    public final static String SAFEMODE            = "safemode";
+    public final static String AUTOCOMMIT          = "autocommit";
+    public final static String DATA_DIRECTORY      = "dataDirectory";
+    public final static String FILE_AGE_THRESHOLD  = "fileAgeThreshold";
+    public final static String FILE_SIZE_THRESHOLD = "fileSizeThreshold";
 
     private final static PrevaylerStore instance = new PrevaylerStore();
     
@@ -49,12 +53,24 @@ public class PrevaylerStore {
         long nano = System.nanoTime();
         
         try {
-            if ("true".equals(System.getProperty(SAFEMODE))) {
-                safemode = true;
+            if ("false".equals(System.getProperty(SAFEMODE))) {
+                safemode = false;
             }
 
-            if ("false".equals(System.getProperty(AUTOCOMMIT))) {
-                autocommit = false;
+            if ("true".equals(System.getProperty(AUTOCOMMIT))) {
+                autocommit = true;
+            }
+
+            if (System.getProperty(DATA_DIRECTORY) != null) {
+                dataDirectory = System.getProperty(DATA_DIRECTORY);
+            }
+
+            if (System.getProperty(FILE_AGE_THRESHOLD) != null) {
+                fileAgeThreshold = Long.parseLong(System.getProperty(FILE_AGE_THRESHOLD));
+            }
+
+            if (System.getProperty(FILE_SIZE_THRESHOLD) != null) {
+                fileSizeThreshold = Long.parseLong(System.getProperty(FILE_SIZE_THRESHOLD));
             }
 
             PrevaylerFactory factory = new PrevaylerFactory();
@@ -84,6 +100,10 @@ public class PrevaylerStore {
     public PrevaylerTransaction getTransaction() {
         return transactions.get();
     }
+
+    public static boolean transactionActive() {
+        return get().getTransaction() != null;
+    }
     
     private void setTransaction(PrevaylerTransaction transaction) {
         transactions.set(transaction);
@@ -107,6 +127,28 @@ public class PrevaylerStore {
         }
 
         // todo: add unstored references to the transaction
+        /* to much magic, probably better to let developer handle this
+        try {
+            for (PrevaylerModel m : getTransaction().getStored()) {
+                for (Field field : ReflectHelper.get().getReferenceFieldsFromClass(m.getClass())) {
+                    PrevaylerReference ref = (PrevaylerReference)field.get(m);
+                    PrevaylerModel model = ref.get();
+                    if (model != null && !getSavedFieldValue(model)) {
+                        // add to stored
+                    }
+                }
+                for (Field field : ReflectHelper.get().getListFieldsFromClass(m.getClass())) {
+                    PrevaylerList list = (PrevaylerList)field.get(m);
+                    for (PrevaylerModel model : list) {
+                        if (model != null && !getSavedFieldValue(model)) {
+                            // add to stored
+                        }
+                    }
+                }
+            }
+        } catch (IllegalAccessException e) {
+            throw new IllegalStateException(e);
+        }*/
 
         prevayler.execute(getTransaction());
         transactions.remove();
@@ -191,54 +233,9 @@ public class PrevaylerStore {
         return result;
     }
 
-    // ??
-    public <M extends PrevaylerModel> void assertIsStored(M model) {
-        if (!getSavedFieldValue(model)) {
-            store(model);
-        }
-    }
-
     /**
      * Store functions
-     *
-     * @param model
-     * @param <M>
      */
-    public <M extends PrevaylerModel> void store(PrevaylerModel ... model) {
-        if (getTransaction() == null) {
-            if (!autocommit) {
-                throw new IllegalStateException("No transaction found and autocommit is disabled!");
-            }
-
-            for (PrevaylerModel m : model) {
-                setLastUpdateField(m);
-            }
-
-            prevayler.execute(new StoreBatchTransaction(model));
-
-            for (PrevaylerModel m : model) {
-                setSavedField(m, true);
-            }
-        } else {
-            getTransaction().store(model);
-        }
-    }
-
-    public <M extends PrevaylerModel> void remove(M ... models) {
-        if (getTransaction() == null) {
-            if (!autocommit) {
-                throw new IllegalStateException("No transaction found and autocommit is disabled!");
-            }
-
-            for (PrevaylerModel model : models) {
-                prevayler.execute(new RemoveModelTransaction<PrevaylerModel>(model));
-                
-                setSavedField(model, false);
-            }
-        } else {
-            getTransaction().remove(models);
-        }
-    }
 
     private Field getSavedField() {
         return getField(_prevayler_saved, "_prevayler_saved");
@@ -267,7 +264,7 @@ public class PrevaylerStore {
         return result;
     }
 
-    private void setSavedField(PrevaylerModel model, boolean value) {
+    void setSavedField(PrevaylerModel model, boolean value) {
         Field field = getSavedField();
 
         try {
@@ -277,7 +274,7 @@ public class PrevaylerStore {
         }
     }
 
-    private void setLastUpdateField(PrevaylerModel model) {
+    void setLastUpdateField(PrevaylerModel model) {
         Field field = getLastUpdateField();
 
         try {
@@ -287,7 +284,7 @@ public class PrevaylerStore {
         }
     }
 
-    private void setSelectForUpdateField(PrevaylerModel model, boolean value) {
+    void setSelectForUpdateField(PrevaylerModel model, boolean value) {
         Field field = getSelectForUpdateField();
 
         try {
@@ -297,7 +294,7 @@ public class PrevaylerStore {
         }
     }
 
-    private boolean getSavedFieldValue(PrevaylerModel model) {
+    boolean getSavedFieldValue(PrevaylerModel model) {
         Field field = getSavedField();
 
         try {
@@ -311,5 +308,16 @@ public class PrevaylerStore {
         PrevalentSystem ps = (PrevalentSystem)prevayler.prevalentSystem();
 
         return ps.getDataStore().keySet();
+    }
+
+    public Map<Class<? extends PrevaylerModel>, Integer> getObjectTypeMap() {
+        Map<Class<? extends PrevaylerModel>, Integer> result = new HashMap<Class<? extends PrevaylerModel>, Integer>();
+        PrevalentSystem ps = (PrevalentSystem)prevayler.prevalentSystem();
+
+        for (Class cls : ps.getDataStore().keySet()) {
+            result.put(cls, ps.getDataStore().get(cls).size());
+        }
+
+        return result;
     }
 }

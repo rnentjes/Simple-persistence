@@ -148,33 +148,65 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
         return (Collection<? extends M>)PrevaylerStore.get().getModelMap(getModelClass()).values();
     }
 
-    public void store(M model) {
-        if (PrevaylerStore.get().getTransaction() != null) {
-            PrevaylerStore.get().getTransaction().store(model);
+    public void store(final M model) {
+        if (!PrevaylerStore.transactionActive()) {
+            if (PrevaylerStore.get().isAutocommit()) {
+                new Transaction() {
+
+                    @Override
+                    public void execute() {
+                        PrevaylerStore.get().getTransaction().store(model);
+                    }
+                };
+            } else {
+                throw new IllegalStateException("No transaction found and not in autocommit mode.");
+            }
         } else {
-            PrevaylerStore.get().store(model);
+            PrevaylerStore.get().getTransaction().store(model);
         }
     }
 
-    public <A extends PrevaylerModel> void store(A ... model) {
-        if (PrevaylerStore.get().getTransaction() != null) {
+    public <A extends PrevaylerModel> void store(final A ... model) {
+        if (!PrevaylerStore.transactionActive()) {
+            if (PrevaylerStore.get().isAutocommit()) {
+                new Transaction() {
+
+                    @Override
+                    public void execute() {
+                        PrevaylerStore.get().getTransaction().store(model);
+                    }
+                };
+            } else {
+                throw new IllegalStateException("No transaction found and not in autocommit mode.");
+            }
+        } else {
             // todo: warn, no need to use this function in a transaction
             PrevaylerStore.get().getTransaction().store(model);
-        } else {
-            PrevaylerStore.get().store(model);
         }
     }
 
     public void remove(Long key) {
         M model = find(key);
+
         remove(model);
     }
 
-    public void remove(M model) {
-        if (PrevaylerStore.get().getTransaction() != null) {
-            PrevaylerStore.get().getTransaction().remove(model);
+    public void remove(final M model) {
+        if (!PrevaylerStore.transactionActive()) {
+            if (PrevaylerStore.get().isAutocommit()) {
+                new Transaction() {
+
+                    @Override
+                    public void execute() {
+                        PrevaylerStore.get().getTransaction().remove(model);
+                    }
+                };
+            } else {
+                throw new IllegalStateException("No transaction found and not in autocommit mode.");
+            }
         } else {
-            PrevaylerStore.get().remove(model);
+            // todo: warn, no need to use this function in a transaction
+            PrevaylerStore.get().getTransaction().remove(model);
         }
     }
 

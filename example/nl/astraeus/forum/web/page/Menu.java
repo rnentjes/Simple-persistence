@@ -1,9 +1,6 @@
-package nl.astraeus.prevayler.example.forum.web.page;
-
-import nl.astraeus.prevayler.example.forum.model.Member;
+package nl.astraeus.forum.web.page;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
