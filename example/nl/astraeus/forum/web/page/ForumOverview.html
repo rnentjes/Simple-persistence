@@ -1,6 +1,9 @@
-<table class="table">
+<table class="table" id="overview">
     <thead>
     <tr>
+        $if(member.superuser)$
+        <th>Id</th>
+        $endif$
         <th>Topic</th>
         <th>Date</th>
         <th>Started by</th>
@@ -16,6 +19,9 @@
     <tbody>
     $topics:{topic|
     <tr>
+        $if(member.superuser)$
+        <td>$topic.id$</td>
+        $endif$
         <td><a onclick="submit('comment', '$topic.id$')">$topic.shortTitle$</a></td>
         <td>$topic.date$</td>
         $if(topic.creator)$
@@ -37,6 +43,22 @@
     </tbody>
 </table>
 
+<div class="pager">
+    <ul>
+        $if(controller.hasPrevious)$
+        <li><a onclick="submit('previous')">Prev</a></li>
+        $endif$
+        $controller.pageNumber$ / $controller.numberOfPages$ ($controller.numberOfResults$)
+        $if(controller.hasNext)$
+        <li><a onclick="submit('next')">Next</a></li>
+        $endif$
+    </ul>
+</div>
+
 $if(member.escapedNickName)$
 <a class="btn btn-primary" onclick="submit('new')">New topic</a>
+$endif$
+
+$if(controller.more)$
+<a class="btn pull-right" onclick="submit('more')">More...</a>
 $endif$

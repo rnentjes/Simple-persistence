@@ -3,10 +3,13 @@ package nl.astraeus.forum.model;
 import nl.astraeus.prevayler.PrevaylerList;
 import nl.astraeus.prevayler.PrevaylerModel;
 import nl.astraeus.prevayler.PrevaylerReference;
+import nl.astraeus.prevayler.PrevaylerSortedSet;
 import org.apache.commons.lang.StringEscapeUtils;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -20,7 +23,7 @@ public class Topic extends PrevaylerModel {
     private long date = System.currentTimeMillis();
     private String title = "";
     private PrevaylerReference<Member> creator = new PrevaylerReference<Member>(Member.class);
-    private PrevaylerList<Comment> comments = new PrevaylerList<Comment>(Comment.class);
+    private PrevaylerList<Comment> comments;
     private int views;
     private Date lastPost;
 
@@ -65,9 +68,22 @@ public class Topic extends PrevaylerModel {
         return creator.get();
     }
 
+    private static class CommentComparator implements Comparator<Comment>, Serializable {
+        public int compare(Comment o1, Comment o2) {
+            if (o1 == null || o1.getDate() == null) {
+                return 1;
+            } else if (o2 == null || o2.getDate() == null) {
+                return -1;
+            } else {
+                return o1.getDate().compareTo(o2.getDate());
+            }
+        }
+    }
+
     public PrevaylerList<Comment> getComments() {
         if (comments == null) {
             comments = new PrevaylerList<Comment>(Comment.class);
+            // comments = new PrevaylerSortedSet<Comment>(Comment.class, new CommentComparator());
         }
 
         return comments;

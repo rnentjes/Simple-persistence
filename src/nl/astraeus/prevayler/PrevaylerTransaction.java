@@ -33,6 +33,10 @@ public final class PrevaylerTransaction implements Serializable, Transaction {
             PrevaylerStore.get().setLastUpdateField(model);
             PrevaylerStore.get().setSavedField(model, true);
 
+            if (store.contains(model)) {
+                store.remove(model);
+            }
+
             store.add(model);
         }
     }

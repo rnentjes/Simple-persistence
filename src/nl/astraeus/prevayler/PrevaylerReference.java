@@ -62,7 +62,7 @@ public class PrevaylerReference<M extends PrevaylerModel> implements Serializabl
     }
     
     public String toString() {
-        return String.valueOf(get());
+        return cls.getName()+":"+id;
     }
 
 }

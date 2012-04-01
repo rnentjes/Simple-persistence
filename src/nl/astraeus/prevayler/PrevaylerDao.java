@@ -14,6 +14,8 @@ import java.util.*;
  */
 public abstract class PrevaylerDao<M extends PrevaylerModel> {
 
+    private Random random = new Random(System.currentTimeMillis());
+
     public M getNewModelInstance() {
         M instance = null;
 
@@ -46,6 +48,23 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
     @CheckForNull
     public M find(Long pk) {
         return PrevaylerStore.get().find(getModelClass(), pk);
+    }
+
+    @CheckForNull
+    public M findRandom() {
+        if (size() > 0) {
+            int tries = 10;
+
+            while(tries-->0) {
+                int ind = random.nextInt(size());
+                Collection<M> list = find(ind, ind+1);
+                if (!list.isEmpty()) {
+                    return list.iterator().next();
+                }
+            }
+        }
+
+        return null;
     }
 
     public Collection<M> findAll() {

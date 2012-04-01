@@ -1,8 +1,6 @@
 package nl.astraeus.prevayler.reflect;
 
-import nl.astraeus.prevayler.PrevaylerList;
-import nl.astraeus.prevayler.PrevaylerModel;
-import nl.astraeus.prevayler.PrevaylerReference;
+import nl.astraeus.prevayler.*;
 
 import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
@@ -32,6 +30,8 @@ public class ReflectHelper {
     private Map<Class<?>, List<Field>> classFieldCache = new HashMap<Class<?>, List<Field>>();
     private Map<Class<?>, List<Field>> referenceFieldCache = new HashMap<Class<?>, List<Field>>();
     private Map<Class<?>, List<Field>> listFieldCache = new HashMap<Class<?>, List<Field>>();
+    private Map<Class<?>, List<Field>> setFieldCache = new HashMap<Class<?>, List<Field>>();
+    private Map<Class<?>, List<Field>> sortedSetFieldCache = new HashMap<Class<?>, List<Field>>();
     private Map<Class<?>, String> classNameMap = new HashMap<Class<?>, String>();
 
     public String getClassName(Class cls) {
@@ -500,6 +500,58 @@ public class ReflectHelper {
         return result;
     }
 
+    public List<Field> getSetFieldsFromClass(Class<?> typeClass) {
+        List<Field> result = setFieldCache.get(typeClass);
+
+        if (result == null) {
+            result = new LinkedList<Field>();
+
+            do {
+                Field[] fields = typeClass.getDeclaredFields();
+
+                for (Field field : fields) {
+                    if (field.getType().equals(PrevaylerSet.class)) {
+                        field.setAccessible(true);
+
+                        result.add(0, field);
+                    }
+                }
+
+                typeClass = (Class<?>) typeClass.getSuperclass();
+            } while (!typeClass.equals(Object.class));
+
+            setFieldCache.put(typeClass, result);
+        }
+
+        return result;
+    }
+
+    public List<Field> getSortedSetFieldsFromClass(Class<?> typeClass) {
+        List<Field> result = sortedSetFieldCache.get(typeClass);
+
+        if (result == null) {
+            result = new LinkedList<Field>();
+
+            do {
+                Field[] fields = typeClass.getDeclaredFields();
+
+                for (Field field : fields) {
+                    if (field.getType().equals(PrevaylerSortedSet.class)) {
+                        field.setAccessible(true);
+
+                        result.add(0, field);
+                    }
+                }
+
+                typeClass = (Class<?>) typeClass.getSuperclass();
+            } while (!typeClass.equals(Object.class));
+
+            sortedSetFieldCache.put(typeClass, result);
+        }
+
+        return result;
+    }
+
     public String toString() {
         StringBuilder result = new StringBuilder();
 
@@ -562,6 +614,8 @@ public class ReflectHelper {
                 if (ref != null) {
                     PrevaylerReference newRef = new PrevaylerReference(ref.getType(), ref.getId());
                     field.set(target, newRef);
+                } else {
+                    field.set(target, null);
                 }
             }
 
@@ -575,8 +629,41 @@ public class ReflectHelper {
                     }
 
                     field.set(target, newList);
+                } else {
+                    field.set(target, null);
                 }
             }
+
+            for (Field field : getSetFieldsFromClass(target.getClass())) {
+                PrevaylerSet set = (PrevaylerSet) field.get(source);
+                if (set != null) {
+                    PrevaylerSet newSet =  new PrevaylerSet(set.getType());
+
+                    for (Object id : set.getIdSet()) {
+                        newSet.add((Long)id);
+                    }
+
+                    field.set(target, newSet);
+                } else {
+                    field.set(target, null);
+                }
+            }
+
+            for (Field field : getSortedSetFieldsFromClass(target.getClass())) {
+                PrevaylerSortedSet set = (PrevaylerSortedSet) field.get(source);
+                if (set != null) {
+                    PrevaylerSortedSet newSet =  new PrevaylerSortedSet(set.getType(), set.comparator());
+
+                    for (Object id : set.getIdSet()) {
+                        newSet.add((Long)id);
+                    }
+
+                    field.set(target, newSet);
+                } else {
+                    field.set(target, null);
+                }
+            }
+
         } catch (IllegalAccessException e) {
             throw new IllegalStateException(e);
         }

@@ -189,11 +189,15 @@ public class PrevaylerStore {
 
         if (getTransaction() != null) {
             for (PrevaylerModel m : getTransaction().getStored()) {
-                result.put(m.getId(), m);
+                if (m.getClass().equals(cls)) {
+                    result.put(m.getId(), m);
+                }
             }
 
             for (PrevaylerModel m : getTransaction().getRemoved()) {
-                result.remove(m.getId());
+                if (m.getClass().equals(cls)) {
+                    result.remove(m.getId());
+                }
             }
         }
 

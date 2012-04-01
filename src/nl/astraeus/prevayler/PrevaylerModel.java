@@ -14,13 +14,12 @@ import java.io.Serializable;
 public abstract class PrevaylerModel implements Serializable, Cloneable, Comparable {
     public final static long serialVersionUID = 1L;
 
-    private static volatile long nextId;
+    private static volatile long nextId = 1;
 
     static {
         long time = System.currentTimeMillis();
-        long nano = System.nanoTime();
 
-        nextId = time*1000000+nano%1000000;
+        nextId = time*100000;
     }
 
     private long id;
