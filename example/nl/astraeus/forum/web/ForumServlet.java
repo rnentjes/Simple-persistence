@@ -129,6 +129,8 @@ public class ForumServlet extends HttpServlet {
             page = new Diagnostics();
         } else if ("menulogin".equals(req.getParameter("action"))) {
             page = new Login(page);
+        } else if ("menuregister".equals(req.getParameter("action"))) {
+            page = new Registration(page, page);
         } else if ("menulogout".equals(req.getParameter("action"))) {
             session.setAttribute("user", null);
             page = new ForumOverview();

@@ -1,6 +1,5 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -66,6 +65,13 @@
     <script type="text/javascript">
         function submit(action, actionValue) {
             var params = 'ajax=true&action=' + action + '&actionValue=' + actionValue + '&' + $("#form").serialize();
+
+            if(document.selection && document.selection.empty) {
+                document.selection.empty();
+            } else if(window.getSelection) {
+                var sel = window.getSelection();
+                sel.removeAllRanges();
+            }
 
             $("#loading").show();
             $.post("?ts="+new Date().getMilliseconds(), params, function(data) {

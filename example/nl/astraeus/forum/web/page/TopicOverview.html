@@ -14,15 +14,25 @@
 
     $topic.comments:{comment|
     <div class="row-fluid">
-        <div class="span2 alert alert-info">
+        <div class="span2 label label-success"> <!-- alert alert-info -->
             $if(comment.creator.escapedNickName)$
             $comment.creator.escapedNickName$
             $else$
             anonymous
             $endif$
+            <br/>
+            <br/>
+
+            $if(comment.creator.escapedNickName)$
+            <table>
+                <tr><td>Joined:</td><td>$comment.creator.memberSince$</td></tr>
+                <tr><td>Topics:</td><td>$comment.creator.numberOfTopics$</td></tr>
+                <tr><td>Comments:</td><td>$comment.creator.numberOfComments$</td></tr>
+            </table>
+            $endif$
             <!--Sidebar content-->
         </div>
-        <div class="span8 offset2 alert alert-success" style="background-color: #fff;">
+        <div class="span8 offset2 well " >
             $comment.descriptionHtml$
         </div>
     </div>

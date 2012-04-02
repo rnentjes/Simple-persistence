@@ -1,3 +1,6 @@
+<div class="page-header">
+    <h3>Topics</h3>
+</div>
 <table class="table" id="overview">
     <thead>
     <tr>
@@ -46,11 +49,11 @@
 <div class="pager">
     <ul>
         $if(controller.hasPrevious)$
-        <li><a onclick="submit('previous')">Prev</a></li>
+        <li><a onclick="submit('previous')" onmousedown="return false;">Prev</a></li>
         $endif$
         $controller.pageNumber$ / $controller.numberOfPages$ ($controller.numberOfResults$)
         $if(controller.hasNext)$
-        <li><a onclick="submit('next')">Next</a></li>
+        <li><a onclick="submit('next')" onmousedown="return false;">Next</a></li>
         $endif$
     </ul>
 </div>

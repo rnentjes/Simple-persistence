@@ -1,9 +1,6 @@
 package nl.astraeus.forum.model;
 
-import nl.astraeus.prevayler.PrevaylerList;
-import nl.astraeus.prevayler.PrevaylerModel;
-import nl.astraeus.prevayler.PrevaylerReference;
-import nl.astraeus.prevayler.PrevaylerSortedSet;
+import nl.astraeus.prevayler.*;
 import org.apache.commons.lang.StringEscapeUtils;
 
 import java.io.Serializable;
@@ -23,7 +20,7 @@ public class Topic extends PrevaylerModel {
     private long date = System.currentTimeMillis();
     private String title = "";
     private PrevaylerReference<Member> creator = new PrevaylerReference<Member>(Member.class);
-    private PrevaylerList<Comment> comments;
+    private PrevaylerSet<Comment> comments;
     private int views;
     private Date lastPost;
 
@@ -80,9 +77,9 @@ public class Topic extends PrevaylerModel {
         }
     }
 
-    public PrevaylerList<Comment> getComments() {
+    public PrevaylerSet<Comment> getComments() {
         if (comments == null) {
-            comments = new PrevaylerList<Comment>(Comment.class);
+            comments = new PrevaylerSet<Comment>(Comment.class);
             // comments = new PrevaylerSortedSet<Comment>(Comment.class, new CommentComparator());
         }
 

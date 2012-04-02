@@ -30,7 +30,6 @@ public class Diagnostics extends Page {
             System.gc();
         } else if ("generatetopics".equals(request.getParameter("action"))) {
             int topicCounter = topicDao.size() + 1;
-            int commentCounter = commentDao.size() + 1;
             int memberCounter = memberDao.size() + 1;
 
             for (int i = 0; i < 10; i++) {

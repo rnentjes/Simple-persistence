@@ -20,6 +20,7 @@ public class Member extends PrevaylerModel {
     private String email;
     private String password;
     private boolean superuser;
+    private Date created;
     private Date lastPost;
     private PrevaylerList<Comment> comments;
     private PrevaylerList<Topic> topics;
@@ -32,6 +33,7 @@ public class Member extends PrevaylerModel {
         this.nickName = nickName;
         this.password = password;
         this.email = email;
+        this.created = new Date();
     }
 
     public String getNickName() {
@@ -113,7 +115,19 @@ public class Member extends PrevaylerModel {
 
         return result;
     }
-    
+
+    public String getMemberSince() {
+        String result = "unknown";
+
+        if (created != null && created.getTime() > 0) {
+            DateFormat format = new SimpleDateFormat("dd-MMM-yy HH:mm:ss");
+
+            result = format.format(created);
+        }
+
+        return result;
+    }
+
     public int getNumberOfTopics() {
         return getTopics().size();
     }
