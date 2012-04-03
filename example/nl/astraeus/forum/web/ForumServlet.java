@@ -76,33 +76,7 @@ public class ForumServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String uri = req.getRequestURI();
-
-        if (uri.startsWith("/resources/")) {
-            uri = "nl/astraeus/forum/web" + uri;
-            //nl.astraeus.forum.web
-            InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(uri);
-
-            if (in == null) {
-                throw new IllegalStateException("Cannot find resource '" + uri + "'.");
-            }
-
-            if (uri.endsWith("js")) {
-                resp.setContentType("text/javascript");
-            } else if (uri.endsWith("css")) {
-                resp.setContentType("text/css");
-            } else if (uri.endsWith("png")) {
-                resp.setContentType("image/png");
-            } else if (uri.endsWith("jpg")) {
-                resp.setContentType("image/jpeg");
-            }
-
-            IOUtils.copy(in, resp.getOutputStream());
-        } else if (uri.equals("/") || uri.equals("/#")) {
-            doPost(req, resp);
-        } else {
-            resp.setStatus(404);
-        }
+        doPost(req, resp);
     }
 
     @Override

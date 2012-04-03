@@ -27,10 +27,11 @@ public class HttpServer {
 
         server.setHandler(context);
 
-        ServletHolder sh = new ServletHolder(new ForumServlet());
+        ServletHolder resource = new ServletHolder(new ResourceServlet());
+        ServletHolder forum = new ServletHolder(new ForumServlet());
 
-        context.addServlet(sh, "/*");
-
+        context.addServlet(resource, "/resources/*");
+        context.addServlet(forum, "/*");
 
         server.start();
         server.join();
