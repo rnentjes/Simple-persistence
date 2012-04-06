@@ -463,7 +463,7 @@
 
         <jar destfile="${jar.dir}/${project.level}.jar" basedir="${build.classes.dir}">
             <manifest>
-                <attribute name="Main-Class" value="nl.astraeus.forum.web.HttpServer"/>
+                <attribute name="Main-Class" value="nl.astraeus.http.SimpleWebServer"/>
                 <attribute name="Class-Path" value="${manifest.classpath}"/>
             </manifest>
         </jar>
