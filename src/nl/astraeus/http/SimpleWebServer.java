@@ -68,7 +68,7 @@ public class SimpleWebServer extends Thread {
         try {
             //ServerSocket serverSocket = new ServerSocket(8090);
             ServerSocketChannel ssc = ServerSocketChannel.open();
-            InetSocketAddress isa = new InetSocketAddress(8090);
+            InetSocketAddress isa = new InetSocketAddress(8080);
             ssc.socket().bind(isa);
 
             try {
