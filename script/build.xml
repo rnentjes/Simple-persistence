@@ -267,6 +267,7 @@
                debuglevel="lines,vars,source" deprecation="on"
                optimize="on" verbose="false" target="1.5" source="1.5" includeantruntime="false">
             <src path="${src.dir}"/>
+            <src path="${example.dir}"/>
         </javac>
     </target>
 
@@ -286,7 +287,7 @@
     <!-- =================================================================== -->
     <!-- Compile web sources                                                 -->
     <!-- =================================================================== -->
-    <target name="compile" depends="compile-example">
+    <target name="compile" depends="compile-src">
     </target>
 
     <target name="copynonjavafiles-src" depends="prepare">
