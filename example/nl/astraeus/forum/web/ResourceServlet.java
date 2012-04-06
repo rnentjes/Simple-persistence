@@ -33,24 +33,26 @@ public class ResourceServlet extends HttpServlet {
 
         uri = "nl/astraeus/forum/web" + uri;
         //nl.astraeus.forum.web
+        //InputStream in = req.getSession().getServletContext().getResourceAsStream(uri);
         InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(uri);
 
         if (in == null) {
-            resp.setStatus(404);
-            throw new IllegalStateException("Cannot find resource '" + uri + "'.");
-        }
+            resp.sendError(404, "Cannot find resource '" + uri + "'.");
+        } else {
+            if (uri.endsWith("js")) {
+                resp.setContentType("text/javascript");
+            } else if (uri.endsWith("css")) {
+                resp.setContentType("text/css");
+            } else if (uri.endsWith("png")) {
+                resp.setContentType("image/png");
+            } else if (uri.endsWith("jpg")) {
+                resp.setContentType("image/jpeg");
+            } else if (uri.endsWith("gif")) {
+                resp.setContentType("image/gif");
+            }
 
-        if (uri.endsWith("js")) {
-            resp.setContentType("text/javascript");
-        } else if (uri.endsWith("css")) {
-            resp.setContentType("text/css");
-        } else if (uri.endsWith("png")) {
-            resp.setContentType("image/png");
-        } else if (uri.endsWith("jpg")) {
-            resp.setContentType("image/jpeg");
+            IOUtils.copy(in, resp.getOutputStream());
         }
-
-        IOUtils.copy(in, resp.getOutputStream());
     }
 
 }

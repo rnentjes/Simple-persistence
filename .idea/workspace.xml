@@ -1,12 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="672fb554-ea6e-4c7c-a7b9-f2a1844f5605" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/example/nl/astraeus/forum/web/ResourceServlet.java" />
+    <list default="true" id="672fb554-ea6e-4c7c-a7b9-f2a1844f5605" name="Default" comment="Small changes">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/SimpleTemplatePage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/http/AttributeParameterHolder.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/http/HttpMethod.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/http/SimpleHttpRequest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/http/SimpleHttpResponse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/http/SimpleHttpSession.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/http/SimpleRequestThread.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/http/SimpleServletContext.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/http/SimpleServletOutputStream.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/http/SimpleUTF8Writer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/http/SimpleWebServer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/http/TestServlet.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/template/BooleanCondition.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/template/BooleanNotCondition.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/template/Condition.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/template/ForEachPart.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/template/IfNotPart.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/template/IfPart.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/template/ParseException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/template/PlainValuePart.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/template/SimpleTemplate.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/template/StringPart.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/template/TemplatePart.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/template/TemplateToken.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/template/TemplateTokenizer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/template/TokenType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/template/ValuePart.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/template/testtemplate.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/ForumServlet.java" afterPath="$PROJECT_DIR$/example/nl/astraeus/forum/web/ForumServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/HttpServer.java" afterPath="$PROJECT_DIR$/example/nl/astraeus/forum/web/HttpServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TopicOverview.html" afterPath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TopicOverview.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/model/Member.java" afterPath="$PROJECT_DIR$/example/nl/astraeus/forum/model/Member.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/model/Topic.java" afterPath="$PROJECT_DIR$/example/nl/astraeus/forum/model/Topic.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/ResourceServlet.java" afterPath="$PROJECT_DIR$/example/nl/astraeus/forum/web/ResourceServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Diagnostics.html" afterPath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Diagnostics.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Diagnostics.java" afterPath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Diagnostics.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/ForumOverview.html" afterPath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/ForumOverview.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/ForumOverview.java" afterPath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/ForumOverview.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Menu.html" afterPath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Menu.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Menu.java" afterPath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Menu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerTransaction.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerTransaction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/reflect/ReflectHelper.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/prevayler/reflect/ReflectHelper.java" />
     </list>
     <ignored path="Prevayler-Reference.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -17,6 +53,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Prevayler-Reference$HttpServer.ic" NAME="HttpServer Coverage Results" MODIFIED="1333646375443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.astraeus.forum.web.*</FILTER>
+    </SUITE>
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -24,6 +65,21 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/nl/astraeus/http/SimpleServletContext.java" line="57" class="nl.astraeus.http.SimpleServletContext" package="nl.astraeus.http">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="&#13;&#13;JAVA" />
+        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -37,8 +93,8 @@
         <option name="CONDITION_ENABLED" value="false" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
+        <option name="CONDITION" value="&#13;&#13;JAVA" />
+        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -52,49 +108,60 @@
         <option name="CONDITION_ENABLED" value="false" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
+        <option name="CONDITION" value="&#13;&#13;JAVA" />
+        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
     <breakpoint_rules />
-    <ui_properties />
+    <ui_properties>
+      <property name="line_breakpoints_groupByMethods" value="false" />
+      <property name="line_breakpoints_viewId" value="TABLE" />
+      <property name="exception_breakpoints_flattenPackages" value="true" />
+      <property name="method_breakpoints_flattenPackages" value="true" />
+      <property name="field_breakpoints_flattenPackages" value="true" />
+      <property name="exception_breakpoints_groupByMethods" value="false" />
+      <property name="line_breakpoints_groupByClasses" value="true" />
+      <property name="method_breakpoints_viewId" value="TABLE" />
+      <property name="field_breakpoints_groupByMethods" value="false" />
+      <property name="line_breakpoints_flattenPackages" value="true" />
+      <property name="field_breakpoints_groupByClasses" value="true" />
+      <property name="method_breakpoints_groupByClasses" value="true" />
+      <property name="exception_breakpoints_viewId" value="TABLE" />
+      <property name="field_breakpoints_viewId" value="TABLE" />
+      <property name="exception_breakpoints_groupByClasses" value="true" />
+      <property name="method_breakpoints_groupByMethods" value="false" />
+    </ui_properties>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Prevayler-Reference" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ForumOverview.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/ForumOverview.java">
+      <file leaf-file-name="SimpleWebServer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/http/SimpleWebServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="74" selection-start="922" selection-end="922" vertical-scroll-proportion="0.0">
+            <state line="79" column="59" selection-start="2474" selection-end="2474" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ForumOverview.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/ForumOverview.html">
+      <file leaf-file-name="SimpleRequestThread.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/http/SimpleRequestThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="0" selection-start="1715" selection-end="1715" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="225" column="13" selection-start="6430" selection-end="6430" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2010#2018#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TopicOverview.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TopicOverview.html">
+      <file leaf-file-name="Topic.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/model/Topic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="68" selection-start="758" selection-end="758" vertical-scroll-proportion="0.60714287">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Menu.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Menu.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="28" selection-start="985" selection-end="985" vertical-scroll-proportion="0.0">
+            <state line="115" column="31" selection-start="2914" selection-end="2914" vertical-scroll-proportion="0.6388889">
               <folding />
             </state>
           </provider>
@@ -103,52 +170,34 @@
       <file leaf-file-name="ForumServlet.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/ForumServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="8" selection-start="2304" selection-end="2304" vertical-scroll-proportion="0.0">
+            <state line="125" column="33" selection-start="3981" selection-end="3981" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HttpServer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/HttpServer.java">
+      <file leaf-file-name="SimpleHttpResponse.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/http/SimpleHttpResponse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="4" selection-start="267" selection-end="267" vertical-scroll-proportion="0.0">
+            <state line="173" column="0" selection-start="5527" selection-end="5527" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResourceServlet.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/ResourceServlet.java">
+      <file leaf-file-name="SimpleServletOutputStream.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/http/SimpleServletOutputStream.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="5" selection-start="1656" selection-end="1656" vertical-scroll-proportion="0.0">
+            <state line="44" column="0" selection-start="1001" selection-end="1001" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Registration.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Registration.java">
+      <file leaf-file-name="SimpleHttpRequest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/http/SimpleHttpRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="11" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Member.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/model/Member.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="9" selection-start="2971" selection-end="2971" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="head.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/head.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="23" selection-start="2626" selection-end="2626" vertical-scroll-proportion="0.0">
+            <state line="163" column="0" selection-start="5189" selection-end="5189" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -168,30 +217,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerReference.java" />
-        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerList.java" />
-        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerSet.java" />
-        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerSortedSet.java" />
-        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevalentSystem.java" />
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/model/Topic.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/template/PlainValuePart.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/template/ValuePart.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/template/TemplateTokenizer.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/template/BooleanCondition.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/template/testtemplate.html" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/template/IfPart.java" />
+        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Diagnostics.html" />
         <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Diagnostics.java" />
-        <option value="$PROJECT_DIR$/build/classes/nl/astraeus/forum/web/page/Menu.html" />
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Menu.html" />
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/ForumOverview.html" />
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/head.html" />
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/model/Member.java" />
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/ResourceServlet.java" />
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/ForumServlet.java" />
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/HttpServer.java" />
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TopicOverview.html" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/reflect/ReflectHelper.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerTransaction.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/http/SimpleWebServer.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/http/SimpleHttpResponse.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/http/SimpleHttpRequest.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/http/SimpleRequestThread.java" />
+        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/model/Topic.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="419" />
-    <option name="y" value="101" />
-    <option name="width" value="1492" />
-    <option name="height" value="977" />
+    <option name="x" value="691" />
+    <option name="y" value="40" />
+    <option name="width" value="1264" />
+    <option name="height" value="1011" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -294,59 +343,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="example" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="forum" />
+              <option name="myItemId" value="astraeus" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="example" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forum" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="example" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forum" />
+              <option name="myItemId" value="http" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -357,7 +362,7 @@
   <component name="PropertiesComponent">
     <property name="last_directory_selection" value="$PROJECT_DIR$/example" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
@@ -371,123 +376,31 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="nl.astraeus.template" />
+      <recent name="nl.astraeus.http" />
       <recent name="nl.astraeus.forum.web" />
       <recent name="nl.astraeus.prevayler" />
       <recent name="nl.astraeus.forum.main" />
-      <recent name="nl.astraeus.prevayler.example.forum.web.page" />
-      <recent name="nl.astraeus.prevayler.example.forum.model" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/nl/astraeus/http" />
       <recent name="$PROJECT_DIR$/src/nl/astraeus/prevayler/example/forum/web/page" />
     </key>
     <key name="MoveMembersDialog.RECENTS_KEY">
       <recent name="nl.astraeus.util.Util" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="nl.astraeus.http" />
       <recent name="nl.astraeus.forum" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HttpServer">
-    <configuration default="false" name="ShowCompaniesAndEmployeesSafe" type="Application" factoryName="Application" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="nl.astraeus.prevayler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="nl.astraeus.prevayler.ShowCompaniesAndEmployeesSafe" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Prevayler-Reference" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="ShowCompaniesAndEmployeesUnsafe" type="Application" factoryName="Application" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="nl.astraeus.prevayler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="nl.astraeus.prevayler.ShowCompaniesAndEmployeesUnsafe" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Prevayler-Reference" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="TestTransaction" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="nl.astraeus.prevayler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="Prevayler-Reference" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="nl.astraeus.prevayler" />
-      <option name="MAIN_CLASS_NAME" value="nl.astraeus.prevayler.TestTransaction" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Snapshot" type="Application" factoryName="Application" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="nl.astraeus.prevayler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="nl.astraeus.prevayler.Snapshot" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Prevayler-Reference" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Application.SimpleWebServer">
     <configuration default="false" name="CreateForumsAndTopics" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -507,6 +420,106 @@
       <module name="Prevayler-Reference" />
       <envs />
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="SimpleWebServer" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="nl.astraeus.http.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="nl.astraeus.http.SimpleWebServer" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Prevayler-Reference" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="BooleanCondition" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="nl.astraeus.template.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="nl.astraeus.template.BooleanCondition" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Prevayler-Reference" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TemplateTokenizer" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="nl.astraeus.template.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="nl.astraeus.template.TemplateTokenizer" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Prevayler-Reference" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="SimpleTemplate" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="nl.astraeus.template.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="nl.astraeus.template.SimpleTemplate" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Prevayler-Reference" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -530,6 +543,24 @@
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
@@ -566,24 +597,6 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -601,17 +614,6 @@
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
-      <JSDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSDebuggerConfigurationSettings>
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
@@ -641,6 +643,17 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="false" name="HttpServer" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -659,22 +672,24 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Prevayler-Reference" />
       <envs />
+      <RunnerSettings RunnerId="Cover" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="" />
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Cover" />
       <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
     <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Application.ShowCompaniesAndEmployeesSafe" />
-      <item index="1" class="java.lang.String" itemvalue="Application.ShowCompaniesAndEmployeesUnsafe" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.TestTransaction" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Snapshot" />
-      <item index="4" class="java.lang.String" itemvalue="Application.CreateForumsAndTopics" />
+      <item index="0" class="java.lang.String" itemvalue="Application.CreateForumsAndTopics" />
+      <item index="1" class="java.lang.String" itemvalue="Application.SimpleWebServer" />
+      <item index="2" class="java.lang.String" itemvalue="Application.BooleanCondition" />
+      <item index="3" class="java.lang.String" itemvalue="Application.TemplateTokenizer" />
+      <item index="4" class="java.lang.String" itemvalue="Application.SimpleTemplate" />
       <item index="5" class="java.lang.String" itemvalue="Application.HttpServer" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -683,6 +698,9 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value="ALPHA_COMPARATOR" />
+  </component>
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
@@ -763,37 +781,42 @@
       <created>1333399632241</created>
       <updated>1333399632241</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Small changes">
+      <created>1333482328589</created>
+      <updated>1333482328590</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="419" y="101" width="1492" height="977" extended-state="0" />
+    <frame x="691" y="40" width="1264" height="1011" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22746186" sideWeight="0.7121212" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.425731" sideWeight="0.9847645" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22746186" sideWeight="0.7121212" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31264636" sideWeight="0.99917626" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282353" sideWeight="0.50373137" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Kotlin" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Kotlin" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32983682" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19347319" sideWeight="0.4910448" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3344671" sideWeight="0.4910448" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22645429" sideWeight="0.13450292" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18863262" sideWeight="0.32201406" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22645429" sideWeight="0.43157893" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28787878" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18863262" sideWeight="0.35714287" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21065089" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299373" sideWeight="0.6047337" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.483683" sideWeight="0.49701494" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48247662" sideWeight="0.49701494" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -889,90 +912,91 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerDao.java">
+    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/SimpleTemplatePage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="170" column="0" selection-start="4623" selection-end="4623" vertical-scroll-proportion="0.0" />
+        <state line="15" column="22" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerSortedSet.java">
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/template/SimpleTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="9" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.0" />
+        <state line="129" column="26" selection-start="4874" selection-end="4874" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/model/Topic.java">
+    <entry file="jar:///usr/lib/jvm/jdk1.7.0_02/jre/lib/rt.jar!/sun/reflect/Reflection.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="34" selection-start="773" selection-end="773" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/classes/nl/astraeus/forum/web/page/Menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="26" selection-start="1561" selection-end="1694" vertical-scroll-proportion="0.65217394" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/classes/nl/astraeus/forum/web/page/Menu.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+        <state line="38" column="0" selection-start="2368" selection-end="2368" vertical-scroll-proportion="0.85" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Diagnostics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="0" selection-start="2881" selection-end="2881" vertical-scroll-proportion="0.0" />
+        <state line="76" column="43" selection-start="2416" selection-end="2416" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/ForumOverview.java">
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/reflect/ReflectHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="74" selection-start="922" selection-end="922" vertical-scroll-proportion="0.0" />
+        <state line="262" column="60" selection-start="8434" selection-end="8434" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/ForumOverview.html">
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerStore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="0" selection-start="1715" selection-end="1715" vertical-scroll-proportion="0.0" />
+        <state line="151" column="34" selection-start="5119" selection-end="5119" vertical-scroll-proportion="-15.8" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Menu.html">
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerTransaction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="28" selection-start="985" selection-end="985" vertical-scroll-proportion="0.0" />
+        <state line="72" column="9" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Registration.java">
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/util/Util.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="11" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0" />
+        <state line="9" column="3" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/model/Member.java">
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/http/SimpleWebServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="9" selection-start="2971" selection-end="2971" vertical-scroll-proportion="0.0" />
+        <state line="79" column="59" selection-start="2474" selection-end="2474" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/head.html">
+    <entry file="jar:///usr/lib/jvm/jdk1.7.0_02/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="23" selection-start="2626" selection-end="2626" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/ResourceServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="5" selection-start="1656" selection-end="1656" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="721" column="0" selection-start="26865" selection-end="26865" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/ForumServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="8" selection-start="2304" selection-end="2304" vertical-scroll-proportion="0.0">
+        <state line="125" column="33" selection-start="3981" selection-end="3981" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/http/SimpleHttpResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="173" column="0" selection-start="5527" selection-end="5527" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/http/SimpleServletOutputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="0" selection-start="1001" selection-end="1001" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/http/SimpleHttpRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="163" column="0" selection-start="5189" selection-end="5189" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/HttpServer.java">
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/http/SimpleRequestThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="4" selection-start="267" selection-end="267" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="225" column="13" selection-start="6430" selection-end="6430" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2010#2018#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TopicOverview.html">
+    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/model/Topic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="68" selection-start="758" selection-end="758" vertical-scroll-proportion="0.60714287">
+        <state line="115" column="31" selection-start="2914" selection-end="2914" vertical-scroll-proportion="0.6388889">
           <folding />
         </state>
       </provider>

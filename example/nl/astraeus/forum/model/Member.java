@@ -68,6 +68,10 @@ public class Member extends PrevaylerModel {
         return superuser;
     }
 
+    public boolean getSuperuser() {
+        return superuser;
+    }
+
     public void setSuperuser(boolean superuser) {
         this.superuser = superuser;
     }

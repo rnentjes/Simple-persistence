@@ -4,64 +4,60 @@
 <table class="table" id="overview">
     <thead>
     <tr>
-        $if(member.superuser)$
+        @if(member.superuser)@
         <th>Id</th>
-        $endif$
+        @endif@
         <th>Topic</th>
         <th>Date</th>
         <th>Started by</th>
         <th>Replies</th>
         <th>Views</th>
         <th>Last post</th>
-        $if(member.superuser)$
+        @if(member.superuser)@
         <th>
         </th>
-        $endif$
+        @endif@
     </tr>
     </thead>
     <tbody>
-    $topics:{topic|
+    @each(topics as topic)@
     <tr>
-        $if(member.superuser)$
-        <td>$topic.id$</td>
-        $endif$
-        <td><a onclick="submit('comment', '$topic.id$')">$topic.shortTitle$</a></td>
-        <td>$topic.date$</td>
-        $if(topic.creator)$
-        <td>$topic.creator$</td>
-        $else$
+        @if(member.superuser)@
+        <td>@topic.id@</td>
+        @endif@
+        <td><a onclick="submit('comment', '@topic.id@')">@topic.shortTitle@</a></td>
+        <td>@topic.date@</td>
+        @if(topic.creator)@
+        <td>@topic.creator@</td>
+        @else@
         <td>anonymous</td>
-        $endif$
-        <td>$topic.numberOfReplies$</td>
-        <td>$topic.numberOfViews$</td>
-        <td>$topic.lastPost$</td>
-        $if(member.superuser)$
+        @endif@
+        <td>@topic.numberOfReplies@</td>
+        <td>@topic.numberOfViews@</td>
+        <td>@topic.lastPost@</td>
+        @if(member.superuser)@
         <td>
-            <a class="btn btn-mini btn-primary" onclick="submit('edit', '$topic.id$')">edit</a></a>
-            <a class="btn btn-mini btn-primary" onclick="submit('remove', '$topic.id$')">remove</a></a>
+            <a class="btn btn-mini btn-primary" onclick="submit('edit', '@topic.id@')">edit</a></a>
+            <a class="btn btn-mini btn-primary" onclick="submit('remove', '@topic.id@')">remove</a></a>
         </td>
-        $endif$
+        @endif@
     </tr>
-    }$
+    @eachend@
     </tbody>
 </table>
 
 <div class="pager">
     <ul>
-        $if(controller.hasPrevious)$
+        @if(controller.hasPrevious)@
         <li><a onclick="submit('previous')" onmousedown="return false;">Prev</a></li>
-        $endif$
-        $controller.pageNumber$ / $controller.numberOfPages$ ($controller.numberOfResults$)
-        $if(controller.hasNext)$
+        @endif@
+        @controller.pageNumber@ / @controller.numberOfPages@ (@controller.numberOfResults@)
+        @if(controller.hasNext)@
         <li><a onclick="submit('next')" onmousedown="return false;">Next</a></li>
-        $endif$
+        @endif@
     </ul>
 </div>
 
-$if(member.escapedNickName)$
+@if(member.escapedNickName)@
 <a class="btn btn-primary" onclick="submit('new')">New topic</a>
-$endif$
-
-$if(controller.more)$
-<a class="btn pull-right" onclick="submit('more')">More...</a>
-$endif$
+@endif@

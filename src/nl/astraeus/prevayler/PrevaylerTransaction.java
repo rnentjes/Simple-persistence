@@ -72,5 +72,8 @@ public final class PrevaylerTransaction implements Serializable, Transaction {
             ps.remove(model);
         }
 	}
-    
+
+    public boolean hasChanges() {
+        return !store.isEmpty() || !remove.isEmpty();
+    }
 }

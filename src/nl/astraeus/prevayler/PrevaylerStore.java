@@ -149,7 +149,9 @@ public class PrevaylerStore {
             throw new IllegalStateException(e);
         }*/
 
-        prevayler.execute(getTransaction());
+        if (getTransaction().hasChanges()) {
+            prevayler.execute(getTransaction());
+        }
         transactions.remove();
     }
     

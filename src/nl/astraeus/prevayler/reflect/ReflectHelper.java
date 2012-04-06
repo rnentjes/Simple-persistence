@@ -45,7 +45,7 @@ public class ReflectHelper {
 
         return result;
     }
-    
+
     public Class getReturnType(Object object, String field) throws NoSuchMethodException {
         Method getter = findGetMethod(object, field);
 
@@ -59,7 +59,7 @@ public class ReflectHelper {
     private String getFullName(Class c, String name) {
         return ReflectHelper.get().getClassName(c) + "|" + name;
     }
-    
+
     private String getFullName(Object o, String name) {
         return getFullName(o.getClass(), name);
     }
@@ -228,16 +228,70 @@ public class ReflectHelper {
         return result.toString();
     }
 
-    public Object getFieldValue(Object model, String ... fields) {
+
+    public Object getMethodValue(Object model, String... fields) {
+        return getMethodValue(model, 0, fields);
+    }
+
+    @CheckForNull
+    public Object getMethodValue(Object model, int skip, String... fields) {
+        Object result = null;
+
+        try {
+            if (fields.length > (skip + 1)) {
+                Object subModel = this.getMethodValue(model, fields[skip]);
+
+                result = getFieldValue(subModel, ++skip, fields);
+            } else {
+                // work around for: http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4071957
+                if (model instanceof Map.Entry) {
+                    Map.Entry entry = (Map.Entry) model;
+                    if (fields[skip].equals("key")) {
+                        result = entry.getKey();
+                    } else if (fields[skip].equals("value")) {
+                        result = entry.getValue();
+                    }
+                } else {
+                    Method method = findGetMethod(model, fields[skip]);
+
+                    if (method == null) {
+                        throw new IllegalStateException("Can't find method " + fields[skip] + " in model " + model + ".");
+                    }
+
+                    result = method.invoke(model);
+
+                    if (result instanceof PrevaylerReference) {
+                        PrevaylerReference ref = (PrevaylerReference) result;
+
+                        result = ref.get();
+
+                        if (result == null) {
+                            result = ref;
+                        }
+                    }
+                }
+            }
+        } catch (NoSuchMethodException e) {
+            throw new IllegalArgumentException(e);
+        } catch (IllegalAccessException e) {
+            throw new IllegalArgumentException(e);
+        } catch (InvocationTargetException e) {
+            throw new IllegalArgumentException(e);
+        }
+
+        return result;
+    }
+
+    public Object getFieldValue(Object model, String... fields) {
         return getFieldValue(model, 0, fields);
     }
 
     @CheckForNull
-    public Object getFieldValue(Object model, int skip, String ... fields) {
+    public Object getFieldValue(Object model, int skip, String... fields) {
         Object result = null;
 
         try {
-            if (fields.length > (skip+1)) {
+            if (fields.length > (skip + 1)) {
                 Object subModel = this.getFieldValue(model, fields[skip]);
 
                 result = getFieldValue(subModel, ++skip, fields);
@@ -256,7 +310,7 @@ public class ReflectHelper {
 
                     if (ref != null) {
                         result = ref.get();
-                        
+
                         if (result == null) {
                             result = ref;
                         }
@@ -270,15 +324,15 @@ public class ReflectHelper {
         return result;
     }
 
-    public List<Object> getFieldValues(Object model, String ... fields) {
+    public List<Object> getFieldValues(Object model, String... fields) {
         return getFieldValues(model, 0, fields);
     }
 
-    public List<Object> getFieldValues(Object model, int skip, String ... fields) {
+    public List<Object> getFieldValues(Object model, int skip, String... fields) {
         List<Object> result = new LinkedList<Object>();
 
         try {
-            if (fields.length > (skip+1)) {
+            if (fields.length > (skip + 1)) {
                 Object subModel = this.getFieldValue(model, fields[skip]);
 
                 if (subModel instanceof PrevaylerList) {
@@ -290,7 +344,7 @@ public class ReflectHelper {
                     if (subModel != null) {
                         result.addAll(getFieldValues(subModel, ++skip, fields));
                     } else {
-                        System.out.println(model.getClass()+"."+fields[skip]+" == null");
+                        System.out.println(model.getClass() + "." + fields[skip] + " == null");
                     }
                 }
             } else {
@@ -335,11 +389,11 @@ public class ReflectHelper {
 
     public Object invoke(Object object, String methodName, Object... parameters) {
         if (object == null) {
-            throw new IllegalStateException("Impossible to invoke method "+methodName+" on null object.");
+            throw new IllegalStateException("Impossible to invoke method " + methodName + " on null object.");
         }
 
         if (methodName == null) {
-            throw new IllegalStateException("Impossible to invoke null method on object "+object+".");
+            throw new IllegalStateException("Impossible to invoke null method on object " + object + ".");
         }
 
         try {
@@ -373,7 +427,7 @@ public class ReflectHelper {
 
     public Field getField(Object model, String fieldName) {
         if (model == null) {
-            throw new IllegalStateException("Model is null, can't get field "+fieldName + ".");
+            throw new IllegalStateException("Model is null, can't get field " + fieldName + ".");
         }
 
         return getField(model.getClass(), fieldName);
@@ -610,7 +664,7 @@ public class ReflectHelper {
         try {
             for (Field field : getReferenceFieldsFromClass(target.getClass())) {
                 PrevaylerReference ref = (PrevaylerReference) field.get(source);
-                
+
                 if (ref != null) {
                     PrevaylerReference newRef = new PrevaylerReference(ref.getType(), ref.getId());
                     field.set(target, newRef);
@@ -622,10 +676,10 @@ public class ReflectHelper {
             for (Field field : getListFieldsFromClass(target.getClass())) {
                 PrevaylerList list = (PrevaylerList) field.get(source);
                 if (list != null) {
-                    PrevaylerList newList =  new PrevaylerList(list.getType());
+                    PrevaylerList newList = new PrevaylerList(list.getType());
 
                     for (Object id : list.getIdList()) {
-                        newList.add((Long)id);
+                        newList.add((Long) id);
                     }
 
                     field.set(target, newList);
@@ -637,10 +691,10 @@ public class ReflectHelper {
             for (Field field : getSetFieldsFromClass(target.getClass())) {
                 PrevaylerSet set = (PrevaylerSet) field.get(source);
                 if (set != null) {
-                    PrevaylerSet newSet =  new PrevaylerSet(set.getType());
+                    PrevaylerSet newSet = new PrevaylerSet(set.getType());
 
                     for (Object id : set.getIdSet()) {
-                        newSet.add((Long)id);
+                        newSet.add((Long) id);
                     }
 
                     field.set(target, newSet);
@@ -652,10 +706,10 @@ public class ReflectHelper {
             for (Field field : getSortedSetFieldsFromClass(target.getClass())) {
                 PrevaylerSortedSet set = (PrevaylerSortedSet) field.get(source);
                 if (set != null) {
-                    PrevaylerSortedSet newSet =  new PrevaylerSortedSet(set.getType(), set.comparator());
+                    PrevaylerSortedSet newSet = new PrevaylerSortedSet(set.getType(), set.comparator());
 
                     for (Object id : set.getIdSet()) {
-                        newSet.add((Long)id);
+                        newSet.add((Long) id);
                     }
 
                     field.set(target, newSet);

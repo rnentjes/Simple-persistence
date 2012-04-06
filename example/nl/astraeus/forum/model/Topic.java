@@ -20,7 +20,7 @@ public class Topic extends PrevaylerModel {
     private long date = System.currentTimeMillis();
     private String title = "";
     private PrevaylerReference<Member> creator = new PrevaylerReference<Member>(Member.class);
-    private PrevaylerSet<Comment> comments;
+    private PrevaylerList<Comment> comments;
     private int views;
     private Date lastPost;
 
@@ -77,9 +77,9 @@ public class Topic extends PrevaylerModel {
         }
     }
 
-    public PrevaylerSet<Comment> getComments() {
+    public PrevaylerList<Comment> getComments() {
         if (comments == null) {
-            comments = new PrevaylerSet<Comment>(Comment.class);
+            comments = new PrevaylerList<Comment>(Comment.class);
             // comments = new PrevaylerSortedSet<Comment>(Comment.class, new CommentComparator());
         }
 
