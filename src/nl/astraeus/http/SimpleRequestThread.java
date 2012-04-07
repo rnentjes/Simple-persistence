@@ -1,6 +1,8 @@
 package nl.astraeus.http;
 
 import nl.astraeus.util.Util;
+import org.eclipse.jetty.http.HttpHeaders;
+import sun.awt.image.ShortInterleavedRaster;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,9 +15,7 @@ import java.nio.channels.SocketChannel;
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CharsetEncoder;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * User: rnentjes
@@ -69,6 +69,145 @@ public class SimpleRequestThread implements Runnable {
         return result;
     }
 
+    private byte [] getHeader = "GET ".getBytes(charset);
+    private byte [] postHeader = "POST ".getBytes(charset);
+    private byte [] contentLengthHeader = "_ontent-_ength: ".getBytes(charset);
+    private byte [] connectionHeader    = "_onnection: ".getBytes(charset);
+    private byte [] cookieHeader        = "_ookie: ".getBytes(charset);
+    private byte [] contentTypeHeader   = "_ontent-_ype: ".getBytes(charset);
+
+    private String checkMatch(byte[] bytes, int offset, int len, byte [] target) {
+        String result = null;
+        int index = 0;
+        boolean match = true;
+
+        while(match && index < len && index < target.length) {
+            match = bytes[offset+index] == target[index] || target[index] == '_';
+            index++;
+        }
+
+        if (match) {
+            result = new String(bytes, offset + index, len - index, charset);
+        }
+
+        return result;
+    }
+
+    private Map.Entry<HttpHeader, String> findHeader(byte[] bytes, int offset, int len) {
+        Map.Entry<HttpHeader, String> result = null;
+        String test = new String(bytes, offset, len, charset);
+        String header = null;
+        int index = 0;
+        boolean match = false;
+
+        if (len > 5) {
+            if (bytes[offset+3] == 'k') {
+                header = checkMatch(bytes, offset, len, cookieHeader);
+                result = new AbstractMap.SimpleEntry<HttpHeader, String>(HttpHeader.COOKIE, header);
+            }
+
+            if (header == null && len > 9) {
+                if (bytes[offset+9] == 'n') {
+                    header = checkMatch(bytes, offset, len, connectionHeader);
+                    result = new AbstractMap.SimpleEntry<HttpHeader, String>(HttpHeader.CONNECTION, header);
+                }
+
+                if (header == null && bytes[offset+9] == 'y') {
+                    header = checkMatch(bytes, offset, len, contentTypeHeader);
+                    result = new AbstractMap.SimpleEntry<HttpHeader, String>(HttpHeader.CONTENT_TYPE, header);
+                }
+
+                if (header == null && bytes[offset+12] == 't') {
+                    header = checkMatch(bytes, offset, len, contentLengthHeader);
+                    result = new AbstractMap.SimpleEntry<HttpHeader, String>(HttpHeader.CONTENT_LENGTH, header);
+                }
+            }
+        }
+
+        if (header == null) {
+            result = null;
+        }
+
+        return result;
+    }
+
+    private String createString(byte [] bytes, int offset, int len) {
+        return new String(bytes, offset, len, charset);
+    }
+
+    private int readSomeMore(ByteBuffer in) throws IOException {
+        int result;
+
+        in.clear();
+        result = sc.read(in);
+        in.flip();
+
+        return result;
+    }
+
+    private Map<HttpHeader, String> readHeaders(ByteBuffer in, SocketChannel sc) throws IOException {
+        boolean done = false;
+        boolean first = true;
+        Map<HttpHeader, String> headers = new HashMap<HttpHeader, String>();
+
+        while(!done) {
+            boolean found = false;
+
+            while (!found) {
+                Map.Entry<HttpHeader, String> header = null;
+                if (!in.hasRemaining()) {
+                    int bytes = readSomeMore(in);
+
+                    if (bytes == -1) {
+                        found = true;
+                        done = true;
+                    }
+                }
+
+                if (!in.hasRemaining()) {
+                    found = true;
+                }
+
+                for (int p = inBuffer.position(); !found && p < inBuffer.limit(); p++) {
+                    if (p > inBuffer.position() && inarray[p-1] == '\r' && inarray[p] == '\n') {
+                        // found one line
+                        found = true;
+
+                        if ((inBuffer.position() - p) == -1) {
+                            done = true;
+                        } else if (first) {
+                            String postGet = createString(inarray, inBuffer.position(), (p - inBuffer.position()) -1);
+                            if (postGet.startsWith("GET")) {
+                                header = new AbstractMap.SimpleEntry<HttpHeader, String>(HttpHeader.GET, postGet.substring(4));
+                            } else if (postGet.startsWith("POST")) {
+                                header = new AbstractMap.SimpleEntry<HttpHeader, String>(HttpHeader.POST, postGet.substring(5));
+                            }
+                            first = false;
+                        } else {
+                            header = findHeader(inarray, inBuffer.position(), (p - inBuffer.position()) -1);
+                        }
+
+                        inBuffer.position(p + 1);
+                    }
+                }
+
+                /* headers need to fit in only read....
+                if (!found) {
+                    result.append(new String(inarray, inBuffer.position(), inBuffer.limit(), charset));
+                    inBuffer.position(inBuffer.limit());
+                }*/
+
+                if (found) {
+                    if (header != null) {
+                        headers.put(header.getKey(), header.getValue());
+                    }
+                }
+            }
+        }
+
+        return headers;
+    }
+
     private String [] readBlock2(ByteBuffer in, SocketChannel sc) throws IOException {
         boolean done = false;
         int bytes = -1;
@@ -97,6 +236,7 @@ public class SimpleRequestThread implements Runnable {
         return response.toString().split("\r\n");
     }
 
+    /*
     private String [] readHeaders(ByteBuffer in, SocketChannel sc) throws IOException {
         boolean done = false;
         int bytes = -1;
@@ -123,7 +263,7 @@ public class SimpleRequestThread implements Runnable {
         }
 
         return response.toString().split("\r\n");
-    }
+    }*/
 
     private String readRemaining(ByteBuffer in, SocketChannel sc)throws IOException {
         int bytes = -1;
@@ -231,11 +371,8 @@ public class SimpleRequestThread implements Runnable {
                     // found one line
                     found = true;
 
-                    result.append(new String(linebuffer, 0, index-2, charset));
-
-                    /*
                     result.append(new String(inarray, inBuffer.position(), (p - inBuffer.position()) -1, isoCharset));
-                    */
+
                     inBuffer.position(p + 1);
 
                 }
@@ -346,7 +483,7 @@ public class SimpleRequestThread implements Runnable {
                 //List<String> lines = readBlock(inBuffer, sc);
                 //String [] test = readBlock2(inBuffer, sc);
 
-                List<String> lines = readBlock(inBuffer, sc);
+                Map<HttpHeader, String> headers = readHeaders(inBuffer, sc);
 
 //                for (String l : test) {
 //                    lines.add(l);
@@ -359,27 +496,26 @@ public class SimpleRequestThread implements Runnable {
                 SimpleHttpRequest request = null;
                 SimpleHttpResponse response = null;
 
-                if (!lines.isEmpty()) {
-                    String in = lines.get(0);
-                    System.out.println("IN: "+in);
-                    if (in.startsWith("GET")) {
+                if (!headers.isEmpty()) {
+                    String in;
+                    if ((in = headers.get(HttpHeader.GET)) != null) {
                         if (in.endsWith(HTTP_1_1)) {
-                            request = new SimpleHttpRequest(server, HttpMethod.GET, in.substring(4, in.length() - HTTP_1_1.length()), true);
-                            request.readHeaders(lines);
+                            request = new SimpleHttpRequest(server, HttpMethod.GET, in.substring(0, in.length() - HTTP_1_1.length()), true);
+                            request.readHeaders(headers);
                         } else if (in.endsWith(HTTP_1_0)) {
-                            request = new SimpleHttpRequest(server, HttpMethod.GET, in.substring(4, in.length() - HTTP_1_0.length()), false);
-                            request.readHeaders(lines);
+                            request = new SimpleHttpRequest(server, HttpMethod.GET, in.substring(0, in.length() - HTTP_1_0.length()), false);
+                            request.readHeaders(headers);
                         } else {
                             throw new IllegalStateException("Don't know how to handle: [" + in + "]");
                         }
-                    } else if (in.startsWith("POST")) {
+                    } else if ((in = headers.get(HttpHeader.POST)) != null) {
                         if (in.endsWith(HTTP_1_1)) {
-                            request = new SimpleHttpRequest(server, HttpMethod.POST, in.substring(5, in.length() - HTTP_1_1.length()), true);
-                            request.readHeaders(lines);
+                            request = new SimpleHttpRequest(server, HttpMethod.POST, in.substring(0, in.length() - HTTP_1_1.length()), true);
+                            request.readHeaders(headers);
                             request.parseRequestParameters(readCharacters(inBuffer, sc, request.getContentLength()));
                         } else if (in.endsWith(HTTP_1_0)) {
-                            request = new SimpleHttpRequest(server, HttpMethod.POST, in.substring(5, in.length() - HTTP_1_0.length()), false);
-                            request.readHeaders(lines);
+                            request = new SimpleHttpRequest(server, HttpMethod.POST, in.substring(0, in.length() - HTTP_1_0.length()), false);
+                            request.readHeaders(headers);
                             request.parseRequestParameters(readCharacters(inBuffer, sc, request.getContentLength()));
                         } else {
                             throw new IllegalStateException("Don't know how to handle: [" + in + "]");

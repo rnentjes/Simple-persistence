@@ -1,7 +1,5 @@
 package nl.astraeus.http;
 
-import org.eclipse.jetty.http.HttpMethods;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.Cookie;
@@ -11,11 +9,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.nio.ByteBuffer;
-import java.nio.channels.SocketChannel;
 import java.security.Principal;
 import java.util.Enumeration;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -62,22 +57,17 @@ public class SimpleHttpRequest extends AttributeParameterHolder implements HttpS
         return headersRead;
     }
 
-    void readHeaders(List<String> headers) throws IOException {
+    void readHeaders(Map<HttpHeader, String> headers) throws IOException {
         headersRead = true;
 
-        for (int index = 1; index < headers.size(); index++) {
-            String line = headers.get(index).toLowerCase();
-
-            if (line.startsWith("connection:")) {
-                keepAlive = line.endsWith("keep-alive");
-            } else if (line.startsWith("content-length:")) {
-                contentLength = Integer.parseInt(line.substring("content-length:".length()).trim());
-            } else if (line.startsWith("cookie:")) {
-                addCookie(headers.get(index).substring("cookie:".length()).trim());
-            } else if (line.startsWith("content-type:")) {
-                contentType = headers.get(index).substring("content-type:".length()).trim();
-            }
+        keepAlive = headers.get(HttpHeader.CONNECTION) != null;
+        if (headers.get(HttpHeader.CONTENT_LENGTH) != null) {
+            contentLength = Integer.parseInt(headers.get(HttpHeader.CONTENT_LENGTH));
+        } else {
+            contentLength = 0;
         }
+        addCookie(headers.get(HttpHeader.COOKIE));
+        contentType = headers.get(HttpHeader.CONTENT_TYPE);
     }
 
     void parseRequestParameters(String formdata) throws UnsupportedEncodingException {
