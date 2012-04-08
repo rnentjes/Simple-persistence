@@ -86,6 +86,8 @@ public class ForumServlet extends HttpServlet {
         HttpSession session =  req.getSession();
         boolean ajax = "true".equals(req.getParameter("ajax"));
 
+        resp.setContentType("text/html");
+
         Page page = (Page)session.getAttribute("page");
         Page menu = (Page)session.getAttribute("menu");
 
