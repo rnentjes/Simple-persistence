@@ -67,6 +67,15 @@
         </fileset>
     </path>
 
+    <path id="aux.class.path">
+        <fileset dir="${lib.dir}/examples">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${lib.dir}/prevayler">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
     <path id="cobertura.class.path">
         <pathelement location="${test.classes.dir}"/>
         <fileset dir="${lib.dir}/build/junit">
@@ -231,7 +240,7 @@
                   timeout="1200000">
 
             <classpath refid="build.class.path"/>
-            <!-- <auxClasspath path="${web.lib.dir}" /> -->
+            <auxclasspath refid="aux.class.path" />
             <class location="${build.classes.dir}"/>
             <!-- sourcePath path="${src.dir}" /-->
         </findbugs>
