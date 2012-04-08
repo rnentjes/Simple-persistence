@@ -62,9 +62,6 @@
         <fileset dir="${lib.dir}/examples">
             <include name="*.jar"/>
         </fileset>
-        <fileset dir="${lib.dir}/jetty">
-            <include name="*.jar"/>
-        </fileset>
         <fileset dir="${lib.dir}/prevayler">
             <include name="*.jar"/>
         </fileset>
@@ -85,9 +82,6 @@
             <include name="*.jar"/>
         </fileset>
         <fileset dir="${lib.dir}/examples">
-            <include name="*.jar"/>
-        </fileset>
-        <fileset dir="${lib.dir}/jetty">
             <include name="*.jar"/>
         </fileset>
         <fileset dir="${lib.dir}/prevayler">
@@ -441,7 +435,6 @@
 
         <copy todir="${jar.dir}/lib">
             <fileset dir="${lib.dir}" includes="*.jar"/>
-            <fileset dir="${lib.dir}/jetty" includes="*.jar"/>
             <fileset dir="${lib.dir}/examples" includes="*.jar"/>
             <fileset dir="${lib.dir}/prevayler" includes="*.jar"/>
         </copy>
