@@ -1,11 +1,11 @@
-$if(warnings)$
-  $warnings:{warn|
+{if(warnings)}
+  {foreach(warnings as warn}
     <div class="alert">
       <a class="close" data-dismiss="alert">×</a>
-      <strong>Warning!</strong> $warn$
+      <strong>Warning!</strong> {warn}
     </div>
-  }$
-$endif$
+  {eachfor}
+{endif}
 
 <fieldset>
     <legend>Registration</legend>
@@ -13,7 +13,7 @@ $endif$
         <label class="control-label" for="input01">Nickname</label>
 
         <div class="controls">
-            <input type="text" name="nickName" class="input-xlarge" id="input01" value="$member.escapedNickName$">
+            <input type="text" name="nickName" class="input-xlarge" id="input01" value="{member.escapedNickName}">
             <!-- <p class="help-block">Supporting help text</p> -->
         </div>
     </div>
@@ -21,7 +21,7 @@ $endif$
         <label class="control-label" for="input02">Email</label>
 
         <div class="controls">
-            <input type="text" name="email" class="input-xlarge" id="input02" value="$member.escapedEmail$">
+            <input type="text" name="email" class="input-xlarge" id="input02" value="{member.escapedEmail}">
             <!-- <p class="help-block">Supporting help text</p> -->
         </div>
     </div>

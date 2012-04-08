@@ -9,7 +9,7 @@ import java.util.Map;
  * Date: 3/28/12
  * Time: 9:07 PM
  */
-public class Menu extends SimpleTemplatePage {
+public class Menu extends TemplatePage {
 
     @Override
     public Page processRequest(HttpServletRequest request) {

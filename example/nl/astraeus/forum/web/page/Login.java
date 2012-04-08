@@ -12,7 +12,7 @@ import java.util.Map;
  * Date: 3/28/12
  * Time: 8:13 PM
  */
-public class Login extends Page {
+public class Login extends TemplatePage {
 
     private Page previous;
     private MemberDao dao = new MemberDao();

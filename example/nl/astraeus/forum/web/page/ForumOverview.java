@@ -13,7 +13,7 @@ import java.util.Map;
  * Date: 3/28/12
  * Time: 3:23 PM
  */
-public class ForumOverview extends SimpleTemplatePage {
+public class ForumOverview extends TemplatePage {
 
     private TopicDao dao = new TopicDao();
 

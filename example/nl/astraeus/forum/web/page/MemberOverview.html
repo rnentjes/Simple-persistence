@@ -11,14 +11,14 @@
     </tr>
     </thead>
     <tbody>
-    $members:{member|
+    {foreach(members as member)}
     <tr>
-        <td>$member.escapedNickName$</td>
-        <td>$member.escapedEmail$</td>
-        <td>$member.numberOfTopics$</td>
-        <td>$member.numberOfComments$</td>
-        <td>$member.lastPost$</td>
+        <td>{member.escapedNickName}</td>
+        <td>{member.escapedEmail}</td>
+        <td>{member.numberOfTopics}</td>
+        <td>{member.numberOfComments}</td>
+        <td>{member.lastPost}</td>
     </tr>
-    }$
+    {endeach}
     </tbody>
 </table>

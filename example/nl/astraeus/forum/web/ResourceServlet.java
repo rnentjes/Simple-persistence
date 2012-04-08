@@ -23,10 +23,6 @@ import java.io.InputStream;
  */
 public class ResourceServlet extends HttpServlet {
 
-    private String head;
-    private String bottom;
-
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String uri = req.getRequestURI();

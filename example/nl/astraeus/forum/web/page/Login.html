@@ -4,7 +4,7 @@
         <label class="control-label" for="input01">Nickname</label>
 
         <div class="controls">
-            <input type="text" name="nickName" class="input-xlarge" id="input01" value="$member.name$">
+            <input type="text" name="nickName" class="input-xlarge" id="input01" value="{if(member)}{member.name}{endif}">
             <!-- <p class="help-block">Supporting help text</p> -->
         </div>
     </div>

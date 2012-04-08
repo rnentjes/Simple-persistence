@@ -10,14 +10,14 @@ import java.util.Map;
 
 /**
  * User: rnentjes
- * Date: 4/4/12
- * Time: 8:41 PM
+ * Date: 3/28/12
+ * Time: 3:20 PM
  */
-public abstract class SimpleTemplatePage extends Page {
+public abstract class TemplatePage extends Page {
 
     private SimpleTemplate template;
 
-    protected SimpleTemplatePage() {
+    protected TemplatePage() {
         template = getSimpleTemplate(this.getClass());
     }
 
@@ -36,7 +36,7 @@ public abstract class SimpleTemplatePage extends Page {
             try {
                 in = cls.getResourceAsStream(cls.getSimpleName() + ".html");
 
-                result = new SimpleTemplate('@', in);
+                result = SimpleTemplate.readTemplate('{','}', in);
 
                 templateCache.put(cls, result);
             } catch (IOException e) {

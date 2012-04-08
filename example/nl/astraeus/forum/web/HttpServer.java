@@ -1,8 +1,6 @@
 package nl.astraeus.forum.web;
 
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
+import nl.astraeus.http.SimpleWebServer;
 
 /**
  * User: rnentjes
@@ -12,28 +10,12 @@ import org.eclipse.jetty.servlet.ServletHolder;
 public class HttpServer {
     
     public static void main(String [] args) throws Exception {
-        HttpServer server = new HttpServer();
+        SimpleWebServer server = new SimpleWebServer(8080);
 
-        server.startServer(8080);
-    }
-
-    public void startServer(int port) throws Exception {
-        Server server = new Server(port);
-
-        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-
-        context.setMaxFormContentSize(10000000);
-        context.setContextPath("/");
-
-        server.setHandler(context);
-
-        ServletHolder resource = new ServletHolder(new ResourceServlet());
-        ServletHolder forum = new ServletHolder(new ForumServlet());
-
-        context.addServlet(resource, "/resources/*");
-        context.addServlet(forum, "/*");
+        server.addServlet(new ResourceServlet(), "/resources/*");
+        server.addServlet(new ForumServlet(), "/");
 
         server.start();
-        server.join();
     }
+
 }

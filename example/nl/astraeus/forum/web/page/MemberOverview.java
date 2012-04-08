@@ -14,7 +14,7 @@ import java.util.Map;
  * Date: 3/28/12
  * Time: 3:23 PM
  */
-public class MemberOverview extends Page {
+public class MemberOverview extends TemplatePage {
 
     private MemberDao dao = new MemberDao();
 

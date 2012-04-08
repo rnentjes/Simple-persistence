@@ -1,7 +1,7 @@
-Used memory: @userMemory@<br/>
-Free memory: @freeMemory@<br/>
-Total memory: @totalMemory@<br/>
-Max memory: @maxMemory@<br/>
+Used memory: {userMemory}<br/>
+Free memory: {freeMemory}<br/>
+Total memory: {totalMemory}<br/>
+Max memory: {maxMemory}<br/>
 
 
 <br/>
@@ -17,11 +17,11 @@ Max memory: @maxMemory@<br/>
     </tr>
     </thead>
     <tbody>
-    @each(objectMap as entry)@
+    {each(objectMap as entry)}
     <tr>
-        <td>@entry.key@</td>
-        <td>@entry.value@</td>
+        <td>{entry.key}</td>
+        <td>{entry.value}</td>
     </tr>
-    @endeach@
+    {endeach}
     </tbody>
 </table>

@@ -6,13 +6,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="#">Prevayler-Reference Example Forum</a>
+            <a class="brand" href="#">Simple Example Forum</a>
             <div class="nav-collapse">
                 <ul class="nav">
                     <li class=""><a href="#" onclick="submit('menumain');">Forum</a></li>
                 </ul>
 
-                @if(user.superuser)@
+                {if(user.superuser)}
                 <ul class="nav">
                     <li class="dropdown">
                         <a href="#"
@@ -27,15 +27,15 @@
                         </ul>
                     </li>
                 </ul>
-                @endif@
+                {endif}
 
                 <ul class="nav pull-right">
-                    @if(user.escapedNickName)@
-                    <li class=""><a onclick="submit('menulogout');">Logout @user.escapedNickName@</a></li>
-                    @else@
+                    {if(user.escapedNickName)}
+                    <li class=""><a onclick="submit('menulogout');">Logout {user.escapedNickName}</a></li>
+                    {else}
                     <li class=""><a onclick="submit('menulogin');">Login</a></li>
                     <li><a onclick="submit('menuregister');">Register</a></li>
-                    @endif@
+                    {endif}
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

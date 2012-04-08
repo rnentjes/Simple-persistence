@@ -14,7 +14,7 @@ import java.util.Map;
  * Date: 3/28/12
  * Time: 8:13 PM
  */
-public class Registration extends Page {
+public class Registration extends TemplatePage {
 
     private Page previous;
     private Page donePage;

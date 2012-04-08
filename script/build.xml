@@ -485,7 +485,7 @@
 
     <target name="prevayler-example.jar" depends="clean, compile-src, copynonjavafiles-src" description="Create jar distribution dir">
 
-        <jar destfile="${dist.dir}/prevayler-reference.jar" basedir="${build.classes.dir}">
+        <jar destfile="${dist.dir}/prevayler-reference-example.jar" basedir="${build.classes.dir}">
         </jar>
 
     </target>

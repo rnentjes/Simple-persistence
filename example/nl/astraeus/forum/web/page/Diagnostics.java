@@ -14,7 +14,7 @@ import java.util.Random;
  * Date: 3/28/12
  * Time: 3:23 PM
  */
-public class Diagnostics extends SimpleTemplatePage {
+public class Diagnostics extends TemplatePage {
 
     private MemberDao memberDao = new MemberDao();
     private TopicDao topicDao = new TopicDao();

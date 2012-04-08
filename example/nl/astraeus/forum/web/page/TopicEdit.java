@@ -11,7 +11,7 @@ import java.util.Map;
  * Date: 3/28/12
  * Time: 3:23 PM
  */
-public class TopicEdit extends Page {
+public class TopicEdit extends TemplatePage {
 
     private Page previous;
     private Topic topic;
