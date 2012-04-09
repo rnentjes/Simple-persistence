@@ -2,8 +2,69 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="672fb554-ea6e-4c7c-a7b9-f2a1844f5605" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/main/TestCreateComment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/main/TestDataDirectory.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/main/TestShowComments.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/model/Comment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/model/CommentDao.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/model/Forum.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/model/ForumDao.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/model/Member.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/model/MemberDao.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/model/Topic.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/model/TopicDao.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/ForumServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/HttpServer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/ResourceServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/bottom.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/head.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Diagnostics.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Diagnostics.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/ForumOverview.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/ForumOverview.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Login.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Login.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/MemberOverview.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/MemberOverview.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Menu.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Menu.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Page.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Registration.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Registration.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TemplatePage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TopicEdit.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TopicEdit.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TopicOverview.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TopicOverview.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/css/bootstrap-responsive.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/images/loading.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/img/glyphicons-halflings.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/js/bootstrap-alert.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/js/bootstrap-button.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/js/bootstrap-carousel.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/js/bootstrap-collapse.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/js/bootstrap-dropdown.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/js/bootstrap-modal.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/js/bootstrap-popover.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/js/bootstrap-scrollspy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/js/bootstrap-tab.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/js/bootstrap-tooltip.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/js/bootstrap-transition.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/js/bootstrap-typeahead.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/js/html5.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/example/nl/astraeus/forum/web/resources/js/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/examples/commons-io-1.4.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/examples/commons-lang-2.4.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/examples/loremipsum-1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/examples/servlet-api-2.5.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/examples/ssr-0.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/examples/vst-0.2.jar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/build.properties.example" afterPath="$PROJECT_DIR$/script/build.properties.example" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/build.xml" afterPath="$PROJECT_DIR$/script/build.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/default.build.properties" afterPath="$PROJECT_DIR$/script/default.build.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/default.properties" afterPath="$PROJECT_DIR$/script/default.properties" />
     </list>
     <ignored path="Prevayler-Reference.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,8 +149,8 @@
       <property name="field_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByClasses" value="true" />
       <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="exception_breakpoints_groupByClasses" value="true" />
       <property name="field_breakpoints_viewId" value="TABLE" />
+      <property name="exception_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByMethods" value="false" />
     </ui_properties>
   </component>
@@ -98,39 +159,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Page.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Page.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HttpServer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/HttpServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="51" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.properties.example" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/build.properties.example">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="default.build.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/default.build.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="11" selection-start="173" selection-end="173" vertical-scroll-proportion="0.0">
+            <state line="8" column="0" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -139,52 +171,25 @@
       <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="0" selection-start="2140" selection-end="2140" vertical-scroll-proportion="0.5760369">
+            <state line="405" column="0" selection-start="15956" selection-end="15956" vertical-scroll-proportion="0.76301616">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TemplatePage.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TemplatePage.java">
+      <file leaf-file-name="build.properties.example" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/build.properties.example">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="52" selection-start="479" selection-end="527" vertical-scroll-proportion="0.0">
+            <state line="7" column="36" selection-start="182" selection-end="182" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TopicEdit.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TopicEdit.java">
+      <file leaf-file-name="default.properties" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/default.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="43" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TopicOverview.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TopicOverview.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="33" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ResourceServlet.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/ResourceServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="50" selection-start="683" selection-end="683" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ForumServlet.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/ForumServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="132" column="41" selection-start="4133" selection-end="4133" vertical-scroll-proportion="0.0">
+            <state line="20" column="0" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -204,8 +209,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/MemberOverview.html" />
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Diagnostics.java" />
         <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/ForumOverview.java" />
         <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Login.java" />
         <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/MemberOverview.java" />
@@ -217,15 +220,17 @@
         <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/ResourceServlet.java" />
         <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Page.java" />
         <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/HttpServer.java" />
-        <option value="$PROJECT_DIR$/script/default.build.properties" />
         <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/ForumServlet.java" />
+        <option value="$PROJECT_DIR$/script/default.properties" />
+        <option value="$PROJECT_DIR$/script/build.properties.example" />
+        <option value="$PROJECT_DIR$/script/default.build.properties" />
         <option value="$PROJECT_DIR$/script/build.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="484" />
-    <option name="y" value="72" />
+    <option name="x" value="427" />
+    <option name="y" value="109" />
     <option name="width" value="1424" />
     <option name="height" value="1011" />
   </component>
@@ -270,20 +275,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -312,12 +303,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="astraeus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="Prevayler-Reference" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Prevayler-Reference" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -341,9 +342,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -511,6 +512,24 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -544,24 +563,6 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -579,17 +580,6 @@
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
-      <JSDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSDebuggerConfigurationSettings>
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
@@ -616,6 +606,17 @@
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
@@ -794,7 +795,11 @@
       <created>1333914740801</created>
       <updated>1333914740801</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Fix build">
+      <created>1333914956473</created>
+      <updated>1333914956473</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -818,27 +823,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="484" y="72" width="1424" height="1011" extended-state="0" />
+    <frame x="427" y="109" width="1424" height="1011" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2710911" sideWeight="0.49701494" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20203489" sideWeight="0.8233971" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2688414" sideWeight="0.49701494" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20203489" sideWeight="0.6704162" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19235095" sideWeight="0.9721826" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282353" sideWeight="0.50373137" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Kotlin" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32983682" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17660293" sideWeight="0.99050635" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3295838" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.208099" sideWeight="0.99050635" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290398" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21293604" sideWeight="0.23734534" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21293604" sideWeight="0.28008997" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21293604" sideWeight="0.57817775" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21293604" sideWeight="0.3824522" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21065089" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299373" sideWeight="0.6047337" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -885,7 +890,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix build" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clean up the build" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -898,7 +903,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Findbugs warnings" />
     <MESSAGE value="We need bigger posts!" />
     <MESSAGE value="User and counts" />
     <MESSAGE value="Bugfix" />
@@ -923,6 +927,7 @@
     <MESSAGE value="Set content-type" />
     <MESSAGE value="Deleted jetty" />
     <MESSAGE value="Fix build" />
+    <MESSAGE value="Clean up the build" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -941,116 +946,30 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Diagnostics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="45" selection-start="374" selection-end="386" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/ForumOverview.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="47" selection-start="332" selection-end="332" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="39" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/MemberOverview.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="48" selection-start="389" selection-end="389" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="38" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Registration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="46" selection-start="378" selection-end="378" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TopicEdit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="43" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TopicOverview.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="33" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/ResourceServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="50" selection-start="683" selection-end="683" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TemplatePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="52" selection-start="479" selection-end="527" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Page.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/HttpServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="51" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/script/build.properties.example">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="7" column="36" selection-start="182" selection-end="182" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/default.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/default.build.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="11" selection-start="173" selection-end="173" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/nl/astraeus/forum/web/ForumServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="41" selection-start="4133" selection-end="4133" vertical-scroll-proportion="0.0">
+        <state line="8" column="0" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="0" selection-start="2140" selection-end="2140" vertical-scroll-proportion="0.5760369">
+        <state line="405" column="0" selection-start="15956" selection-end="15956" vertical-scroll-proportion="0.76301616">
           <folding />
         </state>
       </provider>
