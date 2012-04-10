@@ -4,12 +4,12 @@ This project is a little addition on prevayler to simplify working with it. When
 
 To get started:
 
-https://github.com/rnentjes/Prevayler-Reference/wiki/Getting-started
+[Getting-started](https://github.com/rnentjes/Prevayler-Reference/wiki/Getting-started)
 
 More technical info:
 
-https://github.com/rnentjes/Prevayler-Reference/wiki/Technical-overview
+[Technical-overview](https://github.com/rnentjes/Prevayler-Reference/wiki/Technical-overview)
 
 You can find the prevayler project here:
 
-https://github.com/jsampson/prevayler
+[Prevayler](https://github.com/jsampson/prevayler)
