@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="672fb554-ea6e-4c7c-a7b9-f2a1844f5605" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleDao.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleDao.java" />
     </list>
     <ignored path="Prevayler-Reference.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -124,10 +125,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="default.build.properties" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="default.build.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/default.build.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="31" selection-start="176" selection-end="176" vertical-scroll-proportion="0.19516729">
+            <state line="8" column="0" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimpleDao.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="129" column="8" selection-start="3304" selection-end="3304" vertical-scroll-proportion="-1.6208179">
               <folding />
             </state>
           </provider>
@@ -155,15 +165,6 @@
         <entry file="file://$PROJECT_DIR$/script/build.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state line="61" column="33" selection-start="1929" selection-end="1929" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SimpleList.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="13" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -202,7 +203,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/ResourceServlet.java" />
         <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Page.java" />
         <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/HttpServer.java" />
         <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/ForumServlet.java" />
@@ -218,6 +218,7 @@
         <option value="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleStore.java" />
         <option value="$PROJECT_DIR$/src/nl/astraeus/persistence/reflect/ReflectHelper.java" />
         <option value="$PROJECT_DIR$/script/default.build.properties" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleDao.java" />
       </list>
     </option>
   </component>
@@ -297,6 +298,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Simple-persistence" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Simpe-persistence" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Simple-persistence" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="astraeus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Simpe-persistence" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Simple-persistence" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="astraeus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="persistence" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -790,7 +831,11 @@
       <created>1334171490307</created>
       <updated>1334171490307</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Rename Prevayler-Reference to Simple-persistence">
+      <created>1334171537132</created>
+      <updated>1334171537132</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -937,13 +982,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/script/build.properties.example">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="27" selection-start="172" selection-end="172" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/Transaction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="22" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0">
@@ -1046,7 +1084,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/default.build.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="31" selection-start="176" selection-end="176" vertical-scroll-proportion="0.19516729">
+        <state line="8" column="0" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="129" column="8" selection-start="3304" selection-end="3304" vertical-scroll-proportion="-1.6208179">
           <folding />
         </state>
       </provider>

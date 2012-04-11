@@ -68,7 +68,7 @@ public abstract class SimpleDao<M extends SimpleModel> {
     }
 
     public Collection<M> findAll() {
-        SimpleList<M> result = new LinkedList<M>();
+        List<M> result = new LinkedList<M>();
 
         if (SimpleStore.get().isSafemode()) {
             result.addAll(getValues());
@@ -101,9 +101,9 @@ public abstract class SimpleDao<M extends SimpleModel> {
 
     public Collection<M> find(Comparator<M> comp, int from, int to) {
         Class<M> cls = getModelClass();
-        SimpleList<M> result = new LinkedList<M>();
+        List<M> result = new LinkedList<M>();
 
-        SimpleList<M> values = new LinkedList<M>();
+        List<M> values = new LinkedList<M>();
 
         values.addAll(getModelValues());
         Collections.sort(values, comp);
@@ -127,7 +127,7 @@ public abstract class SimpleDao<M extends SimpleModel> {
 
     public Collection<M> filter(Filter<M> filter) {
         Class<M> cls = getModelClass();
-        SimpleList<M> result = new LinkedList<M>();
+        List<M> result = new LinkedList<M>();
 
         try {
             for (M m : getModelValues()) {
