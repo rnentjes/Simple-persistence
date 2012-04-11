@@ -2,45 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="672fb554-ea6e-4c7c-a7b9-f2a1844f5605" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleList.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleReference.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleStore.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerSortedSet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/CreateForumsAndTopics.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/JunitTest.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/conf/checkstyle_checks.xml" afterPath="$PROJECT_DIR$/config/checkstyle_checks.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/conf/checkstyletask.properties" afterPath="$PROJECT_DIR$/config/checkstyletask.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/conf/findbug-exclude.xml" afterPath="$PROJECT_DIR$/config/findbug-exclude.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/conf/findbug-include.xml" afterPath="$PROJECT_DIR$/config/findbug-include.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/conf/pmd-ruleset.xml" afterPath="$PROJECT_DIR$/config/pmd-ruleset.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/Filter.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/Filter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/ModelTransaction.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/ModelTransaction.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevalentSystem.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/PrevalentSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerDao.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleDao.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerIndex.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleIndex.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerListener.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerSet.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleSet.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerTransaction.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleTransaction.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/Transaction.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/Transaction.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/reflect/ReflectHelper.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/reflect/ReflectHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/CreateALotOfCompaniesAndEmployees.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/CreateALotOfCompaniesAndEmployees.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/CreateCompaniesAndEmployees.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/CreateCompaniesAndEmployees.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/PrevaylerLoadTest.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/SimplePersistenceLoadTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowCompaniesAndEmployeesSafe.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/ShowCompaniesAndEmployeesSafe.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowCompaniesAndEmployeesUnsafe.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/ShowCompaniesAndEmployeesUnsafe.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowMemoryUsage.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/ShowMemoryUsage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/Snapshot.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/Snapshot.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/TestSafeMode.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/TestSafeMode.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/TestTransaction.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/TestTransaction.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/model/Company.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/model/Company.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/model/CompanyDao.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/model/CompanyDao.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/model/Employee.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/model/Employee.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/model/EmployeeDao.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/model/EmployeeDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/build.xml" afterPath="$PROJECT_DIR$/script/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/default.build.properties" afterPath="$PROJECT_DIR$/script/default.build.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/default.properties" afterPath="$PROJECT_DIR$/script/default.properties" />
     </list>
     <ignored path="Prevayler-Reference.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -165,7 +127,7 @@
       <file leaf-file-name="default.build.properties" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/default.build.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="31" selection-start="176" selection-end="176" vertical-scroll-proportion="0.15328467">
+            <state line="7" column="31" selection-start="176" selection-end="176" vertical-scroll-proportion="0.19516729">
               <folding />
             </state>
           </provider>
@@ -234,6 +196,7 @@
   </component>
   <component name="Git.Settings">
     <option name="LINE_SEPARATORS_CONVERSION" value="ASK" />
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -819,7 +782,15 @@
       <created>1334166889472</created>
       <updated>1334166889473</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Rename Prevayler-Reference to Simple-persistence">
+      <created>1334171456322</created>
+      <updated>1334171456322</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Rename Prevayler-Reference to Simple-persistence">
+      <created>1334171490307</created>
+      <updated>1334171490307</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -849,7 +820,7 @@
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16055046" sideWeight="0.49701494" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24197248" sideWeight="0.49701494" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20188531" sideWeight="0.7901376" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19235095" sideWeight="0.9721826" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -857,13 +828,13 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Kotlin" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912844" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32912844" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28440368" sideWeight="0.99050635" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290398" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2584446" sideWeight="0.14220184" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2584446" sideWeight="0.11353211" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2584446" sideWeight="0.6892202" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2584446" sideWeight="0.54931194" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13761468" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299373" sideWeight="0.6047337" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -1075,7 +1046,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/default.build.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="31" selection-start="176" selection-end="176" vertical-scroll-proportion="0.15328467">
+        <state line="7" column="31" selection-start="176" selection-end="176" vertical-scroll-proportion="0.19516729">
           <folding />
         </state>
       </provider>
