@@ -56,27 +56,6 @@ public class ReflectHelper {
         return c.hashCode() * 7 + name.hashCode();
     }
 
-    private String getFullName(Class c, String name) {
-        return ReflectHelper.get().getClassName(c) + "|" + name;
-    }
-
-    private String getFullName(Object o, String name) {
-        return getFullName(o.getClass(), name);
-    }
-
-    private String getFullName(Object o, String name, Class... parameters) {
-        StringBuilder result = new StringBuilder();
-
-        result.append(getFullName(o, name));
-
-        for (Class c : parameters) {
-            result.append("|");
-            result.append(c.getName());
-        }
-
-        return result.toString();
-    }
-
     private int getFullNameHash(Object o, String name, Class... parameters) {
         int result = o.hashCode();
 
