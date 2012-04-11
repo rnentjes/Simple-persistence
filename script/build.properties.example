@@ -2,7 +2,7 @@
 # root dir
 root.dir=${basedir}/..
 # project settings
-project.name=Prevayler-Reference
+project.name=Simple-persistence
 project.dir=${root.dir}
 
-jar.name=prevayler-reference-0.1.jar
+jar.name=simple-persistence-0.1.jar
