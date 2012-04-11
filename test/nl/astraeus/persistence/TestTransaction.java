@@ -1,10 +1,10 @@
-package nl.astraeus.prevayler;
+package nl.astraeus.persistence;
 
 import junit.framework.Assert;
-import nl.astraeus.prevayler.model.Company;
-import nl.astraeus.prevayler.model.CompanyDao;
-import nl.astraeus.prevayler.model.Employee;
-import nl.astraeus.prevayler.model.EmployeeDao;
+import nl.astraeus.persistence.model.Company;
+import nl.astraeus.persistence.model.CompanyDao;
+import nl.astraeus.persistence.model.Employee;
+import nl.astraeus.persistence.model.EmployeeDao;
 import org.junit.Test;
 
 /**
@@ -19,7 +19,7 @@ public class TestTransaction {
     public void testTransaction() {
         CompanyDao companyDao = new CompanyDao();
 
-        PrevaylerStore.begin();
+        SimpleStore.begin();
 
         Company company = new Company("Company x");
 
@@ -30,7 +30,7 @@ public class TestTransaction {
         Assert.assertEquals(c.getId(), company.getId());
         System.out.println("Found company: "+c); // finds company "x"
 
-        PrevaylerStore.rollback();
+        SimpleStore.rollback();
 
         c = companyDao.find(company.getId());
 
@@ -42,15 +42,15 @@ public class TestTransaction {
         try {
             CompanyDao companyDao = new CompanyDao();
 
-            PrevaylerStore.begin();
+            SimpleStore.begin();
 
             Company company = new Company("Company x");
 
             companyDao.store(company);
 
-            PrevaylerStore.commit();
+            SimpleStore.commit();
 
-            PrevaylerStore.begin();
+            SimpleStore.begin();
 
             Company c = companyDao.find(company.getId());
 
@@ -58,8 +58,8 @@ public class TestTransaction {
 
             companyDao.store(c);
         } finally {
-            if (PrevaylerStore.transactionActive()) {
-                PrevaylerStore.rollback();
+            if (SimpleStore.transactionActive()) {
+                SimpleStore.rollback();
             }
         }
     }
@@ -69,7 +69,7 @@ public class TestTransaction {
         CompanyDao companyDao = new CompanyDao();
         EmployeeDao employeeDao= new EmployeeDao();
 
-        PrevaylerStore.begin();
+        SimpleStore.begin();
 
         Company company = new Company("Company "+Integer.toString(companyDao.size()+1));
         Employee employee1 = new Employee("Employee "+(company.getEmployees().size()+1), company);
@@ -81,9 +81,9 @@ public class TestTransaction {
         employeeDao.store(employee3);
         companyDao.store(company);
 
-        PrevaylerStore.commit();
+        SimpleStore.commit();
 
-        PrevaylerStore.begin();
+        SimpleStore.begin();
 
         Company c = companyDao.find(company.getId());
 
@@ -95,19 +95,19 @@ public class TestTransaction {
 
         companyDao.remove(c);
 
-        PrevaylerStore.commit();
+        SimpleStore.commit();
 
         Assert.assertNotNull(employeeDao.find(employee1.getId()));
         Assert.assertNotNull(employeeDao.find(employee2.getId()));
         Assert.assertNotNull(employeeDao.find(employee3.getId()));
 
-        PrevaylerStore.begin();
+        SimpleStore.begin();
 
         employeeDao.remove(employee1);
         employeeDao.remove(employee2);
         employeeDao.remove(employee3);
 
-        PrevaylerStore.commit();
+        SimpleStore.commit();
 
         Assert.assertNull(employeeDao.find(employee1.getId()));
         Assert.assertNull(employeeDao.find(employee2.getId()));

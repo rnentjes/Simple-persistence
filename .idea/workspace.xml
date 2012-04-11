@@ -2,15 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="672fb554-ea6e-4c7c-a7b9-f2a1844f5605" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/examples.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/jetty.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/script/startServer.sh" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Prevayler-Reference.iml" afterPath="$PROJECT_DIR$/Simple-persistence.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleList.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleReference.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleStore.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerSortedSet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/CreateForumsAndTopics.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/JunitTest.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/conf/checkstyle_checks.xml" afterPath="$PROJECT_DIR$/config/checkstyle_checks.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/conf/checkstyletask.properties" afterPath="$PROJECT_DIR$/config/checkstyletask.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/conf/findbug-exclude.xml" afterPath="$PROJECT_DIR$/config/findbug-exclude.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/conf/findbug-include.xml" afterPath="$PROJECT_DIR$/config/findbug-include.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/conf/pmd-ruleset.xml" afterPath="$PROJECT_DIR$/config/pmd-ruleset.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/Filter.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/Filter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/ModelTransaction.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/ModelTransaction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevalentSystem.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/PrevalentSystem.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerDao.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerIndex.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleIndex.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerListener.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleListener.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerSet.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleSet.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/PrevaylerTransaction.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleTransaction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/Transaction.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/Transaction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/nl/astraeus/prevayler/reflect/ReflectHelper.java" afterPath="$PROJECT_DIR$/src/nl/astraeus/persistence/reflect/ReflectHelper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/CreateALotOfCompaniesAndEmployees.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/CreateALotOfCompaniesAndEmployees.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/CreateCompaniesAndEmployees.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/CreateCompaniesAndEmployees.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/PrevaylerLoadTest.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/SimplePersistenceLoadTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowCompaniesAndEmployeesSafe.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/ShowCompaniesAndEmployeesSafe.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowCompaniesAndEmployeesUnsafe.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/ShowCompaniesAndEmployeesUnsafe.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/ShowMemoryUsage.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/ShowMemoryUsage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/Snapshot.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/Snapshot.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/TestSafeMode.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/TestSafeMode.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/TestTransaction.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/TestTransaction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/model/Company.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/model/Company.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/model/CompanyDao.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/model/CompanyDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/model/Employee.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/model/Employee.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/nl/astraeus/prevayler/model/EmployeeDao.java" afterPath="$PROJECT_DIR$/test/nl/astraeus/persistence/model/EmployeeDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/build.properties.example" afterPath="$PROJECT_DIR$/script/build.properties.example" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/build.xml" afterPath="$PROJECT_DIR$/script/build.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/default.build.properties" afterPath="$PROJECT_DIR$/script/default.build.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/default.properties" afterPath="$PROJECT_DIR$/script/default.properties" />
     </list>
     <ignored path="Prevayler-Reference.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -105,28 +135,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="default.build.properties" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/script/default.build.properties">
+      <file leaf-file-name="SimpleStore.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleStore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="27" selection-start="172" selection-end="172" vertical-scroll-proportion="0.19774011">
+            <state line="50" column="0" selection-start="1541" selection-end="1541" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/build.xml">
+      <file leaf-file-name="ReflectHelper.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/reflect/ReflectHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="428" column="65" selection-start="16910" selection-end="16910" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.properties.example" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script/build.properties.example">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="27" selection-start="172" selection-end="172" vertical-scroll-proportion="0.0">
+            <state line="495" column="28" selection-start="15813" selection-end="15813" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -135,7 +156,70 @@
       <file leaf-file-name="default.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/default.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="0" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0">
+            <state line="7" column="32" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default.build.properties" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/script/default.build.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="31" selection-start="176" selection-end="176" vertical-scroll-proportion="0.15328467">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrevalentSystem.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/PrevalentSystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="13" selection-start="353" selection-end="353" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimpleIndex.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleIndex.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="8" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/build.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="61" column="33" selection-start="1929" selection-end="1929" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimpleList.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="13" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimpleTransaction.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleTransaction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="45" column="40" selection-start="1219" selection-end="1219" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="List.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar:///usr/lib/jvm/jdk1.7.0_02/src.zip!/java/util/List.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="475" column="9" selection-start="21397" selection-end="21397" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -155,27 +239,27 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Login.java" />
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/MemberOverview.java" />
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Menu.java" />
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Registration.java" />
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TemplatePage.java" />
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TopicEdit.java" />
-        <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/TopicOverview.java" />
         <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/ResourceServlet.java" />
         <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/page/Page.java" />
         <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/HttpServer.java" />
         <option value="$PROJECT_DIR$/example/nl/astraeus/forum/web/ForumServlet.java" />
-        <option value="$PROJECT_DIR$/script/default.properties" />
-        <option value="$PROJECT_DIR$/script/build.xml" />
         <option value="$PROJECT_DIR$/script/build.properties.example" />
-        <option value="$PROJECT_DIR$/script/default.build.properties" />
         <option value="$PROJECT_DIR$/script/startServer.sh" />
+        <option value="$PROJECT_DIR$/script/build.xml" />
+        <option value="$PROJECT_DIR$/script/default.properties" />
+        <option value="$PROJECT_DIR$/test/nl/astraeus/persistence/ShowMemoryUsage.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/persistence/PrevaylerSortedSet.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/persistence/PrevaylerSortedList.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/persistence/PrevaylerIndex.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleIndex.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleStore.java" />
+        <option value="$PROJECT_DIR$/src/nl/astraeus/persistence/reflect/ReflectHelper.java" />
+        <option value="$PROJECT_DIR$/script/default.build.properties" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="592" />
+    <option name="x" value="590" />
     <option name="y" value="70" />
     <option name="width" value="1321" />
     <option name="height" value="994" />
@@ -210,11 +294,11 @@
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
+              <option name="myItemId" value="Simpe-persistence" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Prevayler-Reference" />
+              <option name="myItemId" value="Simple-persistence" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -280,11 +364,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="nl.astraeus.persistence" />
       <recent name="nl.astraeus.forum.web.page" />
       <recent name="nl.astraeus.template" />
       <recent name="nl.astraeus.http" />
       <recent name="nl.astraeus.forum.web" />
-      <recent name="nl.astraeus.prevayler" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/nl/astraeus/http" />
@@ -298,29 +382,7 @@
       <recent name="nl.astraeus.forum" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HttpServer">
-    <configuration default="false" name="CreateForumsAndTopics" type="Application" factoryName="Application" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="nl.astraeus.prevayler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="nl.astraeus.prevayler.CreateForumsAndTopics" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Prevayler-Reference" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Application.ShowMemoryUsage">
     <configuration default="false" name="SimpleWebServer" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -418,6 +480,28 @@
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ShowMemoryUsage" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="nl.astraeus.persistence.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="nl.astraeus.persistence.ShowMemoryUsage" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Simple-persistence" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -583,12 +667,12 @@
       <method />
     </configuration>
     <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Application.CreateForumsAndTopics" />
-      <item index="1" class="java.lang.String" itemvalue="Application.SimpleWebServer" />
-      <item index="2" class="java.lang.String" itemvalue="Application.BooleanCondition" />
-      <item index="3" class="java.lang.String" itemvalue="Application.TemplateTokenizer" />
-      <item index="4" class="java.lang.String" itemvalue="Application.SimpleTemplate" />
-      <item index="5" class="java.lang.String" itemvalue="Application.HttpServer" />
+      <item index="0" class="java.lang.String" itemvalue="Application.SimpleWebServer" />
+      <item index="1" class="java.lang.String" itemvalue="Application.BooleanCondition" />
+      <item index="2" class="java.lang.String" itemvalue="Application.TemplateTokenizer" />
+      <item index="3" class="java.lang.String" itemvalue="Application.SimpleTemplate" />
+      <item index="4" class="java.lang.String" itemvalue="Application.HttpServer" />
+      <item index="5" class="java.lang.String" itemvalue="Application.ShowMemoryUsage" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -731,7 +815,11 @@
       <created>1333914956473</created>
       <updated>1333914956473</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Rename Prevayler-Reference to Simple-persistence">
+      <created>1334166889472</created>
+      <updated>1334166889473</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -755,14 +843,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="592" y="70" width="1321" height="994" extended-state="0" />
+    <frame x="590" y="70" width="1321" height="994" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36123854" sideWeight="0.49701494" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20203489" sideWeight="0.6704162" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16055046" sideWeight="0.49701494" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20188531" sideWeight="0.7901376" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19235095" sideWeight="0.9721826" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282353" sideWeight="0.50373137" order="7" side_tool="true" content_ui="tabs" />
@@ -770,18 +858,18 @@
       <window_info id="Kotlin" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32912844" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28440368" sideWeight="0.99050635" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290398" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21288295" sideWeight="0.22477064" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2584446" sideWeight="0.14220184" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21288295" sideWeight="0.4059633" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21065089" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2584446" sideWeight="0.6892202" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13761468" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299373" sideWeight="0.6047337" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.208099" sideWeight="0.99050635" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -822,7 +910,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clean up the build" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rename Prevayler-Reference to Simple-persistence" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -835,7 +923,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="We need bigger posts!" />
     <MESSAGE value="User and counts" />
     <MESSAGE value="Bugfix" />
     <MESSAGE value="Lastpost display" />
@@ -860,6 +947,7 @@
     <MESSAGE value="Deleted jetty" />
     <MESSAGE value="Fix build" />
     <MESSAGE value="Clean up the build" />
+    <MESSAGE value="Rename Prevayler-Reference to Simple-persistence" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -878,18 +966,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/script/default.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/build.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="428" column="65" selection-start="16910" selection-end="16910" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/script/build.properties.example">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="27" selection-start="172" selection-end="172" vertical-scroll-proportion="0.0">
@@ -897,9 +973,109 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/Transaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="22" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="389" selection-end="389" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/nl/astraeus/persistence/SimplePersistenceLoadTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="13" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/nl/astraeus/persistence/ShowMemoryUsage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="654" selection-end="654" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/nl/astraeus/persistence/TestTransaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="13" selection-start="355" selection-end="355" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="13" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/jdk1.7.0_02/src.zip!/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="475" column="9" selection-start="21397" selection-end="21397" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleTransaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="40" selection-start="1219" selection-end="1219" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/PrevalentSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="13" selection-start="353" selection-end="353" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleIndex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="8" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="33" selection-start="1929" selection-end="1929" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/SimpleStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="0" selection-start="1541" selection-end="1541" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/astraeus/persistence/reflect/ReflectHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="495" column="28" selection-start="15813" selection-end="15813" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/default.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="32" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/script/default.build.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="27" selection-start="172" selection-end="172" vertical-scroll-proportion="0.19774011">
+        <state line="7" column="31" selection-start="176" selection-end="176" vertical-scroll-proportion="0.15328467">
           <folding />
         </state>
       </provider>

@@ -1,4 +1,4 @@
-package nl.astraeus.prevayler;
+package nl.astraeus.persistence;
 
 import org.prevayler.Transaction;
 
@@ -15,23 +15,23 @@ import java.util.Set;
  * Date: 7/20/11
  * Time: 12:58 PM
  */
-public final class PrevaylerTransaction implements Serializable, Transaction {
+public final class SimpleTransaction implements Serializable, Transaction {
 
 	private static final long serialVersionUID = 1L;
 
-	private Set<PrevaylerModel> store  = new HashSet<PrevaylerModel>();
-    private Set<PrevaylerModel> remove = new HashSet<PrevaylerModel>();
+	private Set<SimpleModel> store  = new HashSet<SimpleModel>();
+    private Set<SimpleModel> remove = new HashSet<SimpleModel>();
 
-    PrevaylerTransaction() {}
+    SimpleTransaction() {}
     
-    void store(PrevaylerModel ... models) {
-        for (PrevaylerModel model : models) {
+    void store(SimpleModel... models) {
+        for (SimpleModel model : models) {
             if (remove.contains(model)) {
                 throw new IllegalStateException("Object "+model+" already marked for removal in transaction.");
             }
 
-            PrevaylerStore.get().setLastUpdateField(model);
-            PrevaylerStore.get().setSavedField(model, true);
+            SimpleStore.get().setLastUpdateField(model);
+            SimpleStore.get().setSavedField(model, true);
 
             if (store.contains(model)) {
                 store.remove(model);
@@ -41,34 +41,34 @@ public final class PrevaylerTransaction implements Serializable, Transaction {
         }
     }
     
-    void remove(PrevaylerModel ... models) {
-        for (PrevaylerModel model : models) {
+    void remove(SimpleModel... models) {
+        for (SimpleModel model : models) {
             if (store.contains(model)) {
                 store.remove(model);
             }
 
-            PrevaylerStore.get().setSavedField(model, false);
+            SimpleStore.get().setSavedField(model, false);
 
             remove.add(model);
         }
     }
     
-    Collection<PrevaylerModel> getStored() {
+    Collection<SimpleModel> getStored() {
         return store;
     }
 
-    Collection<PrevaylerModel> getRemoved() {
+    Collection<SimpleModel> getRemoved() {
         return remove;
     }
 
 	public void executeOn(Object prevalentSystem, Date ignored) {
         PrevalentSystem ps = (PrevalentSystem)prevalentSystem;
         
-        for (PrevaylerModel model : store) {
+        for (SimpleModel model : store) {
             ps.store(model);
         }
         
-        for (PrevaylerModel model : remove) {
+        for (SimpleModel model : remove) {
             ps.remove(model);
         }
 	}

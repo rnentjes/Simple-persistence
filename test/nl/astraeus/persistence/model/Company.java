@@ -1,7 +1,7 @@
-package nl.astraeus.prevayler.model;
+package nl.astraeus.persistence.model;
 
-import nl.astraeus.prevayler.PrevaylerList;
-import nl.astraeus.prevayler.PrevaylerModel;
+import nl.astraeus.persistence.SimpleList;
+import nl.astraeus.persistence.SimpleModel;
 import org.junit.Ignore;
 
 /**
@@ -10,12 +10,12 @@ import org.junit.Ignore;
  * Time: 9:59 PM
  */
 @Ignore
-public class Company extends PrevaylerModel {
+public class Company extends SimpleModel {
     public final static long serialVersionUID = 1L;
     
     private String name;
     private long [] randomData;
-    private PrevaylerList<Employee> employees = new PrevaylerList<Employee>(Employee.class);
+    private SimpleList<Employee> employees = new SimpleList<Employee>(Employee.class);
 
     public Company(String name) {
         this.name = name;
@@ -35,7 +35,7 @@ public class Company extends PrevaylerModel {
         }
     }
 
-    public PrevaylerList<Employee> getEmployees() {
+    public SimpleList<Employee> getEmployees() {
         return employees;
     }
 

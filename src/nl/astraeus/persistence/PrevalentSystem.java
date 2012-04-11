@@ -1,6 +1,6 @@
-package nl.astraeus.prevayler;
+package nl.astraeus.persistence;
 
-import nl.astraeus.prevayler.reflect.ReflectHelper;
+import nl.astraeus.persistence.reflect.ReflectHelper;
 
 import javax.annotation.Nonnull;
 import java.io.Serializable;
@@ -19,27 +19,27 @@ public class PrevalentSystem implements Serializable {
 
     public static final long serialVersionUID = 1468478256843309473L;
 
-    private Map<Class<? extends PrevaylerModel>, Map<Long, PrevaylerModel>> dataStore = new HashMap<Class<? extends PrevaylerModel>, Map<Long, PrevaylerModel>>(250);
+    private Map<Class<? extends SimpleModel>, Map<Long, SimpleModel>> dataStore = new HashMap<Class<? extends SimpleModel>, Map<Long, SimpleModel>>(250);
 
-    //private Map<Class<? extends PrevaylerModel>, List<PrevaylerListener<?>>> listeners;
+    //private Map<Class<? extends SimpleModel>, SimpleList<SimpleListener<?>>> listeners;
 
-    //private Map<Class<? extends PrevaylerModel>, List<PrevaylerIndex<?>>> listeners;
+    //private Map<Class<? extends SimpleModel>, SimpleList<SimpleIndex<?>>> listeners;
 
     /*
      * Class.getName()+id, class, list<id>
      */
-    private Map<String, Map<Class<? extends PrevaylerModel>, Set<Long>>> references = new HashMap<String, Map<Class<? extends PrevaylerModel>, Set<Long>>>();
+    private Map<String, Map<Class<? extends SimpleModel>, Set<Long>>> references = new HashMap<String, Map<Class<? extends SimpleModel>, Set<Long>>>();
 
-    protected Map<Class<? extends PrevaylerModel>, Map<Long, PrevaylerModel>> getDataStore() {
+    protected Map<Class<? extends SimpleModel>, Map<Long, SimpleModel>> getDataStore() {
         return dataStore;
     }
 
     @Nonnull
-    public Map<Long, PrevaylerModel> getModelMap(Class<? extends PrevaylerModel> cls) {
-        Map<Long, PrevaylerModel> result = dataStore.get(cls);
+    public Map<Long, SimpleModel> getModelMap(Class<? extends SimpleModel> cls) {
+        Map<Long, SimpleModel> result = dataStore.get(cls);
         
         if (result == null) {
-            result = new HashMap<Long, PrevaylerModel>();
+            result = new HashMap<Long, SimpleModel>();
             
             dataStore.put(cls, result);
         }
@@ -47,35 +47,35 @@ public class PrevalentSystem implements Serializable {
         return result;
     }
 
-    public <T extends PrevaylerModel> T find(Class<T> cls, long id) {
+    public <T extends SimpleModel> T find(Class<T> cls, long id) {
         T result = (T) getModelMap(cls).get(id);
 
         return result;
     }
 
     /** Functions called from within Transaction to update data model */
-    protected <M extends PrevaylerModel> void store(M objectToStore) {
+    protected <M extends SimpleModel> void store(M objectToStore) {
         System.out.println("Storing: "+objectToStore.getGUID());
         getModelMap(objectToStore.getClass()).put(objectToStore.getId(), objectToStore);
     }
 
     /** Functions called from within Transaction to update data model */
-    protected void remove(PrevaylerModel objectToRemove) {
+    protected void remove(SimpleModel objectToRemove) {
         System.out.println("Removing: "+objectToRemove.getGUID());
         getModelMap(objectToRemove.getClass()).remove(objectToRemove.getId());
     }
 
-    protected void addReferences(PrevaylerModel model) {
+    protected void addReferences(SimpleModel model) {
         // go through the model, add a reference for every object referenced from this one
         try {
             for (Field field : ReflectHelper.get().getFieldsFromClass(model.getClass())) {
-                if (field.getType().equals(PrevaylerReference.class)) {
-                    PrevaylerReference ref = (PrevaylerReference) field.get(model);
+                if (field.getType().equals(SimpleReference.class)) {
+                    SimpleReference ref = (SimpleReference) field.get(model);
 
                     if (!ref.isNull()) {
                         setReference(ref.get(), model.getClass(), model.getId());
                     }
-                } else if (field.getType().equals(PrevaylerList.class)) {
+                } else if (field.getType().equals(SimpleList.class)) {
 
                 }
             }
@@ -85,8 +85,8 @@ public class PrevalentSystem implements Serializable {
 
     }
 
-    protected void setReference(PrevaylerModel model, Class<? extends PrevaylerModel> cls, Long id) {
-        Map<Class<? extends PrevaylerModel>, Set<Long>> map = getReferenceMap(model);
+    protected void setReference(SimpleModel model, Class<? extends SimpleModel> cls, Long id) {
+        Map<Class<? extends SimpleModel>, Set<Long>> map = getReferenceMap(model);
 
         Set<Long> set = map.get(cls);
 
@@ -99,24 +99,24 @@ public class PrevalentSystem implements Serializable {
         set.add(id);
     }
 
-    protected void setReference(PrevaylerModel model, PrevaylerModel other) {
+    protected void setReference(SimpleModel model, SimpleModel other) {
         setReference(model, other.getClass(), other.getId());
    }
 
-    protected void removeReference(PrevaylerModel model) {
+    protected void removeReference(SimpleModel model) {
         references.remove(model.getGUID());
     }
 
-    protected String getReference(PrevaylerModel model) {
+    protected String getReference(SimpleModel model) {
         return ReflectHelper.get().getClassName(model.getClass()) + ":" + model.getIdAsString();
     }
 
-    protected Map<Class<? extends PrevaylerModel>, Set<Long>> getReferenceMap(PrevaylerModel model) {
+    protected Map<Class<? extends SimpleModel>, Set<Long>> getReferenceMap(SimpleModel model) {
         String ref = getReference(model);
-        Map<Class<? extends PrevaylerModel>, Set<Long>> result = references.get(ref);
+        Map<Class<? extends SimpleModel>, Set<Long>> result = references.get(ref);
 
         if (result == null) {
-            result = new HashMap<Class<? extends PrevaylerModel>, Set<Long>>();
+            result = new HashMap<Class<? extends SimpleModel>, Set<Long>>();
 
             references.put(ref, result);
         }

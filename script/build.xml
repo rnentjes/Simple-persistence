@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- build script -->
-<project name="Prevayler-Reference" default="hudson.all" basedir=".">
+<project name="Simple-persistence" default="hudson.all" basedir=".">
     <property file="build.properties"/>
     <property file="default.build.properties"/>
     <property file="default.properties"/>

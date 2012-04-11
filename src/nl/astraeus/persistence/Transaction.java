@@ -1,4 +1,4 @@
-package nl.astraeus.prevayler;
+package nl.astraeus.persistence;
 
 import javax.annotation.CheckForNull;
 
@@ -13,14 +13,14 @@ public abstract class Transaction<T> {
     
     public Transaction() {
         try {
-            PrevaylerStore.begin();
+            SimpleStore.begin();
 
             execute();
 
-            PrevaylerStore.commit();
+            SimpleStore.commit();
         } finally  {
-            if (PrevaylerStore.transactionActive()) {
-                PrevaylerStore.rollback();
+            if (SimpleStore.transactionActive()) {
+                SimpleStore.rollback();
             }
         }
     }

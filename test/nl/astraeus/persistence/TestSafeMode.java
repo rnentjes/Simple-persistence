@@ -1,10 +1,8 @@
-package nl.astraeus.prevayler;
+package nl.astraeus.persistence;
 
-import nl.astraeus.prevayler.model.Company;
-import nl.astraeus.prevayler.model.CompanyDao;
-import nl.astraeus.prevayler.model.Employee;
-import nl.astraeus.prevayler.model.EmployeeDao;
-import nl.astraeus.util.Util;
+import nl.astraeus.persistence.model.Company;
+import nl.astraeus.persistence.model.CompanyDao;
+import nl.astraeus.persistence.model.EmployeeDao;
 import org.junit.Ignore;
 
 /**
@@ -19,7 +17,7 @@ public class TestSafeMode {
     private CompanyDao companyDao = new CompanyDao();
 
     public TestSafeMode() {
-        System.setProperty(PrevaylerStore.SAFEMODE, String.valueOf(true));
+        System.setProperty(SimpleStore.SAFEMODE, String.valueOf(true));
 
         System.out.println(companyDao.size()+" companies.");
 

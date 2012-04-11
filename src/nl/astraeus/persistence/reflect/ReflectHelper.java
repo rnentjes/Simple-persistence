@@ -1,6 +1,6 @@
-package nl.astraeus.prevayler.reflect;
+package nl.astraeus.persistence.reflect;
 
-import nl.astraeus.prevayler.*;
+import nl.astraeus.persistence.*;
 
 import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
@@ -27,11 +27,11 @@ public class ReflectHelper {
 
     private Map<Integer, Method> methodCache = new HashMap<Integer, Method>();
     private Map<Integer, Field> fieldCache = new HashMap<Integer, Field>();
-    private Map<Class<?>, List<Field>> classFieldCache = new HashMap<Class<?>, List<Field>>();
-    private Map<Class<?>, List<Field>> referenceFieldCache = new HashMap<Class<?>, List<Field>>();
-    private Map<Class<?>, List<Field>> listFieldCache = new HashMap<Class<?>, List<Field>>();
-    private Map<Class<?>, List<Field>> setFieldCache = new HashMap<Class<?>, List<Field>>();
-    private Map<Class<?>, List<Field>> sortedSetFieldCache = new HashMap<Class<?>, List<Field>>();
+    private Map<Class<?>, java.util.List> classFieldCache = new HashMap<Class<?>, java.util.List>();
+    private Map<Class<?>, java.util.List> referenceFieldCache = new HashMap<Class<?>, java.util.List>();
+    private Map<Class<?>, java.util.List> listFieldCache = new HashMap<Class<?>, java.util.List>();
+    private Map<Class<?>, java.util.List> setFieldCache = new HashMap<Class<?>, java.util.List>();
+    private Map<Class<?>, java.util.List> sortedSetFieldCache = new HashMap<Class<?>, java.util.List>();
     private Map<Class<?>, String> classNameMap = new HashMap<Class<?>, String>();
 
     public String getClassName(Class cls) {
@@ -260,8 +260,8 @@ public class ReflectHelper {
 
                     result = method.invoke(model);
 
-                    if (result instanceof PrevaylerReference) {
-                        PrevaylerReference ref = (PrevaylerReference) result;
+                    if (result instanceof SimpleReference) {
+                        SimpleReference ref = (SimpleReference) result;
 
                         result = ref.get();
 
@@ -305,8 +305,8 @@ public class ReflectHelper {
 
                 result = field.get(model);
 
-                if (result instanceof PrevaylerReference) {
-                    PrevaylerReference ref = (PrevaylerReference) result;
+                if (result instanceof SimpleReference) {
+                    SimpleReference ref = (SimpleReference) result;
 
                     if (ref != null) {
                         result = ref.get();
@@ -324,20 +324,20 @@ public class ReflectHelper {
         return result;
     }
 
-    public List<Object> getFieldValues(Object model, String... fields) {
+    public java.util.List getFieldValues(Object model, String... fields) {
         return getFieldValues(model, 0, fields);
     }
 
-    public List<Object> getFieldValues(Object model, int skip, String... fields) {
-        List<Object> result = new LinkedList<Object>();
+    public java.util.List getFieldValues(Object model, int skip, String... fields) {
+        java.util.List result = new LinkedList<Object>();
 
         try {
             if (fields.length > (skip + 1)) {
                 Object subModel = this.getFieldValue(model, fields[skip]);
 
-                if (subModel instanceof PrevaylerList) {
+                if (subModel instanceof SimpleList) {
                     ++skip;
-                    for (Object pm : ((PrevaylerList) subModel)) {
+                    for (Object pm : ((SimpleList) subModel)) {
                         result.addAll(getFieldValues(pm, skip, fields));
                     }
                 } else {
@@ -356,8 +356,8 @@ public class ReflectHelper {
 
                 Object tmpResult = field.get(model);
 
-                if (tmpResult instanceof PrevaylerReference) {
-                    tmpResult = ((PrevaylerReference) tmpResult).get();
+                if (tmpResult instanceof SimpleReference) {
+                    tmpResult = ((SimpleReference) tmpResult).get();
                 }
 
                 result.add(tmpResult);
@@ -493,7 +493,7 @@ public class ReflectHelper {
                     result.add(0, field);
                 }
 
-                typeClass = (Class<?>) typeClass.getSuperclass();
+                typeClass = typeClass.getSuperclass();
             } while (!typeClass.equals(Object.class));
 
             classFieldCache.put(typeClass, result);
@@ -512,14 +512,14 @@ public class ReflectHelper {
                 Field[] fields = typeClass.getDeclaredFields();
 
                 for (Field field : fields) {
-                    if (field.getType().equals(PrevaylerReference.class)) {
+                    if (field.getType().equals(SimpleReference.class)) {
                         field.setAccessible(true);
 
                         result.add(0, field);
                     }
                 }
 
-                typeClass = (Class<?>) typeClass.getSuperclass();
+                typeClass = typeClass.getSuperclass();
             } while (!typeClass.equals(Object.class));
 
             referenceFieldCache.put(typeClass, result);
@@ -538,14 +538,14 @@ public class ReflectHelper {
                 Field[] fields = typeClass.getDeclaredFields();
 
                 for (Field field : fields) {
-                    if (field.getType().equals(PrevaylerList.class)) {
+                    if (field.getType().equals(SimpleList.class)) {
                         field.setAccessible(true);
 
                         result.add(0, field);
                     }
                 }
 
-                typeClass = (Class<?>) typeClass.getSuperclass();
+                typeClass = typeClass.getSuperclass();
             } while (!typeClass.equals(Object.class));
 
             listFieldCache.put(typeClass, result);
@@ -564,43 +564,17 @@ public class ReflectHelper {
                 Field[] fields = typeClass.getDeclaredFields();
 
                 for (Field field : fields) {
-                    if (field.getType().equals(PrevaylerSet.class)) {
+                    if (field.getType().equals(SimpleSet.class)) {
                         field.setAccessible(true);
 
                         result.add(0, field);
                     }
                 }
 
-                typeClass = (Class<?>) typeClass.getSuperclass();
+                typeClass = typeClass.getSuperclass();
             } while (!typeClass.equals(Object.class));
 
             setFieldCache.put(typeClass, result);
-        }
-
-        return result;
-    }
-
-    public List<Field> getSortedSetFieldsFromClass(Class<?> typeClass) {
-        List<Field> result = sortedSetFieldCache.get(typeClass);
-
-        if (result == null) {
-            result = new LinkedList<Field>();
-
-            do {
-                Field[] fields = typeClass.getDeclaredFields();
-
-                for (Field field : fields) {
-                    if (field.getType().equals(PrevaylerSortedSet.class)) {
-                        field.setAccessible(true);
-
-                        result.add(0, field);
-                    }
-                }
-
-                typeClass = (Class<?>) typeClass.getSuperclass();
-            } while (!typeClass.equals(Object.class));
-
-            sortedSetFieldCache.put(typeClass, result);
         }
 
         return result;
@@ -625,20 +599,20 @@ public class ReflectHelper {
     }
 
     /*
-    public PrevaylerDao getDao(Object model, String field) {
+    public SimpleDao getDao(Object model, String field) {
         Object object = getFieldValue(model, field);
         Dao dao = null;
         
         if (object == null) {
             Class cls = getField(model, field).getType();
             
-            if (cls.equals(PrevaylerReference.class)) {
-                throw new IllegalStateException("PrevaylerReference should never be null ("+model+"."+field+")");
+            if (cls.equals(SimpleReference.class)) {
+                throw new IllegalStateException("SimpleReference should never be null ("+model+"."+field+")");
             } else {
                 dao = (Dao)cls.getAnnotation(Dao.class);
             }
-        } else if (object instanceof PrevaylerReference) {
-            Class cls = ((PrevaylerReference)object).getType();
+        } else if (object instanceof SimpleReference) {
+            Class cls = ((SimpleReference)object).getType();
                 
             dao = (Dao)cls.getAnnotation(Dao.class);
         } else {
@@ -658,15 +632,15 @@ public class ReflectHelper {
         }
     }*/
 
-    public void copyPrevaylerReferenceAndListProperties(@Nonnull PrevaylerModel source, @Nonnull PrevaylerModel target) {
+    public void copyPrevaylerReferenceAndListProperties(@Nonnull SimpleModel source, @Nonnull SimpleModel target) {
         assert source.getClass().equals(target.getClass());
 
         try {
             for (Field field : getReferenceFieldsFromClass(target.getClass())) {
-                PrevaylerReference ref = (PrevaylerReference) field.get(source);
+                SimpleReference ref = (SimpleReference) field.get(source);
 
                 if (ref != null) {
-                    PrevaylerReference newRef = new PrevaylerReference(ref.getType(), ref.getId());
+                    SimpleReference newRef = new SimpleReference(ref.getType(), ref.getId());
                     field.set(target, newRef);
                 } else {
                     field.set(target, null);
@@ -674,9 +648,9 @@ public class ReflectHelper {
             }
 
             for (Field field : getListFieldsFromClass(target.getClass())) {
-                PrevaylerList list = (PrevaylerList) field.get(source);
+                SimpleList list = (SimpleList) field.get(source);
                 if (list != null) {
-                    PrevaylerList newList = new PrevaylerList(list.getType());
+                    SimpleList newList = new SimpleList(list.getType());
 
                     for (Object id : list.getIdList()) {
                         newList.add((Long) id);
@@ -689,24 +663,9 @@ public class ReflectHelper {
             }
 
             for (Field field : getSetFieldsFromClass(target.getClass())) {
-                PrevaylerSet set = (PrevaylerSet) field.get(source);
+                SimpleSet set = (SimpleSet) field.get(source);
                 if (set != null) {
-                    PrevaylerSet newSet = new PrevaylerSet(set.getType());
-
-                    for (Object id : set.getIdSet()) {
-                        newSet.add((Long) id);
-                    }
-
-                    field.set(target, newSet);
-                } else {
-                    field.set(target, null);
-                }
-            }
-
-            for (Field field : getSortedSetFieldsFromClass(target.getClass())) {
-                PrevaylerSortedSet set = (PrevaylerSortedSet) field.get(source);
-                if (set != null) {
-                    PrevaylerSortedSet newSet = new PrevaylerSortedSet(set.getType(), set.comparator());
+                    SimpleSet newSet = new SimpleSet(set.getType());
 
                     for (Object id : set.getIdSet()) {
                         newSet.add((Long) id);

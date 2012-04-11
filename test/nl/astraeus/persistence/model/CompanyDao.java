@@ -1,7 +1,7 @@
-package nl.astraeus.prevayler.model;
+package nl.astraeus.persistence.model;
 
-import nl.astraeus.prevayler.Filter;
-import nl.astraeus.prevayler.PrevaylerDao;
+import nl.astraeus.persistence.Filter;
+import nl.astraeus.persistence.SimpleDao;
 import org.junit.Ignore;
 
 import java.util.Collection;
@@ -12,7 +12,7 @@ import java.util.Collection;
  * Time: 10:03 PM
  */
 @Ignore
-public class CompanyDao extends PrevaylerDao<Company> {
+public class CompanyDao extends SimpleDao<Company> {
     
     public Collection<Company> findByEmpoyeeName(final String name) {
         return filter(new Filter<Company>() {

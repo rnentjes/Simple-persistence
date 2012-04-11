@@ -1,4 +1,4 @@
-package nl.astraeus.prevayler;
+package nl.astraeus.persistence;
 
 import java.io.Serializable;
 import java.util.*;
@@ -8,13 +8,13 @@ import java.util.*;
  * Date: 3/27/12
  * Time: 10:09 PM
  */
-public abstract class PrevaylerIndex<M extends PrevaylerModel, T> implements Serializable {
+public abstract class SimpleIndex<M extends SimpleModel, T> implements Serializable {
     public final static long serialVersionUID = 1L;
     
     private Map<T, Set<Long>> index = new HashMap<T, Set<Long>>();
     private Class<M> cls;
 
-    protected PrevaylerIndex(Class<M> cls) {
+    protected SimpleIndex(Class<M> cls) {
         this.cls = cls;
     }
 
@@ -25,7 +25,7 @@ public abstract class PrevaylerIndex<M extends PrevaylerModel, T> implements Ser
         
         if (index.get(value) != null) {
             for (Long id : index.get(value)) {
-                result.add(PrevaylerStore.get().find(cls, id));
+                result.add(SimpleStore.get().find(cls, id));
             }
         }
 

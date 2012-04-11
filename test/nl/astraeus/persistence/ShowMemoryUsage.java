@@ -1,9 +1,7 @@
-package nl.astraeus.prevayler;
+package nl.astraeus.persistence;
 
-import nl.astraeus.forum.model.CommentDao;
-import nl.astraeus.forum.model.TopicDao;
-import nl.astraeus.prevayler.model.CompanyDao;
-import nl.astraeus.prevayler.model.EmployeeDao;
+import nl.astraeus.persistence.model.CompanyDao;
+import nl.astraeus.persistence.model.EmployeeDao;
 import nl.astraeus.util.Util;
 import org.junit.Ignore;
 
@@ -14,8 +12,6 @@ import org.junit.Ignore;
  */
 @Ignore
 public class ShowMemoryUsage {
-    private TopicDao topicDao = new TopicDao();
-    private CommentDao commentDao = new CommentDao();
     private CompanyDao companyDao = new CompanyDao();
     private EmployeeDao employeeDao = new EmployeeDao();
 
@@ -26,8 +22,6 @@ public class ShowMemoryUsage {
 
         System.out.println("Loaded " + companyDao.size() + " companies");
         System.out.println("Loaded " + employeeDao.size() + " employees");
-        System.out.println("Loaded " + topicDao.size() + " topics");
-        System.out.println("Loaded " + commentDao.size() + " comments");
 
         System.out.println("Loading data took: "+Util.formatNano(System.nanoTime() - nano));
 

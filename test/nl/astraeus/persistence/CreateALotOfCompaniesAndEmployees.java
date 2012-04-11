@@ -1,9 +1,9 @@
-package nl.astraeus.prevayler;
+package nl.astraeus.persistence;
 
-import nl.astraeus.prevayler.model.Company;
-import nl.astraeus.prevayler.model.CompanyDao;
-import nl.astraeus.prevayler.model.Employee;
-import nl.astraeus.prevayler.model.EmployeeDao;
+import nl.astraeus.persistence.model.Company;
+import nl.astraeus.persistence.model.CompanyDao;
+import nl.astraeus.persistence.model.Employee;
+import nl.astraeus.persistence.model.EmployeeDao;
 import nl.astraeus.util.Util;
 import org.junit.Ignore;
 
@@ -19,7 +19,7 @@ public class CreateALotOfCompaniesAndEmployees {
     private CompanyDao companyDao = new CompanyDao();
 
     public CreateALotOfCompaniesAndEmployees() {
-        System.setProperty(PrevaylerStore.SAFEMODE, String.valueOf(true));
+        System.setProperty(SimpleStore.SAFEMODE, String.valueOf(true));
 
         long nano = System.nanoTime();
         new Transaction() {

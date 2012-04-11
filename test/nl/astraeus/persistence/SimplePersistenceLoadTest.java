@@ -1,6 +1,6 @@
-package nl.astraeus.prevayler;
+package nl.astraeus.persistence;
 
-import nl.astraeus.prevayler.model.CompanyDao;
+import nl.astraeus.persistence.model.CompanyDao;
 import org.junit.Test;
 
 /**
@@ -8,7 +8,7 @@ import org.junit.Test;
  * Date: 3/31/12
  * Time: 11:31 AM
  */
-public class PrevaylerLoadTest {
+public class SimplePersistenceLoadTest {
 
     @Test
     public void test() {

@@ -1,4 +1,4 @@
-package nl.astraeus.prevayler;
+package nl.astraeus.persistence;
 
 import java.io.Serializable;
 
@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Date: 3/27/12
  * Time: 10:05 PM
  */
-public interface PrevaylerListener<M extends PrevaylerModel> extends Serializable {
+public interface SimpleListener<M extends SimpleModel> extends Serializable {
     
     public void objectUpdates(M model);
     

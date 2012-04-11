@@ -1,4 +1,4 @@
-package nl.astraeus.prevayler;
+package nl.astraeus.persistence;
 
 import java.io.Serializable;
 import java.util.*;
@@ -8,13 +8,13 @@ import java.util.*;
  * Date: 4/1/12
  * Time: 10:36 AM
  */
-public class PrevaylerSet<M extends PrevaylerModel> implements Set<M>, Serializable {
+public class SimpleSet<M extends SimpleModel> implements Set<M>, Serializable {
     public static final long serialVersionUID = 1L;
 
-    private Class<? extends PrevaylerModel> cls;
+    private Class<? extends SimpleModel> cls;
     private Set<Long> set = new HashSet<Long>();
 
-    public PrevaylerSet(Class<? extends PrevaylerModel> cls) {
+    public SimpleSet(Class<? extends SimpleModel> cls) {
         this.cls = cls;
     }
 
@@ -29,8 +29,8 @@ public class PrevaylerSet<M extends PrevaylerModel> implements Set<M>, Serializa
     public boolean contains(Object m) {
         boolean result = false;
 
-        if (m instanceof PrevaylerModel) {
-           result = set.contains(((PrevaylerModel) m).getId());
+        if (m instanceof SimpleModel) {
+           result = set.contains(((SimpleModel) m).getId());
         }
 
         return result;
@@ -40,7 +40,7 @@ public class PrevaylerSet<M extends PrevaylerModel> implements Set<M>, Serializa
         return set;
     }
 
-    public Class<? extends PrevaylerModel> getType() {
+    public Class<? extends SimpleModel> getType() {
         return cls;
     }
 
@@ -53,7 +53,7 @@ public class PrevaylerSet<M extends PrevaylerModel> implements Set<M>, Serializa
                 while (next == null && it.hasNext()) {
                     long id = it.next();
 
-                    next = (M) PrevaylerStore.get().getModelMap(cls).get(id);
+                    next = (M) SimpleStore.get().getModelMap(cls).get(id);
                 }
 
                 return (next != null);
@@ -65,7 +65,7 @@ public class PrevaylerSet<M extends PrevaylerModel> implements Set<M>, Serializa
                 next = null;
 
                 while (it.hasNext() && next == null) {
-                    next = (M) PrevaylerStore.get().find(cls, it.next());
+                    next = (M) SimpleStore.get().find(cls, it.next());
                 }
 
                 return result;
@@ -82,7 +82,7 @@ public class PrevaylerSet<M extends PrevaylerModel> implements Set<M>, Serializa
 
         int index = 0;
         for (Long id : set) {
-            result[index++] = PrevaylerStore.get().find(cls, id);
+            result[index++] = SimpleStore.get().find(cls, id);
         }
 
         return result;
@@ -103,8 +103,8 @@ public class PrevaylerSet<M extends PrevaylerModel> implements Set<M>, Serializa
     public boolean remove(Object m) {
         boolean result = false;
 
-        if (m instanceof PrevaylerModel) {
-            result = set.remove(((PrevaylerModel)m).getId());
+        if (m instanceof SimpleModel) {
+            result = set.remove(((SimpleModel)m).getId());
         }
 
         return result;
@@ -116,8 +116,8 @@ public class PrevaylerSet<M extends PrevaylerModel> implements Set<M>, Serializa
         Collection<Long> idset = new HashSet<Long>();
 
         for (Object o : c) {
-            if (o instanceof PrevaylerModel) {
-                idset.add(((PrevaylerModel)o).getId());
+            if (o instanceof SimpleModel) {
+                idset.add(((SimpleModel)o).getId());
             } else {
                 result = false;
                 break;

@@ -1,4 +1,4 @@
-package nl.astraeus.prevayler;
+package nl.astraeus.persistence;
 
 import javax.annotation.CheckForNull;
 import java.lang.reflect.ParameterizedType;
@@ -6,13 +6,13 @@ import java.lang.reflect.Type;
 import java.util.*;
 
 /**
- * PrevaylerDao
+ * SimpleDao
  * <p/>
  * User: rnentjes
  * Date: 7/20/11
  * Time: 11:12 AM
  */
-public abstract class PrevaylerDao<M extends PrevaylerModel> {
+public abstract class SimpleDao<M extends SimpleModel> {
 
     private Random random = new Random(System.currentTimeMillis());
 
@@ -47,7 +47,7 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
 
     @CheckForNull
     public M find(Long pk) {
-        return PrevaylerStore.get().find(getModelClass(), pk);
+        return SimpleStore.get().find(getModelClass(), pk);
     }
 
     @CheckForNull
@@ -68,9 +68,9 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
     }
 
     public Collection<M> findAll() {
-        List<M> result = new LinkedList<M>();
+        SimpleList<M> result = new LinkedList<M>();
 
-        if (PrevaylerStore.get().isSafemode()) {
+        if (SimpleStore.get().isSafemode()) {
             result.addAll(getValues());
         } else {
             result.addAll(getModelValues());
@@ -82,7 +82,7 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
     public Collection<M> findAll(Comparator<M> comp) {
         Collection<M> result = new TreeSet<M>(comp);
 
-        if (PrevaylerStore.get().isSafemode()) {
+        if (SimpleStore.get().isSafemode()) {
             result.addAll(getValues());
         } else {
             result.addAll(getModelValues());
@@ -101,9 +101,9 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
 
     public Collection<M> find(Comparator<M> comp, int from, int to) {
         Class<M> cls = getModelClass();
-        List<M> result = new LinkedList<M>();
+        SimpleList<M> result = new LinkedList<M>();
 
-        List<M> values = new LinkedList<M>();
+        SimpleList<M> values = new LinkedList<M>();
 
         values.addAll(getModelValues());
         Collections.sort(values, comp);
@@ -111,7 +111,7 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
         try {
             for (int i = from; i < to; i++) {
                 if (values.size() > i) {
-                    if (PrevaylerStore.get().isSafemode()) {
+                    if (SimpleStore.get().isSafemode()) {
                         result.add(cls.cast(values.get(i).clone()));
                     } else {
                         result.add(values.get(i));
@@ -127,12 +127,12 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
 
     public Collection<M> filter(Filter<M> filter) {
         Class<M> cls = getModelClass();
-        List<M> result = new LinkedList<M>();
+        SimpleList<M> result = new LinkedList<M>();
 
         try {
             for (M m : getModelValues()) {
                 if (filter.include(m)) {
-                    if (PrevaylerStore.get().isSafemode()) {
+                    if (SimpleStore.get().isSafemode()) {
                         result.add(cls.cast(m.clone()));
                     } else {
                         result.add(m);
@@ -152,7 +152,7 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
         Class<M> cls = getModelClass();
         
         try {
-            for (PrevaylerModel m : PrevaylerStore.get().getModelMap(getModelClass()).values()) {
+            for (SimpleModel m : SimpleStore.get().getModelMap(getModelClass()).values()) {
                 result.add(cls.cast(m.clone()));
             }
         } catch (CloneNotSupportedException e) {
@@ -164,35 +164,35 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
 
     /** The returned model values are not cloned yet! (safemode) */
     private Collection<? extends M> getModelValues() {
-        return (Collection<? extends M>)PrevaylerStore.get().getModelMap(getModelClass()).values();
+        return (Collection<? extends M>) SimpleStore.get().getModelMap(getModelClass()).values();
     }
 
     public void store(final M model) {
-        if (!PrevaylerStore.transactionActive()) {
-            if (PrevaylerStore.get().isAutocommit()) {
+        if (!SimpleStore.transactionActive()) {
+            if (SimpleStore.get().isAutocommit()) {
                 new Transaction() {
 
                     @Override
                     public void execute() {
-                        PrevaylerStore.get().getTransaction().store(model);
+                        SimpleStore.get().getTransaction().store(model);
                     }
                 };
             } else {
                 throw new IllegalStateException("No transaction found and not in autocommit mode.");
             }
         } else {
-            PrevaylerStore.get().getTransaction().store(model);
+            SimpleStore.get().getTransaction().store(model);
         }
     }
 
-    public <A extends PrevaylerModel> void store(final A ... model) {
-        if (!PrevaylerStore.transactionActive()) {
-            if (PrevaylerStore.get().isAutocommit()) {
+    public <A extends SimpleModel> void store(final A ... model) {
+        if (!SimpleStore.transactionActive()) {
+            if (SimpleStore.get().isAutocommit()) {
                 new Transaction() {
 
                     @Override
                     public void execute() {
-                        PrevaylerStore.get().getTransaction().store(model);
+                        SimpleStore.get().getTransaction().store(model);
                     }
                 };
             } else {
@@ -200,7 +200,7 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
             }
         } else {
             // todo: warn, no need to use this function in a transaction
-            PrevaylerStore.get().getTransaction().store(model);
+            SimpleStore.get().getTransaction().store(model);
         }
     }
 
@@ -211,13 +211,13 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
     }
 
     public void remove(final M model) {
-        if (!PrevaylerStore.transactionActive()) {
-            if (PrevaylerStore.get().isAutocommit()) {
+        if (!SimpleStore.transactionActive()) {
+            if (SimpleStore.get().isAutocommit()) {
                 new Transaction() {
 
                     @Override
                     public void execute() {
-                        PrevaylerStore.get().getTransaction().remove(model);
+                        SimpleStore.get().getTransaction().remove(model);
                     }
                 };
             } else {
@@ -225,11 +225,11 @@ public abstract class PrevaylerDao<M extends PrevaylerModel> {
             }
         } else {
             // todo: warn, no need to use this function in a transaction
-            PrevaylerStore.get().getTransaction().remove(model);
+            SimpleStore.get().getTransaction().remove(model);
         }
     }
 
     public int size() {
-        return PrevaylerStore.get().getModelMap(getModelClass()).size();
+        return SimpleStore.get().getModelMap(getModelClass()).size();
     }
 }
