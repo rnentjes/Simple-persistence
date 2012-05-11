@@ -77,6 +77,9 @@ public class SimpleStore {
             factory.configurePrevalentSystem(new PrevalentSystem());
             factory.configurePrevalenceDirectory(dataDirectory);
 
+            //factory.configureJournalSerializer();
+            //factory.configureSnapshotSerializer();
+
             prevayler = factory.create();
         } catch (IOException e) {
             throw new IllegalStateException("Can't start Prevayler!", e);
