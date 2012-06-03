@@ -8,11 +8,11 @@ When you store object this way you will lose the references between the objects.
 
 To get started:
 
-[Getting-started](https://github.com/rnentjes/Prevayler-Reference/wiki/Getting-started)
+[Getting-started](https://github.com/rnentjes/Simple-persistence/wiki/Getting-started)
 
 More technical info:
 
-[Technical-overview](https://github.com/rnentjes/Prevayler-Reference/wiki/Technical-overview)
+[Technical-overview](https://github.com/rnentjes/Simple-persistence/wiki/Technical-overview)
 
 You can find the prevayler project here:
 
