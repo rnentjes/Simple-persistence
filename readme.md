@@ -1,6 +1,6 @@
 Simple in-memory storage wich is persistent and transactional.
 
-This project is a little addition on prevayler to simplify working with it. If you are using prevayler you have to model every change on your model into a command object and the command object will be persisted to disk. With Simple-persistence you can use a Dao model and stop worrying about command objects.
+This project is a little addition on prevayler to simplify working with it. In prevayler you have to encapsulate every change on your model in a command object and the command object will be persisted to disk. With Simple-persistence you can use a Dao model and stop worrying about command objects.
 
 At the back-end prevayler is still used, prevayler is a way to persist your object model without the need for a database. All objects live in memory, any change is persisted to a transaction log, and after a crash or restart, this transaction log is read to restore the model in memory.
 
