@@ -2,6 +2,7 @@ package nl.astraeus.persistence;
 
 import nl.astraeus.persistence.model.Company;
 import nl.astraeus.persistence.model.CompanyDao;
+import org.junit.Test;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,10 +16,11 @@ import java.util.Collection;
 public class TestSerializer {
 
     public static void main(String [] args) throws IOException {
-        new TestSerializer();
+        new TestSerializer().testSerializer();
     }
 
-    public TestSerializer() throws IOException {
+    @Test
+    public void testSerializer() throws IOException {
         CompanyDao dao = new CompanyDao();
 
         Collection<Company> comps = dao.find(0, 1);
