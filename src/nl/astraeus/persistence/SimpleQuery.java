@@ -1,7 +1,9 @@
 package nl.astraeus.persistence;
 
 import nl.astraeus.persistence.reflect.ReflectHelper;
+import org.w3c.dom.UserDataHandler;
 
+import javax.annotation.CheckForNull;
 import java.util.*;
 
 /**
@@ -21,13 +23,13 @@ public class SimpleQuery<M extends SimpleModel> {
         this.max = dao.size();
     }
 
-    public SimpleQuery from(int from) {
+    public SimpleQuery<M> from(int from) {
         this.from = from;
 
         return this;
     }
 
-    public SimpleQuery max(int max) {
+    public SimpleQuery<M> max(int max) {
         this.max = max;
 
         return this;
@@ -45,13 +47,13 @@ public class SimpleQuery<M extends SimpleModel> {
         values.add(value);
     }
 
-    public SimpleQuery where(String property, Object value) {
+    public SimpleQuery<M> where(String property, Object value) {
         addSelection(property, value);
 
         return this;
     }
 
-    public SimpleQuery order(String ... property) {
+    public SimpleQuery<M> order(String ... property) {
         return this;
     }
 
@@ -81,6 +83,18 @@ public class SimpleQuery<M extends SimpleModel> {
         return result;
     }
 
+    @CheckForNull
+    public M getSingleResult() {
+        M result = null;
+        Set<M> resultList = getResultSet();
+
+        if (resultList.size() == 1) {
+            result = resultList.iterator().next();
+        }
+
+        return result;
+    }
+
     public boolean isMatch(M m) {
         boolean result = true;
         Set<String> properties = selections.keySet();
@@ -100,5 +114,4 @@ public class SimpleQuery<M extends SimpleModel> {
 
         return result;
     }
-
 }
