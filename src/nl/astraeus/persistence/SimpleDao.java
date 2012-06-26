@@ -16,6 +16,10 @@ public abstract class SimpleDao<M extends SimpleModel> {
 
     private Random random = new Random(System.currentTimeMillis());
 
+    public SimpleQuery<M> createQuery() {
+        return new SimpleQuery<M>(this);
+    }
+
     public M getNewModelInstance() {
         M instance = null;
 
