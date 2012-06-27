@@ -19,7 +19,20 @@ public class PrevalentSystem implements Serializable {
 
     public static final long serialVersionUID = 1468478256843309473L;
 
+    /* Alternative approach
+      private Map<Class<? extends SimpleModel>, Set<Integer>> freeIds = new HashMap<Class<? extends SimpleModel>, Set<Integer>>();
+      private Map<Class<? extends SimpleModel>, Integer> nextId = new HashMap<Class<? extends SimpleModel>, Integer>();
+      private Map<Class<? extends SimpleModel>, SimpleModel []> dataStore = new HashMap<Class<? extends SimpleModel>, SimpleModel[]>();
+    */
+
     private Map<Class<? extends SimpleModel>, Map<Long, SimpleModel>> dataStore = new HashMap<Class<? extends SimpleModel>, Map<Long, SimpleModel>>(250);
+
+    // index definitions
+    // index class + property
+    // index type - tree, hash ???
+    private Map<Class<? extends SimpleModel>, Map<String, SimpleIndex>> indexDefinitions = new HashMap<Class<? extends SimpleModel>, Map<String, SimpleIndex>>();
+
+    private Map<Class<? extends SimpleModel>, Map<String, Object>> indexes = new HashMap<Class<? extends SimpleModel>, Map<String, Object>>();
 
     //private Map<Class<? extends SimpleModel>, SimpleList<SimpleListener<?>>> listeners;
 

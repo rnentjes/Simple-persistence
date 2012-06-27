@@ -191,15 +191,11 @@ public class SimpleStore {
         Map<Long, SimpleModel> result = ps.getModelMap(cls);
 
         if (getTransaction() != null) {
-            for (SimpleModel m : getTransaction().getStored()) {
-                if (m.getClass().equals(cls)) {
-                    result.put(m.getId(), m);
-                }
-            }
-
-            for (SimpleModel m : getTransaction().getRemoved()) {
-                if (m.getClass().equals(cls)) {
-                    result.remove(m.getId());
+            for (SimpleTransaction.Action action : getTransaction().getActions()) {
+                if (action.remove) {
+                    result.remove(action.model.getId());
+                } else {
+                    result.put(action.model.getId(), action.model);
                 }
             }
         }
@@ -213,16 +209,12 @@ public class SimpleStore {
         M result = (M) ps.find(cls, id);
         
         if (getTransaction() != null) {
-            if (result != null) {
-                if (getTransaction().getRemoved().contains(result)) {
-                    result = null;
-                }
-            } else {
-                for (SimpleModel m : getTransaction().getStored()) {
-                    if (m.getId() == id) {
-                        result = (M)m;
-
-                        break;
+            for (SimpleTransaction.Action action : getTransaction().getActions()) {
+                if (cls.equals(action.model.getClass()) && id == action.model.getId()) {
+                    if (action.remove) {
+                        result = null;
+                    } else {
+                        result = (M)action.model;
                     }
                 }
             }
