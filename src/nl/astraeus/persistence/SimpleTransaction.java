@@ -16,7 +16,9 @@ public final class SimpleTransaction implements Serializable, Transaction {
 
 	private static final long serialVersionUID = 1L;
 
-    static class Action {
+    static class Action implements Serializable {
+        private static final long serialVersionUID = 1L;
+
         public boolean remove = false;
         public SimpleModel model;
 
