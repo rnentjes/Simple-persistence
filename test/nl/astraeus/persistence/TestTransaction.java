@@ -37,7 +37,7 @@ public class TestTransaction {
         Assert.assertNull(c);
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test
     public void testAddAfterRemove() {
         try {
             CompanyDao companyDao = new CompanyDao();
@@ -57,6 +57,14 @@ public class TestTransaction {
             companyDao.remove(c);
 
             companyDao.store(c);
+
+            SimpleStore.commit();
+
+            SimpleStore.begin();
+
+            c = companyDao.find(company.getId());
+
+            Assert.assertNotNull(c);
         } finally {
             if (SimpleStore.transactionActive()) {
                 SimpleStore.rollback();
