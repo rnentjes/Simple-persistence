@@ -69,6 +69,11 @@ public class PrevalentSystem implements Serializable {
     /** Functions called from within Transaction to update data model */
     protected <M extends SimpleModel> void store(M objectToStore) {
         System.out.println("Storing: "+objectToStore.getGUID());
+
+        // check for lists and inject SimpleList
+
+        // check for references, work with proxies?
+
         getModelMap(objectToStore.getClass()).put(objectToStore.getId(), objectToStore);
     }
 
