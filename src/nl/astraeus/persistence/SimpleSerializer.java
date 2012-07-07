@@ -2,14 +2,13 @@ package nl.astraeus.persistence;
 
 import nl.astraeus.persistence.reflect.ReflectHelper;
 import org.prevayler.foundation.serialization.Serializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.nio.charset.Charset;
-import java.util.LinkedList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -18,48 +17,85 @@ import java.util.List;
  * Time: 10:07 PM
  */
 public class SimpleSerializer implements Serializer {
+    private final static Logger logger = LoggerFactory.getLogger(SimpleSerializer.class);
 
     private Charset charset = Charset.forName("UTF-8");
+    private byte [] endline = "\n".getBytes(charset);
 
     public void writeObject(OutputStream stream, Object object) throws IOException {
-        DataOutputStream dos = new DataOutputStream(stream);
+        BufferedOutputStream bos = new BufferedOutputStream(stream);
+        DataOutputStream dos = new DataOutputStream(bos);
+        ObjectOutputStream oos = new ObjectOutputStream(dos);
+
+        // if object == PrevalentSystem || SimpleModel
 
         try {
-            writeObject(dos, object);
+            writeObject(dos, oos, object);
         } catch (IllegalAccessException e) {
             throw new IOException(e);
         } finally {
+            oos.close();
             dos.close();
+            bos.close();
         }
     }
 
-    public void writeObject(DataOutputStream stream, Object object) throws IOException, IllegalAccessException {
-        DataOutputStream dos = new DataOutputStream(stream);
+    private int getHash(String value) {
+        int result = 0;
 
+        for (int index = 0; index < value.length(); index++) {
+            result += value.charAt(index);
+        }
+
+        return result;
+    }
+
+    public void writeObject(DataOutputStream dos, ObjectOutputStream oos, Object object) throws IOException, IllegalAccessException {
         String name = object.getClass().getName();
 
-        dos.writeBytes(name);
-        dos.writeBytes(": {\n");
+        dos.write(name.getBytes(charset));
+        dos.write(endline);
 
         List<Field> fields = ReflectHelper.get().getFieldsFromClass(object.getClass());
 
+        dos.writeInt(fields.size());
+
         for (Field field : fields) {
+            Class<?> type = field.getType();
             Object obj = field.get(object);
 
-            dos.writeBytes(field.getName());
-            dos.writeBytes(":");
-
             if (obj != null) {
-                if (obj instanceof SimpleList) {
-                    SimpleList list = (SimpleList)obj;
-                    dos.writeBytes("List: ");
-                    for (Object id : list.getIdList()) {
-                        dos.writeBytes(String.valueOf(id));
-                        dos.writeBytes(",");
+                dos.writeInt(getHash(field.getName()));
+
+                if (obj instanceof SimpleModel) {
+                    dos.writeLong(((SimpleModel)obj).getId());
+                } else if (obj instanceof Collection) {
+                    // if all elements are instanceof SimpleModel
+                    // -> just serialize id's
+                    Collection collection = (Collection)obj;
+                    boolean sm = true;
+
+                    for (Object o : collection) {
+                        if (!(o instanceof SimpleModel)) {
+                            sm = false;
+                        }
                     }
-                } else if (obj instanceof SimpleReference) {
-                    SimpleReference ref = (SimpleReference)obj;
-                    dos.writeBytes("Ref: "+ref.getId());
+
+                    dos.writeInt(collection.size());
+                    dos.write(collection.getClass().getName().getBytes(charset));
+                    dos.write(endline);
+
+                    if (!collection.isEmpty()) {
+                        dos.writeBoolean(sm);
+
+                        for (Object o : collection) {
+                            if (sm) {
+                                dos.writeLong(((SimpleModel)o).getId());
+                            } else {
+                                oos.writeObject(o);
+                            }
+                        }
+                    }
                 } else if (obj instanceof Long[]) {
                     for (Long l : (Long[])obj) {
                         dos.writeBytes(Long.toString(l));
@@ -71,17 +107,93 @@ public class SimpleSerializer implements Serializer {
                         dos.writeBytes(",");
                     }
                 } else {
-                    dos.writeBytes(String.valueOf(obj));
+                    //writeObject(dos, obj);
                 }
             }
-            dos.writeBytes("\n");
-
         }
 
-        dos.writeBytes("}\n");
+        dos.write(endline);
+        dos.write(endline);
     }
 
     public Object readObject(InputStream stream) throws IOException, ClassNotFoundException {
-        return new Object();
+        DataInputStream dis = new DataInputStream(stream);
+        ObjectInputStream ois = new ObjectInputStream(dis);
+        Object result = null;
+
+        try {
+            String className = readLine(dis);
+
+            System.out.println("ClassName: " + className);
+            Class<?> cls = Class.forName(className);
+            result = cls.newInstance();
+
+            int fieldCount = dis.readInt();
+            System.out.println("Number of fields: " + fieldCount);
+
+            for (int index = 0; index < fieldCount; index++) {
+                System.out.println("Reading field: " + index);
+
+                int fieldHash = dis.readInt();
+                System.out.println("Hash: "+fieldHash);
+
+                List<Field> fields = ReflectHelper.get().getFieldsFromClass(cls);
+                for (Field field : fields) {
+                    if (getHash(field.getName()) == fieldHash) {
+                        System.out.println("Found field: "+field.getName()+" -> "+field.getType());
+
+                        if (Collection.class.isAssignableFrom(field.getType())) {
+                            int size = dis.readInt();
+                            String collectionClassName = readLine(dis);
+                            System.out.println("Collection type: "+collectionClassName);
+
+                            System.out.println("Collection size: "+size);
+                            if (size > 0) {
+                                boolean simpleModelCollection = dis.readBoolean();
+
+                                System.out.println("SimpleModelCollection: "+simpleModelCollection);
+                                while(size-- > 0) {
+                                    if (simpleModelCollection) {
+                                        long id = dis.readLong();
+                                        System.out.println("Id: "+id);
+                                    } else {
+                                        Object object = ois.readObject();
+                                        System.out.println("Object: "+object);
+                                    }
+                                }
+                            }
+                        } else if (SimpleModel.class.isAssignableFrom(field.getType())) {
+                            long id = dis.readLong();
+                            System.out.println("SimpleModel <> id: "+id);
+                        } else if (field.getType().isAssignableFrom(SimpleModel.class)) {
+                            long id = dis.readLong();
+                            System.out.println("SimpleModel id: "+id);
+                        }
+                    }
+                }
+            }
+        } catch (InstantiationException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } finally {
+            ois.close();
+            dis.close();
+        }
+
+        return result;
     }
+
+    // readline as ASCII, ending with '\n', '\n' is not returned
+    public String readLine(DataInputStream dis) throws IOException {
+        StringBuilder result = new StringBuilder();
+        byte ch;
+
+        while ((ch = dis.readByte()) != '\n') {
+            result.append((char)(ch & 0xFF));
+        }
+
+        return result.toString();
+    }
+
 }

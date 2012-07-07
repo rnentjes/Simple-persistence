@@ -1,7 +1,6 @@
 package nl.astraeus.persistence;
 
 import nl.astraeus.persistence.reflect.ReflectHelper;
-import org.w3c.dom.UserDataHandler;
 
 import javax.annotation.CheckForNull;
 import java.util.*;
@@ -15,6 +14,7 @@ public class SimpleQuery<M extends SimpleModel> {
 
     private SimpleDao<M> dao;
     private Map<String, Set<Object>> selections = new HashMap<String, Set<Object>>();
+    private List<String> order = new LinkedList<String>();
     private int from, max;
 
     public SimpleQuery(SimpleDao<M> dao) {
@@ -54,6 +54,8 @@ public class SimpleQuery<M extends SimpleModel> {
     }
 
     public SimpleQuery<M> order(String ... property) {
+        order.addAll(Arrays.asList(property));
+
         return this;
     }
 
