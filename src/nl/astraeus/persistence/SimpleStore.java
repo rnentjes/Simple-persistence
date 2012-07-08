@@ -77,11 +77,8 @@ public class SimpleStore {
             factory.configurePrevalentSystem(new PrevalentSystem());
             factory.configurePrevalenceDirectory(dataDirectory);
 
-            factory.configureSnapshotSerializer("snapshot", new SimpleSerializer());
-            factory.configureJournalSerializer("journal", new SimpleSerializer());
-
-            //factory.configureJournalSerializer();
-            //factory.configureSnapshotSerializer();
+            //factory.configureJournalSerializer("journal", new SimpleJournalSerializer());
+            //factory.configureSnapshotSerializer("snapshot", new SimpleSnapshotSerializer());
 
             prevayler = factory.create();
         } catch (IOException e) {

@@ -7,6 +7,7 @@ import javax.annotation.Nonnull;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -470,6 +471,31 @@ public class ReflectHelper {
                 for (Field field : fields) {
                     field.setAccessible(true);
                     result.add(0, field);
+                }
+
+                typeClass = typeClass.getSuperclass();
+            } while (!typeClass.equals(Object.class));
+
+            classFieldCache.put(typeClass, result);
+        }
+
+        return result;
+    }
+
+    public List<Field> getPersistableFieldsFromClass(Class<?> typeClass) {
+        List<Field> result = classFieldCache.get(typeClass);
+
+        if (result == null) {
+            result = new LinkedList<Field>();
+
+            do {
+                Field[] fields = typeClass.getDeclaredFields();
+
+                for (Field field : fields) {
+                    if (!Modifier.isFinal(field.getModifiers()) && !Modifier.isStatic(field.getModifiers()) && !Modifier.isTransient(field.getModifiers())) {
+                        field.setAccessible(true);
+                        result.add(0, field);
+                    }
                 }
 
                 typeClass = typeClass.getSuperclass();

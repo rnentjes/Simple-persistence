@@ -1,6 +1,8 @@
 package nl.astraeus.persistence;
 
 import nl.astraeus.persistence.reflect.ReflectHelper;
+import nl.astraeus.persistence.serializer.ObjectSerializer;
+import nl.astraeus.persistence.serializer.StringSerializer;
 import org.prevayler.foundation.serialization.Serializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +11,9 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.nio.charset.Charset;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * User: rnentjes
@@ -18,6 +22,25 @@ import java.util.List;
  */
 public class SimpleSerializer implements Serializer {
     private final static Logger logger = LoggerFactory.getLogger(SimpleSerializer.class);
+
+    private final static byte TYPE_BOOLEAN          =  1;
+    private final static byte TYPE_BYTE             =  2;
+    private final static byte TYPE_CHAR             =  3;
+    private final static byte TYPE_SHORT            =  4;
+    private final static byte TYPE_INT              =  5;
+    private final static byte TYPE_LONG             =  6;
+    private final static byte TYPE_FLOAT            =  7;
+    private final static byte TYPE_DOUBLE           =  8;
+    private final static byte TYPE_STRING           =  9;
+    private final static byte TYPE_OBJECT           = 10;
+    private final static byte TYPE_SP_OBJECT        = 11;
+    private final static byte TYPE_SP_COLLECTION    = 12;
+
+    private static Map<Byte, ObjectSerializer> serializers = new HashMap<Byte, ObjectSerializer>();
+
+    static {
+        serializers.put(TYPE_STRING, new StringSerializer());
+    }
 
     private Charset charset = Charset.forName("UTF-8");
     private byte [] endline = "\n".getBytes(charset);
@@ -165,9 +188,6 @@ public class SimpleSerializer implements Serializer {
                         } else if (SimpleModel.class.isAssignableFrom(field.getType())) {
                             long id = dis.readLong();
                             System.out.println("SimpleModel <> id: "+id);
-                        } else if (field.getType().isAssignableFrom(SimpleModel.class)) {
-                            long id = dis.readLong();
-                            System.out.println("SimpleModel id: "+id);
                         }
                     }
                 }
@@ -194,6 +214,75 @@ public class SimpleSerializer implements Serializer {
         }
 
         return result.toString();
+    }
+
+    public void writePrimitive(DataOutputStream out, Object value) throws IOException {
+
+        if (value.getClass().equals(boolean.class) || value.getClass().equals(Boolean.class)) {
+
+        } else if (value.getClass().equals(long.class)) {
+            out.writeByte(TYPE_LONG);
+            out.writeLong((Long)value);
+        }
+
+    }
+
+    public void writeString(DataOutputStream out, String value) throws IOException {
+        byte [] data = value.getBytes(charset);
+
+        out.writeInt(data.length);
+        out.write(data);
+    }
+
+    public String readString(DataInputStream in) throws IOException {
+        int size = in.readInt();
+
+        byte [] data = new byte[size];
+
+        in.read(data);
+
+        return new String(data, charset);
+    }
+
+    ThreadLocal<ByteArrayOutputStream> outputBuffer = new ThreadLocal<ByteArrayOutputStream>() {
+        @Override
+        protected ByteArrayOutputStream initialValue() {
+            return new ByteArrayOutputStream();
+        }
+    };
+
+    public void writeSingleObject(DataOutputStream dos, Object object) throws IOException {
+        ByteArrayOutputStream baos = outputBuffer.get();
+
+        ObjectOutputStream oos = new ObjectOutputStream(baos);
+
+        oos.writeObject(object);
+
+        byte [] data = baos.toByteArray();
+
+        dos.writeInt(data.length);
+        dos.write(data);
+
+        baos.reset();
+    }
+
+    public Object readSingleObject(DataInputStream dis) throws IOException, ClassNotFoundException {
+        int size = dis.readInt();
+        byte [] data = new byte[size];
+
+        int length = dis.read(data);
+
+        assert length == data.length;
+
+        ByteArrayInputStream bais = new ByteArrayInputStream(data);
+        ObjectInputStream ois = new ObjectInputStream(bais);
+
+        Object result = ois.readObject();
+
+        ois.close();
+        bais.close();
+
+        return result;
     }
 
 }
