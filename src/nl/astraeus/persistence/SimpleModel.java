@@ -1,7 +1,5 @@
 package nl.astraeus.persistence;
 
-import nl.astraeus.persistence.reflect.ReflectHelper;
-
 import java.io.Serializable;
 
 /**
@@ -62,7 +60,7 @@ public abstract class SimpleModel implements Serializable, Cloneable, Comparable
         SimpleModel result = (SimpleModel)super.clone();
 
         // clone refs and lists
-        ReflectHelper.get().copyPrevaylerReferenceAndListProperties(this, result);
+        //ReflectHelper.get().copyPrevaylerReferenceAndListProperties(this, result);
 
         return result;
     }
