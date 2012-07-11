@@ -15,7 +15,7 @@ public class SimpleQuery<M extends SimpleModel> {
 
     private SimpleDao<M> dao;
     private Map<String, Set<Object>> selections = new HashMap<String, Set<Object>>();
-    private String [] order = new String[0];
+    private List<String> order = new LinkedList<String>();
     private int from, max;
 
     public SimpleQuery(SimpleDao<M> dao) {
@@ -55,61 +55,17 @@ public class SimpleQuery<M extends SimpleModel> {
     }
 
     public SimpleQuery<M> order(String ... property) {
-        this.order = property;
+        order.addAll(Arrays.asList(property));
 
         return this;
     }
-
-    private static class OrderComparator implements Comparator<SimpleModel> {
-        String [] order;
-
-        private OrderComparator(String[] order) {
-            this.order = order;
-        }
-
-        @Override
-        public int compare(SimpleModel o1, SimpleModel o2) {
-            int result = 0;
-            int index = 0;
-
-            while(result == 0 && index < order.length) {
-                result = compareProperties(o1, o2, order[index]);
-
-                index++;
-            }
-
-            return result;
-        }
-
-        private int compareProperties(SimpleModel o1, SimpleModel o2, String property) {
-            Object v1 = ReflectHelper.get().getFieldValue(o1, property);
-            Object v2 = ReflectHelper.get().getFieldValue(o2, property);
-
-            if (v1 == null && v2 == null) {
-                return 0;
-            } else if (v1 == null) {
-                return 1;
-            } else if (v2 == null) {
-                return -1;
-            } else if (v1 instanceof Comparable && v2 instanceof Comparable) {
-                Comparable c1 = (Comparable)v1;
-                Comparable c2 = (Comparable)v2;
-
-                return c1.compareTo(c2);
-            } else {
-                throw new IllegalStateException("Unable to compare objects of type "+v1.getClass()+" and "+v2.getClass()+". Check your order properties on SimpleQuery "+this);
-            }
-        }
-    }
-
 
     public SortedSet<M> getResultSet() {
         // result as set with order comparator
         int fromCounter = 0;
         int nrResults = 0;
 
-
-        SortedSet<M> result = new TreeSet<M>(new OrderComparator(order));
+        SortedSet<M> result = new TreeSet<M>();
 
         for (M m : dao.findAll()) {
             boolean match = isMatch(m);
