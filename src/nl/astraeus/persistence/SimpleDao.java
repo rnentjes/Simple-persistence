@@ -156,7 +156,7 @@ public abstract class SimpleDao<M extends SimpleModel> {
         Class<M> cls = getModelClass();
         
         try {
-            for (SimpleModel m : SimpleStore.get().getModelMap(getModelClass()).values()) {
+            for (SimpleModel m : SimpleStore.get().getModelMap(cls).values()) {
                 result.add(cls.cast(m.clone()));
             }
         } catch (CloneNotSupportedException e) {
@@ -236,4 +236,5 @@ public abstract class SimpleDao<M extends SimpleModel> {
     public int size() {
         return SimpleStore.get().getModelMap(getModelClass()).size();
     }
+
 }
