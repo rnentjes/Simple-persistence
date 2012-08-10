@@ -192,10 +192,12 @@ public class SimpleStore {
 
         if (getTransaction() != null) {
             for (SimpleTransaction.Action action : getTransaction().getActions()) {
-                if (action.remove) {
-                    result.remove(action.model.getId());
-                } else {
-                    result.put(action.model.getId(), action.model);
+                if (action.isClass(cls)) {
+                    if (action.remove) {
+                        result.remove(action.model.getId());
+                    } else {
+                        result.put(action.model.getId(), action.model);
+                    }
                 }
             }
         }

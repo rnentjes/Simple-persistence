@@ -26,6 +26,10 @@ public final class SimpleTransaction implements Serializable, Transaction {
             this.remove = remove;
             this.model = model;
         }
+
+        public boolean isClass(Class<? extends SimpleModel> cls) {
+            return cls.equals(model.getClass());
+        }
     }
 
     private List<Action> actions = new LinkedList<Action>();
