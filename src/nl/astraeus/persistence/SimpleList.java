@@ -29,7 +29,11 @@ public class SimpleList<M extends SimpleModel> implements java.util.List<M>, Ser
     }
 
     public boolean contains(Object o) {
-        return list.contains(o);
+        if (o instanceof SimpleModel) {
+            return list.contains(((SimpleModel)o).getId());
+        } else {
+            return list.contains(o);
+        }
     }
     
     public java.util.List<Long> getIdList() {
