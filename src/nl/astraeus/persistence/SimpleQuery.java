@@ -1,7 +1,6 @@
 package nl.astraeus.persistence;
 
 import nl.astraeus.persistence.reflect.ReflectHelper;
-import org.w3c.dom.UserDataHandler;
 
 import javax.annotation.CheckForNull;
 import java.util.*;
@@ -17,6 +16,51 @@ public class SimpleQuery<M extends SimpleModel> {
     private Map<String, Set<Object>> selections = new HashMap<String, Set<Object>>();
     private List<String> order = new LinkedList<String>();
     private int from, max;
+
+    protected static class OrderComparator implements Comparator<SimpleModel> {
+
+        private String [] order;
+
+        public OrderComparator(List<String> order) {
+            this.order = order.toArray(new String[order.size()]);
+        }
+
+        @Override
+        public int compare(SimpleModel o1, SimpleModel o2) {
+            int index = 0;
+            int result = 0;
+
+            boolean desc;
+            String field;
+
+            while(index < order.length && result == 0) {
+                field = order[index];
+                desc = false;
+
+                if (field.charAt(0) == '-') {
+                    desc = true;
+                    field = field.substring(1);
+                } else if (field.charAt(0) == '+') {
+                    field = field.substring(1);
+                }
+
+                Object v1 = ReflectHelper.get().getField(o1, field);
+                Object v2 = ReflectHelper.get().getField(o2, field);
+
+                if (v1 instanceof Comparable) {
+                    result = ((Comparable)v1).compareTo(v2);
+
+                    if (desc) {
+                        result = -result;
+                    }
+                }
+
+                index++;
+            }
+
+            return result;
+        }
+    }
 
     public SimpleQuery(SimpleDao<M> dao) {
         this.dao = dao;
@@ -65,7 +109,7 @@ public class SimpleQuery<M extends SimpleModel> {
         int fromCounter = 0;
         int nrResults = 0;
 
-        SortedSet<M> result = new TreeSet<M>();
+        SortedSet<M> result = new TreeSet<M>(new OrderComparator(order));
 
         for (M m : dao.findAll()) {
             boolean match = isMatch(m);
