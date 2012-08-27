@@ -58,6 +58,12 @@ public class SimpleQuery<M extends SimpleModel> {
                 index++;
             }
 
+            if (o1.getId() > o2.getId()) {
+                result = -1;
+            } else {
+                result = 1;
+            }
+
             return result;
         }
     }
