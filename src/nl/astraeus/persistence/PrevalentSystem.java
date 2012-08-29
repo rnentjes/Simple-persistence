@@ -5,10 +5,7 @@ import nl.astraeus.persistence.reflect.ReflectHelper;
 import javax.annotation.Nonnull;
 import java.io.Serializable;
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * User: rnentjes
@@ -70,10 +67,9 @@ public class PrevalentSystem implements Serializable {
     protected <M extends SimpleModel> void store(M objectToStore) {
         System.out.println("Storing: "+objectToStore.getGUID());
 
-        // check for lists and inject SimpleList
-
         // check for references, work with proxies?
 
+        saveConversation(objectToStore);
         getModelMap(objectToStore.getClass()).put(objectToStore.getId(), objectToStore);
     }
 
@@ -81,6 +77,44 @@ public class PrevalentSystem implements Serializable {
     protected void remove(SimpleModel objectToRemove) {
         System.out.println("Removing: "+objectToRemove.getGUID());
         getModelMap(objectToRemove.getClass()).remove(objectToRemove.getId());
+    }
+
+    // check any SimpleList and SimpleReferences and if they have values to save
+    protected void saveConversation(SimpleModel model) {
+        try {
+            for (Field field : ReflectHelper.get().getFieldsFromClass(model.getClass())) {
+                if (field.getType().equals(SimpleReference.class)) {
+                    SimpleReference ref = (SimpleReference) field.get(model);
+
+                    if (ref != null) {
+                        SimpleModel m = ref.getIncoming();
+
+                        if (m != null) {
+                            store(m);
+                        }
+
+                        ref.clearIncoming();
+                    }
+                } else if (field.getType().equals(SimpleList.class)) {
+                    SimpleList list = (SimpleList) field.get(model);
+
+                    if (list != null) {
+                        Map incoming = list.getIncoming();
+
+                        if (incoming != null) {
+                            for (SimpleModel m : (Collection<SimpleModel>)incoming.values()) {
+                                store(m);
+                            }
+                        }
+
+                        list.clearIncoming();
+                    }
+                }
+            }
+        } catch (IllegalAccessException e) {
+            throw new IllegalStateException(e);
+        }
+
     }
 
     protected void addReferences(SimpleModel model) {

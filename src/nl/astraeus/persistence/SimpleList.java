@@ -15,9 +15,22 @@ public class SimpleList<M extends SimpleModel> implements java.util.List<M>, Ser
 
     private Class<? extends SimpleModel> cls;
     private java.util.List<Long> list = new LinkedList<Long>();
+    private transient Map<Long, M> incoming;
 
     public SimpleList(Class<? extends SimpleModel> cls) {
         this.cls = cls;
+    }
+
+    public Map<Long, M> getIncoming() {
+        if (incoming == null) {
+            incoming = new HashMap<>();
+        }
+
+        return incoming;
+    }
+
+    public void clearIncoming() {
+        getIncoming().clear();
     }
 
     public int size() {
@@ -65,7 +78,13 @@ public class SimpleList<M extends SimpleModel> implements java.util.List<M>, Ser
                 next = null;
 
                 while (it.hasNext() && next == null) {
-                    next = (M) SimpleStore.get().find(cls, it.next());
+                    Long nextId = it.next();
+
+                    next = getIncoming().get(nextId);
+
+                    if (next == null) {
+                        next = (M) SimpleStore.get().find(cls, nextId);
+                    }
                 }
 
                 return result;
@@ -87,15 +106,21 @@ public class SimpleList<M extends SimpleModel> implements java.util.List<M>, Ser
 
     public boolean add(M m) {
         //SimpleStore.get().assertIsStored(m);
+
+        getIncoming().put(m.getId(), m);
+
         return list.add(m.getId());
     }
 
+    // used by SimplePersistence to copy this list,
+    // using this function will avoid the entity to be added to the incoming list
     public boolean add(long id) {
         //SimpleStore.get().assertIsStored(m);
         return list.add(id);
     }
 
     public boolean remove(Object o) {
+        getIncoming().remove(((M)o).getId());
         return list.remove(((M)o).getId());
     }
 
@@ -144,23 +169,48 @@ public class SimpleList<M extends SimpleModel> implements java.util.List<M>, Ser
     }
 
     public void clear() {
+        getIncoming().clear();
         list.clear();
     }
 
     public M get(int index) {
-        return (M) SimpleStore.get().find(cls, list.get(index));
+        Long id = list.get(index);
+
+        M result = getIncoming().get(id);
+
+        if (result == null) {
+            result = (M) SimpleStore.get().find(cls, id);
+        }
+
+        return result;
     }
 
     public M set(int index, M element) {
-        return (M) SimpleStore.get().find(cls, list.set(index, element.getId()));
+        M result = get(index);
+
+        getIncoming().put(element.getId(), element);
+
+        list.set(index, element.getId());
+
+        return result;
     }
 
     public void add(int index, M element) {
+        getIncoming().put(element.getId(), element);
+
         list.add(index, element.getId());
     }
 
     public M remove(int index) {
-        return (M) SimpleStore.get().find(cls, list.remove(index));
+        Long id = list.remove(index);
+
+        M result = getIncoming().get(id);
+
+        if (result == null) {
+            result = (M) SimpleStore.get().find(cls, id);
+        }
+
+        return result;
     }
 
     public int indexOf(Object o) {

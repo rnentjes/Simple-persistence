@@ -11,7 +11,8 @@ import java.io.Serializable;
  */
 public class SimpleReference<M extends SimpleModel> implements Serializable {
     public static final long serialVersionUID = 1L;
-    
+
+    private transient M incoming;
     private long id;
     private Class<? extends SimpleModel> cls;
 
@@ -31,6 +32,14 @@ public class SimpleReference<M extends SimpleModel> implements Serializable {
         this.id = id;
     }
 
+    public M getIncoming() {
+        return incoming;
+    }
+
+    public void clearIncoming() {
+        incoming = null;
+    }
+
     public Class getType() {
         return cls;
     }
@@ -40,17 +49,21 @@ public class SimpleReference<M extends SimpleModel> implements Serializable {
     }
 
     public M get() {
-        if (cls != null && id > 0) {
-           return (M) SimpleStore.get().find(cls, id);
-        } else {
-            return null;
+        M result = incoming;
+
+        if (result == null && cls != null && id > 0) {
+           result = (M) SimpleStore.get().find(cls, id);
         }
+
+        return result;
     }
 
     public void set(M model) {
+        this.incoming = model;
+
         if (model != null) {
-        this.cls = model.getClass();
-        this.id = model.getId();
+            this.cls = model.getClass();
+            this.id = model.getId();
         } else {
             this.cls = null;
             this.id = -1;
@@ -58,7 +71,7 @@ public class SimpleReference<M extends SimpleModel> implements Serializable {
     }
 
     public boolean isNull() {
-        return cls == null || id == 0;
+        return (cls == null || id == 0);
     }
     
     public String toString() {
