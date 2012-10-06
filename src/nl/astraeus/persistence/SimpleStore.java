@@ -5,6 +5,7 @@ import org.prevayler.PrevaylerFactory;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -319,5 +320,11 @@ public class SimpleStore {
         }
 
         return result;
+    }
+
+    public Collection<SimpleModel> findAll(Class clazz) {
+        PrevalentSystem ps = (PrevalentSystem)prevayler.prevalentSystem();
+
+        return ps.getDataStore().get(clazz).values();
     }
 }
