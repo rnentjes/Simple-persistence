@@ -23,7 +23,7 @@ public class SimpleList<M extends SimpleModel> implements java.util.List<M>, Ser
 
     public Map<Long, M> getIncoming() {
         if (incoming == null) {
-            incoming = new HashMap<>();
+            incoming = new HashMap<Long, M>();
         }
 
         return incoming;
