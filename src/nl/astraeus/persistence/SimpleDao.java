@@ -228,7 +228,6 @@ public abstract class SimpleDao<M extends SimpleModel> {
                 throw new IllegalStateException("No transaction found and not in autocommit mode.");
             }
         } else {
-            // todo: warn, no need to use this function in a transaction
             SimpleStore.get().getTransaction().remove(model);
         }
     }
@@ -237,4 +236,17 @@ public abstract class SimpleDao<M extends SimpleModel> {
         return SimpleStore.get().getModelMap(getModelClass()).size();
     }
 
+    /*
+    public Set<SimpleIndex<M, ?>> getIndexes(String property) {
+        SimpleIndexDao.get().findByProperty(getModelClass(), property);
+
+        return new HashSet<SimpleIndex<M, ?>>();
+    }
+
+    public <T> void createSimpleIndex(String propertyName, T type) {
+        // assert property exists and allows for index
+        SimpleIndex<M, T> index = new SimpleIndex<M, T>(getModelClass(), propertyName);
+
+        SimpleIndexDao.get().store(index);
+    }*/
 }

@@ -10,12 +10,13 @@ import java.util.*;
  * Date: 3/27/12
  * Time: 10:09 PM
  */
-public abstract class SimpleIndex<M extends SimpleModel, T> implements Serializable {
+public class SimpleIndex<M extends SimpleModel, T> implements Serializable {
     public final static long serialVersionUID = 1L;
     
     private Map<T, Set<Long>> index = new HashMap<T, Set<Long>>();
     private Class<M> cls;
     private String propertyName;
+    private boolean initialized = false;
 
     protected SimpleIndex(Class<M> cls, String propertyName) {
         this.cls = cls;
@@ -26,8 +27,25 @@ public abstract class SimpleIndex<M extends SimpleModel, T> implements Serializa
         return (T) ReflectHelper.get().getFieldValue(model, propertyName);
     }
 
-    public abstract void addModel(M model);
-    public abstract void removeModel(M model);
+    public void update(M model) {
+        Set<Long> set = index.get(getIndexValue(model));
+
+        if (set == null) {
+            set = new HashSet<Long>();
+
+            index.put(getIndexValue(model), set);
+        }
+
+        set.add(model.getId());
+    }
+
+    public void remove(M model) {
+        Set<Long> set = index.get(getIndexValue(model));
+
+        if (set != null) {
+            set.remove(model.getId());
+        }
+    }
     
     public List<M> find(T value) {
         List<M> result = new LinkedList<M>();

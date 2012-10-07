@@ -165,6 +165,10 @@ public class SimpleStore {
         transactions.remove();
     }
 
+    private void createIndexInternal(Class<? extends SimpleModel> cls, String propertyName) {
+        prevayler.execute(new CreateIndex(cls, propertyName));
+    }
+
     public static void begin() {
         get().beginTransaction();
     }
@@ -175,6 +179,10 @@ public class SimpleStore {
     
     public static void rollback() {
         get().rollbackCurrentTransaction();
+    }
+
+    public static void createIndex(Class<? extends SimpleModel> cls, String propertyName) {
+        get().createIndexInternal(cls, propertyName);
     }
 
     public void snapshot() {

@@ -117,6 +117,8 @@ public class SimpleQuery<M extends SimpleModel> {
 
         SortedSet<M> result = new TreeSet<M>(new OrderComparator(order));
 
+        // get searchset from indexes
+
         for (M m : dao.findAll()) {
             boolean match = isMatch(m);
 
@@ -143,6 +145,8 @@ public class SimpleQuery<M extends SimpleModel> {
 
         if (resultList.size() == 1) {
             result = resultList.iterator().next();
+        } else {
+            // warn or error???
         }
 
         return result;

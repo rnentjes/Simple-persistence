@@ -1,5 +1,7 @@
 package nl.astraeus.persistence;
 
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
+
 import java.io.Serializable;
 
 /**
@@ -46,6 +48,19 @@ public abstract class SimpleModel implements Serializable, Cloneable, Comparable
 
     public Long getId() {
         return id;
+    }
+
+    public String getIdAsBase64() {
+        byte [] bytes = new byte[8];
+        long theId = getId();
+
+        for (int i = 0; i < 8; i++) {
+            bytes[i] = (byte)(theId & 0xff);
+
+            theId = theId >> 8;
+        }
+
+        return Base64.encode(bytes);
     }
 
     public String getGUID() {

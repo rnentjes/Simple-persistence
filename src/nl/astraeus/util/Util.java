@@ -22,4 +22,5 @@ public class Util {
         System.out.println("Total memory: "+(Runtime.getRuntime().totalMemory() / (1024*1024)));
         System.out.println("Max   memory: "+(Runtime.getRuntime().maxMemory() / (1024*1024)));
     }
+
 }

@@ -22,18 +22,13 @@ public class PrevalentSystem implements Serializable {
       private Map<Class<? extends SimpleModel>, SimpleModel []> dataStore = new HashMap<Class<? extends SimpleModel>, SimpleModel[]>();
     */
 
-    private Map<Class<? extends SimpleModel>, Map<Long, SimpleModel>> dataStore = new HashMap<Class<? extends SimpleModel>, Map<Long, SimpleModel>>(250);
+    private Map<Class<? extends SimpleModel>, Map<Long, SimpleModel>> dataStore = new HashMap<Class<? extends SimpleModel>, Map<Long, SimpleModel>>(10000);
 
     // index definitions
     // index class + property
     // index type - tree, hash ???
-    private Map<Class<? extends SimpleModel>, Map<String, SimpleIndex>> indexDefinitions = new HashMap<Class<? extends SimpleModel>, Map<String, SimpleIndex>>();
-
-    private Map<Class<? extends SimpleModel>, Map<String, Object>> indexes = new HashMap<Class<? extends SimpleModel>, Map<String, Object>>();
-
-    //private Map<Class<? extends SimpleModel>, SimpleList<SimpleListener<?>>> listeners;
-
-    //private Map<Class<? extends SimpleModel>, SimpleList<SimpleIndex<?>>> listeners;
+    private Map<Class<? extends SimpleModel>, Map<String, SimpleIndex>> indexes =
+            new HashMap<Class<? extends SimpleModel>, Map<String, SimpleIndex>>();
 
     /*
      * Class.getName()+id, class, list<id>
@@ -176,4 +171,43 @@ public class PrevalentSystem implements Serializable {
         return result;
     }
 
+    public void updateIndex(SimpleModel model) {
+        Map<String, ? extends SimpleIndex> indexMap = indexes.get(model.getClass());
+
+        if (indexMap != null) {
+            for (SimpleIndex si : indexMap.values()) {
+                si.update(model);
+            }
+        }
+    }
+
+    public void removeIndex(SimpleModel model) {
+        Map<String, ? extends SimpleIndex> indexMap = indexes.get(model.getClass());
+
+        if (indexMap != null) {
+            for (SimpleIndex si : indexMap.values()) {
+                si.remove(model);
+            }
+        }
+    }
+
+    public void createIndex(Class<? extends SimpleModel> cls, String propertyName) {
+        Map<String, SimpleIndex> indexMap = indexes.get(cls);
+
+        if (indexMap == null) {
+            indexMap = new HashMap<String, SimpleIndex>();
+
+            indexes.put(cls, indexMap);
+        }
+
+        if (indexMap.get(propertyName) == null) {
+            indexMap.put(propertyName, new SimpleIndex(cls, propertyName));
+
+            if (dataStore.get(cls) != null) {
+                for (SimpleModel model : dataStore.get(cls).values()) {
+                    updateIndex(model);
+                }
+            }
+        }
+    }
 }

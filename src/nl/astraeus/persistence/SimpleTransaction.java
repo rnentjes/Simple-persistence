@@ -75,8 +75,10 @@ public final class SimpleTransaction implements Serializable, Transaction {
         
         for (Action action : actions) {
             if (action.remove) {
+                ps.removeIndex(action.model);
                 ps.remove(action.model);
             } else {
+                ps.updateIndex(action.model);
                 ps.store(action.model);
             }
         }
