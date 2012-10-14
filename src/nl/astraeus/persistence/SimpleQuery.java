@@ -12,8 +12,28 @@ import java.util.*;
  */
 public class SimpleQuery<M extends SimpleModel> {
 
+    private static enum SelectorType {
+        EQUALS,
+        NULL,
+        NOTNNULL,
+        GREATER,
+        SMALLER,
+        GREATER_EQUAL,
+        SMALLER_EQUAL;
+    }
+
+    private static class Selector {
+        public SelectorType type;
+        public Object value;
+
+        private Selector(SelectorType type, Object value) {
+            this.type = type;
+            this.value = value;
+        }
+    }
+
     private SimpleDao<M> dao;
-    private Map<String, Set<Object>> selections = new HashMap<String, Set<Object>>();
+    private Map<String, Set<Selector>> selections = new HashMap<String, Set<Selector>>();
     private List<String> order = new LinkedList<String>();
     private int from, max;
 
@@ -86,20 +106,66 @@ public class SimpleQuery<M extends SimpleModel> {
         return this;
     }
 
-    private void addSelection(String property, Object value) {
-        Set<Object> values = selections.get(property);
+    private void addSelection(String property, SelectorType type, Object value) {
+        if (value == null) {
+            selections.put(property, null);
+        } else {
+            Set<Selector> values = selections.get(property);
 
-        if (values == null) {
-            values = new HashSet<Object>();
+            if (values == null) {
+                values = new HashSet<Selector>();
 
-            selections.put(property, values);
+                selections.put(property, values);
+            }
+
+            values.add(new Selector(type, value));
         }
-
-        values.add(value);
     }
 
     public SimpleQuery<M> where(String property, Object value) {
-        addSelection(property, value);
+        addSelection(property, SelectorType.EQUALS, value);
+
+        return this;
+    }
+
+    public SimpleQuery<M> equals(String property, Object value) {
+        addSelection(property, SelectorType.EQUALS, value);
+
+        return this;
+    }
+
+    public SimpleQuery<M> isNull(String property) {
+        addSelection(property, SelectorType.NULL, null);
+
+        return this;
+    }
+
+    public SimpleQuery<M> isNotNull(String property) {
+        addSelection(property, SelectorType.NOTNNULL, null);
+
+        return this;
+    }
+
+    public SimpleQuery<M> greater(String property, Object value) {
+        addSelection(property, SelectorType.GREATER, null);
+
+        return this;
+    }
+
+    public SimpleQuery<M> smaller(String property, Object value) {
+        addSelection(property, SelectorType.SMALLER, null);
+
+        return this;
+    }
+
+    public SimpleQuery<M> greaterEquals(String property, Object value) {
+        addSelection(property, SelectorType.GREATER_EQUAL, null);
+
+        return this;
+    }
+
+    public SimpleQuery<M> smallerEqual(String property, Object value) {
+        addSelection(property, SelectorType.SMALLER_EQUAL, null);
 
         return this;
     }
@@ -159,12 +225,25 @@ public class SimpleQuery<M extends SimpleModel> {
         for (String property : properties) {
             Object om = ReflectHelper.get().getFieldValue(m, property);
 
-            if (om != null) {
-                for (Object matches : selections.get(property)) {
-                    if (!om.equals(matches)) {
-                        result = false;
+            for (Selector selector : selections.get(property)) {
+                switch(selector.type) {
+                    case EQUALS:
+                        if (om == null || !om.equals(selector.value)) {
+                            result = false;
+                        }
                         break;
-                    }
+                    case NULL:
+                        if (om != null) {
+                            result = false;
+                        }
+                        break;
+                    case NOTNNULL:
+                        if (om == null) {
+                            result = false;
+                        }
+                        break;
+                    default:
+                        throw new IllegalStateException(selector.type+" not implemented yet!");
                 }
             }
         }
