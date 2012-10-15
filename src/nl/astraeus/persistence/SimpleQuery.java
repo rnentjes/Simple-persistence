@@ -15,7 +15,7 @@ public class SimpleQuery<M extends SimpleModel> {
     private static enum SelectorType {
         EQUALS,
         NULL,
-        NOTNNULL,
+        NOT_NULL,
         GREATER,
         SMALLER,
         GREATER_EQUAL,
@@ -107,19 +107,15 @@ public class SimpleQuery<M extends SimpleModel> {
     }
 
     private void addSelection(String property, SelectorType type, Object value) {
-        if (value == null) {
-            selections.put(property, null);
-        } else {
-            Set<Selector> values = selections.get(property);
+        Set<Selector> values = selections.get(property);
 
-            if (values == null) {
-                values = new HashSet<Selector>();
+        if (values == null) {
+            values = new HashSet<Selector>();
 
-                selections.put(property, values);
-            }
-
-            values.add(new Selector(type, value));
+            selections.put(property, values);
         }
+
+        values.add(new Selector(type, value));
     }
 
     public SimpleQuery<M> where(String property, Object value) {
@@ -141,7 +137,7 @@ public class SimpleQuery<M extends SimpleModel> {
     }
 
     public SimpleQuery<M> isNotNull(String property) {
-        addSelection(property, SelectorType.NOTNNULL, null);
+        addSelection(property, SelectorType.NOT_NULL, null);
 
         return this;
     }
@@ -237,7 +233,7 @@ public class SimpleQuery<M extends SimpleModel> {
                             result = false;
                         }
                         break;
-                    case NOTNNULL:
+                    case NOT_NULL:
                         if (om == null) {
                             result = false;
                         }
