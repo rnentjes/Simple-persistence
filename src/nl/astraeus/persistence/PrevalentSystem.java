@@ -1,6 +1,8 @@
 package nl.astraeus.persistence;
 
 import nl.astraeus.persistence.reflect.ReflectHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
 import java.io.Serializable;
@@ -13,6 +15,7 @@ import java.util.*;
  * Time: 8:54 PM
  */
 public class PrevalentSystem implements Serializable {
+    private final static Logger logger = LoggerFactory.getLogger(PrevalentSystem.class);
 
     public static final long serialVersionUID = 1468478256843309473L;
 
@@ -60,7 +63,7 @@ public class PrevalentSystem implements Serializable {
 
     /** Functions called from within Transaction to update data model */
     protected <M extends SimpleModel> void store(M objectToStore) {
-        System.out.println("Storing: "+objectToStore.getGUID());
+        logger.debug("Storing: " + objectToStore.getGUID());
 
         // check for references, work with proxies?
 
@@ -70,7 +73,8 @@ public class PrevalentSystem implements Serializable {
 
     /** Functions called from within Transaction to update data model */
     protected void remove(SimpleModel objectToRemove) {
-        System.out.println("Removing: "+objectToRemove.getGUID());
+        logger.debug("Removing: " + objectToRemove.getGUID());
+
         getModelMap(objectToRemove.getClass()).remove(objectToRemove.getId());
     }
 

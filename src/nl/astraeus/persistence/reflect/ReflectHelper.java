@@ -1,6 +1,8 @@
 package nl.astraeus.persistence.reflect;
 
 import nl.astraeus.persistence.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
@@ -19,6 +21,7 @@ import java.util.Map;
  * Time: 17:03
  */
 public class ReflectHelper {
+    private final static Logger logger = LoggerFactory.getLogger(ReflectHelper.class);
 
     private final static ReflectHelper instance = new ReflectHelper();
 
@@ -324,7 +327,7 @@ public class ReflectHelper {
                     if (subModel != null) {
                         result.addAll(getFieldValues(subModel, ++skip, fields));
                     } else {
-                        System.out.println(model.getClass() + "." + fields[skip] + " == null");
+                        logger.warn(model.getClass() + "." + fields[skip] + " == null");
                     }
                 }
             } else {

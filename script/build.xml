@@ -376,7 +376,7 @@
 
     </target>
 
-    <target name="jar" depends="compile, copynonjavafiles" description="Create jar distribution dir">
+    <target name="jar" depends="clean, compile, copynonjavafiles" description="Create jar distribution dir">
 
         <copy todir="${jar.dir}/lib">
             <fileset dir="${lib.dir}" includes="*.jar"/>
