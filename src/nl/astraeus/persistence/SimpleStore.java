@@ -2,6 +2,8 @@ package nl.astraeus.persistence;
 
 import org.prevayler.Prevayler;
 import org.prevayler.PrevaylerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -17,6 +19,8 @@ import java.util.concurrent.TimeUnit;
  * Time: 7:24 PM
  */
 public class SimpleStore {
+    private final static Logger logger = LoggerFactory.getLogger(SimpleStore.class);
+
     public final static String SAFEMODE            = "safemode";
     public final static String AUTOCOMMIT          = "autocommit";
     public final static String DATA_DIRECTORY      = "dataDirectory";
@@ -41,6 +45,7 @@ public class SimpleStore {
     private long fileSizeThreshold = 10*1024L*1024L;
 
     private boolean started = false;
+    private boolean nodes = false;
 
     // SimpleModel private field cache
     private Field _prevayler_saved = null;
@@ -69,6 +74,20 @@ public class SimpleStore {
 
             if (System.getProperty(FILE_SIZE_THRESHOLD) != null) {
                 fileSizeThreshold = Long.parseLong(System.getProperty(FILE_SIZE_THRESHOLD));
+            }
+
+            try {
+                SimpleNodeManager.get().init(
+                        System.getProperty("simple.node.ip"),
+                        Integer.parseInt(System.getProperty("simple.node.port")),
+                        Integer.parseInt(System.getProperty("simple.node.divider")),
+                        Integer.parseInt(System.getProperty("simple.node.remainder")));
+
+                nodes = true;
+            } catch (NumberFormatException e) {
+                logger.warn(e.getMessage(), e);
+            } catch (IllegalStateException e) {
+                logger.warn(e.getMessage(), e);
             }
 
             PrevaylerFactory factory = new PrevaylerFactory();
@@ -165,10 +184,6 @@ public class SimpleStore {
         transactions.remove();
     }
 
-    private void createIndexInternal(Class<? extends SimpleModel> cls, String propertyName) {
-        prevayler.execute(new CreateIndex(cls, propertyName));
-    }
-
     public static void begin() {
         get().beginTransaction();
     }
@@ -179,10 +194,6 @@ public class SimpleStore {
     
     public static void rollback() {
         get().rollbackCurrentTransaction();
-    }
-
-    public static void createIndex(Class<? extends SimpleModel> cls, String propertyName) {
-        get().createIndexInternal(cls, propertyName);
     }
 
     public void snapshot() {
@@ -335,4 +346,17 @@ public class SimpleStore {
 
         return ps.getDataStore().get(clazz).values();
     }
+
+    public void createIndex(Class<? extends SimpleModel> cls, String property) {
+        PrevalentSystem ps = (PrevalentSystem)prevayler.prevalentSystem();
+
+        prevayler.execute(new CreateIndexTransaction(cls, property));
+    }
+
+    public SimpleIndex getIndex(Class<? extends SimpleModel> cls, String name) {
+        PrevalentSystem ps = (PrevalentSystem)prevayler.prevalentSystem();
+
+        return ps.getIndex(cls, name);
+    }
+
 }

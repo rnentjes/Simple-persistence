@@ -1,6 +1,8 @@
 package nl.astraeus.persistence;
 
 import org.prevayler.Transaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.Serializable;
 import java.util.*;
@@ -13,6 +15,7 @@ import java.util.*;
  * Time: 12:58 PM
  */
 public final class SimpleTransaction implements Serializable, Transaction {
+    private final static Logger logger = LoggerFactory.getLogger(SimpleTransaction.class);
 
 	private static final long serialVersionUID = 1L;
 
@@ -61,25 +64,26 @@ public final class SimpleTransaction implements Serializable, Transaction {
         return actions;
     }
 
-    /*
-    Collection<SimpleModel> getStored() {
-        return store;
-    }
-
-    Collection<SimpleModel> getRemoved() {
-        return remove;
-    }*/
-
 	public void executeOn(Object prevalentSystem, Date ignored) {
         PrevalentSystem ps = (PrevalentSystem)prevalentSystem;
+        boolean castFailure= false;
+
+        try { // send transaction to other nodes
+            SimpleNodeManager.get().cast(actions);
+        } catch (Exception e) {
+            logger.warn(e.getMessage(), e);
+            castFailure = true;
+        }
         
         for (Action action : actions) {
-            if (action.remove) {
-                ps.removeIndex(action.model);
-                ps.remove(action.model);
-            } else {
-                ps.updateIndex(action.model);
-                ps.store(action.model);
+            if (castFailure || SimpleNodeManager.get().getCurrent() == null || SimpleNodeManager.get().getCurrent().matched(action.model.getId())) {
+                if (action.remove) {
+                    ps.removeIndex(action.model);
+                    ps.remove(action.model);
+                } else {
+                    ps.updateIndex(action.model);
+                    ps.store(action.model);
+                }
             }
         }
 	}

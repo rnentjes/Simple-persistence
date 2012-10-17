@@ -19,7 +19,7 @@ public class SimpleQuery<M extends SimpleModel> {
         GREATER,
         SMALLER,
         GREATER_EQUAL,
-        SMALLER_EQUAL;
+        SMALLER_EQUAL
     }
 
     private static class Selector {
@@ -172,6 +172,8 @@ public class SimpleQuery<M extends SimpleModel> {
         return this;
     }
 
+
+
     public SortedSet<M> getResultSet() {
         // result as set with order comparator
         int fromCounter = 0;
@@ -179,21 +181,63 @@ public class SimpleQuery<M extends SimpleModel> {
 
         SortedSet<M> result = new TreeSet<M>(new OrderComparator(order));
 
-        // get searchset from indexes
+        Set<Long> subSelection = null;
 
-        for (M m : dao.findAll()) {
-            boolean match = isMatch(m);
+        Set<String> properties = selections.keySet();
+        for (String property : properties) {
+            SimpleIndex<M, Object> index = SimpleStore.get().getIndex(dao.getModelClass(), property);
 
-            if (match) {
-                if (fromCounter >= from) {
-                    result.add(m);
-                    nrResults++;
+            if (index != null) {
+                Set<Selector> selectors = selections.get(property);
+
+                for(Selector selector : selectors) {
+                    if (selector.type == SelectorType.EQUALS) {
+                        Set<Long> keys = index.find(selector.value);
+
+                        if (subSelection == null) {
+                            subSelection = keys;
+                        } else {
+                            subSelection.retainAll(keys);
+                        }
+                    }
+
                 }
-                fromCounter++;
             }
+        }
 
-            if (nrResults == max) {
-                break;
+        if (subSelection != null) {
+            for (Long id : subSelection) {
+                M m = dao.find(id);
+
+                boolean match = isMatch(m);
+
+                if (match) {
+                    if (fromCounter >= from) {
+                        result.add(m);
+                        nrResults++;
+                    }
+                    fromCounter++;
+                }
+
+                if (nrResults == max) {
+                    break;
+                }
+            }
+        } else {
+            for (M m : dao.findAll()) {
+                boolean match = isMatch(m);
+
+                if (match) {
+                    if (fromCounter >= from) {
+                        result.add(m);
+                        nrResults++;
+                    }
+                    fromCounter++;
+                }
+
+                if (nrResults == max) {
+                    break;
+                }
             }
         }
 

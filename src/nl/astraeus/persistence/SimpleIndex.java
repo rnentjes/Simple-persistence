@@ -47,13 +47,11 @@ public class SimpleIndex<M extends SimpleModel, T> implements Serializable {
         }
     }
     
-    public List<M> find(T value) {
-        List<M> result = new LinkedList<M>();
-        
+    public Set<Long> find(T value) {
+        Set<Long> result = new HashSet<Long>();
+
         if (index.get(value) != null) {
-            for (Long id : index.get(value)) {
-                result.add(SimpleStore.get().find(cls, id));
-            }
+            result = index.get(value);
         }
 
         return result;
