@@ -1,5 +1,6 @@
 package nl.astraeus.persistence;
 
+import org.prevayler.Transaction;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -8,7 +9,7 @@ import java.util.Date;
  * Date: 10/17/12
  * Time: 9:19 PM
  */
-public final class CreateIndexTransaction implements Serializable, org.prevayler.Transaction {
+public final class CreateIndexTransaction implements Serializable, Transaction {
 
     private static final long serialVersionUID = 1L;
 

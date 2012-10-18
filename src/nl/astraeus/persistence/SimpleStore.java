@@ -348,9 +348,9 @@ public class SimpleStore {
     }
 
     public void createIndex(Class<? extends SimpleModel> cls, String property) {
-        PrevalentSystem ps = (PrevalentSystem)prevayler.prevalentSystem();
+        CreateIndexTransaction cit = new CreateIndexTransaction(cls, property);
 
-        prevayler.execute(new CreateIndexTransaction(cls, property));
+        prevayler.execute(cit);
     }
 
     public SimpleIndex getIndex(Class<? extends SimpleModel> cls, String name) {
