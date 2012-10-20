@@ -237,7 +237,13 @@ public abstract class SimpleDao<M extends SimpleModel> {
     }
 
     public void createIndex(String property) {
-        SimpleStore.get().createIndex(getModelClass(), property);
+        if (SimpleStore.get().getIndex(getModelClass(), property) == null) {
+            SimpleStore.get().createIndex(getModelClass(), property);
+        }
+    }
+
+    public void reIndex(String property) {
+       SimpleStore.get().createIndex(getModelClass(), property);
     }
 
 }

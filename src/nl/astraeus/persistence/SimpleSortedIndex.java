@@ -1,7 +1,5 @@
 package nl.astraeus.persistence;
 
-import nl.astraeus.persistence.reflect.ReflectHelper;
-
 import java.io.Serializable;
 import java.util.*;
 
@@ -10,28 +8,22 @@ import java.util.*;
  * Date: 3/27/12
  * Time: 10:09 PM
  */
-public class SimpleIndex<M extends SimpleModel, T> implements Serializable {
+public class SimpleSortedIndex<M extends SimpleModel, T> extends SimpleIndex<M,T> implements Serializable {
     public final static long serialVersionUID = 1L;
-    
-    protected Map<T, Set<Long>> index = new HashMap<T, Set<Long>>();
-    private Class<M> cls;
-    private String propertyName;
-    private boolean initialized = false;
 
-    protected SimpleIndex(Class<M> cls, String propertyName) {
-        this.cls = cls;
-        this.propertyName = propertyName;
-    }
+    private Comparable<M> comparable;
 
-    public T getIndexValue(M model) {
-        return (T) ReflectHelper.get().getFieldValue(model, propertyName);
+    protected SimpleSortedIndex(Class<M> cls, String propertyName, Comparable<M> comparable) {
+        super(cls, propertyName);
+
+        this.comparable = comparable;
     }
 
     public void update(M model) {
         Set<Long> set = index.get(getIndexValue(model));
 
         if (set == null) {
-            set = new HashSet<Long>();
+            set = new TreeSet<Long>();
 
             index.put(getIndexValue(model), set);
         }
@@ -57,4 +49,7 @@ public class SimpleIndex<M extends SimpleModel, T> implements Serializable {
         return result;
     }
 
+    public Set<M> findSmaller(M model) {
+        return null;
+    }
 }

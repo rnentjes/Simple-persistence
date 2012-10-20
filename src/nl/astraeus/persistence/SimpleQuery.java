@@ -266,26 +266,35 @@ public class SimpleQuery<M extends SimpleModel> {
             Object om = ReflectHelper.get().getFieldValue(m, property);
 
             for (Selector selector : selections.get(property)) {
-                switch(selector.type) {
-                    case EQUALS:
-                        if (om == null || !om.equals(selector.value)) {
-                            result = false;
-                        }
-                        break;
-                    case NULL:
-                        if (om != null) {
-                            result = false;
-                        }
-                        break;
-                    case NOT_NULL:
-                        if (om == null) {
-                            result = false;
-                        }
-                        break;
-                    default:
-                        throw new IllegalStateException(selector.type+" not implemented yet!");
-                }
+                result &= compare(selector.type, om, selector.value);
             }
+        }
+
+        return result;
+    }
+
+    private boolean compare(SelectorType type, Object valueLeft, Object valueRight) {
+        boolean result = false;
+
+        switch(type) {
+            case EQUALS:
+                if (valueLeft != null && valueLeft.equals(valueRight)) {
+                    result = true;
+                }
+                break;
+            case NULL:
+                result = valueLeft == null;
+
+                break;
+            case NOT_NULL:
+                result = valueLeft != null;
+
+                break;
+//            case GREATER:
+                //result = !compare(GREATER, om, selector.value);
+  //              break;
+            default:
+                throw new IllegalStateException(type+" not implemented yet!");
         }
 
         return result;
