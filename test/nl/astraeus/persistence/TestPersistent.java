@@ -5,6 +5,7 @@ package nl.astraeus.persistence;
  * Date: 10/24/12
  * Time: 3:54 PM
  */
+@Ignore
 public class TestPersistent {
 
     public static class User implements Persistent<String> {
