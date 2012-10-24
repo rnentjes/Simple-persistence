@@ -1,5 +1,7 @@
 package nl.astraeus.persistence;
 
+import org.junit.Ignore;
+
 /**
  * User: rnentjes
  * Date: 10/24/12
