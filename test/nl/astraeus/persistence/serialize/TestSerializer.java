@@ -2,6 +2,7 @@ package nl.astraeus.persistence.serialize;
 
 import nl.astraeus.persistence.SimpleModel;
 import nl.astraeus.persistence.SimpleSerializer;
+import org.junit.Ignore;
 
 import java.io.*;
 import java.util.Collection;
@@ -14,6 +15,7 @@ import java.util.TreeSet;
  * Date: 7/7/12
  * Time: 10:25 PM
  */
+@Ignore
 public class TestSerializer {
     public static void main(String [] args) throws Exception {
         new TestSerializer();

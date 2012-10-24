@@ -1,5 +1,7 @@
 package nl.astraeus.persistence.reflect;
 
+import org.junit.Ignore;
+
 import java.lang.reflect.Field;
 import java.util.Date;
 
@@ -8,6 +10,7 @@ import java.util.Date;
  * Date: 7/8/12
  * Time: 8:20 PM
  */
+@Ignore
 public class ShowFields {
 
     public static void main(String [] args) throws Exception {

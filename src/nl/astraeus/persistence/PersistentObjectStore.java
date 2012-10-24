@@ -14,79 +14,87 @@ import java.util.*;
  * Date: 8/19/11
  * Time: 8:54 PM
  */
-public class PrevalentSystem implements Serializable {
-    private final static Logger logger = LoggerFactory.getLogger(PrevalentSystem.class);
+public class PersistentObjectStore implements Serializable {
+    private final static Logger logger = LoggerFactory.getLogger(PersistentObjectStore.class);
 
     public static final long serialVersionUID = 1468478256843309473L;
 
-    /* Alternative approach
-      private Map<Class<? extends SimpleModel>, Set<Integer>> freeIds = new HashMap<Class<? extends SimpleModel>, Set<Integer>>();
-      private Map<Class<? extends SimpleModel>, Integer> nextId = new HashMap<Class<? extends SimpleModel>, Integer>();
-      private Map<Class<? extends SimpleModel>, SimpleModel []> dataStore = new HashMap<Class<? extends SimpleModel>, SimpleModel[]>();
-    */
+    private Map<Class<? extends Persistent>, Map<Object, Persistent>> persistentStore = new HashMap<Class<? extends Persistent>, Map<Object, Persistent>>(64);
 
-    private Map<Class<? extends SimpleModel>, Map<Long, SimpleModel>> dataStore = new HashMap<Class<? extends SimpleModel>, Map<Long, SimpleModel>>(64);
+    // Optimistic locking control
+    private Map<Class<? extends Persistent>, Map<Object, Long>> updateTimestamps = new HashMap<Class<? extends Persistent>, Map<Object, Long>>(64);
 
     // index definitions
     // index class + property
     // index type - tree, hash ???
-    private Map<Class<? extends SimpleModel>, Map<String, SimpleIndex<? extends SimpleModel, Object>>> indexes =
-            new HashMap<Class<? extends SimpleModel>, Map<String, SimpleIndex<? extends SimpleModel, Object>>>();
+    private Map<Class<? extends Persistent>, Map<String, PersistentIndex>> indexes =
+            new HashMap<Class<? extends Persistent>, Map<String, PersistentIndex>>();
 
     /*
      * Class.getName()+id, class, list<id>
      */
-    private Map<String, Map<Class<? extends SimpleModel>, Set<Long>>> references = new HashMap<String, Map<Class<? extends SimpleModel>, Set<Long>>>();
+    //private Map<String, Map<Class<? extends SimpleModel>, Set<Long>>> references = new HashMap<String, Map<Class<? extends SimpleModel>, Set<Long>>>();
+    // of:
+    private Map<Class<? extends Persistent>, Map<Object, Map<Class<? extends Persistent>, Set<Long>>>> references;
 
-    protected Map<Class<? extends SimpleModel>, Map<Long, SimpleModel>> getDataStore() {
-        return dataStore;
+
+    protected Map<Class<? extends Persistent>, Map<Object, Persistent>> getPersistentStore() {
+        return persistentStore;
+    }
+
+    protected <K, M extends Persistent<K>> void checkAndUpdateTimestamp(M model) {
+
+
     }
 
     @Nonnull
-    public Map<Long, SimpleModel> getModelMap(Class<? extends SimpleModel> cls) {
-        Map<Long, SimpleModel> result = dataStore.get(cls);
-        
+    public <K, M extends Persistent<K>> Map getModelMap(Class<M> cls) {
+        Map result = persistentStore.get(cls);
+
         if (result == null) {
-            result = new HashMap<Long, SimpleModel>();
-            
-            dataStore.put(cls, result);
+            result = new HashMap();
+
+            persistentStore.put(cls, (Map<Object, Persistent>) result);
         }
-        
+
         return result;
     }
 
-    public <T extends SimpleModel> T find(Class<T> cls, long id) {
-        T result = (T) getModelMap(cls).get(id);
+    public <K, M extends Persistent<K>> M find(Class<M> cls, K id) {
+        M result = (M)getModelMap(cls).get(id);
 
         return result;
     }
 
     /** Functions called from within Transaction to update data model */
-    protected <M extends SimpleModel> void store(M objectToStore) {
-        logger.debug("Storing: " + objectToStore.getGUID());
+    protected <K, M extends Persistent<K>> void store(M objectToStore) {
+        logger.debug("Storing: " + objectToStore.getClass().getName()+"-"+String.valueOf(objectToStore.getId()));
 
         // check for references, work with proxies?
 
         saveConversation(objectToStore);
-        getModelMap(objectToStore.getClass()).put(objectToStore.getId(), objectToStore);
+
+        Map<K, M> modelMap = (Map<K, M>) getModelMap(objectToStore.getClass());
+
+        modelMap.put(objectToStore.getId(), objectToStore);
     }
 
     /** Functions called from within Transaction to update data model */
-    protected void remove(SimpleModel objectToRemove) {
-        logger.debug("Removing: " + objectToRemove.getGUID());
+    protected <K, M extends Persistent<K>> void remove(M objectToRemove) {
+        logger.debug("Removing: " + objectToRemove.getClass().getName()+"-"+String.valueOf(objectToRemove.getId()));
 
         getModelMap(objectToRemove.getClass()).remove(objectToRemove.getId());
     }
 
     // check any SimpleList and SimpleReferences and if they have values to save
-    protected void saveConversation(SimpleModel model) {
+    protected <K, M extends Persistent<K>> void saveConversation(M model) {
         try {
             for (Field field : ReflectHelper.get().getFieldsFromClass(model.getClass())) {
-                if (field.getType().equals(SimpleReference.class)) {
-                    SimpleReference ref = (SimpleReference) field.get(model);
+                if (field.getType().equals(PersistentReference.class)) {
+                    PersistentReference<K, M> ref = (PersistentReference<K, M>) field.get(model);
 
                     if (ref != null) {
-                        SimpleModel m = ref.getIncoming();
+                        M m = ref.getIncoming();
 
                         if (m != null) {
                             store(m);
@@ -94,14 +102,14 @@ public class PrevalentSystem implements Serializable {
 
                         ref.clearIncoming();
                     }
-                } else if (field.getType().equals(SimpleList.class)) {
-                    SimpleList list = (SimpleList) field.get(model);
+                } else if (field.getType().equals(PersistentList.class)) {
+                    PersistentList<K, M> list = (PersistentList<K, M>) field.get(model);
 
                     if (list != null) {
                         Map incoming = list.getIncoming();
 
                         if (incoming != null) {
-                            for (SimpleModel m : (Collection<SimpleModel>)incoming.values()) {
+                            for (M m : (Collection<M>)incoming.values()) {
                                 store(m);
                             }
                         }
@@ -116,12 +124,13 @@ public class PrevalentSystem implements Serializable {
 
     }
 
-    protected void addReferences(SimpleModel model) {
+    /*
+    protected <K, M extends Persistent<K>> void addReferences(M model) {
         // go through the model, add a reference for every object referenced from this one
         try {
             for (Field field : ReflectHelper.get().getFieldsFromClass(model.getClass())) {
-                if (field.getType().equals(SimpleReference.class)) {
-                    SimpleReference ref = (SimpleReference) field.get(model);
+                if (field.getType().equals(PersistentReference.class)) {
+                    PersistentReference ref = (PersistentReference) field.get(model);
 
                     if (!ref.isNull()) {
                         setReference(ref.get(), model.getClass(), model.getId());
@@ -173,12 +182,12 @@ public class PrevalentSystem implements Serializable {
         }
 
         return result;
-    }
+    }*/
 
-    protected SimpleIndex getIndex(Class<? extends SimpleModel> cls, String property) {
-        SimpleIndex result = null;
+    protected <K, M extends Persistent<K>> PersistentIndex getIndex(Class<M> cls, String property) {
+        PersistentIndex result = null;
 
-        Map<String, ? extends SimpleIndex> indexMap = indexes.get(cls);
+        Map<String, ? extends PersistentIndex> indexMap = indexes.get(cls);
 
         if (indexMap != null) {
             result = indexMap.get(property);
@@ -187,33 +196,33 @@ public class PrevalentSystem implements Serializable {
         return result;
     }
 
-    public void updateIndex(SimpleModel model) {
-        Map<String, ? extends SimpleIndex> indexMap = indexes.get(model.getClass());
+    public <K, M extends Persistent<K>> void updateIndex(M model) {
+        Map<String, ? extends PersistentIndex> indexMap = indexes.get(model.getClass());
 
         if (indexMap != null) {
-            for (SimpleIndex si : indexMap.values()) {
+            for (PersistentIndex si : indexMap.values()) {
                 si.update(model);
             }
         }
     }
 
-    public void removeIndex(SimpleModel model) {
-        Map<String, ? extends SimpleIndex> indexMap = indexes.get(model.getClass());
+    public <K, M extends Persistent<K>> void removeIndex(M model) {
+        Map<String, ? extends PersistentIndex> indexMap = indexes.get(model.getClass());
 
         if (indexMap != null) {
-            for (SimpleIndex si : indexMap.values()) {
+            for (PersistentIndex si : indexMap.values()) {
                 si.remove(model);
             }
         }
     }
 
-    public <M extends SimpleModel> void createIndex(Class<M> cls, String propertyName) {
-        SimpleIndex<? extends SimpleModel, Object> index;
+    public <K, M extends Persistent<K>> void createIndex(Class<M> cls, String propertyName) {
+        PersistentIndex<K,M,Object> index;
 
-        Map<String, SimpleIndex<? extends SimpleModel, Object>> indexMap = indexes.get(cls);
+        Map<String, PersistentIndex> indexMap = indexes.get(cls);
 
         if (indexMap == null) {
-            indexMap = new HashMap<String, SimpleIndex<? extends SimpleModel, Object>>();
+            indexMap = new HashMap<String, PersistentIndex>();
 
             indexes.put(cls, indexMap);
         }
@@ -221,11 +230,11 @@ public class PrevalentSystem implements Serializable {
         index = indexMap.get(propertyName);
 
         if (index == null) {
-            index = new SimpleIndex<M, Object>(cls, propertyName);
+            index = new PersistentIndex(cls, propertyName);
             indexMap.put(propertyName, index);
 
-            if (dataStore.get(cls) != null) {
-                for (SimpleModel model : dataStore.get(cls).values()) {
+            if (persistentStore.get(cls) != null) {
+                for (Persistent model : persistentStore.get(cls).values()) {
                     updateIndex(model);
                 }
             }
