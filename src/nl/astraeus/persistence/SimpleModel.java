@@ -108,4 +108,8 @@ public abstract class SimpleModel implements Serializable, Cloneable, Comparable
 
         return result;
     }
+
+    public String toString() {
+        return getClass().getSimpleName()+"-"+getId();
+    }
 }
