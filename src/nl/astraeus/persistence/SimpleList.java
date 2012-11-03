@@ -66,7 +66,11 @@ public class SimpleList<M extends SimpleModel> implements java.util.List<M>, Ser
                 while (next == null && it.hasNext()) {
                     long id = it.next();
 
-                    next = (M) SimpleStore.get().getModelMap(cls).get(id);
+                    next = incoming.get(id);
+
+                    if (next == null) {
+                        next = (M) SimpleStore.get().getModelMap(cls).get(id);
+                    }
                 }
 
                 return (next != null);
