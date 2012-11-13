@@ -75,7 +75,8 @@ public class SimpleReference<M extends SimpleModel> implements Serializable {
     }
     
     public String toString() {
-        return cls.getName()+":"+id;
+        String clsName = cls == null ? "null" : cls.getName();
+        return clsName+":"+id;
     }
 
 }
