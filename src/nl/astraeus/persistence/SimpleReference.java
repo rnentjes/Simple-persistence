@@ -65,7 +65,6 @@ public class SimpleReference<M extends SimpleModel> implements Serializable {
             this.cls = model.getClass();
             this.id = model.getId();
         } else {
-            this.cls = null;
             this.id = -1;
         }
     }
@@ -75,7 +74,12 @@ public class SimpleReference<M extends SimpleModel> implements Serializable {
     }
     
     public String toString() {
-        String clsName = cls == null ? "null" : cls.getName();
+        String clsName = "null";
+
+        if (cls != null) {
+            clsName = cls.getName();
+        }
+
         return clsName+":"+id;
     }
 
