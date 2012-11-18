@@ -288,7 +288,17 @@ public class ReflectHelper {
 
                 result = field.get(model);
 
-                if (result instanceof SimpleReference) {
+                if (result instanceof PersistentReference) {
+                    PersistentReference ref = (PersistentReference) result;
+
+                    if (ref != null) {
+                        result = ref.get();
+
+                        if (result == null) {
+                            result = ref;
+                        }
+                    }
+                } else if (result instanceof SimpleReference) {
                     SimpleReference ref = (SimpleReference) result;
 
                     if (ref != null) {

@@ -13,14 +13,14 @@ public abstract class Transaction<T> {
     
     public Transaction() {
         try {
-            SimpleStore.begin();
+            PersistentManager.begin();
 
             execute();
 
-            SimpleStore.commit();
+            PersistentManager.commit();
         } finally  {
-            if (SimpleStore.transactionActive()) {
-                SimpleStore.rollback();
+            if (PersistentManager.transactionActive()) {
+                PersistentManager.rollback();
             }
         }
     }

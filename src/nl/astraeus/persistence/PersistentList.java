@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * SimpleList
+ * PersistentList
  * <p/>
  * User: rnentjes
  * Date: 7/27/11

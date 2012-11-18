@@ -14,13 +14,13 @@ import java.io.Serializable;
 public abstract class SimpleModel implements Serializable, Cloneable, Comparable {
     public final static long serialVersionUID = 1L;
 
-    private static volatile long nextId = 1;
-
     static {
         long time = System.currentTimeMillis();
 
         nextId = time*100000;
     }
+
+    private static volatile long nextId = 1;
 
     private long id;
 
