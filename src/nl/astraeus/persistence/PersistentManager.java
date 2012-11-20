@@ -226,7 +226,7 @@ public class PersistentManager {
 
         if (getTransaction() != null) {
             for (PersistentTransaction.Action action : getTransaction().getActions()) {
-                if (cls.equals(action.model.getClass()) && id == action.model.getId()) {
+                if (cls.equals(action.model.getClass()) && id.equals(action.model.getId())) {
                     if (action.remove) {
                         result = null;
                     } else {
