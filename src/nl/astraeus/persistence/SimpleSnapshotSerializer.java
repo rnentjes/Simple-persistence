@@ -18,7 +18,7 @@ public class SimpleSnapshotSerializer implements Serializer {
         BufferedOutputStream bos = new BufferedOutputStream(stream);
         DataOutputStream dos = new DataOutputStream(bos);
 
-        PrevalentSystem ps = (PrevalentSystem)object;
+        PersistentObjectStore ps = (PersistentObjectStore)object;
 
         // bla bla bla
         // if object == PrevalentSystem || SimpleModel
@@ -35,7 +35,7 @@ public class SimpleSnapshotSerializer implements Serializer {
 
     public Object readObject(InputStream stream) throws IOException, ClassNotFoundException {
         DataInputStream dis = new DataInputStream(stream);
-        PrevalentSystem result = null;
+        PersistentObjectStore result = null;
 
         try {
 //        } catch (InstantiationException e) {

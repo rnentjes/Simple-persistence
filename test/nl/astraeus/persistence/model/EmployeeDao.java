@@ -1,6 +1,6 @@
 package nl.astraeus.persistence.model;
 
-import nl.astraeus.persistence.SimpleDao;
+import nl.astraeus.persistence.PersistentDao;
 import org.junit.Ignore;
 
 /**
@@ -9,6 +9,6 @@ import org.junit.Ignore;
  * Time: 10:03 PM
  */
 @Ignore
-public class EmployeeDao extends SimpleDao<Employee> {
+public class EmployeeDao extends PersistentDao<Long, Employee> {
 
 }

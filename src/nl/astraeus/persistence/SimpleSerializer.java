@@ -90,8 +90,8 @@ public class SimpleSerializer implements Serializer {
             if (obj != null) {
                 dos.writeInt(getHash(field.getName()));
 
-                if (obj instanceof SimpleModel) {
-                    dos.writeLong(((SimpleModel)obj).getId());
+                if (obj instanceof Persistent) {
+                    //dos.writeLong(((Persistent)obj).getId());
                 } else if (obj instanceof Collection) {
                     // if all elements are instanceof SimpleModel
                     // -> just serialize id's
@@ -99,7 +99,7 @@ public class SimpleSerializer implements Serializer {
                     boolean sm = true;
 
                     for (Object o : collection) {
-                        if (!(o instanceof SimpleModel)) {
+                        if (!(o instanceof Persistent)) {
                             sm = false;
                         }
                     }
@@ -113,7 +113,7 @@ public class SimpleSerializer implements Serializer {
 
                         for (Object o : collection) {
                             if (sm) {
-                                dos.writeLong(((SimpleModel)o).getId());
+                                //dos.writeLong(((Persistent)o).getId());
                             } else {
                                 oos.writeObject(o);
                             }
@@ -185,7 +185,7 @@ public class SimpleSerializer implements Serializer {
                                     }
                                 }
                             }
-                        } else if (SimpleModel.class.isAssignableFrom(field.getType())) {
+                        } else if (Persistent.class.isAssignableFrom(field.getType())) {
                             long id = dis.readLong();
                             System.out.println("SimpleModel <> id: "+id);
                         }

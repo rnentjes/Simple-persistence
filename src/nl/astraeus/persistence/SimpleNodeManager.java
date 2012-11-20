@@ -45,13 +45,13 @@ public class SimpleNodeManager {
         return current;
     }
 
-    public void cast(List<SimpleTransaction.Action> actions) {
+    public void cast(List<PersistentTransaction.Action> actions) {
         for (SimpleNode node : others) {
             cast(node, actions);
         }
     }
 
-    private void cast(SimpleNode node, List<SimpleTransaction.Action> actions) {
+    private void cast(SimpleNode node, List<PersistentTransaction.Action> actions) {
         logger.info("Casting transaction to {}:{}", node.getHost().getHostAddress(), node.getPort());
     }
 }

@@ -1,8 +1,8 @@
 package nl.astraeus.persistence.serializer;
 
+import nl.astraeus.persistence.Persistent;
+import nl.astraeus.persistence.PersistentManager;
 import nl.astraeus.persistence.SimpleJournalSerializer;
-import nl.astraeus.persistence.SimpleModel;
-import nl.astraeus.persistence.SimpleStore;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -36,7 +36,7 @@ public class CollectionSerializer implements ObjectSerializer<Collection> {
             }
         }
 
-        boolean sm = SimpleModel.class.isAssignableFrom(cls);
+        boolean sm = Persistent.class.isAssignableFrom(cls);
 
         stringSerializer.write(dos, value.getClass().getCanonicalName());
         dos.writeInt(value.size());
@@ -50,7 +50,7 @@ public class CollectionSerializer implements ObjectSerializer<Collection> {
 
             for (Object o : value) {
                 if (sm) {
-                    dos.writeLong(((SimpleModel)o).getId());
+                    //dos.writeLong(((Persistent)o).getId());
                 } else {
                     sjs.writeSingleObject(dos, o);
                 }
@@ -81,7 +81,7 @@ public class CollectionSerializer implements ObjectSerializer<Collection> {
                     while(size-- > 0) {
                         long id = dis.readLong();
 
-                        Object o = SimpleStore.get().find(cls, id);
+                        Object o = PersistentManager.get().find(cls, id);
 
                         result.add(o);
                     }

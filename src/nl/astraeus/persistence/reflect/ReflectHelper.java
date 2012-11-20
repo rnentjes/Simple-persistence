@@ -1,6 +1,8 @@
 package nl.astraeus.persistence.reflect;
 
-import nl.astraeus.persistence.*;
+import nl.astraeus.persistence.Persistent;
+import nl.astraeus.persistence.PersistentList;
+import nl.astraeus.persistence.PersistentReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -243,8 +245,8 @@ public class ReflectHelper {
 
                     result = method.invoke(model);
 
-                    if (result instanceof SimpleReference) {
-                        SimpleReference ref = (SimpleReference) result;
+                    if (result instanceof PersistentReference) {
+                        PersistentReference ref = (PersistentReference) result;
 
                         result = ref.get();
 
@@ -298,8 +300,8 @@ public class ReflectHelper {
                             result = ref;
                         }
                     }
-                } else if (result instanceof SimpleReference) {
-                    SimpleReference ref = (SimpleReference) result;
+                } else if (result instanceof PersistentReference) {
+                    PersistentReference ref = (PersistentReference) result;
 
                     if (ref != null) {
                         result = ref.get();
@@ -328,9 +330,9 @@ public class ReflectHelper {
             if (fields.length > (skip + 1)) {
                 Object subModel = this.getFieldValue(model, fields[skip]);
 
-                if (subModel instanceof SimpleList) {
+                if (subModel instanceof PersistentList) {
                     ++skip;
-                    for (Object pm : ((SimpleList) subModel)) {
+                    for (Object pm : ((PersistentList) subModel)) {
                         result.addAll(getFieldValues(pm, skip, fields));
                     }
                 } else {
@@ -349,8 +351,8 @@ public class ReflectHelper {
 
                 Object tmpResult = field.get(model);
 
-                if (tmpResult instanceof SimpleReference) {
-                    tmpResult = ((SimpleReference) tmpResult).get();
+                if (tmpResult instanceof PersistentReference) {
+                    tmpResult = ((PersistentReference) tmpResult).get();
                 }
 
                 result.add(tmpResult);
@@ -530,7 +532,7 @@ public class ReflectHelper {
                 Field[] fields = typeClass.getDeclaredFields();
 
                 for (Field field : fields) {
-                    if (field.getType().equals(SimpleReference.class)) {
+                    if (field.getType().equals(PersistentReference.class)) {
                         field.setAccessible(true);
 
                         result.add(0, field);
@@ -556,7 +558,7 @@ public class ReflectHelper {
                 Field[] fields = typeClass.getDeclaredFields();
 
                 for (Field field : fields) {
-                    if (field.getType().equals(SimpleList.class)) {
+                    if (field.getType().equals(PersistentList.class)) {
                         field.setAccessible(true);
 
                         result.add(0, field);
@@ -572,6 +574,7 @@ public class ReflectHelper {
         return result;
     }
 
+    /*
     public List<Field> getSetFieldsFromClass(Class<?> typeClass) {
         List<Field> result = setFieldCache.get(typeClass);
 
@@ -582,7 +585,7 @@ public class ReflectHelper {
                 Field[] fields = typeClass.getDeclaredFields();
 
                 for (Field field : fields) {
-                    if (field.getType().equals(SimpleSet.class)) {
+                    if (field.getType().equals(PersistentSet.class)) {
                         field.setAccessible(true);
 
                         result.add(0, field);
@@ -596,7 +599,7 @@ public class ReflectHelper {
         }
 
         return result;
-    }
+    }*/
 
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -650,15 +653,15 @@ public class ReflectHelper {
         }
     }*/
 
-    public void copyPrevaylerReferenceAndListProperties(@Nonnull SimpleModel source, @Nonnull SimpleModel target) {
+    public void copyPrevaylerReferenceAndListProperties(@Nonnull Persistent source, @Nonnull Persistent target) {
         assert source.getClass().equals(target.getClass());
 
         try {
             for (Field field : getReferenceFieldsFromClass(target.getClass())) {
-                SimpleReference ref = (SimpleReference) field.get(source);
+                PersistentReference ref = (PersistentReference) field.get(source);
 
                 if (ref != null) {
-                    SimpleReference newRef = new SimpleReference(ref.getType(), ref.getId());
+                    PersistentReference newRef = new PersistentReference(ref.getType(), ref.getId());
                     field.set(target, newRef);
                 } else {
                     field.set(target, null);
@@ -666,12 +669,12 @@ public class ReflectHelper {
             }
 
             for (Field field : getListFieldsFromClass(target.getClass())) {
-                SimpleList list = (SimpleList) field.get(source);
+                PersistentList list = (PersistentList) field.get(source);
                 if (list != null) {
-                    SimpleList newList = new SimpleList(list.getType());
+                    PersistentList newList = new PersistentList(list.getType());
 
                     for (Object id : list.getIdList()) {
-                        newList.add((Long) id);
+                        newList.addId(id);
                     }
 
                     field.set(target, newList);
@@ -680,6 +683,7 @@ public class ReflectHelper {
                 }
             }
 
+            /*
             for (Field field : getSetFieldsFromClass(target.getClass())) {
                 SimpleSet set = (SimpleSet) field.get(source);
                 if (set != null) {
@@ -693,7 +697,7 @@ public class ReflectHelper {
                 } else {
                     field.set(target, null);
                 }
-            }
+            }*/
 
         } catch (IllegalAccessException e) {
             throw new IllegalStateException(e);

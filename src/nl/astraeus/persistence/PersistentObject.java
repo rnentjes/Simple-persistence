@@ -5,7 +5,7 @@ package nl.astraeus.persistence;
  * Date: 10/24/12
  * Time: 4:16 PM
  */
-public abstract class PersistentObject<K> implements Persistent<K> {
+public abstract class PersistentObject<K> implements Persistent<K>, Comparable {
 
     @Override
     public Persistent<K> clone() throws CloneNotSupportedException {

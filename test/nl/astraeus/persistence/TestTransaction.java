@@ -19,9 +19,9 @@ public class TestTransaction {
     public void testTransaction() {
         CompanyDao companyDao = new CompanyDao();
 
-        SimpleStore.begin();
+        PersistentManager.begin();
 
-        Company company = new Company("Company x");
+        Company company = new Company(companyDao.size()+1, "Company x");
 
         companyDao.store(company);
 
@@ -30,7 +30,7 @@ public class TestTransaction {
         Assert.assertEquals(c.getId(), company.getId());
         System.out.println("Found company: "+c); // finds company "x"
 
-        SimpleStore.rollback();
+        PersistentManager.rollback();
 
         c = companyDao.find(company.getId());
 
@@ -42,15 +42,15 @@ public class TestTransaction {
         try {
             CompanyDao companyDao = new CompanyDao();
 
-            SimpleStore.begin();
+            PersistentManager.begin();
 
-            Company company = new Company("Company x");
+            Company company = new Company(companyDao.size()+1, "Company x");
 
             companyDao.store(company);
 
-            SimpleStore.commit();
+            PersistentManager.commit();
 
-            SimpleStore.begin();
+            PersistentManager.begin();
 
             Company c = companyDao.find(company.getId());
 
@@ -58,16 +58,16 @@ public class TestTransaction {
 
             companyDao.store(c);
 
-            SimpleStore.commit();
+            PersistentManager.commit();
 
-            SimpleStore.begin();
+            PersistentManager.begin();
 
             c = companyDao.find(company.getId());
 
             Assert.assertNotNull(c);
         } finally {
-            if (SimpleStore.transactionActive()) {
-                SimpleStore.rollback();
+            if (PersistentManager.transactionActive()) {
+                PersistentManager.rollback();
             }
         }
     }
@@ -77,21 +77,21 @@ public class TestTransaction {
         CompanyDao companyDao = new CompanyDao();
         EmployeeDao employeeDao= new EmployeeDao();
 
-        SimpleStore.begin();
+        PersistentManager.begin();
 
-        Company company = new Company("Company "+Integer.toString(companyDao.size()+1));
-        Employee employee1 = new Employee("Employee "+(company.getEmployees().size()+1), company);
-        Employee employee2 = new Employee("Employee "+(company.getEmployees().size()+1), company);
-        Employee employee3 = new Employee("Employee "+(company.getEmployees().size()+1), company);
+        Company company = new Company(companyDao.size()+1, "Company "+Integer.toString(companyDao.size()+1));
+        Employee employee1 = new Employee(employeeDao.size()+1, "Employee "+(company.getEmployees().size()+1), company);
+        Employee employee2 = new Employee(employeeDao.size()+1, "Employee "+(company.getEmployees().size()+1), company);
+        Employee employee3 = new Employee(employeeDao.size()+1, "Employee "+(company.getEmployees().size()+1), company);
 
         employeeDao.store(employee1);
         employeeDao.store(employee2);
         employeeDao.store(employee3);
         companyDao.store(company);
 
-        SimpleStore.commit();
+        PersistentManager.commit();
 
-        SimpleStore.begin();
+        PersistentManager.begin();
 
         Company c = companyDao.find(company.getId());
 
@@ -103,19 +103,19 @@ public class TestTransaction {
 
         companyDao.remove(c);
 
-        SimpleStore.commit();
+        PersistentManager.commit();
 
         Assert.assertNotNull(employeeDao.find(employee1.getId()));
         Assert.assertNotNull(employeeDao.find(employee2.getId()));
         Assert.assertNotNull(employeeDao.find(employee3.getId()));
 
-        SimpleStore.begin();
+        PersistentManager.begin();
 
         employeeDao.remove(employee1);
         employeeDao.remove(employee2);
         employeeDao.remove(employee3);
 
-        SimpleStore.commit();
+        PersistentManager.commit();
 
         Assert.assertNull(employeeDao.find(employee1.getId()));
         Assert.assertNull(employeeDao.find(employee2.getId()));

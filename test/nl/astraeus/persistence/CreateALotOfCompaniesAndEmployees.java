@@ -19,17 +19,18 @@ public class CreateALotOfCompaniesAndEmployees {
     private CompanyDao companyDao = new CompanyDao();
 
     public CreateALotOfCompaniesAndEmployees() {
-        System.setProperty(SimpleStore.SAFEMODE, String.valueOf(true));
+        System.setProperty(PersistentManager.SAFEMODE, String.valueOf(true));
 
         long nano = System.nanoTime();
         new Transaction() {
             @Override
             public void execute() {
+                long base = System.currentTimeMillis();
                 for (int x=0; x < 100; x++) {
-                    Company company = new Company("Company "+Integer.toString(companyDao.size()+1));
+                    Company company = new Company(base+x, "Company "+Integer.toString(companyDao.size()+1));
 
                     for (int i=0; i < 50; i++) {
-                        Employee employee = new Employee("Employee "+(company.getEmployees().size()+1), company);
+                        Employee employee = new Employee(base + x * 1000 + i, "Employee "+(company.getEmployees().size()+1), company);
 
                         employeeDao.store(employee);
                     }

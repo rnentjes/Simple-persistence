@@ -43,7 +43,6 @@ public class TestPersistent {
             return (User)super.clone();
         }
 
-        @Override
         public int compareTo(Object o) {
             User other = (User)o;
 

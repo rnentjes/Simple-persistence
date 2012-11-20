@@ -1,7 +1,6 @@
 package nl.astraeus.persistence.model;
 
-import nl.astraeus.persistence.Filter;
-import nl.astraeus.persistence.SimpleDao;
+import nl.astraeus.persistence.PersistentDao;
 import org.junit.Ignore;
 
 import java.util.Collection;
@@ -12,23 +11,10 @@ import java.util.Collection;
  * Time: 10:03 PM
  */
 @Ignore
-public class CompanyDao extends SimpleDao<Company> {
+public class CompanyDao extends PersistentDao<Long, Company> {
     
     public Collection<Company> findByEmpoyeeName(final String name) {
-        return filter(new Filter<Company>() {
-            @Override
-            public boolean include(Company model) {
-                if (model.getEmployees() != null) {
-                    for (Employee e : model.getEmployees()) {
-                        if (e.getName().contains(name)) {
-                            return true;
-                        }
-                    }
-                }
-
-                return false;
-            }
-        });
+        return createQuery().equals("name", name).getResultSet();
     }
 
 }

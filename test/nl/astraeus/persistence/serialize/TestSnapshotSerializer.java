@@ -1,6 +1,6 @@
 package nl.astraeus.persistence.serialize;
 
-import nl.astraeus.persistence.SimpleStore;
+import nl.astraeus.persistence.PersistentManager;
 import nl.astraeus.persistence.model.CompanyDao;
 import org.junit.Ignore;
 
@@ -21,6 +21,6 @@ public class TestSnapshotSerializer {
 
         dao.findAll();
 
-        SimpleStore.get().snapshot();
+        PersistentManager.get().snapshot();
     }
 }

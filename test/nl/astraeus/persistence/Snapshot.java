@@ -11,7 +11,7 @@ import org.junit.Ignore;
 public class Snapshot {
 
     public Snapshot() {
-        SimpleStore.get().snapshot();
+        PersistentManager.get().snapshot();
     }
 
     public static void main(String [] args) {

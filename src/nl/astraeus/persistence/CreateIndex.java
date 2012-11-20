@@ -16,18 +16,18 @@ public final class CreateIndex implements Serializable, Transaction {
 
 	private static final long serialVersionUID = 1L;
 
-    private Class<? extends SimpleModel> cls;
+    private Class<? extends Persistent> cls;
     private String propertyName;
 
-    public CreateIndex(Class<? extends SimpleModel> cls, String propertyName) {
+    public CreateIndex(Class<? extends Persistent> cls, String propertyName) {
         this.cls = cls;
         this.propertyName = propertyName;
     }
 
     public void executeOn(Object prevalentSystem, Date ignored) {
-        PrevalentSystem ps = (PrevalentSystem)prevalentSystem;
+        PersistentObjectStore pos = (PersistentObjectStore)prevalentSystem;
 
-        ps.createIndex(cls, propertyName);
+        pos.createIndex(cls, propertyName);
 	}
 
 }

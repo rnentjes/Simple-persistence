@@ -1,6 +1,6 @@
 package nl.astraeus.persistence.serialize;
 
-import nl.astraeus.persistence.SimpleModel;
+import nl.astraeus.persistence.Persistent;
 import nl.astraeus.persistence.SimpleSerializer;
 import org.junit.Ignore;
 
@@ -25,6 +25,26 @@ public class TestSerializer {
 
         private String test = "TEST";
 
+    }
+
+    public static class SimpleModel implements Persistent<Long> {
+
+        private Long id;
+
+        @Override
+        public Long getId() {
+            return id;
+        }
+
+        @Override
+        public int compareTo(Object o) {
+            return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public SimpleModel clone() throws CloneNotSupportedException {
+            return (SimpleModel)super.clone();
+        }
     }
 
     public static class TestSer extends SimpleModel {

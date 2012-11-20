@@ -17,7 +17,7 @@ public class TestSafeMode {
     private CompanyDao companyDao = new CompanyDao();
 
     public TestSafeMode() {
-        System.setProperty(SimpleStore.SAFEMODE, String.valueOf(true));
+        System.setProperty(PersistentManager.SAFEMODE, String.valueOf(true));
 
         System.out.println(companyDao.size()+" companies.");
 

@@ -1,7 +1,7 @@
 package nl.astraeus.persistence.model;
 
-import nl.astraeus.persistence.SimpleModel;
-import nl.astraeus.persistence.SimpleReference;
+import nl.astraeus.persistence.Persistent;
+import nl.astraeus.persistence.PersistentReference;
 import org.junit.Ignore;
 
 /**
@@ -10,15 +10,17 @@ import org.junit.Ignore;
  * Time: 9:59 PM
  */
 @Ignore
-public class Employee extends SimpleModel {
+public class Employee implements Persistent<Long> {
     public final static long serialVersionUID = 1L;
 
+    private long id;
     private String name;
     private String description;
     private long [] randomData;
-    private SimpleReference<Company> company = new SimpleReference<Company>(Company.class);
+    private PersistentReference<Long, Company> company = new PersistentReference<Long, Company>(Company.class);
 
-    public Employee(String name, Company company) {
+    public Employee(long id, String name, Company company) {
+        this.id = id;
         this.name = name;
         this.company.set(company);
         company.getEmployees().add(this);
@@ -49,5 +51,20 @@ public class Employee extends SimpleModel {
                 ", description='" + description + '\'' +
                 ", company=" + company +
                 '}';
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public Employee clone() throws CloneNotSupportedException {
+        return (Employee)super.clone();
     }
 }

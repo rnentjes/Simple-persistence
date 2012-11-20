@@ -1,7 +1,7 @@
 package nl.astraeus.persistence.model;
 
-import nl.astraeus.persistence.SimpleList;
-import nl.astraeus.persistence.SimpleModel;
+import nl.astraeus.persistence.Persistent;
+import nl.astraeus.persistence.PersistentList;
 import org.junit.Ignore;
 
 /**
@@ -10,14 +10,17 @@ import org.junit.Ignore;
  * Time: 9:59 PM
  */
 @Ignore
-public class Company extends SimpleModel {
+public class Company implements Persistent<Long> {
     public final static long serialVersionUID = 1L;
-    
+
+
+    private long id;
     private String name;
     private long [] randomData;
-    private SimpleList<Employee> employees = new SimpleList<Employee>(Employee.class);
+    private PersistentList<Long, Employee> employees = new PersistentList<Long, Employee>(Employee.class);
 
-    public Company(String name) {
+    public Company(long id, String name) {
+        this.id = id;
         this.name = name;
 
         createRandomData();
@@ -35,7 +38,7 @@ public class Company extends SimpleModel {
         }
     }
 
-    public SimpleList<Employee> getEmployees() {
+    public PersistentList<Long, Employee> getEmployees() {
         return employees;
     }
 
@@ -45,5 +48,20 @@ public class Company extends SimpleModel {
                 "name='" + name + '\'' +
                 ", employees=" + employees +
                 '}';
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public Company clone() throws CloneNotSupportedException {
+        return (Company)super.clone();
     }
 }

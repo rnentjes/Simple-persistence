@@ -16,18 +16,18 @@ public final class CreateIndexTransaction implements Serializable, Transaction {
     private String cls;
     private String property;
 
-    public CreateIndexTransaction(Class<? extends SimpleModel> cls, String property) {
+    public CreateIndexTransaction(Class<? extends Persistent> cls, String property) {
         this.cls = cls.getName();
         this.property = property;
     }
 
     @Override
     public void executeOn(Object prevalentSystem, Date date) {
-        PrevalentSystem ps = (PrevalentSystem)prevalentSystem;
+        PersistentObjectStore ps = (PersistentObjectStore)prevalentSystem;
 
-        Class<? extends SimpleModel> cls = null;
+        Class<? extends Persistent> cls = null;
         try {
-            cls = (Class<? extends SimpleModel>) Class.forName(this.cls);
+            cls = (Class<? extends Persistent>) Class.forName(this.cls);
 
             ps.createIndex(cls, property);
         } catch (ClassNotFoundException e) {

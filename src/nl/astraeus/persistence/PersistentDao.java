@@ -39,8 +39,11 @@ public class PersistentDao<K, M extends Persistent<K>> {
 
         pt = (ParameterizedType) getClass().getGenericSuperclass();
 
-        Type type = pt.getActualTypeArguments()[1];
-        result = (Class<M>) type;
+        for (Type type : pt.getActualTypeArguments()) {
+            if (Persistent.class.isAssignableFrom((Class)type)) {
+                result = (Class<M>)type;
+            }
+        }
 
         return result;
     }
