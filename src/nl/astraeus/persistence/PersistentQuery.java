@@ -64,8 +64,8 @@ public class PersistentQuery<K, M extends Persistent<K>> {
                     field = field.substring(1);
                 }
 
-                Object v1 = ReflectHelper.get().getField(o1, field);
-                Object v2 = ReflectHelper.get().getField(o2, field);
+                Object v1 = ReflectHelper.get().getFieldValue(o1, field);
+                Object v2 = ReflectHelper.get().getFieldValue(o2, field);
 
                 if (v1 instanceof Comparable) {
                     result = ((Comparable)v1).compareTo(v2);
@@ -79,7 +79,7 @@ public class PersistentQuery<K, M extends Persistent<K>> {
             }
 
             if (result == 0) {
-                if (o1.getId() instanceof Comparator && o1.getClass().equals(o2.getClass())) {
+                if (o1.getId() instanceof Comparable && o1.getClass().equals(o2.getClass())) {
                     Comparable c1 = (Comparable)o1;
                     Comparable c2 = (Comparable)o2;
 
