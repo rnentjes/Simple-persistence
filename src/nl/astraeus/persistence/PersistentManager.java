@@ -199,7 +199,7 @@ public class PersistentManager {
     }
 
     // retrieval functions
-    protected <K, M extends Persistent<K>> Map<K, M> getModelMap(Class<M> cls) {
+    public <K, M extends Persistent<K>> Map<K, M> getModelMap(Class<M> cls) {
         PersistentObjectStore pos = (PersistentObjectStore)prevayler.prevalentSystem();
 
         Map result = pos.getModelMap(cls);

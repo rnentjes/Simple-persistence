@@ -1,5 +1,8 @@
 package nl.astraeus.persistence;
 
+import com.esotericsoftware.kryo.Kryo;
+import nl.astraeus.util.DeepCopy;
+
 import javax.annotation.CheckForNull;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -54,12 +57,12 @@ public class PersistentDao<K, M extends Persistent<K>> {
     }
 
     public Collection<M> findAll() {
-        List<M> result = new LinkedList<M>();
+        Collection<M> result;
 
         if (PersistentManager.get().isSafemode()) {
-            result.addAll(getValues());
+            result = getValues();
         } else {
-            result.addAll(getModelValues());
+            result = getModelValues();
         }
 
         return result;
@@ -137,18 +140,35 @@ public class PersistentDao<K, M extends Persistent<K>> {
 
     /** returnes a cloned set of all values */
     private Collection<M> getValues() {
-        Collection<M> result = new TreeSet<M>();
         Class<M> cls = getModelClass();
 
-        for (M m : PersistentManager.get().getModelMap(cls).values()) {
-            try {
-                result.add(cls.cast(m.clone()));
-            } catch (CloneNotSupportedException e) {
-                throw new IllegalStateException(e);
-            }
-    }
+        int method = 3;
+        if (method == 1) {
+            Kryo kryo = new Kryo();
+            //Map<K, M> map = (Map<K, M>) DeepCopy.copy(PersistentManager.get().getModelMap(cls));
+            Map<K, M> map = kryo.copy(PersistentManager.get().getModelMap(cls));
 
-        return result;
+            return map.values();
+        } else if (method == 2) {
+            Map<K, M> map = (Map<K, M>) DeepCopy.copy(PersistentManager.get().getModelMap(cls));
+
+            return map.values();
+        } else {
+                Collection<M> result = new TreeSet<M>();
+
+                //result = PersistentManager.get().getModelMap(cls).values();
+
+                for (M m : PersistentManager.get().getModelMap(cls).values()) {
+                    try {
+                        result.add(cls.cast(m.clone()));
+                    } catch (CloneNotSupportedException e) {
+                        throw new IllegalStateException(e);
+                    }
+                }
+
+                return result;
+        }
+
     }
 
     /** The returned model values are not cloned yet! (safemode) */
