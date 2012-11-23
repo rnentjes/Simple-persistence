@@ -1,6 +1,5 @@
 package nl.astraeus.persistence;
 
-import com.esotericsoftware.kryo.Kryo;
 import nl.astraeus.util.DeepCopy;
 
 import javax.annotation.CheckForNull;
@@ -143,13 +142,7 @@ public class PersistentDao<K, M extends Persistent<K>> {
         Class<M> cls = getModelClass();
 
         int method = 3;
-        if (method == 1) {
-            Kryo kryo = new Kryo();
-            //Map<K, M> map = (Map<K, M>) DeepCopy.copy(PersistentManager.get().getModelMap(cls));
-            Map<K, M> map = kryo.copy(PersistentManager.get().getModelMap(cls));
-
-            return map.values();
-        } else if (method == 2) {
+        if (method == 2) {
             Map<K, M> map = (Map<K, M>) DeepCopy.copy(PersistentManager.get().getModelMap(cls));
 
             return map.values();
