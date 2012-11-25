@@ -2,12 +2,14 @@ package nl.astraeus.persistence.version;
 
 import nl.astraeus.persistence.Persistent;
 import nl.astraeus.persistence.Version;
+import org.junit.Ignore;
 
 /**
  * User: rnentjes
  * Date: 11/25/12
  * Time: 8:58 PM
  */
+@Ignore
 public class Person implements Persistent<Long> {
     public final static long serialVersionUID = 1L;
 
