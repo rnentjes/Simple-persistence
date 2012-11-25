@@ -119,15 +119,22 @@ public class PersistentDao<K, M extends Persistent<K>> {
         return result;
     }
 
-    /*
     public Collection<M> filter(Filter<M> filter) {
+        return filter(getModelValues(), filter);
+    }
+
+    public Collection<M> filter(Collection<M> filterSet, Filter<M> filter) {
         Class<M> cls = getModelClass();
         List<M> result = new LinkedList<M>();
 
-        for (M m : getModelValues()) {
+        for (M m : filterSet) {
             if (filter.include(m)) {
                 if (PersistentManager.get().isSafemode()) {
-                    result.add(cls.cast(m.clone()));
+                    try {
+                        result.add(cls.cast(m.clone()));
+                    } catch(CloneNotSupportedException e) {
+                        throw new IllegalStateException(e);
+                    }
                 } else {
                     result.add(m);
                 }
@@ -135,7 +142,7 @@ public class PersistentDao<K, M extends Persistent<K>> {
         }
 
         return result;
-    }*/
+    }
 
     /** returnes a cloned set of all values */
     private Collection<M> getValues() {
