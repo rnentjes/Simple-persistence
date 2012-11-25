@@ -1,5 +1,6 @@
 package nl.astraeus.persistence;
 
+import nl.astraeus.persistence.reflect.ReflectHelper;
 import org.prevayler.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,7 +73,20 @@ public final class PersistentTransaction implements Serializable, Transaction {
             logger.warn(e.getMessage(), e);
             castFailure = true;
         }
-        
+
+        // check @Version fields
+        for (Action action : actions) {
+            Persistent current = ((PersistentObjectStore) prevalentSystem).find(action.model.getClass(), action.model.getId());
+
+            if (ReflectHelper.get().getVersion(current) != null) {
+                if (!ReflectHelper.get().getVersion(current).equals(ReflectHelper.get().getVersion(action.model))) {
+                    throw new OptimisticLockingException("Persistent object "+action.model.getClass()+":"+String.valueOf(action.model.getId())+" has been changed!");
+                } else {
+                    ReflectHelper.get().updateVersion(action.model);
+                }
+            }
+        }
+
         for (Action action : actions) {
 //            if (castFailure || SimpleNodeManager.get().getCurrent() == null || SimpleNodeManager.get().getCurrent().matched(action.model.getId())) {
                 if (action.remove) {

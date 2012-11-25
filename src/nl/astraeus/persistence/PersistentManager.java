@@ -129,7 +129,7 @@ public class PersistentManager {
 
     private void beginTransaction() {
         if (getTransaction() != null) {
-            throw new IllegalStateException("Transaction already in progress.");
+            throw new IllegalStateException("ExecuteTransaction already in progress.");
         }
 
         setTransaction(new PersistentTransaction());

@@ -66,7 +66,7 @@ public class PersistentObjectStore implements Serializable {
         return result;
     }
 
-    /** Functions called from within Transaction to update data model */
+    /** Functions called from within ExecuteTransaction to update data model */
     protected <K, M extends Persistent<K>> void store(M objectToStore) {
         logger.debug("Storing: " + objectToStore.getClass().getName()+"-"+String.valueOf(objectToStore.getId()));
 
@@ -79,7 +79,7 @@ public class PersistentObjectStore implements Serializable {
         modelMap.put(objectToStore.getId(), objectToStore);
     }
 
-    /** Functions called from within Transaction to update data model */
+    /** Functions called from within ExecuteTransaction to update data model */
     protected <K, M extends Persistent<K>> void remove(M objectToRemove) {
         logger.debug("Removing: " + objectToRemove.getClass().getName()+"-"+String.valueOf(objectToRemove.getId()));
 

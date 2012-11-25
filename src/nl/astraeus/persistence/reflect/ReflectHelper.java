@@ -3,6 +3,7 @@ package nl.astraeus.persistence.reflect;
 import nl.astraeus.persistence.Persistent;
 import nl.astraeus.persistence.PersistentList;
 import nl.astraeus.persistence.PersistentReference;
+import nl.astraeus.persistence.Version;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,6 +40,7 @@ public class ReflectHelper {
     private Map<Class<?>, java.util.List> setFieldCache = new HashMap<Class<?>, java.util.List>();
     private Map<Class<?>, java.util.List> sortedSetFieldCache = new HashMap<Class<?>, java.util.List>();
     private Map<Class<?>, String> classNameMap = new HashMap<Class<?>, String>();
+    private Map<Class<?>, Field> versionFieldMap = new HashMap<Class<?>, Field>();
 
     public String getClassName(Class cls) {
         String result = classNameMap.get(cls);
@@ -704,4 +706,58 @@ public class ReflectHelper {
         }
     }
 
+    private Field getVersionField(Persistent model) {
+        Field field = versionFieldMap.get(model.getClass());
+
+        if (field == null) {
+            for (Field f : getFieldsFromClass(model.getClass())) {
+                if (f.getAnnotation(Version.class) != null) {
+                    if (field != null) {
+                        throw new IllegalStateException("Only one field with a @Version annotation allowed in one class "+model.getClass().getName());
+                    } else {
+                        field = f;
+                        field.setAccessible(true);
+                    }
+                }
+            }
+
+            if (field != null) {
+                versionFieldMap.put(model.getClass(), field);
+            }
+        }
+
+        return field;
+    }
+
+    public Long getVersion(Persistent model) {
+        if (model != null ) {
+            Field field = getVersionField(model);
+
+            if (field == null) {
+                return null;
+            } else {
+                try {
+                    return (Long)field.get(model);
+                } catch (IllegalAccessException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        } else {
+            return null;
+        }
+
+    }
+
+    public void updateVersion(Persistent model) {
+        Field field = getVersionField(model);
+
+        Long value = null;
+        try {
+            value = (Long) field.get(model);
+
+            field.set(model, value+1);
+        } catch (IllegalAccessException e) {
+            throw new IllegalStateException(e);
+        }
+    }
 }

@@ -39,7 +39,7 @@ public class CreateALotOfCompaniesAndEmployees {
                 }
             }
         };
-        System.out.println("Transaction (10 company, 500 employees) took: "+ Util.formatNano(System.nanoTime() - nano));
+        System.out.println("ExecuteTransaction (10 company, 500 employees) took: "+ Util.formatNano(System.nanoTime() - nano));
     }
 
     public static void main(String [] args) {

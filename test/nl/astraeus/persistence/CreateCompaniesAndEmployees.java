@@ -31,7 +31,7 @@ public class CreateCompaniesAndEmployees {
                 companyDao.store(company);
             }
         };
-        System.out.println("Transaction (1 company) took: "+ Util.formatNano(System.nanoTime() - nano));
+        System.out.println("ExecuteTransaction (1 company) took: "+ Util.formatNano(System.nanoTime() - nano));
 
         nano = System.nanoTime();
         new Transaction() {
@@ -42,7 +42,7 @@ public class CreateCompaniesAndEmployees {
                 companyDao.store(company);
             }
         };
-        System.out.println("Transaction (1 company) took: "+ Util.formatNano(System.nanoTime() - nano));
+        System.out.println("ExecuteTransaction (1 company) took: "+ Util.formatNano(System.nanoTime() - nano));
 
         nano = System.nanoTime();
         new Transaction() {
@@ -59,7 +59,7 @@ public class CreateCompaniesAndEmployees {
                 companyDao.store(company);
             }
         };
-        System.out.println("Transaction (1 company, 3 employees) took: "+ Util.formatNano(System.nanoTime() - nano));
+        System.out.println("ExecuteTransaction (1 company, 3 employees) took: "+ Util.formatNano(System.nanoTime() - nano));
 
         nano = System.nanoTime();
         new Transaction() {
@@ -78,7 +78,7 @@ public class CreateCompaniesAndEmployees {
                 }
             }
         };
-        System.out.println("Transaction (10 company, 500 employees) took: "+ Util.formatNano(System.nanoTime() - nano));
+        System.out.println("ExecuteTransaction (10 company, 500 employees) took: "+ Util.formatNano(System.nanoTime() - nano));
     }
 
     public static void main(String [] args) {

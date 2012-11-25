@@ -10,7 +10,7 @@ import javax.annotation.CheckForNull;
 public abstract class Transaction<T> {
 
     private T result;
-    
+
     public Transaction() {
         try {
             PersistentManager.begin();
@@ -24,7 +24,7 @@ public abstract class Transaction<T> {
             }
         }
     }
-    
+
     protected void setResult(T t) {
         result = t;
     }
@@ -33,7 +33,8 @@ public abstract class Transaction<T> {
     public T getResult() {
         return result;
     }
-    
+
     public abstract void execute();
+
 
 }
