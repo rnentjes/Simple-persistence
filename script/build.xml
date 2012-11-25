@@ -154,8 +154,8 @@
                  windowtitle="Prevayler-Reference Api"
                  classpathref="build.class.path"
                  useexternalfile="false"
-                 private="true"
-                 stylesheetfile="javadoc.css">
+                 private="true">
+            <!-- stylesheetfile="javadoc.css" -->
 
             <fileset dir="${src.dir}" defaultexcludes="yes">
                 <include name="**/*.java"/>
