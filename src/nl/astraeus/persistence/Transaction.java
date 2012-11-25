@@ -11,6 +11,10 @@ public abstract class Transaction<T> {
 
     private T result;
 
+    public Transaction(Lockable ... locks) {
+
+    }
+
     public Transaction() {
         try {
             PersistentManager.begin();

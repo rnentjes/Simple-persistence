@@ -30,21 +30,25 @@ public class Person implements Persistent<Long> {
         return id;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public Person clone() throws CloneNotSupportedException {
-        return (Person)super.clone();
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if (name == null) {
+            return -1;
+        } else {
+            return name.compareTo(((Person)o).name);
+        }
+    }
+
+    @Override
+    public Person clone() throws CloneNotSupportedException {
+        return (Person)super.clone();
     }
 }

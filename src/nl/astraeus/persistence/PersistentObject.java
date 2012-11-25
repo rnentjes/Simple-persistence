@@ -1,5 +1,7 @@
 package nl.astraeus.persistence;
 
+import nl.astraeus.persistence.reflect.ReflectHelper;
+
 /**
  * User: rnentjes
  * Date: 10/24/12
@@ -7,9 +9,13 @@ package nl.astraeus.persistence;
  */
 public abstract class PersistentObject<K> implements Persistent<K>, Comparable {
 
-    @Override
-    public Persistent<K> clone() throws CloneNotSupportedException {
-        return (Persistent<K>)super.clone();
+    public PersistentObject<K> clone() throws CloneNotSupportedException {
+        PersistentObject<K> result = (PersistentObject<K>)super.clone();
+
+        // clone refs and lists
+        ReflectHelper.get().copyPrevaylerReferenceAndListProperties(this, result);
+
+        return result;
     }
 
     @Override
@@ -21,7 +27,7 @@ public abstract class PersistentObject<K> implements Persistent<K>, Comparable {
 
             return ((Comparable) id).compareTo(((Persistent) o).getId());
         } else {
-            throw new IllegalStateException("Can't compare non Comparable keys, implement compareTo yourself or user a Comparable for your key.");
+            throw new IllegalStateException("Can't compare non Comparable keys, implement compareTo yourself or use a Comparable for your key.");
         }
     }
 
