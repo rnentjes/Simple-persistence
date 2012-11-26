@@ -3,6 +3,7 @@ package nl.astraeus.persistence.reflect;
 import nl.astraeus.persistence.model.Company;
 import nl.astraeus.persistence.model.Employee;
 import nl.astraeus.util.Util;
+import org.junit.Ignore;
 
 /**
  * User: rnentjes
@@ -11,6 +12,7 @@ import nl.astraeus.util.Util;
  * <p/>
  * (c) Astraeus B.V.
  */
+@Ignore
 public class ReflectPerformance {
 
     public static void main(String [] args) {
@@ -47,9 +49,9 @@ public class ReflectPerformance {
         System.out.println(result1);
         System.out.println(result2);
 
-        System.out.println("First took "+ Util.formatNano(start2-start1)+"ms");
-        System.out.println("Second took "+ Util.formatNano(start3-start2)+"ms");
-        System.out.println(Integer.valueOf(j)+" iterations took "+ Util.formatNano(System.nanoTime() - start3)+"ms");
+        System.out.println("First took " + Util.formatNano(start2 - start1) + "ms");
+        System.out.println("Second took " + Util.formatNano(start3 - start2) + "ms");
+        System.out.println(Integer.valueOf(j) + " iterations took " + Util.formatNano(System.nanoTime() - start3) + "ms");
 
     }
 }
