@@ -54,7 +54,7 @@ public class ReflectHelper {
         return result;
     }
 
-    public Class getReturnType(Object object, String field) throws NoSuchMethodException {
+    public Class getReturnType(Object object, String field) {
         Method getter = findGetMethod(object, field);
 
         return getter.getReturnType();
@@ -79,46 +79,54 @@ public class ReflectHelper {
         return result;
     }
 
-    public Method findGetMethod(Object object, String field) throws NoSuchMethodException {
+    public Method findGetMethod(Object object, String field) {
         assert object != null : "Can't find get method on null object!";
         assert field != null : "Can't find get method with null field!";
 
-        Integer nameHash = getFullNameHash(object, getGetterFieldName(field));
+        Integer nameHash = getFullNameHash(object, field);
 
         Method method = methodCache.get(nameHash);
 
-        if (method == null) {
-            String getterName = getGetterFieldName(field);
+        if (method == null && !methodCache.containsKey(nameHash)) {
+            try {
+                String getterName = getGetterFieldName(field);
 
-            if (getterName == null) {
-                return null;
+                if (getterName == null) {
+                    return null;
+                }
+
+                method = object.getClass().getMethod(getGetterFieldName(field), new Class[0]);
+
+                methodCache.put(nameHash, method);
+            } catch (NoSuchMethodException e) {
+                methodCache.put(nameHash, null);
             }
-
-            method = object.getClass().getMethod(getGetterFieldName(field), new Class[0]);
-
-            methodCache.put(nameHash, method);
         }
 
         return method;
     }
 
-    public Method findGetMethod(Object object, String field, Class<?>... parameterTypes) throws NoSuchMethodException {
+    public Method findGetMethod(Object object, String field, Class<?>... parameterTypes) {
         assert object != null : "Can't find get method on null object!";
 
-        Integer nameHash = getFullNameHash(object, getGetterFieldName(field), parameterTypes);
+        Integer nameHash = getFullNameHash(object, field, parameterTypes);
 
         Method method = methodCache.get(nameHash);
 
-        if (method == null) {
-            method = object.getClass().getMethod(getGetterFieldName(field), parameterTypes);
+        if (method == null && !methodCache.containsKey(nameHash)) {
+            try {
+                method = object.getClass().getMethod(getGetterFieldName(field), parameterTypes);
 
-            methodCache.put(nameHash, method);
+                methodCache.put(nameHash, method);
+            } catch (NoSuchMethodException e) {
+                methodCache.put(nameHash, null);
+            }
         }
 
         return method;
     }
 
-    public Method findMethod(Object object, String methodName) throws NoSuchMethodException {
+    public Method findMethod(Object object, String methodName) {
         assert object != null : "Can't find get method on null object!";
         assert methodName != null : "Can't find get method with null field!";
 
@@ -126,60 +134,74 @@ public class ReflectHelper {
 
         Method method = methodCache.get(nameHash);
 
-        if (method == null) {
-            method = object.getClass().getMethod(methodName, new Class[0]);
+        if (method == null && !methodCache.containsKey(nameHash)) {
+            try {
+                method = object.getClass().getMethod(methodName, new Class[0]);
 
-            methodCache.put(nameHash, method);
+                methodCache.put(nameHash, method);
+            } catch (NoSuchMethodException e) {
+                methodCache.put(nameHash, null);
+            }
         }
 
         return method;
     }
 
-    public Method findMethod(Object object, String field, Class<?>... parameterTypes) throws NoSuchMethodException {
+    public Method findMethod(Object object, String field, Class<?>... parameterTypes) {
         assert object != null : "Can't find get method on null object!";
 
         Integer nameHash = getFullNameHash(object, field, parameterTypes);
 
         Method method = methodCache.get(nameHash);
 
-        if (method == null) {
-            method = object.getClass().getMethod(field, parameterTypes);
+        if (method == null && !methodCache.containsKey(nameHash)) {
+            try{
+                method = object.getClass().getMethod(field, parameterTypes);
 
-            methodCache.put(nameHash, method);
+                methodCache.put(nameHash, method);
+            } catch (NoSuchMethodException e) {
+                methodCache.put(nameHash, null);
+            }
         }
 
         return method;
     }
 
-    public Method findSetMethod(Object object, String field) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public Method findSetMethod(Object object, String field) throws InvocationTargetException, IllegalAccessException {
         Class returnType = getReturnType(object, field);
 
         Class[] parameter = {returnType};
 
-        Integer nameHash = getFullNameHash(object, getSetterFieldName(field), returnType);
+        Integer nameHash = getFullNameHash(object, field, returnType);
 
         Method method = methodCache.get(nameHash);
 
-        if (method == null) {
-            method = object.getClass().getMethod(getSetterFieldName(field), parameter);
+        if (method == null && !methodCache.containsKey(nameHash)) {
+            try {
+                method = object.getClass().getMethod(getSetterFieldName(field), parameter);
 
-            methodCache.put(nameHash, method);
+                methodCache.put(nameHash, method);
+            } catch (NoSuchMethodException e) {
+                methodCache.put(nameHash, null);
+            }
         }
 
         return method;
     }
 
-    public Method findSetMethod(Object object, String field, Class<?>... parameterTypes) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        int hash = getHashCode(object, field, parameterTypes);
-
-        Integer nameHash = getFullNameHash(object, getSetterFieldName(field), parameterTypes);
+    public Method findSetMethod(Object object, String field, Class<?>... parameterTypes) throws InvocationTargetException, IllegalAccessException {
+        Integer nameHash = getFullNameHash(object, field, parameterTypes);
 
         Method method = methodCache.get(nameHash);
 
-        if (method == null) {
-            method = object.getClass().getMethod(getGetterFieldName(field), parameterTypes);
+        if (method == null && !methodCache.containsKey(nameHash)) {
+            try {
+                method = object.getClass().getMethod(getGetterFieldName(field), parameterTypes);
 
-            methodCache.put(nameHash, method);
+                methodCache.put(nameHash, method);
+            } catch (NoSuchMethodException e) {
+                methodCache.put(nameHash, null);
+            }
         }
 
         return method;
@@ -258,8 +280,6 @@ public class ReflectHelper {
                     }
                 }
             }
-        } catch (NoSuchMethodException e) {
-            throw new IllegalArgumentException(e);
         } catch (IllegalAccessException e) {
             throw new IllegalArgumentException(e);
         } catch (InvocationTargetException e) {
@@ -375,8 +395,6 @@ public class ReflectHelper {
             } else {
                 return method.invoke(object, new Object[0]);
             }
-        } catch (NoSuchMethodException e) {
-            throw new IllegalStateException(e);
         } catch (InvocationTargetException e) {
             throw new IllegalStateException(e);
         } catch (IllegalAccessException e) {
@@ -403,8 +421,6 @@ public class ReflectHelper {
             Method method = findMethod(object, methodName, parameterTypes);
 
             return method.invoke(object, parameters);
-        } catch (NoSuchMethodException e) {
-            throw new IllegalStateException("Method not include: " + object.getClass().getName() + ":" + methodName, e);
         } catch (InvocationTargetException e) {
             throw new IllegalStateException(e);
         } catch (IllegalAccessException e) {
