@@ -11,4 +11,7 @@ import org.junit.Ignore;
 @Ignore
 public class EmployeeDao extends PersistentDao<Long, Employee> {
 
+    public static EmployeeDao get() {
+        return new EmployeeDao();
+    }
 }

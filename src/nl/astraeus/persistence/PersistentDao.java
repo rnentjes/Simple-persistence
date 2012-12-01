@@ -55,6 +55,10 @@ public class PersistentDao<K, M extends Persistent<K>> {
         return PersistentManager.get().find(getModelClass(), key);
     }
 
+    public Set<K> keySet() {
+        return PersistentManager.get().getModelMap(getModelClass()).keySet();
+    }
+
     public Collection<M> findAll() {
         Collection<M> result;
 

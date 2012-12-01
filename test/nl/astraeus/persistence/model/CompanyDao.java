@@ -12,7 +12,11 @@ import java.util.Collection;
  */
 @Ignore
 public class CompanyDao extends PersistentDao<Long, Company> {
-    
+
+    public static CompanyDao get() {
+        return new CompanyDao();
+    }
+
     public Collection<Company> findByEmpoyeeName(final String name) {
         return createQuery().equals("name", name).getResultSet();
     }

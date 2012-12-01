@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.util.Map;
 
 /**
  * User: rnentjes
@@ -19,6 +20,8 @@ public class SimpleSnapshotSerializer implements Serializer {
         DataOutputStream dos = new DataOutputStream(bos);
 
         PersistentObjectStore ps = (PersistentObjectStore)object;
+
+        Map<Class<? extends Persistent>, Map<Object, Persistent>> store = ps.getPersistentStore();
 
         // bla bla bla
         // if object == PrevalentSystem || SimpleModel

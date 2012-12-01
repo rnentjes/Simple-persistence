@@ -14,6 +14,7 @@ public class PersistentQuery<K, M extends Persistent<K>> {
 
     private static enum SelectorType {
         EQUALS,
+        NOT_EQUALS,
         NULL,
         NOT_NULL,
         GREATER,
@@ -133,6 +134,12 @@ public class PersistentQuery<K, M extends Persistent<K>> {
         return this;
     }
 
+    public PersistentQuery<K, M> notEquals(String property, Object value) {
+        addSelection(property, SelectorType.NOT_EQUALS, value);
+
+        return this;
+    }
+
     public PersistentQuery<K, M> isNull(String property) {
         addSelection(property, SelectorType.NULL, null);
 
@@ -201,6 +208,17 @@ public class PersistentQuery<K, M extends Persistent<K>> {
                             subSelection = keys;
                         } else {
                             subSelection.retainAll(keys);
+                        }
+                    } else if (selector.type == SelectorType.NOT_EQUALS) {
+                        Set<K> allKeys = dao.keySet();
+                        Set<K> keys = index.find(selector.value);
+
+                        allKeys.removeAll(keys);
+
+                        if (subSelection == null) {
+                            subSelection = allKeys;
+                        } else {
+                            subSelection.retainAll(allKeys);
                         }
                     }
 
@@ -281,8 +299,13 @@ public class PersistentQuery<K, M extends Persistent<K>> {
 
         switch(type) {
             case EQUALS:
-                if (valueLeft != null && valueLeft.equals(valueRight)) {
-                    result = true;
+                if (valueLeft != null) {
+                    result = valueLeft.equals(valueRight);
+                }
+                break;
+            case NOT_EQUALS:
+                if (valueLeft != null) {
+                    result = !valueLeft.equals(valueRight);
                 }
                 break;
             case NULL:
