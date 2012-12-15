@@ -23,6 +23,10 @@ public class SimplePersistent extends PersistentObject<Long> {
 
     private long id;
 
+    public SimplePersistent() {
+        this.id = getNextId();
+    }
+
     @Override
     public Long getId() {
         return id;
