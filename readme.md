@@ -34,6 +34,7 @@ import nl.astraeus.persistence.Transaction;
 public class MinimalExample {
 
     public static class User extends SimplePersistent {
+        private final static long serialVersionUID = 1L;
 
         private String name;
         private String title;

@@ -51,6 +51,8 @@ public class PersistentManager {
 
         try {
             if ("false".equals(System.getProperty(SAFEMODE))) {
+                logger.warn("Simple persistence is not operating in SAFEMODE, I hope you know what you are doing...");
+
                 safemode = false;
             }
 
