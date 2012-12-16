@@ -53,6 +53,9 @@ public class MinimalExample {
     }
 
     public static class UserDao extends SimplePersistentDao<User> {
+        public User findUserByName(String name) {
+            return createQuery().where("name", name).getSingleResult();
+        }
     }
 
     public MinimalExample() {
@@ -60,6 +63,7 @@ public class MinimalExample {
 
         createUser();
         showUsers();
+        findUser("User-1");
     }
 
     public void createUser() {
@@ -69,7 +73,7 @@ public class MinimalExample {
             public void execute() {
                 UserDao dao = new UserDao();
 
-                User user = new User("User-"+(dao.size()+1), "More date here");
+                User user = new User("User-" + (dao.size() + 1), "More date here");
 
                 dao.store(user);
             }
@@ -80,11 +84,19 @@ public class MinimalExample {
         UserDao dao = new UserDao();
 
         for (User user : dao.findAll()) {
-            System.out.println("User :"+user.getName()+", "+user.getTitle());
+            System.out.println("User :" + user.getName() + ", " + user.getTitle());
         }
     }
 
-    public static void main(String [] args) {
+    public void findUser(String name) {
+        UserDao dao = new UserDao();
+
+        User user = dao.findUserByName(name);
+
+        System.out.println("Found user :" + user.getName() + ", " + user.getTitle());
+    }
+
+    public static void main(String[] args) {
         new MinimalExample();
     }
 }
