@@ -6,10 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import java.lang.reflect.Field;
+import java.util.*;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
  * StoreModelTransaction
@@ -22,6 +21,8 @@ public final class PersistentTransaction implements Serializable, Transaction {
     private final static Logger logger = LoggerFactory.getLogger(PersistentTransaction.class);
 
 	private static final long serialVersionUID = 1L;
+
+    private static Set<Class<? extends Persistent>> validatedClasses = new CopyOnWriteArraySet<>();
 
     static class Action implements Serializable {
         private static final long serialVersionUID = 1L;
@@ -76,6 +77,10 @@ public final class PersistentTransaction implements Serializable, Transaction {
 
         // check @Version fields
         for (Action action : actions) {
+            if (!validatedClasses.contains(action.model.getClass())) {
+                validateClass(action.model);
+            }
+
             Persistent current = ((PersistentObjectStore) prevalentSystem).find(action.model.getClass(), action.model.getId());
 
             if (ReflectHelper.get().getVersion(current) != null) {
@@ -99,6 +104,19 @@ public final class PersistentTransaction implements Serializable, Transaction {
   //          }
         }
 	}
+
+    private void validateClass(Persistent model) {
+        List<Field> fields = ReflectHelper.get().getFieldsFromClass(model.getClass());
+
+        for (Field field : fields) {
+            if (Persistent.class.isAssignableFrom(field.getType()) && field.getAnnotation(Serialized.class) == null) {
+                logger.error("Field "+field.getName()+" in class "+model.getClass().getName()+" is Persistent but does not have the Serialized annotation. Either Use PersistentReference<? extends Persistent> or mark the field Serialized!");
+                throw new IllegalStateException("Field "+field.getName()+" in class "+model.getClass().getName()+" is Persistent but does not have the Serialized annotation. Either Use PersistentReference<? extends Persistent> or mark the field Serialized!");
+            }
+        }
+
+        validatedClasses.add(model.getClass());
+    }
 
     public boolean hasChanges() {
         return !actions.isEmpty();

@@ -79,7 +79,7 @@ public class PersistentManager {
 
                 nodes = true;
             } catch (NumberFormatException e) {
-                logger.warn(e.getMessage(), e);
+                logger.debug(e.getMessage(), e);
             } catch (IllegalStateException e) {
                 logger.warn(e.getMessage(), e);
             }

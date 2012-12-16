@@ -8,6 +8,5 @@ package nl.astraeus.persistence;
 public abstract class Filter<M extends Persistent> {
 
     public abstract boolean include(M model);
-
     
 }

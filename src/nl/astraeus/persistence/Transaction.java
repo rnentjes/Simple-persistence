@@ -1,5 +1,8 @@
 package nl.astraeus.persistence;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.annotation.CheckForNull;
 
 /**
@@ -8,6 +11,7 @@ import javax.annotation.CheckForNull;
  * Time: 11:01 AM
  */
 public abstract class Transaction<T> {
+    private final static Logger logger = LoggerFactory.getLogger(Transaction.class);
 
     private T result;
 
@@ -22,6 +26,10 @@ public abstract class Transaction<T> {
             execute();
 
             PersistentManager.commit();
+        } catch (Throwable e) {
+            logger.error(e.getMessage(),e);
+
+            throw e;
         } finally  {
             if (PersistentManager.transactionActive()) {
                 PersistentManager.rollback();
