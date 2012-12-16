@@ -18,7 +18,7 @@ You can find the prevayler project here:
 
 Minimal example:
 
-´´´java
+```java
 package nl.astraeus.persistence.example;
 
 import nl.astraeus.persistence.PersistentManager;
@@ -88,4 +88,4 @@ public class MinimalExample {
         new MinimalExample();
     }
 }
-´´´
+```
