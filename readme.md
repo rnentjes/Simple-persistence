@@ -16,7 +16,7 @@ You can find the prevayler project here:
 
 [Prevayler](https://github.com/jsampson/prevayler)
 
-Minimal example:
+Minimal example ([gist](https://gist.github.com/4306814)):
 
 ```java
 package nl.astraeus.persistence.example;
