@@ -1,16 +1,16 @@
-package nl.astraeus.persistence.example;
+  package nl.astraeus.persistence.example;
 
-import nl.astraeus.persistence.PersistentManager;
-import nl.astraeus.persistence.SimplePersistent;
-import nl.astraeus.persistence.SimplePersistentDao;
-import nl.astraeus.persistence.Transaction;
+  import nl.astraeus.persistence.PersistentManager;
+  import nl.astraeus.persistence.SimplePersistent;
+  import nl.astraeus.persistence.SimplePersistentDao;
+  import nl.astraeus.persistence.Transaction;
 
-/**
- * User: rnentjes
- * Date: 12/16/12
- * Time: 12:45 PM
- */
-public class MinimalExample {
+  /**
+   * User: rnentjes
+   * Date: 12/16/12
+   * Time: 12:45 PM
+   */
+  public class MinimalExample {
 
     public static class User extends SimplePersistent {
 
@@ -66,4 +66,4 @@ public class MinimalExample {
     public static void main(String [] args) {
         new MinimalExample();
     }
-}
+  }
