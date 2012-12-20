@@ -22,7 +22,7 @@ public final class PersistentTransaction implements Serializable, Transaction {
 
 	private static final long serialVersionUID = 1L;
 
-    private static Set<Class<? extends Persistent>> validatedClasses = new CopyOnWriteArraySet<>();
+    private static Set<Class<? extends Persistent>> validatedClasses = new CopyOnWriteArraySet<Class<? extends Persistent>>();
 
     static class Action implements Serializable {
         private static final long serialVersionUID = 1L;
