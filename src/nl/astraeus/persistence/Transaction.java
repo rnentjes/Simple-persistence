@@ -29,7 +29,7 @@ public abstract class Transaction<T> {
         } catch (Throwable e) {
             logger.error(e.getMessage(),e);
 
-            throw e;
+            throw new IllegalStateException(e);
         } finally  {
             if (PersistentManager.transactionActive()) {
                 PersistentManager.rollback();
