@@ -1,6 +1,5 @@
 package nl.astraeus.persistence.version;
 
-import nl.astraeus.persistence.OptimisticLockingException;
 import nl.astraeus.persistence.Transaction;
 import org.junit.Test;
 
@@ -15,7 +14,7 @@ public class TestVersion {
     public static void main(String [] args) {
     }
 
-    @Test(expected = OptimisticLockingException.class)
+    @Test(expected = IllegalStateException.class)
     public void testOptimisticLockingException() {
         if (PersonDao.get().size() == 0) {
             new Transaction() {

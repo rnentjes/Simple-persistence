@@ -4,12 +4,14 @@ import nl.astraeus.persistence.PersistentManager;
 import nl.astraeus.persistence.SimplePersistent;
 import nl.astraeus.persistence.SimplePersistentDao;
 import nl.astraeus.persistence.Transaction;
+import org.junit.Ignore;
 
 /**
  * User: rnentjes
  * Date: 12/16/12
  * Time: 12:45 PM
  */
+@Ignore
 public class MinimalExample {
 
     public static class User extends SimplePersistent {
