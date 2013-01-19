@@ -46,7 +46,6 @@ public class PersistentQuery<K, M extends Persistent<K>> {
             this.order = order.toArray(new String[order.size()]);
         }
 
-        @Override
         public int compare(M o1, M o2) {
             int index = 0;
             int result = 0;
@@ -280,7 +279,12 @@ public class PersistentQuery<K, M extends Persistent<K>> {
     }
 
     public boolean isMatch(M m) {
+        if (m == null) {
+            return false;
+        }
+
         boolean result = true;
+
         Set<String> properties = selections.keySet();
 
         for (String property : properties) {
