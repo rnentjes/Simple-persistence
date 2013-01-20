@@ -251,8 +251,10 @@ public class PersistentDao<K, M extends Persistent<K>> {
         }
     }
 
-    public void reIndex(String property) {
-        PersistentManager.get().createIndex(getModelClass(), property);
+    public void removeIndex(String property) {
+        if (PersistentManager.get().getIndex(getModelClass(), property) != null) {
+            PersistentManager.get().removeIndex(getModelClass(), property);
+        }
     }
 
 }

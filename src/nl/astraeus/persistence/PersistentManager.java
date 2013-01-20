@@ -278,6 +278,12 @@ public class PersistentManager {
         prevayler.execute(cit);
     }
 
+    public <K, M extends Persistent<K>> void removeIndex(Class<M> cls, String property) {
+        PersistentRemoveIndexTransaction prit = new PersistentRemoveIndexTransaction(cls, property);
+
+        prevayler.execute(prit);
+    }
+
     public <K, M extends Persistent<K>>  PersistentIndex getIndex(Class<M> cls, String name) {
         PersistentObjectStore pos = (PersistentObjectStore)prevayler.prevalentSystem();
 

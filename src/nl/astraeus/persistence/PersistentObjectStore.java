@@ -240,4 +240,12 @@ public class PersistentObjectStore implements Serializable {
             }
         }
     }
+
+    public <K, M extends Persistent<K>> void removeIndex(Class<M> cls, String propertyName) {
+        Map<String, PersistentIndex> indexMap = indexes.get(cls);
+
+        if (indexMap != null) {
+            indexMap.remove(propertyName);
+        }
+    }
 }

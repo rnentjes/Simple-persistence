@@ -1,6 +1,7 @@
 package nl.astraeus.persistence;
 
 import org.prevayler.Transaction;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,14 +10,14 @@ import java.util.Date;
  * Date: 10/17/12
  * Time: 9:19 PM
  */
-public final class PersistentIndexTransaction<K, M extends Persistent<K>> implements Serializable, Transaction {
+public final class PersistentRemoveIndexTransaction<K, M extends Persistent<K>> implements Serializable, Transaction {
 
     private static final long serialVersionUID = 1L;
 
     private Class<M> cls;
     private String property;
 
-    public PersistentIndexTransaction(Class<M> cls, String property) {
+    public PersistentRemoveIndexTransaction(Class<M> cls, String property) {
         this.cls = cls;
         this.property = property;
     }
@@ -24,6 +25,6 @@ public final class PersistentIndexTransaction<K, M extends Persistent<K>> implem
     public void executeOn(Object prevalentSystem, Date date) {
         PersistentObjectStore pos = (PersistentObjectStore)prevalentSystem;
 
-        pos.createIndex(cls, property);
+        pos.removeIndex(cls, property);
     }
 }
