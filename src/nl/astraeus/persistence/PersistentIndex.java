@@ -27,7 +27,13 @@ public class PersistentIndex<K, M extends Persistent<K>, T> implements Serializa
     }
 
     public T getIndexValue(M model) {
-        return (T) ReflectHelper.get().getFieldValue(model, propertyName);
+        Object value = ReflectHelper.get().getFieldValue(model, propertyName);
+
+        if (value instanceof PersistentReference) {
+            value = ((PersistentReference)value).get();
+        }
+
+        return (T) value;
     }
 
     public void update(M model) {
