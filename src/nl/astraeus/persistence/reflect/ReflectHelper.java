@@ -65,7 +65,7 @@ public class ReflectHelper {
     }
 
     private int getFullNameHash(Object o, String name, Class... parameters) {
-        int result = o.hashCode();
+        int result = o.getClass().hashCode();
 
         result *= 7;
         result += name.hashCode();
@@ -83,7 +83,7 @@ public class ReflectHelper {
         assert object != null : "Can't find get method on null object!";
         assert field != null : "Can't find get method with null field!";
 
-        Integer nameHash = getFullNameHash(object, field);
+        Integer nameHash = getFullNameHash(object.getClass(), field);
 
         Method method = methodCache.get(nameHash);
 
@@ -130,7 +130,7 @@ public class ReflectHelper {
         assert object != null : "Can't find get method on null object!";
         assert methodName != null : "Can't find get method with null field!";
 
-        Integer nameHash = getFullNameHash(object, methodName);
+        Integer nameHash = getFullNameHash(object.getClass(), methodName);
 
         Method method = methodCache.get(nameHash);
 

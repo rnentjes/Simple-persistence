@@ -181,8 +181,6 @@ public class PersistentQuery<K, M extends Persistent<K>> {
         return this;
     }
 
-
-
     public SortedSet<M> getResultSet() {
         // result as set with order comparator
         int fromCounter = 0;
@@ -220,7 +218,6 @@ public class PersistentQuery<K, M extends Persistent<K>> {
                             subSelection.retainAll(allKeys);
                         }
                     }
-
                 }
             }
         }
