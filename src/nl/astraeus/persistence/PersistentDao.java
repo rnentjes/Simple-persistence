@@ -1,7 +1,5 @@
 package nl.astraeus.persistence;
 
-import nl.astraeus.util.DeepCopy;
-
 import javax.annotation.CheckForNull;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -152,26 +150,17 @@ public class PersistentDao<K, M extends Persistent<K>> {
     private Collection<M> getValues() {
         Class<M> cls = getModelClass();
 
-        int method = 3;
-        if (method == 2) {
-            Map<K, M> map = (Map<K, M>) DeepCopy.copy(PersistentManager.get().getModelMap(cls));
+        Collection<M> result = new TreeSet<M>();
 
-            return map.values();
-        } else {
-                Collection<M> result = new TreeSet<M>();
-
-                //result = PersistentManager.get().getModelMap(cls).values();
-
-                for (M m : PersistentManager.get().getModelMap(cls).values()) {
-                    try {
-                        result.add(cls.cast(m.clone()));
-                    } catch (CloneNotSupportedException e) {
-                        throw new IllegalStateException(e);
-                    }
-                }
-
-                return result;
+        for (M m : PersistentManager.get().getModelMap(cls).values()) {
+            try {
+                result.add(cls.cast(m.clone()));
+            } catch (CloneNotSupportedException e) {
+                throw new IllegalStateException(e);
+            }
         }
+
+        return result;
 
     }
 

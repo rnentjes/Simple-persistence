@@ -196,6 +196,16 @@ public class PersistentObjectStore implements Serializable {
         return result;
     }
 
+    protected <P extends PersistentIndex> void setIndex(Class cls, String property, P index) {
+        Map<String, P> indexMap = (Map<String, P>) indexes.get(cls);
+
+        if (indexMap != null) {
+            index = indexMap.get(property);
+        }
+
+        indexMap.put(property, index);
+    }
+
     public <K, M extends Persistent<K>> void updateIndex(M model) {
         Map<String, ? extends PersistentIndex> indexMap = indexes.get(model.getClass());
 
@@ -216,7 +226,7 @@ public class PersistentObjectStore implements Serializable {
         }
     }
 
-    public <K, M extends Persistent<K>> void createIndex(Class<M> cls, String propertyName) {
+    public <K, M extends Persistent<K>> PersistentIndex createIndex(Class<M> cls, String propertyName) {
         PersistentIndex<K,M,Object> index;
 
         Map<String, PersistentIndex> indexMap = indexes.get(cls);
@@ -239,6 +249,8 @@ public class PersistentObjectStore implements Serializable {
                 }
             }
         }
+
+        return index;
     }
 
     public <K, M extends Persistent<K>> void removeIndex(Class<M> cls, String propertyName) {

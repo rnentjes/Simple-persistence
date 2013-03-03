@@ -15,15 +15,17 @@ public final class PersistentIndexTransaction<K, M extends Persistent<K>> implem
 
     private Class<M> cls;
     private String property;
+    private PersistentIndex index;
 
-    public PersistentIndexTransaction(Class<M> cls, String property) {
+    public PersistentIndexTransaction(PersistentObjectStore store, Class<M> cls, String property) {
         this.cls = cls;
         this.property = property;
+        this.index = store.createIndex(cls, property);
     }
 
     public void executeOn(Object prevalentSystem, Date date) {
         PersistentObjectStore pos = (PersistentObjectStore)prevalentSystem;
 
-        pos.createIndex(cls, property);
+        pos.setIndex(cls, property, index);
     }
 }

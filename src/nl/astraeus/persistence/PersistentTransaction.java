@@ -40,7 +40,7 @@ public final class PersistentTransaction implements Serializable, Transaction {
         }
     }
 
-    private List<Action> actions = new LinkedList<Action>();
+    private List<Action> actions = new ArrayList<Action>();
 
     PersistentTransaction() {}
 

@@ -21,7 +21,6 @@ public final class CreateIndexTransaction implements Serializable, Transaction {
         this.property = property;
     }
 
-    @Override
     public void executeOn(Object prevalentSystem, Date date) {
         PersistentObjectStore ps = (PersistentObjectStore)prevalentSystem;
 

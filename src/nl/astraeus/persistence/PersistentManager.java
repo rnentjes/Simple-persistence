@@ -31,6 +31,15 @@ public class PersistentManager {
     private ThreadLocal<PersistentTransaction> transactions = new ThreadLocal<PersistentTransaction>();
 
     public static PersistentManager get() {
+        if (!INSTANCE.started) {
+            synchronized (INSTANCE) {
+                if (!INSTANCE.started) {
+                    INSTANCE.started = true;
+                    INSTANCE.start();
+                }
+            }
+        }
+
         return INSTANCE;
     }
 
@@ -47,45 +56,45 @@ public class PersistentManager {
     private boolean nodes = false;
 
     public PersistentManager() {
-        started = true;
+        if ("false".equals(System.getProperty(SAFEMODE))) {
+            logger.warn("Simple persistence is not operating in SAFEMODE, I hope you know what you are doing...");
+
+            safemode = false;
+        }
+
+        if ("true".equals(System.getProperty(AUTOCOMMIT))) {
+            autocommit = true;
+        }
+
+        if (System.getProperty(DATA_DIRECTORY) != null) {
+            dataDirectory = System.getProperty(DATA_DIRECTORY);
+        }
+
+        if (System.getProperty(FILE_AGE_THRESHOLD) != null) {
+            fileAgeThreshold = Long.parseLong(System.getProperty(FILE_AGE_THRESHOLD));
+        }
+
+        if (System.getProperty(FILE_SIZE_THRESHOLD) != null) {
+            fileSizeThreshold = Long.parseLong(System.getProperty(FILE_SIZE_THRESHOLD));
+        }
 
         try {
-            if ("false".equals(System.getProperty(SAFEMODE))) {
-                logger.warn("Simple persistence is not operating in SAFEMODE, I hope you know what you are doing...");
+            SimpleNodeManager.get().init(
+                    System.getProperty("simple.node.ip"),
+                    Integer.parseInt(System.getProperty("simple.node.port")),
+                    Integer.parseInt(System.getProperty("simple.node.divider")),
+                    Integer.parseInt(System.getProperty("simple.node.remainder")));
 
-                safemode = false;
-            }
+            nodes = true;
+        } catch (NumberFormatException e) {
+            logger.debug(e.getMessage(), e);
+        } catch (IllegalStateException e) {
+            logger.warn(e.getMessage(), e);
+        }
+    }
 
-            if ("true".equals(System.getProperty(AUTOCOMMIT))) {
-                autocommit = true;
-            }
-
-            if (System.getProperty(DATA_DIRECTORY) != null) {
-                dataDirectory = System.getProperty(DATA_DIRECTORY);
-            }
-
-            if (System.getProperty(FILE_AGE_THRESHOLD) != null) {
-                fileAgeThreshold = Long.parseLong(System.getProperty(FILE_AGE_THRESHOLD));
-            }
-
-            if (System.getProperty(FILE_SIZE_THRESHOLD) != null) {
-                fileSizeThreshold = Long.parseLong(System.getProperty(FILE_SIZE_THRESHOLD));
-            }
-
-            try {
-                SimpleNodeManager.get().init(
-                        System.getProperty("simple.node.ip"),
-                        Integer.parseInt(System.getProperty("simple.node.port")),
-                        Integer.parseInt(System.getProperty("simple.node.divider")),
-                        Integer.parseInt(System.getProperty("simple.node.remainder")));
-
-                nodes = true;
-            } catch (NumberFormatException e) {
-                logger.debug(e.getMessage(), e);
-            } catch (IllegalStateException e) {
-                logger.warn(e.getMessage(), e);
-            }
-
+    private void start() {
+        try {
             PrevaylerFactory factory = new PrevaylerFactory();
 
             factory.configureJournalFileAgeThreshold(fileAgeThreshold);
@@ -273,7 +282,9 @@ public class PersistentManager {
     }
 
     public <K, M extends Persistent<K>> void createIndex(Class<M> cls, String property) {
-        PersistentIndexTransaction cit = new PersistentIndexTransaction(cls, property);
+        PersistentObjectStore ps = (PersistentObjectStore)prevayler.prevalentSystem();
+
+        PersistentIndexTransaction cit = new PersistentIndexTransaction(ps, cls, property);
 
         prevayler.execute(cit);
     }
