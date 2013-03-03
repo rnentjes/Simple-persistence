@@ -19,7 +19,6 @@ public class PersistentIndex<K, M extends Persistent<K>, T> implements Serializa
     protected Map<T, Set<K>> index = new HashMap<T, Set<K>>();
     private Class<M> cls;
     private String propertyName;
-    private boolean initialized = false;
 
     protected PersistentIndex(Class<M> cls, String propertyName) {
         this.cls = cls;
@@ -31,6 +30,8 @@ public class PersistentIndex<K, M extends Persistent<K>, T> implements Serializa
 
         if (value instanceof PersistentReference) {
             value = ((PersistentReference)value).get();
+        } else if (value instanceof PersistentList) {
+            throw new IllegalStateException("Index is not allowed on PersistentList, class " + model.getClass().getName() + " property " + propertyName);
         }
 
         return (T) value;

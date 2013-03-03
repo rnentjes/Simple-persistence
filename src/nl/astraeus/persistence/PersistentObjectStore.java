@@ -211,7 +211,11 @@ public class PersistentObjectStore implements Serializable {
 
         if (indexMap != null) {
             for (PersistentIndex si : indexMap.values()) {
-                si.update(model);
+                if (si == null) {
+                    logger.warn("null found in indexMap: {}", indexMap);
+                } else {
+                    si.update(model);
+                }
             }
         }
     }
@@ -221,7 +225,11 @@ public class PersistentObjectStore implements Serializable {
 
         if (indexMap != null) {
             for (PersistentIndex si : indexMap.values()) {
-                si.remove(model);
+                if (si == null) {
+                    logger.warn("null found in indexMap: {}", indexMap);
+                } else {
+                    si.remove(model);
+                }
             }
         }
     }
