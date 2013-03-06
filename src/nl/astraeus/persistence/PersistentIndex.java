@@ -67,4 +67,11 @@ public class PersistentIndex<K, M extends Persistent<K>, T> implements Serializa
         return result;
     }
 
+    public int getIndexValueCount() {
+        return index.keySet().size();
+    }
+
+    public String getPropertyName() {
+        return propertyName;
+    }
 }

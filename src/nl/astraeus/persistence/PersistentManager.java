@@ -295,10 +295,16 @@ public class PersistentManager {
         prevayler.execute(prit);
     }
 
-    public <K, M extends Persistent<K>>  PersistentIndex getIndex(Class<M> cls, String name) {
+    public <K, M extends Persistent<K>> PersistentIndex getIndex(Class<M> cls, String name) {
         PersistentObjectStore pos = (PersistentObjectStore)prevayler.prevalentSystem();
 
         return pos.getIndex(cls, name);
+    }
+
+    public <K, M extends Persistent<K>> Map<String, PersistentIndex> getIndexMap(Class<M> cls) {
+        PersistentObjectStore pos = (PersistentObjectStore)prevayler.prevalentSystem();
+
+        return pos.getIndexMap(cls);
     }
 
 }

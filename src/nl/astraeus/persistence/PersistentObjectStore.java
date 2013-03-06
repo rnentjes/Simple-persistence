@@ -4,10 +4,14 @@ import nl.astraeus.persistence.reflect.ReflectHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
 import java.io.Serializable;
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * User: rnentjes
@@ -40,11 +44,6 @@ public class PersistentObjectStore implements Serializable {
 
     protected Map<Class<? extends Persistent>, Map<Object, Persistent>> getPersistentStore() {
         return persistentStore;
-    }
-
-    protected <K, M extends Persistent<K>> void checkAndUpdateTimestamp(M model) {
-
-
     }
 
     @Nonnull
@@ -184,52 +183,43 @@ public class PersistentObjectStore implements Serializable {
         return result;
     }*/
 
+    @CheckForNull
     protected <K, M extends Persistent<K>> PersistentIndex getIndex(Class<M> cls, String property) {
-        PersistentIndex result = null;
+        PersistentIndex result;
 
-        Map<String, ? extends PersistentIndex> indexMap = indexes.get(cls);
+        Map<String, ? extends PersistentIndex> indexMap = getIndexMap(cls);
 
-        if (indexMap != null) {
-            result = indexMap.get(property);
-        }
+        result = indexMap.get(property);
 
         return result;
     }
 
-    protected <P extends PersistentIndex> void setIndex(Class cls, String property, P index) {
-        Map<String, P> indexMap = (Map<String, P>) indexes.get(cls);
-
-        if (indexMap != null) {
-            index = indexMap.get(property);
-        }
+    protected <P extends PersistentIndex> void setIndex(Class cls, String property, @Nonnull P index) {
+        Map<String, P> indexMap = (Map<String, P>) getIndexMap(cls);
 
         indexMap.put(property, index);
     }
 
     public <K, M extends Persistent<K>> void updateIndex(M model) {
-        Map<String, ? extends PersistentIndex> indexMap = indexes.get(model.getClass());
+        Map<String, ? extends PersistentIndex> indexMap = getIndexMap(model.getClass());
 
-        if (indexMap != null) {
-            for (PersistentIndex si : indexMap.values()) {
-                if (si == null) {
-                    logger.warn("null found in indexMap: {}", indexMap);
-                } else {
-                    si.update(model);
-                }
+        for (PersistentIndex si : indexMap.values()) {
+            if (si == null) {
+                logger.warn("null found in indexMap: {}", indexMap);
+            } else {
+                si.update(model);
             }
         }
     }
 
     public <K, M extends Persistent<K>> void removeIndex(M model) {
-        Map<String, ? extends PersistentIndex> indexMap = indexes.get(model.getClass());
+        Map<String, ? extends PersistentIndex> indexMap = getIndexMap(model.getClass());
 
-        if (indexMap != null) {
-            for (PersistentIndex si : indexMap.values()) {
-                if (si == null) {
-                    logger.warn("null found in indexMap: {}", indexMap);
-                } else {
-                    si.remove(model);
-                }
+        for (PersistentIndex si : indexMap.values()) {
+            if (si == null) {
+                logger.warn("null found in indexMap: {}", indexMap);
+            } else {
+                si.remove(model);
             }
         }
     }
@@ -237,13 +227,7 @@ public class PersistentObjectStore implements Serializable {
     public <K, M extends Persistent<K>> PersistentIndex createIndex(Class<M> cls, String propertyName) {
         PersistentIndex<K,M,Object> index;
 
-        Map<String, PersistentIndex> indexMap = indexes.get(cls);
-
-        if (indexMap == null) {
-            indexMap = new HashMap<String, PersistentIndex>();
-
-            indexes.put(cls, indexMap);
-        }
+        Map<String, PersistentIndex> indexMap = getIndexMap(cls);
 
         index = indexMap.get(propertyName);
 
@@ -262,10 +246,22 @@ public class PersistentObjectStore implements Serializable {
     }
 
     public <K, M extends Persistent<K>> void removeIndex(Class<M> cls, String propertyName) {
-        Map<String, PersistentIndex> indexMap = indexes.get(cls);
+        Map<String, PersistentIndex> indexMap = getIndexMap(cls);
 
-        if (indexMap != null) {
-            indexMap.remove(propertyName);
-        }
+        indexMap.remove(propertyName);
     }
+
+    @Nonnull
+    protected <K, M extends Persistent<K>>  Map<String, PersistentIndex> getIndexMap(Class<M> cls) {
+        Map<String, PersistentIndex> result = indexes.get(cls);
+
+        if (result == null) {
+            result = new HashMap<String, PersistentIndex>();
+
+            indexes.put(cls, result);
+        }
+
+        return result;
+    }
+
 }
