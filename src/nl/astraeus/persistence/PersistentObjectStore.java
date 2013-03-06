@@ -252,7 +252,7 @@ public class PersistentObjectStore implements Serializable {
     }
 
     @Nonnull
-    protected <K, M extends Persistent<K>>  Map<String, PersistentIndex> getIndexMap(Class<M> cls) {
+    protected <K, M extends Persistent<K>> Map<String, PersistentIndex> getIndexMap(Class<M> cls) {
         Map<String, PersistentIndex> result = indexes.get(cls);
 
         if (result == null) {
