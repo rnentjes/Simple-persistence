@@ -4,6 +4,9 @@
     <property file="build.properties"/>
     <property file="default.build.properties"/>
     <property file="default.properties"/>
+    <property file="version.properties"/>
+
+    <property name="build.number" value="${build.major.number}.${build.minor.number}"/>
 
     <path id="project.class.path">
         <pathelement location="${java.home}/../lib/tools.jar"/>
@@ -98,6 +101,31 @@
     </path>
 
     <taskdef classpathref="cobertura.classpath" resource="tasks.properties"/>
+
+    <target name="current-number">
+        <echo>Current build number:${build.number}</echo>
+    </target>
+
+    <target name="revision">
+        <propertyfile  file="version.properties">
+            <entry key="build.revision.number" type="int" operation="+" value="1" pattern="00"/>
+        </propertyfile>
+    </target>
+
+    <target name="minor">
+        <propertyfile  file="version.properties">
+            <entry key="build.minor.number" type="int" operation="+" value="1" pattern="00"/>
+            <entry key="build.revision.number" type="int" value="0" pattern="00"/>
+        </propertyfile>
+    </target>
+
+    <target name="major">
+        <propertyfile  file="version.properties">
+            <entry key="build.major.number" type="int" operation="+" value="1" pattern="00"/>
+            <entry key="build.minor.number" type="int" value="0" pattern="00"/>
+            <entry key="build.revision.number" type="int" value="0" pattern="00"/>
+        </propertyfile>
+    </target>
 
     <!-- =================================================================== -->
     <!-- Clean                                                               -->
@@ -410,6 +438,7 @@
     <!-- Archive                                                            -->
     <!-- =================================================================== -->
     <target name="dist" depends="jar">
+        <antcall target="minor" />
 
         <!-- create WAR file -->
         <zip destfile="${dist.dir}/${jar.name}.zip">
