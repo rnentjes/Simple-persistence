@@ -181,12 +181,12 @@ public class PersistentQuery<K, M extends Persistent<K>> {
         return this;
     }
 
-    public SortedSet<M> getResultSet() {
+    public Collection<M> getResultSet() {
         // result as set with order comparator
         int fromCounter = 0;
         int nrResults = 0;
 
-        SortedSet<M> result = new TreeSet<M>(new OrderComparator(order));
+        List<M> result = new ArrayList<M>();
 
         Set<K> subSelection = null;
 
@@ -229,15 +229,7 @@ public class PersistentQuery<K, M extends Persistent<K>> {
                 boolean match = isMatch(m);
 
                 if (match) {
-                    if (fromCounter >= from) {
-                        result.add(m);
-                        nrResults++;
-                    }
-                    fromCounter++;
-                }
-
-                if (nrResults == max) {
-                    break;
+                    result.add(m);
                 }
             }
         } else {
@@ -245,26 +237,30 @@ public class PersistentQuery<K, M extends Persistent<K>> {
                 boolean match = isMatch(m);
 
                 if (match) {
-                    if (fromCounter >= from) {
-                        result.add(m);
-                        nrResults++;
-                    }
-                    fromCounter++;
-                }
-
-                if (nrResults == max) {
-                    break;
+                    result.add(m);
                 }
             }
         }
 
-        return result;
+        Collections.sort(result, new OrderComparator(order));
+
+        int from = this.from;
+        int max = this.max;
+        int size = result.size();
+
+        if (from >= size) {
+            max = 0;
+        } else if ((from + max) >= size) {
+            max = size - from;
+        }
+
+        return result.subList(from, from + max);
     }
 
     @CheckForNull
     public M getSingleResult() {
         M result = null;
-        Set<M> resultList = getResultSet();
+        Collection<M> resultList = getResultSet();
 
         if (resultList.size() == 1) {
             result = resultList.iterator().next();
