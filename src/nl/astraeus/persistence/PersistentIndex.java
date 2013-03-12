@@ -38,6 +38,8 @@ public class PersistentIndex<K, M extends Persistent<K>, T> implements Serializa
     }
 
     public void update(M model) {
+        remove(model);
+
         Set<K> set = index.get(getIndexValue(model));
 
         if (set == null) {
@@ -50,10 +52,8 @@ public class PersistentIndex<K, M extends Persistent<K>, T> implements Serializa
     }
 
     public void remove(M model) {
-        Set<K> set = index.get(getIndexValue(model));
-
-        if (set != null) {
-            set.remove(model.getId());
+        for (Map.Entry<T, Set<K>> entry : index.entrySet()) {
+            entry.getValue().remove(model.getId());
         }
     }
     
