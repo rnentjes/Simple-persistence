@@ -74,4 +74,8 @@ public class PersistentIndex<K, M extends Persistent<K>, T> implements Serializa
     public String getPropertyName() {
         return propertyName;
     }
+
+    public Map<T, Set<K>> getIndex() {
+        return new HashMap<T, Set<K>>(index);
+    }
 }
