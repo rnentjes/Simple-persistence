@@ -15,6 +15,7 @@ public class PersistentReference<K, M extends Persistent<K>> implements Serializ
     private transient M incoming;
     private K id;
     private Class<M> cls;
+    private int invoiceNo;
 
     public PersistentReference(Class<M> cls) {
         id = null;
@@ -77,5 +78,4 @@ public class PersistentReference<K, M extends Persistent<K>> implements Serializ
     public String toString() {
         return cls.getName()+":"+id;
     }
-
 }
