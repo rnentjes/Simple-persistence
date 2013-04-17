@@ -76,6 +76,10 @@ public class PersistentReference<K, M extends Persistent<K>> implements Serializ
     }
     
     public String toString() {
-        return cls.getName()+":"+id;
+        if (cls != null) {
+            return cls.getName()+":"+id;
+        } else{
+            return "null";
+        }
     }
 }
