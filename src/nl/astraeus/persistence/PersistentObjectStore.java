@@ -94,18 +94,18 @@ public class PersistentObjectStore implements Serializable {
 
                     if (ref != null) {
                         M m = ref.getIncoming();
+                        ref.clearIncoming();
 
                         if (m != null) {
                             store(m);
                         }
-
-                        ref.clearIncoming();
                     }
                 } else if (field.getType().equals(PersistentList.class)) {
                     PersistentList<K, M> list = (PersistentList<K, M>) field.get(model);
 
                     if (list != null) {
                         Map incoming = list.getIncoming();
+                        list.clearIncoming();
 
                         if (incoming != null) {
                             for (M m : (Collection<M>)incoming.values()) {
@@ -113,7 +113,6 @@ public class PersistentObjectStore implements Serializable {
                             }
                         }
 
-                        list.clearIncoming();
                     }
                 }
             }
