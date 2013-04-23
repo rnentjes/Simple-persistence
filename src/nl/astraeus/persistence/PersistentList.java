@@ -15,7 +15,7 @@ public class PersistentList<K, M extends Persistent<K>> implements List<M>, Seri
 
     private Class<M> cls;
     private List<K> list = new LinkedList<K>();
-    private transient Map<K, M> incoming;
+    private Map<K, M> incoming;
 
     public PersistentList(Class<M> cls) {
         this.cls = cls;

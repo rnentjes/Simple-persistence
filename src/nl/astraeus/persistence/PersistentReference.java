@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class PersistentReference<K, M extends Persistent<K>> implements Serializable {
     public static final long serialVersionUID = 1L;
 
-    private transient M incoming;
+    private M incoming;
     private K id;
     private Class<M> cls;
     private int invoiceNo;
