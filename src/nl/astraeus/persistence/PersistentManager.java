@@ -21,11 +21,12 @@ import java.util.concurrent.TimeUnit;
 public class PersistentManager {
     private final static Logger logger = LoggerFactory.getLogger(PersistentManager.class);
 
-    public final static String SAFEMODE            = "safemode";
-    public final static String AUTOCOMMIT          = "autocommit";
-    public final static String DATA_DIRECTORY      = "dataDirectory";
-    public final static String FILE_AGE_THRESHOLD  = "fileAgeThreshold";
-    public final static String FILE_SIZE_THRESHOLD = "fileSizeThreshold";
+    public final static String SAFEMODE                             = "safemode";
+    public final static String AUTOCOMMIT                           = "autocommit";
+    public final static String DATA_DIRECTORY                       = "dataDirectory";
+    public final static String FILE_AGE_THRESHOLD                   = "fileAgeThreshold";
+    public final static String FILE_SIZE_THRESHOLD                  = "fileSizeThreshold";
+    public final static String MINIMAL_FILE_AGE_BEFORE_DELETION     = "minimalFileAgeBeforeDeletion";
 
     private final static PersistentManager INSTANCE = new PersistentManager();
 
@@ -78,6 +79,10 @@ public class PersistentManager {
 
         if (System.getProperty(FILE_SIZE_THRESHOLD) != null) {
             fileSizeThreshold = Long.parseLong(System.getProperty(FILE_SIZE_THRESHOLD));
+        }
+
+        if (System.getProperty(MINIMAL_FILE_AGE_BEFORE_DELETION) != null) {
+            minimalFileAgeBeforeDeletion = Long.parseLong(System.getProperty(MINIMAL_FILE_AGE_BEFORE_DELETION)) * 60000L;
         }
 
         try {
