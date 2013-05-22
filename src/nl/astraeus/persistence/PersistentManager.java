@@ -5,6 +5,7 @@ import org.prevayler.PrevaylerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -46,11 +47,12 @@ public class PersistentManager {
     private Prevayler prevayler;
 
     // properties
-    private boolean autocommit     = false;
-    private boolean safemode       = true;
-    private String dataDirectory   = "persistent";
-    private long fileAgeThreshold  = TimeUnit.MINUTES.toMillis(1);
-    private long fileSizeThreshold = 10*1024L*1024L;
+    private boolean autocommit                  = false;
+    private boolean safemode                    = true;
+    private String dataDirectory                = "persistent";
+    private long fileAgeThreshold               = TimeUnit.MINUTES.toMillis(1);
+    private long fileSizeThreshold              = 10*1024L*1024L;
+    private long minimalFileAgeBeforeDeletion   = TimeUnit.DAYS.toMillis(7);
 
     private boolean started = false;
     private boolean nodes = false;
@@ -207,6 +209,33 @@ public class PersistentManager {
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }
+    }
+
+    public void cleanUp() {
+        File dataDirectory = new File(this.dataDirectory);
+
+        if (!dataDirectory.isDirectory()) {
+            throw new IllegalStateException("Can't cleanup data directory is not a directory!");
+        }
+
+        long lastSnapshot = 0L;
+        long lastModified = System.currentTimeMillis() - minimalFileAgeBeforeDeletion;
+        for (File file : dataDirectory.listFiles()) {
+            if (file.isFile() && file.getName().endsWith(".snapshot")) {
+                lastSnapshot = Math.max(lastSnapshot, file.lastModified());
+            }
+        }
+
+        lastModified = Math.min(lastModified, lastSnapshot);
+
+        for (File file : dataDirectory.listFiles()) {
+            if (file.isFile() &&
+                    (file.getName().endsWith(".snapshot")  || file.getName().endsWith(".journal")) &&
+                    file.lastModified() < lastModified)  {
+                file.delete();
+            }
+        }
+
     }
 
     // retrieval functions
