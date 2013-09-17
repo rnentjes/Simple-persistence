@@ -74,7 +74,7 @@ public class MinimalExample {
             public void execute() {
                 UserDao dao = new UserDao();
 
-                User user = new User("User-" + (dao.size() + 1), "More date here");
+                User user = new User("User-" + (dao.size() + 1), "More data here");
 
                 dao.store(user);
             }
