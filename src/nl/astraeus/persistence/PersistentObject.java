@@ -18,7 +18,6 @@ public abstract class PersistentObject<K> implements Persistent<K>, Comparable {
         return result;
     }
 
-    @Override
     public int compareTo(Object o) {
         K id = getId();
 

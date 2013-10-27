@@ -11,7 +11,6 @@ public interface Persistent<K> extends Cloneable, Serializable, Comparable {
 
     public K getId();
 
-    @Override
     int compareTo(Object o);
 
     public Persistent<K> clone() throws CloneNotSupportedException;
