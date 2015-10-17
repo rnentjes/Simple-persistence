@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Simple-persistence.iml" filepath="$PROJECT_DIR$/Simple-persistence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/simple-persistence.iml" filepath="$PROJECT_DIR$/simple-persistence.iml" />
     </modules>
   </component>
 </project>
-

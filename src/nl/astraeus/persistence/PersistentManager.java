@@ -1,17 +1,16 @@
 package nl.astraeus.persistence;
 
-import org.prevayler.Prevayler;
-import org.prevayler.PrevaylerFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.File;
-import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import org.prevayler.Prevayler;
+import org.prevayler.PrevaylerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * User: rnentjes
@@ -102,6 +101,7 @@ public class PersistentManager {
 
     private void start() {
         try {
+            //PrevaylerFactory.
             PrevaylerFactory factory = new PrevaylerFactory();
 
             factory.configureJournalFileAgeThreshold(fileAgeThreshold);
@@ -113,9 +113,7 @@ public class PersistentManager {
             //factory.configureSnapshotSerializer("snapshot", new SimpleSnapshotSerializer());
 
             prevayler = factory.create();
-        } catch (IOException e) {
-            throw new IllegalStateException("Can't start Prevayler!", e);
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             throw new IllegalStateException("Can't start Prevayler!", e);
         }
     }
@@ -136,11 +134,11 @@ public class PersistentManager {
     public static boolean transactionActive() {
         return get().getTransaction() != null;
     }
-    
+
     private void setTransaction(PersistentTransaction transaction) {
         transactions.set(transaction);
     }
-    
+
     private void execute(PersistentTransaction transaction) {
         prevayler.execute(transaction);
     }
@@ -152,7 +150,7 @@ public class PersistentManager {
 
         setTransaction(new PersistentTransaction());
     }
-    
+
     private void commitCurrentTransaction() {
         if (getTransaction() == null) {
             throw new IllegalStateException("No transaction to commit.");
@@ -187,7 +185,7 @@ public class PersistentManager {
         }
         transactions.remove();
     }
-    
+
     private void rollbackCurrentTransaction() {
         if (getTransaction() == null) {
             throw new IllegalStateException("No transaction to rollback.");
@@ -199,11 +197,11 @@ public class PersistentManager {
     public static void begin() {
         get().beginTransaction();
     }
-    
+
     public static void commit() {
         get().commitCurrentTransaction();
     }
-    
+
     public static void rollback() {
         get().rollbackCurrentTransaction();
     }
@@ -211,7 +209,7 @@ public class PersistentManager {
     public void snapshot() {
         try {
             prevayler.takeSnapshot();
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new IllegalStateException(e);
         }
     }

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.prevayler:prevayler-core:2.6">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.prevayler/prevayler-core/2.6/ee224281da3ca44d0c3217e8c21edd039e174538/prevayler-core-2.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.prevayler/prevayler-core/2.6/d29eaa62e788cd89d4487c5d4faf9236740a1dd0/prevayler-core-2.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

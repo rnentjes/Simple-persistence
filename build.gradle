@@ -1,0 +1,45 @@
+group 'nl.astraeus.persistence'
+version '1.1-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+sourceSets {
+    main.java.srcDirs += 'src'
+    main.resources.srcDirs += 'src'
+
+    test.java.srcDirs += 'test'
+    test.resources.srcDirs += 'test'
+}
+
+sourceCompatibility = 1.7
+
+repositories {
+    maven {
+        url "http://nexus.astraeus.nl/nexus/content/groups/public"
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    compile "org.prevayler:prevayler-core:2.+"
+    compile "org.prevayler:prevayler-factory:2.+"
+    compile "org.slf4j:slf4j-api:1.7.+"
+    compile "org.slf4j:slf4j-simple:1.7.+"
+    compile "com.google.code.findbugs:jsr305:3.+"
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "http://nexus.astraeus.nl/nexus/content/repositories/releases") {
+                authentication(userName: nexusUsername, password: nexusPassword)
+            }
+            snapshotRepository(url: "http://nexus.astraeus.nl/nexus/content/repositories/snapshots") {
+                authentication(userName: nexusUsername, password: nexusPassword)
+            }
+        }
+    }
+}
